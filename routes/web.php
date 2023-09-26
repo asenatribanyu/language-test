@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/forgot-password', function () {
     return view('pages/forgot-password');
 });
+
+Route::get('/register', function () {
+    return view('pages/register');
+});
