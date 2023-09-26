@@ -11,8 +11,8 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
-    <section class="lg:p-7">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+    <section>
+        <div class="flex flex-col items-center justify-center min-h-screen">
             <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-40" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
             </a>
@@ -69,8 +69,8 @@
                     </form>
                 </div>
             </div>
+            @include('partials.footer')
         </div>
-        @include('partials.footer')
     </section>
 </body>
 
