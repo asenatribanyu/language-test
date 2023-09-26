@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ 'css/global.css' }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Login</title>
+    <title>Login | Language Institute - Widyatama University</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
-    <section class="lg:p-7">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+    <section>
+        <div class="flex flex-col items-center justify-center min-h-screen">
             <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-40" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
             </a>
@@ -55,7 +55,7 @@
                                     <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
                                 </div>
                             </div>
-                            <a href="#"
+                            <a href="/forgot-password"
                                 class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">Forgot
                                 password?</a>
                         </div>
@@ -63,14 +63,14 @@
                             class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign
                             in</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                            Don’t have an account yet? <a href="#"
+                            Don’t have an account yet? <a href="/sign-up"
                                 class="font-medium text-blue-600 hover:underline dark:text-blue-500">Sign up</a>
                         </p>
                     </form>
                 </div>
             </div>
+            @include('partials.footer')
         </div>
-        @include('partials.footer')
     </section>
 </body>
 
