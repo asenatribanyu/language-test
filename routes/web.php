@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/forgot-password', function () {
-    return view('forgot-password');
+    return view('pages/forgot-password');
 });
