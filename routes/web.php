@@ -24,3 +24,7 @@ Route::get('/forgot-password', function () {
 Route::get('/register', function () {
     return view('pages/register');
 });
+
+Route::get('/reset-password', function () {
+    return view('pages/reset-password');
+});
