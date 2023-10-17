@@ -28,3 +28,7 @@ Route::get('/register', function () {
 Route::get('/reset-password', function () {
     return view('pages/reset-password');
 });
+
+Route::get('/contact-us', function () {
+    return view('pages/contact-us');
+});
