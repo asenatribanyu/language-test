@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/update-profile', function () {
+    return view('pages/update-profile');
+});
+
+Route::resource('profile', ProfileController::class);
 
 Route::get('/welcome', [WelcomeController::class, '__invoke'])->name('home');
