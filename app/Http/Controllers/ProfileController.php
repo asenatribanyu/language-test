@@ -4,12 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request)
+    {
+        return view('pages/update-profile');
+    }
+
     public function index()
     {
         //
@@ -36,11 +50,14 @@ class ProfileController extends Controller
             'profile_program_study' => 'string',
         ]);
 
+        $newFaculty = Str::replace('_', ' ', $validateData['profile_faculty']);
+
         $profile = new Profile;
         $profile->profile_registrant = $validateData['profile_registrant'];
         $profile->profile_npm = $validateData['profile_npm'];
-        $profile->profile_faculty = $validateData['profile_faculty'];
+        $profile->profile_faculty = $newFaculty;
         $profile->profile_program_study = $validateData['profile_program_study'];
+
         $profile->profile_user_id = auth()->user()->id;
 
         $profile->save();
