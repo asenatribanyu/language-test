@@ -20,4 +20,4 @@ use App\Http\Controllers\ProfileController;
 
 Route::resource('profile', ProfileController::class);
 
-Route::get('/update-profile', [ProfileController::class, '__invoke'])->name('home');
+Route::get('/update-profile', [ProfileController::class, '__invoke'])->name('home')->middleware('blockupdateprofile');

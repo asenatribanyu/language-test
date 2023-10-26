@@ -33,7 +33,7 @@ return new class extends Migration
                 'Master of Management', 
                 'S1 Informatics', 
                 'S1 Industry', 
-                'S1 Information System', 
+                'S1 Information Systems', 
                 'S1 Electrical', 
                 'S1 Mechanical', 
                 'D3 Mechanical', 
@@ -44,8 +44,8 @@ return new class extends Migration
                 'D4 Graphic Design', 
                 'D3 Multimedia', 
                 'International Trade', 
-                'Library and Information Science', 
-                'Film and Television Production']);
+                'Library & Information Science', 
+                'Film & Television Production']);
             $table->timestamps();
         });
     }

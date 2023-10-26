@@ -34,8 +34,8 @@
                 Economics_and_Business: ['S1 Accounting', 'D3 Accounting', 'Master of Accounting', 'Accounting Profession', 'S1 Management', 'D3 Management', 'Master of Management'],
                 Engineering: ['S1 Informatics', 'S1 Industry', 'S1 Information Systems', 'S1 Electrical', 'S1 Mechanical', 'D3 Mechanical', 'S1 Civil'],
                 Cultural_Studies: ['S1 Japanese Language', 'D3 Japanese Language', 'S1 English Language'],
-                Comminication_and_Visual_Design: ['D4 Graphic Design', 'D3 Multimedia'],
-                Social_Sciente_and_Political_Science: ['International Trade', 'Library & Information Science', 'Film & Television Production']
+                Communication_and_Visual_Design: ['D4 Graphic Design', 'D3 Multimedia'],
+                Social_Science_and_Political_Science: ['International Trade', 'Library & Information Science', 'Film & Television Production']
             }
         }"
             class="p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -82,8 +82,8 @@
                                 <option value="Economics_and_Business">Economics and Business</option>
                                 <option value="Engineering">Engineering</option>
                                 <option value="Cultural_Studies">Cultural Studies</option>
-                                <option value="Comminication_and_Visual_Design">Communication and Visual Design</option>
-                                <option value="Social_Sciente_and_Political_Science">Social Science and Political Science
+                                <option value="Communication_and_Visual_Design">Communication and Visual Design</option>
+                                <option value="Social_Science_and_Political_Science">Social Science and Political Science
                                 </option>
                             </select>
                         </div>
