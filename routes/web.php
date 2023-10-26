@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -14,24 +15,10 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/login');
-});
-
-Route::get('/forgot-password', function () {
-    return view('pages/forgot-password');
-});
-
-Route::get('/register', function () {
-    return view('pages/register');
-});
-
-Route::get('/reset-password', function () {
-    return view('pages/reset-password');
-});
-
 Route::get('/update-profile', function () {
     return view('pages/update-profile');
 });
 
 Route::resource('profile', ProfileController::class);
+
+Route::get('/welcome', [WelcomeController::class, '__invoke'])->name('home');
