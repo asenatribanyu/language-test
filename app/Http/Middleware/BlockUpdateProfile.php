@@ -14,7 +14,7 @@ class BlockUpdateProfile
         $id = auth()->user()->id;
         $check = Profile::where('profile_user_id', $id)->firstOrFail();
         
-        if ($check->profile_registrant) {
+        if ($check->profile_registrant !== null) {
             return redirect('/profile');
         }
 
