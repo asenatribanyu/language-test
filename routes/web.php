@@ -21,4 +21,6 @@ Route::get('/update-profile', function () {
 
 Route::resource('profile', ProfileController::class);
 
-Route::get('/welcome', [WelcomeController::class, '__invoke'])->name('home');
+Route::get('/contact-us', function () {
+    return view('pages/contact-us');
+});
