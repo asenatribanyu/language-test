@@ -24,3 +24,7 @@ Route::resource('profile', ProfileController::class);
 Route::get('/contact-us', function () {
     return view('pages/contact-us');
 });
+
+Route::get('/dashboard', function () {
+    return view('pages/dashboard');
+});
