@@ -32,3 +32,7 @@ Route::get('/reset-password', function () {
 Route::get('/admin/dashboard', function () {
     return view('/admin/dashboard');
 });
+
+Route::get('admin/manage-users', function () {
+    return view('admin/manage-users');
+});
