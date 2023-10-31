@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,21 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/login');
+Route::get('/update-profile', function () {
+    return view('pages/update-profile');
 });
 
-Route::get('/forgot-password', function () {
-    return view('pages/forgot-password');
-});
-
-Route::get('/register', function () {
-    return view('pages/register');
-});
-
-Route::get('/reset-password', function () {
-    return view('pages/reset-password');
-});
+Route::resource('profile', ProfileController::class);
 
 Route::get('/contact-us', function () {
     return view('pages/contact-us');
