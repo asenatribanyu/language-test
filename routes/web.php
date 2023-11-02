@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -15,9 +14,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/update-profile', function () {
-    return view('pages/update-profile');
-});
+Route::get('/update-profile', [ProfileController::class, '__invoke'])->name('home');
 
 Route::resource('profile', ProfileController::class);
 
