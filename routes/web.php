@@ -14,7 +14,7 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/update-profile', [ProfileController::class, '__invoke'])->name('home');
+Route::get('/update-profile', [ProfileController::class, '__invoke']);
 
 Route::resource('profile', ProfileController::class);
 
