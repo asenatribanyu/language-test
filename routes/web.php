@@ -13,22 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/login');
-});
-
-Route::get('/forgot-password', function () {
-    return view('pages/forgot-password');
-});
-
-Route::get('/register', function () {
-    return view('pages/register');
-});
-
-Route::get('/reset-password', function () {
-    return view('pages/reset-password');
-});
-
 Route::get('/test-history-toeic', function () {
     return view('pages/test-history-toeic');
 });
