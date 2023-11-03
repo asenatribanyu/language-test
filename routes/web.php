@@ -33,3 +33,7 @@ Route::get('/contact-us', function () {
 Route::get('/purchase', function () {
     return view('pages/purchase');
 });
+
+Route::get('/test-history-ept', function () {
+    return view('pages/test-history-ept');
+});
