@@ -37,3 +37,7 @@ Route::get('/purchase', function () {
 Route::get('/test-history-ept', function () {
     return view('pages/test-history-ept');
 });
+
+Route::get('/test-history-toeic', function () {
+    return view('pages/test-history-toeic');
+});

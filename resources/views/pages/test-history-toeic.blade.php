@@ -2,7 +2,7 @@
 @section('content')
     <div class="mt-7 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="border-b-2 border-gray-200">
-            <h1 class="pb-2 text-2xl font-semibold dark:text-white">EPT History</h1>
+            <h1 class="pb-2 text-2xl font-semibold dark:text-white">TOEIC History</h1>
         </div>
         <section class="mt-5">
             <table id="myTable" class="display w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -15,17 +15,12 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                First Section
+                                Listening Section
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Second Section
-                            </div>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Third Section
+                                Reading Section
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -51,10 +46,7 @@
                             1
                         </th>
                         <td class="px-6 py-4">
-                            150
-                        </td>
-                        <td class="px-6 py-4">
-                            150
+                            300
                         </td>
                         <td class="px-6 py-4">
                             300
@@ -71,9 +63,6 @@
                     </tr>
                 </tbody>
             </table>
-            <button type="button"
-                class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
-                Back My Old Certificate</button>
         </section>
     </div>
 @endsection
