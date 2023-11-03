@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ 'css/global.css' }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>Update Profile</title>
+    <title>User Page</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">

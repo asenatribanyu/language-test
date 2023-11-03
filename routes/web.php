@@ -22,6 +22,10 @@ Route::get('/contact-us', function () {
     return view('pages/contact-us');
 });
 
+Route::get('/profile', function () {
+    return view('pages/profile');
+});
+  
 Route::get('/dashboard', function () {
     return view('pages/dashboard');
 });
