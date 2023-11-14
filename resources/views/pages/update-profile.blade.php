@@ -34,8 +34,8 @@
                 Economics_and_Business: ['S1 Accounting', 'D3 Accounting', 'Master of Accounting', 'Accounting Profession', 'S1 Management', 'D3 Management', 'Master of Management'],
                 Engineering: ['S1 Informatics', 'S1 Industry', 'S1 Information Systems', 'S1 Electrical', 'S1 Mechanical', 'D3 Mechanical', 'S1 Civil'],
                 Cultural_Studies: ['S1 Japanese Language', 'D3 Japanese Language', 'S1 English Language'],
-                Comminication_and_Visual_Design: ['D4 Graphic Design', 'D3 Multimedia'],
-                Social_Sciente_and_Political_Science: ['International Trade', 'Library & Information Science', 'Film & Television Production']
+                Communication_and_Visual_Design: ['D4 Graphic Design', 'D3 Multimedia'],
+                Social_Science_and_Political_Science: ['International Trade', 'Library & Information Science', 'Film & Television Production']
             }
         }"
             class="p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -58,15 +58,17 @@
 
                     {{-- Student Input Form --}}
                     <div x-show="isStudent" class="mb-5">
-                        {{-- <div class="mt-5">
+                        <div class="mt-5">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                                 for="file_input">Profile Photo</label>
                             <input
                                 class="block w-1/2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                aria-describedby="file_input_help" name="" id="file_input" type="file>
-                            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG, JPG or JPEG.
+                                aria-describedby="file_input_help" name="picture" id="file_input" type="file">
+                            <p class="mt-1 text-sm text-gray-500
+                                dark:text-gray-300"
+                                id="file_input_help">PNG, JPG or JPEG.
                             </p>
-                        </div> --}}
+                        </div>
 
                         <div class="mt-5">
                             <input type="text" id="NPM" name="profile_npm" value=""
@@ -82,8 +84,8 @@
                                 <option value="Economics_and_Business">Economics and Business</option>
                                 <option value="Engineering">Engineering</option>
                                 <option value="Cultural_Studies">Cultural Studies</option>
-                                <option value="Comminication_and_Visual_Design">Communication and Visual Design</option>
-                                <option value="Social_Sciente_and_Political_Science">Social Science and Political Science
+                                <option value="Communication_and_Visual_Design">Communication and Visual Design</option>
+                                <option value="Social_Science_and_Political_Science">Social Science and Political Science
                                 </option>
                             </select>
                         </div>
@@ -123,8 +125,8 @@
                             <button type="button"
                                 class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 data-modal-hide="popup-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 14 14">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                 </svg>

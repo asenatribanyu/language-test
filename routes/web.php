@@ -19,10 +19,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('pages.dashboard');
     });
 
-    Route::get('/update-profile', function () {
-        return view('pages.update-profile');
-    });
-
     Route::resource('profile', ProfileController::class);
 
     Route::get('/profile', function () {
@@ -45,3 +41,5 @@ Route::middleware(['auth', 'verified'])->group(function(){
         return view('pages/test-history-toeic');
     });
 });
+
+Route::get('/update-profile', [ProfileController::class, '__invoke']);

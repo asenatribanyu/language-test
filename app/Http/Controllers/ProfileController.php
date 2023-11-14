@@ -3,13 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(Request $request)
+    {
+        $user = User::where('id', auth()->user()->id)->first();
+        if($user->picture){
+            return redirect('/dashboard');
+        }
+        else{
+            return view('pages/update-profile');
+        }
+    }
+
     public function index()
     {
         //
@@ -30,21 +51,31 @@ class ProfileController extends Controller
     {
         $validateData = $request->validate([
             'profile_registrant' => 'string',
-            'user_pic' => 'image | mimes:png,jpeg,jpg',
+            'picture' => 'image | mimes:png,jpeg,jpg',
             'profile_npm' =>  'string',
             'profile_faculty' => 'string',
             'profile_program_study' => 'string',
         ]);
 
+        $newFaculty = Str::replace('_', ' ', $validateData['profile_faculty']);
+
         $profile = new Profile;
         $profile->profile_registrant = $validateData['profile_registrant'];
         $profile->profile_npm = $validateData['profile_npm'];
-        $profile->profile_faculty = $validateData['profile_faculty'];
+        $profile->profile_faculty = $newFaculty;
         $profile->profile_program_study = $validateData['profile_program_study'];
         $profile->profile_user_id = auth()->user()->id;
-
         $profile->save();
-        // $profile->user_pic = $validateData['user_pic'];
+
+        $user = User::where('id', auth()->user()->id)->first();
+        $extension = $request->file('picture')->getClientOriginalExtension();
+        $fileName = $request->file('picture')->getClientOriginalName();
+        $fileName = $fileName . '_' . time() . '.' . $extension;
+        $request->file('picture')->storeAs('public/profile_picture', $fileName);
+        $user->picture = 'profile_picture/' . $fileName;
+        $user->update();
+
+        return redirect('/dashboard');
     }
 
     /**
