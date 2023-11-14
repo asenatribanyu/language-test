@@ -7,19 +7,6 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'verified']);
-    }
-
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
-    {
-        return view('pages.update-profile');
-    }
-
     /**
      * Display a listing of the resource.
      */

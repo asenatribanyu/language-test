@@ -14,30 +14,34 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('pages/dashboard');
-});
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    });
 
-Route::get('/update-profile', [ProfileController::class, '__invoke']);
+    Route::get('/update-profile', function () {
+        return view('pages.update-profile');
+    });
 
-Route::resource('profile', ProfileController::class);
+    Route::resource('profile', ProfileController::class);
 
-Route::get('/profile', function () {
-    return view('pages/profile');
-});
+    Route::get('/profile', function () {
+        return view('pages/profile');
+    });
 
-Route::get('/contact-us', function () {
-    return view('pages/contact-us');
-});
-  
-Route::get('/purchase', function () {
-    return view('pages/purchase');
-});
-
-Route::get('/test-history-ept', function () {
-    return view('pages/test-history-ept');
-});
-
-Route::get('/test-history-toeic', function () {
-    return view('pages/test-history-toeic');
+    Route::get('/contact-us', function () {
+        return view('pages/contact-us');
+    });
+      
+    Route::get('/purchase', function () {
+        return view('pages/purchase');
+    });
+    
+    Route::get('/test-history-ept', function () {
+        return view('pages/test-history-ept');
+    });
+    
+    Route::get('/test-history-toeic', function () {
+        return view('pages/test-history-toeic');
+    });
 });
