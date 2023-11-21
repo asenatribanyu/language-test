@@ -40,6 +40,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/test-history-toeic', function () {
         return view('pages/test-history-toeic');
     });
+  
+    Route::get('/test-guide', function () {
+        return view('pages/test-guide');
+    });
 });
 
 Route::get('/update-profile', [ProfileController::class, '__invoke']);
