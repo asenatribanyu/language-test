@@ -59,6 +59,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
+  
+    Route::get('/waiting-area-jadwal', function () {
+    return view('pages/waiting-area-jadwal');
+    });
 });
 
 Route::get('/dashboard/update-profile', [ProfileController::class, '__invoke']);
