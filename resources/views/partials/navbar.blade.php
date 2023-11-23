@@ -9,7 +9,7 @@
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-10 h-10 object-fill rounded-full" src="{{ asset('storage/' . $profile->picture) }}"
+                <img class="w-10 h-10 object-cover rounded-full" src="{{ asset('storage/' . $profile->picture) }}"
                     alt="logo">
             </button>
             <!-- Dropdown menu -->

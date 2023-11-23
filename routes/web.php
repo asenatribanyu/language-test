@@ -15,7 +15,7 @@ use App\Models\User;
 |
 */
 
-Route::middleware(['auth', 'verified'])->group(function(){
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.dashboard', [
             'profile' => User::where('id', auth()->user()->id)->first(),
@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
-    
+
     Route::get('/dashboard/test-history-ept', function () {
         return view('pages/test-history-ept', [
             'profile' => User::where('id', auth()->user()->id)->first(),
@@ -59,9 +59,11 @@ Route::middleware(['auth', 'verified'])->group(function(){
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
-  
-    Route::get('/waiting-area-jadwal', function () {
-    return view('pages/waiting-area-jadwal');
+
+    Route::get('/dashboard/waiting-area-jadwal', function () {
+        return view('pages/waiting-area-jadwal', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
     });
 });
 
