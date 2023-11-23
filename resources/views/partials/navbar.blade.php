@@ -9,18 +9,19 @@
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-10 h-10 object-cover rounded-full" src="{{ asset('img/no_avatar.png') }}" alt="logo">
+                <img class="w-10 h-10 object-fill rounded-full" src="{{ asset('storage/' . $profile->picture) }}"
+                    alt="logo">
             </button>
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                 id="user-dropdown">
                 <div class="px-4 py-3">
-                    <span class="block text-sm text-gray-900 dark:text-white">Username</span>
-                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">example@mail.com</span>
+                    <span class="block text-sm text-gray-900 dark:text-white">{{ $profile->name }}</span>
+                    <span class="block text-sm text-gray-500 truncate dark:text-gray-400">{{ $profile->email }}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/profile"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">My
                             Profile</a>
                     </li>
@@ -38,24 +39,24 @@
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                             aria-labelledby="doubleDropdownButton">
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/test-history-ept"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EPT</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/test-history-toeic"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TOEIC</a>
                             </li>
                     </div>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/practice"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Practice</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/purchase"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Purchase</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/notification"
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Notification</a>
                     </li>
                     <li>
@@ -86,17 +87,17 @@
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li>
-                    <a href="#"
+                    <a href="/dashboard"
                         class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                         aria-current="page">Dashboard</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/dashboard/contact-us"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact
                         Us</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="/dashboard/faq"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">FAQ</a>
                 </li>
             </ul>
