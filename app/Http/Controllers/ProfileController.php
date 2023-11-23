@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProfileController extends Controller
@@ -99,7 +100,25 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        //
+        $user = User::where('id', $profile->user_id)->first();
+
+        $validateData = $request->validate([
+            'picture' => 'image | mimes:png, jpg, jpeg',
+        ]);
+
+        if($user->picture){
+            Storage::delete('public/' . $user->picture);
+        }
+
+        $extension = $request->file('picture')->getClientOriginalExtension();
+        $fileName = $request->file('picture')->getClientOriginalName();
+        $fileName = $fileName . '_' . time() . '.' . $extension;
+        $request->file('picture')->storeAs('public/profile_picture', $fileName);
+        $validateData['picture'] = 'profile_picture/' . $fileName;
+        $user->picture = 'profile_picture/' . $fileName;
+        $user->save();
+
+        return redirect()->back();
     }
 
     /**
