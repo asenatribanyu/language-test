@@ -7,7 +7,8 @@
         </div>
         <div class="mt-5">
             <div class="mb-5 flex justify-center">
-                <img class="w-52 h-52 object-cover rounded-full bg-gray-50" src="{{ asset('') }}" alt="profile-picture">
+                <img class="w-52 h-52 object-cover rounded-full bg-gray-50" src="{{ asset('storage/' . $profile->picture) }}"
+                    alt="profile-picture">
             </div>
             <div class="flex justify-center">
                 <div class="w-3/4">
@@ -26,21 +27,21 @@
                             Name</label>
                         <input type="text" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="" disabled>
+                            placeholder="{{ $profile->name }}" disabled>
                     </div>
                     <div class="mb-5">
                         <label for="npm"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NPM</label>
                         <input type="text" id="npm"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="" disabled>
+                            placeholder="{{ $profile->profile->npm }}" disabled>
                     </div>
                     <div class="mb-5">
                         <label for="faculty"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Faculty</label>
                         <input type="text" id="faculty"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="" disabled>
+                            placeholder="{{ $profile->profile->faculty }}" disabled>
                     </div>
                     <div class="mb-5">
                         <label for="program_study"
@@ -48,21 +49,21 @@
                             Study</label>
                         <input type="text" id="program_study"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="" disabled>
+                            placeholder="{{ $profile->profile->program_study }}" disabled>
                     </div>
                     <div class="mb-5">
                         <label for="email"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                         <input type="email" id="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="" disabled>
+                            placeholder="{{ $profile->email }}" disabled>
                     </div>
                     <div class="mb-5">
                         <label for="created" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Account
                             Created</label>
                         <input type="text" id="created"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="" disabled>
+                            placeholder="{{ $profile->email_verified_at->format('Y-m-d') }}" disabled>
                     </div>
                     <div class="mb-5 border-b-2 border-gray-200">
                         <div class="pb-5">
@@ -70,7 +71,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Registrant</label>
                             <input type="text" id="registrant"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="" disabled>
+                                placeholder="{{ ucwords(strtolower($profile->profile->registrant)) }}" disabled>
                         </div>
                     </div>
                     <div>

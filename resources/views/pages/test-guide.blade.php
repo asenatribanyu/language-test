@@ -4,7 +4,7 @@
         <div class="border-b-2 border-gray-200">
             <h1 class="pb-2 text-2xl font-semibold dark:text-white">Test Guide</h1>
         </div>
-        <div class="mt-5 dark:border-gray-700 dark:bg-gray-900">
+        <div class="mt-5 mb-5 dark:border-gray-700 dark:bg-gray-900">
             <p class="mb-2 text-gray-500 dark:text-gray-400">Jika peserta ingin mengerjakan tes di luar kampus
                 Widyatama silahkan ikuti panduan berikut dari poin 1-13 dan jika peserta ingin melakukan tes di
                 dalam kampus atau kelas di Universitas Widyatama silahkan lewati panduan sampai ke poin 9.
@@ -43,7 +43,7 @@
                     class="text-blue-600 dark:text-blue-500 hover:underline">lembaga.bahasa@widyatama.ac.id</a>
                 atau chat yang tersedia dibawah kanan layar anda.</p>
         </div>
-        <button type="button"
-            class="py-2.5 px-5 me-2 mt-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-400 hover:text-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Back</button>
+        <a href="{{ url()->previous() }}"
+            class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-400 hover:text-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Back</a>
     </div>
 @endsection

@@ -60,11 +60,11 @@ class ProfileController extends Controller
         $newFaculty = Str::replace('_', ' ', $validateData['profile_faculty']);
 
         $profile = new Profile;
-        $profile->profile_registrant = $validateData['profile_registrant'];
-        $profile->profile_npm = $validateData['profile_npm'];
-        $profile->profile_faculty = $newFaculty;
-        $profile->profile_program_study = $validateData['profile_program_study'];
-        $profile->profile_user_id = auth()->user()->id;
+        $profile->registrant = $validateData['profile_registrant'];
+        $profile->npm = $validateData['profile_npm'];
+        $profile->faculty = $newFaculty;
+        $profile->program_study = $validateData['profile_program_study'];
+        $profile->user_id = auth()->user()->id;
         $profile->save();
 
         $user = User::where('id', auth()->user()->id)->first();
