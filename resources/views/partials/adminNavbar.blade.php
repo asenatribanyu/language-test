@@ -25,7 +25,7 @@
                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage
                             Users</a>
                     </li>
-                    <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown"
+                    <button id="examDropdownButton" data-dropdown-toggle="examDropdown"
                         data-dropdown-placement="right-start" type="button"
                         class="flex items-center justify-between w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage
                         Exam
@@ -34,10 +34,9 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg></button>
-                    <div id="doubleDropdown"
+                    <div id="examDropdown"
                         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="doubleDropdownButton">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="examDropdownButton">
                             <li>
                                 <a href="/admin/dashboard/exam/ept"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EPT</a>
@@ -47,7 +46,7 @@
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">TOEIC</a>
                             </li>
                     </div>
-                    <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown"
+                    <button id="practiceDropdownButton" data-dropdown-toggle="practiceDropdown"
                         data-dropdown-placement="right-start" type="button"
                         class="flex items-center justify-between w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage
                         Practice
@@ -56,10 +55,10 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg></button>
-                    <div id="doubleDropdown"
+                    <div id="practiceDropdown"
                         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="doubleDropdownButton">
+                            aria-labelledby="practiceDropdownButton">
                             <li>
                                 <a href="/admin/dashboard/practice/ept"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">EPT</a>

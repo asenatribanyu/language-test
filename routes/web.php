@@ -92,3 +92,21 @@ Route::get('admin/dashboard/exam/toeic', function () {
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
+
+Route::get('admin/dashboard/exam/ept', function () {
+    return view('admin/manageExam', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/practice/ept', function () {
+    return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/practice/toeic', function () {
+    return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
