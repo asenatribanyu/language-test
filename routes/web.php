@@ -36,3 +36,9 @@ Route::get('/admin/dashboard', function () {
 Route::get('admin/manage-users', function () {
     return view('admin/manage-users');
 });
+Route::get('admin/ept_manage_question', function () {
+    return view('admin/ept-manage-question');
+});
+Route::get('admin/toeic_manage_question', function () {
+    return view('admin/toeic-manage-question');
+});
