@@ -68,3 +68,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::get('/dashboard/update-profile', [ProfileController::class, '__invoke']);
+
+Route::get('admin/dashboard', function () {
+    return view('admin/dashboard', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});

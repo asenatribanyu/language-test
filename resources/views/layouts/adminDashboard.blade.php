@@ -17,11 +17,11 @@
 
     @stack('style')
 
-    <title>User Page</title>
+    <title>Admin Page</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
-    @include('partials.userNavbar')
+    @include('partials.adminNavbar')
     <div class="max-w-7xl mx-auto max-md:px-2">
         @yield('content')
     </div>

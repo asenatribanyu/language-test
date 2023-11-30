@@ -4,7 +4,7 @@
         @csrf
         <div class="w-full flex gap-5 max-md:block">
             <div
-                class="mt-7 p-5 w-2/5 max-md:w-full bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 border border-gray-200">
+                class="mt-5 p-5 w-2/5 max-md:w-full bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 border border-gray-200">
                 <div class="border-b-2 border-gray-200">
                     <h1 class="pb-2 text-2xl font-semibold dark:text-white">Test Taker Profile</h1>
                 </div>

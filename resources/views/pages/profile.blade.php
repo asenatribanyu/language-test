@@ -4,7 +4,7 @@
         @method('PUT')
         @csrf
         <div
-            class="mt-7 p-5 max-w-screen-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="mt-5 p-5 max-w-screen-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="border-b-2 border-gray-200">
                 <h1 class="pb-2 text-2xl font-semibold dark:text-white">My Profile</h1>
             </div>
