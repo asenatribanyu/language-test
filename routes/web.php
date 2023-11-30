@@ -74,3 +74,21 @@ Route::get('admin/dashboard', function () {
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
+
+Route::get('admin/dashboard/manage-users', function () {
+    return view('admin/manageUser', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/exam/ept', function () {
+    return view('admin/manageExam', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/exam/toeic', function () {
+    return view('admin/manageExam', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
