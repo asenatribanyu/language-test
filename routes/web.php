@@ -69,6 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/dashboard/update-profile', [ProfileController::class, '__invoke']);
 
+// Peningkatan UI - Dos
 Route::get('admin/dashboard', function () {
     return view('admin/dashboard', [
         'profile' => User::where('id', auth()->user()->id)->first(),
@@ -93,12 +94,6 @@ Route::get('admin/dashboard/exam/toeic', function () {
     ]);
 });
 
-Route::get('admin/dashboard/exam/ept', function () {
-    return view('admin/manageExam', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
 Route::get('admin/dashboard/practice/ept', function () {
     return view('admin/managePractice', [
         'profile' => User::where('id', auth()->user()->id)->first(),
@@ -107,6 +102,66 @@ Route::get('admin/dashboard/practice/ept', function () {
 
 Route::get('admin/dashboard/practice/toeic', function () {
     return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam', function () {
+    return view('admin/exam/createExam', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/direction', function () {
+    return view('admin/exam/uploadDirection', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/story-text', function () {
+    return view('admin/exam/uploadStoryText', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/story-audio', function () {
+    return view('admin/exam/uploadStoryAudio', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/listening-a', function () {
+    return view('admin/exam/uploadListeningA', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/listening-b', function () {
+    return view('admin/exam/uploadListeningB', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/listening-c', function () {
+    return view('admin/exam/uploadListeningC', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/structure-expression', function () {
+    return view('admin/exam/uploadStructureEx', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/written-expression', function () {
+    return view('admin/exam/uploadWrittenEx', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/reading-comperhension', function () {
+    return view('admin/exam/uploadReadingComp', [
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
