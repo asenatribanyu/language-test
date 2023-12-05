@@ -37,6 +37,10 @@ Route::get('/admin/dashboard/manage-users', function () {
     return view('/pages/manage-users');
 });
 
+Route::get('/admin/dashboard/ept-manage-question', function () {
+    return view('/pages/ept-manage-question');
+});
+
 Route::get('/admin/dashboard/toeic-manage-question', function () {
     return view('/pages/toeic-manage-question');
 });
