@@ -36,9 +36,9 @@
             <a href="/admin/dashboard/manage-users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Users</a>
           </li>
           <li>
-            <a href="/admin/dashboard/manage-exam" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Exam ></a>
+            <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Exam ></a>
               <ul>
-                <li><a href="">EPT</a></li>
+                <li><a href="admin/dashboard/toeic-manage-question">EPT</a></li>
                 <li><a href="">TOEIC</a></li>
               </ul>
           </li>
