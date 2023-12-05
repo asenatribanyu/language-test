@@ -38,8 +38,8 @@
           <li>
             <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Exam ></a>
               <ul>
-                <li><a href="admin/dashboard/toeic-manage-question">EPT</a></li>
-                <li><a href="">TOEIC</a></li>
+                <li><a href="/admin/dashboard/ept-manage-question">EPT</a></li>
+                <li><a href="/admin/dashboard/toeic-manage-question">TOEIC</a></li>
               </ul>
           </li>
           <li>
