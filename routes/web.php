@@ -37,6 +37,6 @@ Route::get('/admin/dashboard/manage-users', function () {
     return view('/pages/manage-users');
 });
 
-Route::get('/admin/dashboard/manage-exam', function () {
+Route::get('/admin/dashboard/toeic-manage-question', function () {
     return view('/pages/toeic-manage-question');
 });
