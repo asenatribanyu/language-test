@@ -26,7 +26,7 @@
       <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div class="px-4 py-3">
           <span class="block text-sm text-gray-900 dark:text-white">Username</span>
-          <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+          <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@gmail.com</span>
         </div>
         <ul class="py-2" aria-labelledby="user-menu-button">
           <li>
@@ -36,10 +36,10 @@
             <a href="/admin/dashboard/manage-users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Users</a>
           </li>
           <li>
-            <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Exam ></a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Manage Exam</a>
               <ul>
-                <li><a href="/admin/dashboard/ept-manage-question">EPT</a></li>
-                <li><a href="/admin/dashboard/toeic-manage-question">TOEIC</a></li>
+                <li><a href="/admin/dashboard/ept-manage-question" class="block px-7 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">EPT</a></li>
+                <li><a href="/admin/dashboard/toeic-manage-question" class="block px-7 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">TOEIC</a></li>
               </ul>
           </li>
           <li>
@@ -142,6 +142,10 @@
         </span>
     </button>
 </div>
+
+
+<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 justify-center">Go</button>
+
 
               @include('partials.footer')
 </body>
