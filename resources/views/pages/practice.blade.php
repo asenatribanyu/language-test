@@ -146,7 +146,7 @@
                     <button type="button"
                         class="flex items-center justify-between w-full p-5 font-semibold text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                         data-accordion-target="#accordion-open-body-3" aria-expanded="false"
-                        aria-controls="accordion-open-body-3">
+                        aria-controls="accordion-open-body-">
                         <span>Vocabulary</span>
                         <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -161,8 +161,8 @@
                         </p>
                     </div>
                 </div>
-                </div>
-                <div class="mt-3 p-5">
+            </div>
+            <div class="mt-3 p-5">
                 <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Unlock VIP Lesson</button>
             </div>
         </div>
