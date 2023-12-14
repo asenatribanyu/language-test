@@ -12,18 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->id('profile_id');
-            $table->unsignedBigInteger('profile_user_id');
-            $table->foreign('profile_user_id')->references('id')->on('users');
-            $table->enum('profile_registrant',['widyatama student', 'not widyatama student']);
-            $table->string('profile_npm');
-            $table->enum('profile_faculty', [
+            $table->id('id');
+            $table->foreignId('user_id');
+            $table->enum('registrant',['widyatama student', 'not widyatama student']);
+            $table->string('npm');
+            $table->enum('faculty', [
                 'Economics and Business',
                 'Engineering', 
                 'Cultural Studies', 
                 'Communication and Visual Design',
                 'Social Science and Political Science']);
-            $table->enum('profile_program_study', [
+            $table->enum('program_study', [
                 'S1 Accounting', 
                 'D3 Accounting', 
                 'Master of Accounting', 

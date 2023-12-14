@@ -9,8 +9,13 @@
                 id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                 data-dropdown-placement="bottom">
                 <span class="sr-only">Open user menu</span>
-                <img class="w-10 h-10 object-cover rounded-full" src="{{ asset('storage/' . $profile->picture) }}"
-                    alt="logo">
+                @if ($profile->picture)
+                    <img class="w-10 h-10 object-cover rounded-full" src="{{ asset('storage/' . $profile->picture) }}"
+                        alt="logo">
+                @else
+                    <img class="w-10 h-10 object-cover rounded-full" src="{{ asset('img/no_avatar.png') }}"
+                        alt="logo">
+                @endif
             </button>
             <!-- Dropdown menu -->
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"

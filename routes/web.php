@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,8 +80,15 @@ Route::get('admin/dashboard', function () {
 Route::get('admin/dashboard/manage-users', function () {
     return view('admin/manageUser', [
         'profile' => User::where('id', auth()->user()->id)->first(),
+        'getUsers' => User::whereIn('role', ['test taker', 'guest'])->get(),
     ]);
 });
+
+Route::get('admin/dashboard/manage-users/edit/{id}', [UserController::class, 'edit']);
+
+Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 'update']);
+
+Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
 
 Route::get('admin/dashboard/exam/ept', function () {
     return view('admin/manageExam', [
