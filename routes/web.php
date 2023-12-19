@@ -44,3 +44,7 @@ Route::get('/admin/dashboard/ept-manage-question', function () {
 Route::get('/admin/dashboard/toeic-manage-question', function () {
     return view('/pages/toeic-manage-question');
 });
+
+Route::get('/admin/dashboard/dropdown', function () {
+    return view('/pages/dropdown');
+});
