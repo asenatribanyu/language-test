@@ -173,3 +173,9 @@ Route::get('admin/dashboard/create/exam/question/reading-comperhension', functio
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
+
+Route::get('admin/dashboard/exam-control', function () {
+    return view('admin/examControl', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
