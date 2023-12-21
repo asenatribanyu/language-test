@@ -100,7 +100,7 @@
                     </button>
                 </h2>
                 <div id="accordion-open-body-1" class="hidden" aria-labelledby="accordion-open-heading-1">
-                    <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+                    <div class="p-5 border border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <p class="mb-2 text-gray-500 dark:text-gray-400">Selama EPT/TOEIC berlangsung, peserta dilarang
                             untuk:
                         </p>
@@ -119,6 +119,16 @@
                         <p class="text-gray-500 dark:text-gray-400">Jika hal-hal tersebut terdeteksi oleh sistem atau
                             terlihat oleh
                             petugas pelaksana tes, maka peserta dapat dikeluarkan tanpa pemberitahuan sebelumnya.</p>
+                        <div class="flex gap-5 max-md:block">
+                            <video class="mt-5 rounded-lg" width="450" controls>
+                                <source class="" src="/docs/videos/flowbite.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <video class="mt-5 rounded-lg" width="450" controls>
+                                <source class="" src="/docs/videos/flowbite.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
                 </div>
             </div>
