@@ -28,7 +28,7 @@ class ProfileController extends Controller
             return redirect('/dashboard');
         }
         else{
-            return view('pages/update-profile', [
+            return view('pages/updateProfile', [
                 'profile' => User::where('id', auth()->user()->id)->first(),
             ]);
         }

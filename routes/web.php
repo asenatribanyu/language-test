@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::get('/dashboard/contact-us', function () {
-        return view('pages/contact-us', [
+        return view('pages/contactUs', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
@@ -46,25 +46,31 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::get('/dashboard/test-history-ept', function () {
-        return view('pages/test-history-ept', [
+        return view('pages/testHistoryEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-history-toeic', function () {
-        return view('pages/test-history-toeic', [
+        return view('pages/testHistoryTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-guide', function () {
-        return view('pages/test-guide', [
+        return view('pages/testGuide', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/waiting-area-jadwal', function () {
-        return view('pages/waiting-area-jadwal', [
+        return view('pages/waitingAreaJadwal', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
+    });
+
+    Route::get('/dashboard/waiting-area-enroll', function () {
+        return view('pages/waitingAreaEnroll', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
