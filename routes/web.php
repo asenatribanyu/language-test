@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 
@@ -91,10 +93,13 @@ Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 
 Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
 
 Route::get('admin/dashboard/exam/ept', function () {
-    return view('admin/manageExam', [
+    return view('admin/manageExamEPT', [
         'profile' => User::where('id', auth()->user()->id)->first(),
+        'exams' => Exam::where('category', 'ept')->get(),
     ]);
 });
+
+Route::resource('admin/dashboard/exam/', ExamController::class);
 
 Route::get('admin/dashboard/exam/toeic', function () {
     return view('admin/manageExam', [
@@ -179,3 +184,4 @@ Route::get('admin/dashboard/exam-control', function () {
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
+

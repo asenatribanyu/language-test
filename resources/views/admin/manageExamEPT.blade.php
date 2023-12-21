@@ -2,7 +2,7 @@
 @section('content')
     <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-between items-center border-b-2 border-gray-200">
-            <h1 class="pb-1 text-2xl font-semibold dark:text-white">Manage EPT/TOEIC Exam Question</h1>
+            <h1 class="pb-1 text-2xl font-semibold dark:text-white">Manage EPT Exam Question</h1>
             <button type="button" data-modal-target="add-modal" data-modal-toggle="add-modal"
                 class="px-3 py-1 -mt-1 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
         </div>
@@ -22,6 +22,11 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
+                                Category
+                            </div>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <div class="flex items-center">
                                 Status
                             </div>
                         </th>
@@ -37,17 +42,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 1; $i <= 2; $i++)
+                    @foreach ($exams as $exam)
                         <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $i }}
+                                {{ $loop->iteration }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $i % 2 == 0 ? 'TOEIC' : 'EPT' }} 2023 - Book Test 4
+                                {{ $exam->title }}
                             </td>
                             <td class="px-6 py-4">
-                                @if ($i % 2 == 0)
+                                {{ strtoupper($exam->category) }}
+                            </td>
+                            <td class="px-6 py-4">
+                                @if ($exam->status == 'publish')
                                     <span
                                         class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-green-400 border border-green-400">Published</span>
                                 @else
@@ -56,7 +64,7 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
-                                30/11/2023 10:00 WIB
+                                {{ $exam->updated_at->diffForHumans() }}
                             </td>
                             <td class="px-6 py-4">
                                 <div>
@@ -84,7 +92,7 @@
                                 </div>
                             </td>
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
         </section>
@@ -148,22 +156,24 @@
                             <span class="sr-only">Close modal</span>
                         </button>
                     </div>
-                    <div class="p-4 md:p-5 space-y-4">
-                        <form action="">
+                    <form action="/admin/dashboard/exam/" method="POST">
+                        @csrf
+                        <div class="p-4 md:p-5 space-y-4">
                             <div>
                                 <label for="subname"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subname</label>
-                                <input type="text" id="subname" required placeholder="Enter Subname"
+                                <input type="hidden" name="category" value="ept">
+                                <input type="text" name="subname" id="subname" required placeholder="Enter Subname"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
-                        </form>
-                    </div>
-                    <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                        <button data-modal-hide="add-modal" type="button"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-                        <button data-modal-hide="add-modal" type="button"
-                            class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                    </div>
+                        </div>
+                        <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button type="submit" data-modal-hide="add-modal"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                            <button data-modal-hide="add-modal" type="button"
+                                class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
