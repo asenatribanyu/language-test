@@ -36,3 +36,4 @@ Route::get('/admin/dashboard', function () {
 Route::get('admin/manage-users', function () {
     return view('admin/manage-users');
 });
+
