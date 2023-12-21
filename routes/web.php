@@ -44,6 +44,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/test-guide', function () {
         return view('pages/test-guide');
     });
+
+    Route::get('/ept-result', function () {
+        return view('pages/ept-result');
+    });
 });
 
 Route::get('/update-profile', [ProfileController::class, '__invoke']);
