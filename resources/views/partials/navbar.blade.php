@@ -5,26 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ 'css/global.css' }}">
+  <link rel="stylesheet" href="{{ asset('css/global.css') }}">
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <title>Dashboard | Dashboard - Widyatama Language Test</title>
-  <style>
-    .dropdown-content {
-      display: none;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-icon::after {
-      content: "\25BC";
-      /* Unicode character for down arrow */
-      margin-left: 0.5em;
-      display: inline-block;
-    }
-  </style>
-
+  <script src="{{ asset('global/js/script.js') }}"></script>
 </head>
 
 <body class="flex-grow">
@@ -120,81 +104,7 @@
 
 
 
-  <!-- <div class="container" style=" justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; max-width: 1000px; width: 100%; padding: 20px; box-sizing: border-box;">
-      <div style="width: calc(50% - 20px); box-sizing: border-box; max-width: 450px;">
-        <ol class="space-y-4 text-gray-500 list-decimal list-inside dark:text-gray-400">
-          <li>
-            List item one
-            <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-              <li>You might feel like you are being really "organized" o</li>
-              <li>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</li>
-              <li>Nesting tons of folders in your source code is also not helpful.</li>
-            </ul>
-          </li>
-          <li>
-            List item two
-            <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-              <li>I'm not sure if we'll bother styling more than two levels deep.</li>
-              <li>Two is already too much, three is guaranteed to be a bad idea.</li>
-              <li>If you nest four levels deep you belong in prison.</li>
-            </ul>
-          </li>
-          <li>
-            List item three
-            <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-              <li>Again please don't nest lists if you want</li>
-              <li>Nobody wants to look at this.</li>
-              <li>I'm upset that we even have to bother styling this.</li>
-            </ul>
-          </li>
-        </ol>
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Read more
-          <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-          </svg>
-        </a>
-      </div>
-    </div>
-    <div style="width: calc(50% - 20px); box-sizing: border-box; max-width: 450px;">
-      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-
-        <ol class="space-y-4 text-gray-500 list-decimal list-inside dark:text-gray-400">
-          <li>
-            List item one
-            <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-              <li>You might feel like you are being really "organized" o</li>
-              <li>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</li>
-              <li>Nesting tons of folders in your source code is also not helpful.</li>
-            </ul>
-          </li>
-          <li>
-            List item two
-            <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-              <li>I'm not sure if we'll bother styling more than two levels deep.</li>
-              <li>Two is already too much, three is guaranteed to be a bad idea.</li>
-              <li>If you nest four levels deep you belong in prison.</li>
-            </ul>
-          </li>
-          <li>
-            List item three
-            <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-              <li>Again please don't nest lists if you want</li>
-              <li>Nobody wants to look at this.</li>
-              <li>I'm upset that we even have to bother styling this.</li>
-            </ul>
-          </li>
-        </ol>
-
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Read more
-          <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-          </svg>
-        </a>
-      </div>
-    </div> -->
+  <!--   -->
 
 
 
@@ -205,41 +115,6 @@
     <!-- <button type="button" class="center text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Go</button> -->
 
     @include('partials.footer')
+    
 </body>
-
 </html>
-
-<style>
-  /* Center the button */
-  .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-</style>
-<style>
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    /* Set minimum height to fill the viewport */
-  }
-</style>
-<script>
-  // Add this script to your HTML to enable dropdown functionality
-  document.addEventListener("DOMContentLoaded", function() {
-    const dropdowns = document.querySelectorAll('.dropdown');
-
-    dropdowns.forEach(dropdown => {
-      dropdown.addEventListener('mouseover', function() {
-        this.querySelector('.dropdown-content').style.display = 'block';
-      });
-
-      dropdown.addEventListener('mouseout', function() {
-        this.querySelector('.dropdown-content').style.display = 'none';
-      });
-    });
-  });
-</script>
