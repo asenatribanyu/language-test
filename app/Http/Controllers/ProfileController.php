@@ -28,7 +28,9 @@ class ProfileController extends Controller
             return redirect('/dashboard');
         }
         else{
-            return view('pages/update-profile');
+            return view('pages/updateProfile', [
+                'profile' => User::where('id', auth()->user()->id)->first(),
+            ]);
         }
     }
 
@@ -74,6 +76,12 @@ class ProfileController extends Controller
         $fileName = $fileName . '_' . time() . '.' . $extension;
         $request->file('picture')->storeAs('public/profile_picture', $fileName);
         $user->picture = 'profile_picture/' . $fileName;
+        if($profile->registrant == 'widyatama student'){
+            $user->role = 'test taker';
+        }
+        else{
+            $user->role = 'guest';
+        }
         $user->update();
 
         return redirect('/dashboard');

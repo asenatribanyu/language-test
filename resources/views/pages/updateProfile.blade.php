@@ -1,6 +1,6 @@
 @extends('layouts.userDashboard')
 @section('content')
-    <section class="mt-5">
+    <div class="mt-5">
         {{-- Profile Alert --}}
         <div id="profile-alert"
             class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
@@ -154,5 +154,5 @@
                 </div>
             </form>
         </div>
-    </section>
+    </div>
 @endsection

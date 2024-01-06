@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="{{ asset('js/datePicker.js') }}"></script>
 
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('css/dataTables.css') }}" />
@@ -17,11 +17,11 @@
 
     @stack('style')
 
-    <title>User Page</title>
+    <title>Admin Page</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
-    @include('partials.userNavbar')
+    @include('partials.adminNavbar')
     <div class="max-w-7xl mx-auto max-md:px-2">
         @yield('content')
     </div>

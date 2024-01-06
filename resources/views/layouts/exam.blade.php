@@ -8,20 +8,14 @@
 
     <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    {{-- DataTables --}}
-    <link rel="stylesheet" href="{{ asset('css/dataTables.css') }}" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 
     @stack('style')
 
-    <title>User Page</title>
+    <title>Test Page</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
-    @include('partials.userNavbar')
+    @include('examEPT.partials.examNavbar')
     <div class="max-w-7xl mx-auto max-md:px-2">
         @yield('content')
     </div>

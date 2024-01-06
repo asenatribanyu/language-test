@@ -1,8 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
+use App\Models\Exam;
 use App\Models\User;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::get('/dashboard/contact-us', function () {
-        return view('pages/contact-us', [
+        return view('pages/contactUs', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
@@ -43,28 +46,157 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::get('/dashboard/test-history-ept', function () {
-        return view('pages/test-history-ept', [
+        return view('pages/testHistoryEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-history-toeic', function () {
-        return view('pages/test-history-toeic', [
+        return view('pages/testHistoryTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-guide', function () {
-        return view('pages/test-guide', [
+        return view('pages/testGuide', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/waiting-area-jadwal', function () {
-        return view('pages/waiting-area-jadwal', [
+        return view('pages/waitingAreaJadwal', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'warningCard' => true,
+        ]);
+    });
+
+    Route::get('/dashboard/waiting-area-enroll', function () {
+        return view('pages/waitingAreaEnroll', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'warningCard' => true,
         ]);
     });
 });
 
 Route::get('/dashboard/update-profile', [ProfileController::class, '__invoke']);
+
+// Peningkatan UI - Dos
+Route::get('admin/dashboard', function () {
+    return view('admin/dashboard', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/manage-users', function () {
+    return view('admin/manageUser', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'getUsers' => User::whereIn('role', ['test taker', 'guest'])->get(),
+    ]);
+});
+
+Route::get('admin/dashboard/manage-users/edit/{id}', [UserController::class, 'edit']);
+
+Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 'update']);
+
+Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
+
+Route::get('admin/dashboard/exam/ept', function () {
+    return view('admin/manageExamEPT', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'exams' => Exam::where('category', 'ept')->get(),
+    ]);
+});
+
+Route::resource('admin/dashboard/exam/', ExamController::class);
+
+Route::get('admin/dashboard/exam/toeic', function () {
+    return view('admin/manageExam', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/practice/ept', function () {
+    return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/practice/toeic', function () {
+    return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam', function () {
+    return view('admin/exam/createExam', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/direction', function () {
+    return view('admin/exam/uploadDirection', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/story-text', function () {
+    return view('admin/exam/uploadStoryText', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/story-audio', function () {
+    return view('admin/exam/uploadStoryAudio', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/listening-a', function () {
+    return view('admin/exam/uploadListeningA', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/listening-b', function () {
+    return view('admin/exam/uploadListeningB', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/listening-c', function () {
+    return view('admin/exam/uploadListeningC', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/structure-expression', function () {
+    return view('admin/exam/uploadStructureEx', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/written-expression', function () {
+    return view('admin/exam/uploadWrittenEx', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/create/exam/question/reading-comperhension', function () {
+    return view('admin/exam/uploadReadingComp', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/exam-control', function () {
+    return view('admin/examControl', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+// Exam Route
+Route::get('exam/starting-test', function () {
+    return view('examEPT/testEPT', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'warningCard' => false,
+    ]);
+});
