@@ -66,12 +66,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/waiting-area-jadwal', function () {
         return view('pages/waitingAreaJadwal', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'warningCard' => true,
         ]);
     });
 
     Route::get('/dashboard/waiting-area-enroll', function () {
         return view('pages/waitingAreaEnroll', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'warningCard' => true,
         ]);
     });
 });
@@ -191,3 +193,10 @@ Route::get('admin/dashboard/exam-control', function () {
     ]);
 });
 
+// Exam Route
+Route::get('exam/starting-test', function () {
+    return view('examEPT/testEPT', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'warningCard' => false,
+    ]);
+});
