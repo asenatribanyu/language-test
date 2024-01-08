@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EPT_DirectionController;
 use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -127,11 +128,7 @@ Route::get('admin/dashboard/practice/toeic', function () {
     ]);
 });
 
-Route::get('admin/dashboard/create/exam/direction', function () {
-    return view('admin/exam/uploadDirection', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
+Route::resource('admin/dashboard/exam/direction', EPT_DirectionController::class);
 
 Route::get('admin/dashboard/create/exam/story-text', function () {
     return view('admin/exam/uploadStoryText', [
