@@ -4,12 +4,12 @@
         <div class="w-1/3">
             <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex justify-between items-center border-b-2 border-gray-200">
-                    <h1 class="pb-1 text-xl font-medium dark:text-white">Exam 2023 - Book Test 10</h1>
+                    <h1 class="pb-1 text-xl font-medium dark:text-white">{{ $exam->title }}</h1>
                     <button type="button" data-modal-target="subname-modal" data-modal-toggle="subname-modal"
                         class="px-3 py-1 -mt-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change</button>
                 </div>
                 <div class="mt-3">
-                    <a href="#" type="button"
+                    <a href="/admin/dashboard/create/exam/direction" type="button"
                         class="text-blue-700 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <div class="flex justify-center items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

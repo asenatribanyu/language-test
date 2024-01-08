@@ -107,7 +107,7 @@ Route::get('admin/dashboard/exam/ept', function () {
     ]);
 });
 
-Route::resource('admin/dashboard/exam/', ExamController::class);
+Route::resource('admin/dashboard/exam', ExamController::class);
 
 Route::get('admin/dashboard/exam/toeic', function () {
     return view('admin/manageExam', [
@@ -123,12 +123,6 @@ Route::get('admin/dashboard/practice/ept', function () {
 
 Route::get('admin/dashboard/practice/toeic', function () {
     return view('admin/managePractice', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/create/exam', function () {
-    return view('admin/exam/createExam', [
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });

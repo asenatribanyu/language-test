@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ExamController extends Controller
 {
@@ -40,7 +42,9 @@ class ExamController extends Controller
         $exam->title = $validateData['subname'];
         $exam->save();
 
-        return redirect()->back();
+        $examId = $exam->id;
+
+        return redirect()->route('exam.edit', ['exam' => $examId]);
     }
 
     /**
@@ -56,7 +60,10 @@ class ExamController extends Controller
      */
     public function edit(Exam $exam)
     {
-        //
+        return view('admin/exam/createExam', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'exam' => $exam,
+        ]);
     }
 
     /**
@@ -64,7 +71,27 @@ class ExamController extends Controller
      */
     public function update(Request $request, Exam $exam)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'string',
+            'first_date' => 'string',
+            'second_date' => 'string',
+            'third_date' => 'string',
+            'hour_1' => 'string',
+            'hour_2' => 'string',
+            'hour_3' => 'string',
+            'minute_1' => 'string',
+            'minute_2' => 'string',
+            'minute_3' => 'string',
+            'conference_link' => 'string',
+        ]);
+        
+        $validateData['first_time'] = $validateData['hour_1'] . ':' . $validateData['minute_1'];
+        $validateData['second_time'] = $validateData['hour_2'] . ':' . $validateData['minute_2'];
+        $validateData['third_time'] = $validateData['hour_3'] . ':' . $validateData['minute_3'];
+
+        $exam->update($validateData);
+
+        return redirect()->back();
     }
 
     /**
@@ -72,6 +99,7 @@ class ExamController extends Controller
      */
     public function destroy(Exam $exam)
     {
-        //
+        $exam->delete();
+        return redirect()->back();
     }
 }
