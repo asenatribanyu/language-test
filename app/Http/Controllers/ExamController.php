@@ -6,7 +6,6 @@ use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class ExamController extends Controller
 {

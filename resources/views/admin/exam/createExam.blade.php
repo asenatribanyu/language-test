@@ -20,16 +20,6 @@
                             <div>Upload Direction</div>
                         </div>
                     </a>
-                    <button type="button" data-modal-target="question-modal" data-modal-toggle="question-modal"
-                        class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
-                        <div class="flex justify-center items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z">
-                                </path>
-                            </svg>
-                            <div>Upload Question</div>
-                        </div>
-                    </button>
                     <button type="button" data-modal-target="story-modal" data-modal-toggle="story-modal"
                         class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <div class="flex justify-center items-center gap-1">
@@ -40,6 +30,16 @@
                                 <path d="M8 6h9v2H8z"></path>
                             </svg>
                             <div>Upload Story</div>
+                        </div>
+                    </button>
+                    <button type="button" data-modal-target="question-modal" data-modal-toggle="question-modal"
+                        class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                        <div class="flex justify-center items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 6h2v2H4zm0 5h2v2H4zm0 5h2v2H4zm16-8V6H8.023v2H18.8zM8 11h12v2H8zm0 5h12v2H8z">
+                                </path>
+                            </svg>
+                            <div>Upload Question</div>
                         </div>
                     </button>
                     <button type="button" data-modal-target="date-modal" data-modal-toggle="date-modal"
@@ -226,3 +226,11 @@
     @include('admin.exam.partials.storyModal')
     @include('admin.exam.partials.dateModal')
 @endsection
+@push('script')
+    <script>
+        function saveToLocalStorage() {
+            var selectedType = document.getElementById('type').value;
+            localStorage.setItem('storyType', selectedType);
+        }
+    </script>
+@endpush

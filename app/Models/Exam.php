@@ -12,4 +12,8 @@ class Exam extends Model
     protected $guarded=[
         'id'
     ];
+
+    public function direction(){
+        return $this->hasMany(EPT_Direction::class);
+    }
 }

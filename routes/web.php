@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StoryController;
+use App\Models\Story;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,17 +135,7 @@ Route::get('admin/dashboard/practice/toeic', function () {
 
 Route::resource('admin/dashboard/exam/direction', EPT_DirectionController::class);
 
-Route::get('admin/dashboard/create/exam/story-text', function () {
-    return view('admin/exam/uploadStoryText', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/create/exam/story-audio', function () {
-    return view('admin/exam/uploadStoryAudio', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
+Route::resource('admin/dashboard/exam/story', StoryController::class);
 
 Route::get('admin/dashboard/create/exam/question/listening-a', function () {
     return view('admin/exam/uploadListeningA', [
