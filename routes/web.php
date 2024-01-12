@@ -81,13 +81,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/dashboard/update-profile', [ProfileController::class, '__invoke']);
 
-// Peningkatan UI - Dos
+// Admin Dashboard
 Route::get('admin/dashboard', function () {
     return view('admin/dashboard', [
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
 
+// Manage Users
 Route::get('admin/dashboard/manage-users', function () {
     return view('admin/manageUser', [
         'profile' => User::where('id', auth()->user()->id)->first(),
@@ -101,6 +102,8 @@ Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 
 
 Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
 
+
+// Manage Exams
 Route::get('admin/dashboard/exam/ept', function () {
     return view('admin/manageExamEPT', [
         'profile' => User::where('id', auth()->user()->id)->first(),
@@ -108,13 +111,13 @@ Route::get('admin/dashboard/exam/ept', function () {
     ]);
 });
 
-Route::resource('admin/dashboard/exam', ExamController::class);
-
 Route::get('admin/dashboard/exam/toeic', function () {
     return view('admin/manageExam', [
         'profile' => User::where('id', auth()->user()->id)->first(),
     ]);
 });
+
+Route::resource('admin/dashboard/exam', ExamController::class);
 
 Route::get('admin/dashboard/practice/ept', function () {
     return view('admin/managePractice', [

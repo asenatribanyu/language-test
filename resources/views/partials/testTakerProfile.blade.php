@@ -1,43 +1,37 @@
-<div class="w-2/5">
+<div class="w-2/5 max-md:w-full">
     <div
         class="mt-5 p-5 w-full max-md:w-full bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 border border-gray-200">
         <div class="border-b-2 border-gray-200">
             <h1 class="pb-2 text-2xl font-semibold dark:text-white">Test Taker Profile</h1>
         </div>
-        <div class="mt-5 flex justify-center">
-            <img class="w-24 h-24 object-cover rounded-full bg-gray-50" src="{{ asset('storage/' . $profile->picture) }}"
-                alt="profile-picture">
-        </div>
-        <div class="font-semibold">
-            <div class="flex mt-5">
-                <div class="w-1/3">Registrant</div>
-                <div class="w-1/3">:</div>
-                <div class="w-1/2 -ms-32 max-md:-ms-20 font-normal border-b border-gray-200">
-                    {{ ucwords(strtolower($profile->profile->registrant)) }}</div>
+        <div class="flex justify-center gap-2 mt-5 w-full">
+            <div class="flex justify-center items-center w-1/3">
+                <img class="w-24 h-24 max-md:w-20 max-md:h-20 object-cover rounded-full"
+                    src="{{ asset('storage/' . $profile->picture) }}" alt="profile-picture">
             </div>
-            <div class="flex mt-5">
-                <div class="w-1/3">Name</div>
-                <div class="w-1/3">:</div>
-                <div class="w-1/2 -ms-32 max-md:-ms-20 font-normal border-b border-gray-200">{{ $profile->name }}
+            <div class="flex flex-wrap items-center w-full">
+                <div class="flex flex-wrap gap-y-1">
+                    <span
+                        class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{ ucwords(strtolower($profile->profile->registrant)) }}</span>
+                    <span
+                        class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{{ $profile->profile->faculty }}</span>
+                    <span
+                        class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $profile->profile->program_study }}</span>
                 </div>
-            </div>
-            <div class="flex mt-5">
-                <div class="w-1/3">NPM</div>
-                <div class="w-1/3">:</div>
-                <div class="w-1/3 -ms-32 max-md:-ms-20 font-normal border-b border-gray-200">
-                    {{ $profile->profile->npm }}</div>
-            </div>
-            <div class="flex mt-5">
-                <div class="w-1/3">Faculty</div>
-                <div class="w-1/3">:</div>
-                <div class="w-1/3 -ms-32 max-md:-ms-20 font-normal border-b border-gray-200">
-                    {{ $profile->profile->faculty }}</div>
-            </div>
-            <div class="flex mt-5">
-                <div class="w-1/3">Program Study</div>
-                <div class="w-1/3">:</div>
-                <div class="w-1/3 -ms-32 max-md:-ms-20 font-normal border-b border-gray-200">
-                    {{ $profile->profile->program_study }}</div>
+                <div class="w-ful">
+                    <div class="flex gap-2 font-semibold">
+                        Name:
+                        <div class="font-normal border-b border-gray-200">
+                            {{ $profile->name }}
+                        </div>
+                    </div>
+                    <div class="flex gap-2 font-semibold">
+                        NPM:
+                        <div class="font-normal border-b border-gray-200">
+                            {{ $profile->profile->npm }}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

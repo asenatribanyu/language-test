@@ -117,12 +117,12 @@
                                                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                                 <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Are you
-                                                    sure want to delete this User?</h3>
+                                                    sure want to delete this Exam?</h3>
                                                 <div class="mt-1 mb-5">
                                                     <p
                                                         class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
-                                                        This action is irreversible and will lead to the removal of User
-                                                        Account forever from the
+                                                        This action is irreversible and will lead to the removal of Exam
+                                                        forever from the
                                                         system.
                                                     </p>
                                                 </div>

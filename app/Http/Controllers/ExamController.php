@@ -6,7 +6,7 @@ use App\Models\Exam;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class ExamController extends Controller
 {
@@ -60,6 +60,8 @@ class ExamController extends Controller
      */
     public function edit(Exam $exam)
     {
+        session()->put('exam_code', $exam->code);
+
         return view('admin/exam/createExam', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exam' => $exam,

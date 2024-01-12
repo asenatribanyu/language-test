@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         \App\Models\User::factory(1)->create([
-            'name' => 'Muhammad Rizaldy Alfarez',
+            'name' => 'Akun Admin',
             'email' => 'admin@gmail.com',
             'email_verified_at' => '2023-12-07 06:33:55',
             'password' => bcrypt('admin'),
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory(1)->create([
-            'name' => 'Zaldos Lagados',
+            'name' => 'Akun User',
             'email' => 'user@gmail.com',
             'email_verified_at' => '2023-12-07 06:33:55',
             'password' => bcrypt('user'),
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory(1)->create([
-            'name' => 'Zaldos Lagados',
+            'name' => 'Akun Guest',
             'email' => 'guest@gmail.com',
             'email_verified_at' => '2023-12-07 06:33:55',
             'password' => bcrypt('guest'),

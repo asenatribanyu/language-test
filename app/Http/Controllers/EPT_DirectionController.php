@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\EPT_Direction;
+use Illuminate\Support\Facades\Storage;
 
 class EPT_DirectionController extends Controller
 {
@@ -32,22 +33,40 @@ class EPT_DirectionController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'audio' => 'file|mimes:mp3,ogg,wav,flac,aac',
+            'audio' => 'nullable|file|mimes:mp3,ogg,wav,flac,aac',
             'direction' => 'string',
             'section' => 'string',
         ]);
 
-        $direction = new EPT_Direction();
-        
-        $extension = $request->file('audio')->getClientOriginalExtension();
-        $fileName = $request->file('audio')->getClientOriginalName();
-        $fileName = $fileName . $extension;
-        $request->file('audio')->storeAs('public/audio', $fileName);
-        $direction->audio = 'audio/' . $fileName;
-        $direction->direction = $validateData['direction'];
-        $direction->section = $validateData['section'];
+        $condition = EPT_Direction::where('exam_code',session('exam_code'))->where('section', $validateData['section'])->first();
 
-        $direction->save();
+        if($condition){
+            if($validateData['audio']){
+                Storage::delete('public/' . $condition->audio);
+            }
+
+            $extension = $request->file('audio')->getClientOriginalExtension();
+            $fileName = $request->file('audio')->getClientOriginalName();
+            $fileName = $fileName . $extension;
+            $request->file('audio')->storeAs('public/audio', $fileName);
+            $condition->audio = 'audio/' . $fileName;
+            $condition->direction = $validateData['direction'];
+
+            $condition->save();
+        }else{
+            $direction = new EPT_Direction();
+            
+            $direction->exam_code = session('exam_code');
+            $extension = $request->file('audio')->getClientOriginalExtension();
+            $fileName = $request->file('audio')->getClientOriginalName();
+            $fileName = $fileName . $extension;
+            $request->file('audio')->storeAs('public/audio', $fileName);
+            $direction->audio = 'audio/' . $fileName;
+            $direction->direction = $validateData['direction'];
+            $direction->section = $validateData['section'];
+    
+            $direction->save();
+        }
 
         return redirect()->back();
     }

@@ -12,4 +12,6 @@ class EPT_Direction extends Model
     protected $guarded=[
         'id'
     ];
+
+    protected  $table='ept_directions';
 }
