@@ -55,7 +55,7 @@
                             <div>Date Settings</div>
                         </div>
                     </button>
-                    <button type="button"
+                    {{-- <button type="button"
                         class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <div class="flex justify-center items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
                             </svg>
                             <div>Test Check</div>
                         </div>
-                    </button>
+                    </button> --}}
                     <button type="button"
                         class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Publish</button>
                 </div>
@@ -227,10 +227,5 @@
     @include('admin.exam.partials.dateModal')
 @endsection
 @push('script')
-    <script>
-        function saveToLocalStorage() {
-            var selectedType = document.getElementById('type').value;
-            localStorage.setItem('storyType', selectedType);
-        }
-    </script>
+    <script src="{{ asset('js/adminGlobal.js') }}"></script>
 @endpush

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/datePicker.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('css/dataTables.css') }}" />

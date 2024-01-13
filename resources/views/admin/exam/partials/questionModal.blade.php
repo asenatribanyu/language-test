@@ -18,25 +18,26 @@
                 </button>
             </div>
             <div class="p-4 md:p-5 space-y-4">
-                <select id="countries"
+                <select id="questionType"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option disabled selected>Select Question</option>
                     <optgroup label="First Section - Listening Comprhension">
-                        <option value="">Listening Part A</option>
-                        <option value="">Listening Part B</option>
-                        <option value="">Listening Part C</option>
+                        <option value="part a">Listening Part A</option>
+                        <option value="part b">Listening Part B</option>
+                        <option value="part c">Listening Part C</option>
                     </optgroup>
                     <optgroup label="Second Section - Structure and Written Expression">
-                        <option value="">Structure Expression</option>
-                        <option value="">Written Expression</option>
+                        <option value="structure">Structure Expression</option>
+                        <option value="written">Written Expression</option>
                     </optgroup>
                     <optgroup label="Third Section - Reading Comprehension">
-                        <option value="">Reading Comperhension</option>
+                        <option value="reading">Reading Comperhension</option>
                     </optgroup>
                 </select>
             </div>
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <a href="#" data-modal-hide="question-modal" type="button"
+                <a href="/admin/dashboard/exam/question/create" data-modal-hide="question-modal" type="button"
+                    onclick="questionLocalStorage()"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Next</a>
                 <button data-modal-hide="question-modal" type="button"
                     class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>

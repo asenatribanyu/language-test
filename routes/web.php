@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StoryController;
 use App\Models\Story;
 
@@ -137,41 +138,9 @@ Route::resource('admin/dashboard/exam/direction', EPT_DirectionController::class
 
 Route::resource('admin/dashboard/exam/story', StoryController::class);
 
-Route::get('admin/dashboard/create/exam/question/listening-a', function () {
-    return view('admin/exam/uploadListeningA', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
+Route::resource('admin/dashboard/exam/question', QuestionController::class);
 
-Route::get('admin/dashboard/create/exam/question/listening-b', function () {
-    return view('admin/exam/uploadListeningB', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/create/exam/question/listening-c', function () {
-    return view('admin/exam/uploadListeningC', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/create/exam/question/structure-expression', function () {
-    return view('admin/exam/uploadStructureEx', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/create/exam/question/written-expression', function () {
-    return view('admin/exam/uploadWrittenEx', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/create/exam/question/reading-comperhension', function () {
-    return view('admin/exam/uploadReadingComp', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
+Route::get('/fetch/story', [QuestionController::class, 'getSelectOptions']);
 
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [
