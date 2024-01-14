@@ -140,7 +140,7 @@ Route::resource('admin/dashboard/exam/story', StoryController::class);
 
 Route::resource('admin/dashboard/exam/question', QuestionController::class);
 
-Route::get('/fetch/story', [QuestionController::class, 'getSelectOptions']);
+Route::get('/fetch/story', [QuestionController::class, 'getStory']);
 
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [

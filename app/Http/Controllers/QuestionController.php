@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EPT_Direction;
 use App\Models\User;
 use App\Models\Question;
 use App\Models\Story;
@@ -22,13 +23,13 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        return view('admin/exam/uploadListening', [
+        return view('admin/exam/uploadQuestion', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'selects' => Story::where('exam_code', session('exam_code'))->get(),
         ]);
     }
 
-    public function getSelectOptions()
+    public function getStory()
     {
         $selects = Story::where('exam_code', session('exam_code'))->get();
         return response()->json($selects);
@@ -184,6 +185,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return redirect()->back();
     }
 }

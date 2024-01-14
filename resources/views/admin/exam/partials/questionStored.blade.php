@@ -9,6 +9,6 @@
         </svg>
     </div>
     <div class="ps-4 flex gap-1 text-sm font-normal">
-        <div class="text-blue-700">2</div> Questions has been stored
+        <div class="text-blue-700">{{ $question_count }}</div> Questions has been stored
     </div>
 </div>

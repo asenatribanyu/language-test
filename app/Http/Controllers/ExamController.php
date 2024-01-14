@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EPT_Direction;
 use App\Models\Exam;
 use App\Models\User;
+use App\Models\Question;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -63,7 +65,20 @@ class ExamController extends Controller
 
         return view('admin/exam/createExam', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'directions_a' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part a')->first(),
+            'directions_b' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part b')->first(),
+            'directions_c' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part c')->first(),
+            'directions_structure' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'structure')->first(),
+            'directions_written' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'written')->first(),
+            'directions_reading' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'reading')->first(),
+            'questions_a' => Question::where('exam_code', session('exam_code'))->where('section', 'part a')->get(),
+            'questions_b' => Question::where('exam_code', session('exam_code'))->where('section', 'part b')->get(),
+            'questions_c' => Question::where('exam_code', session('exam_code'))->where('section', 'part c')->get(),
+            'questions_structure' => Question::where('exam_code', session('exam_code'))->where('section', 'structure')->get(),
+            'questions_written' => Question::where('exam_code', session('exam_code'))->where('section', 'written')->get(),
+            'questions_reading' => Question::where('exam_code', session('exam_code'))->where('section', 'reading')->get(),
             'exam' => $exam,
+            'question_count' => Question::query()->get()->count(),
         ]);
     }
 

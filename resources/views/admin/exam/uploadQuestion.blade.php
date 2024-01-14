@@ -96,5 +96,5 @@
     </form>
 @endsection
 @push('script')
-    <script src="{{ asset('js/adminGlobal.js') }}"></script>
+    <script src="{{ asset('js/uploadQuestion.js') }}"></script>
 @endpush

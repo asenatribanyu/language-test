@@ -44,18 +44,15 @@ class EPT_DirectionController extends Controller
             if($validateData['audio']){
                 Storage::delete('public/' . $condition->audio);
             }
-
             $extension = $request->file('audio')->getClientOriginalExtension();
             $fileName = $request->file('audio')->getClientOriginalName();
             $fileName = $fileName . $extension;
             $request->file('audio')->storeAs('public/audio', $fileName);
             $condition->audio = 'audio/' . $fileName;
             $condition->direction = $validateData['direction'];
-
             $condition->save();
         }else{
-            $direction = new EPT_Direction();
-            
+            $direction = new EPT_Direction();   
             $direction->exam_code = session('exam_code');
             $extension = $request->file('audio')->getClientOriginalExtension();
             $fileName = $request->file('audio')->getClientOriginalName();
@@ -64,7 +61,6 @@ class EPT_DirectionController extends Controller
             $direction->audio = 'audio/' . $fileName;
             $direction->direction = $validateData['direction'];
             $direction->section = $validateData['section'];
-    
             $direction->save();
         }
 
