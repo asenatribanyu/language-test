@@ -64,7 +64,7 @@ class EPT_DirectionController extends Controller
             $direction->save();
         }
 
-        return redirect()->back();
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**

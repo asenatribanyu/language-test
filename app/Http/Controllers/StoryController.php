@@ -60,7 +60,7 @@ class StoryController extends Controller
 
         $story->save();
 
-        return redirect()->back();
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**

@@ -62,6 +62,7 @@ class ExamController extends Controller
     public function edit(Exam $exam)
     {
         session()->put('exam_code', $exam->code);
+        session()->put('id', $exam->id);
 
         return view('admin/exam/ept/createExam', [
             'profile' => User::where('id', auth()->user()->id)->first(),

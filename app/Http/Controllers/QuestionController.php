@@ -150,7 +150,7 @@ class QuestionController extends Controller
 
         $question->save();
 
-        return redirect()->back();
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
@@ -296,7 +296,7 @@ class QuestionController extends Controller
 
         $question->update();
 
-        return redirect()->back();
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
