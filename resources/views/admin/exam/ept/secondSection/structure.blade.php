@@ -1,6 +1,6 @@
 {{-- Structure --}}
 <div class="mt-3">
-    <h2 class="text-xl font-medium dark:text-white">Structure Expression Direction:</h2>
+    <h2 class="text-xl font-medium dark:text-white" id="structure">Structure Expression Direction:</h2>
     @if ($directions_structure)
         @if ($directions_structure->audio)
             <audio class="mt-2 mb-2" controls>

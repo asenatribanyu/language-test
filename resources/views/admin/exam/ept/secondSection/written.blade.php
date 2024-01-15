@@ -1,6 +1,6 @@
 {{-- Written --}}
 <div class="mt-5">
-    <h2 class="text-xl border-t-2 pt-3 font-medium dark:text-white">Direction of Written Expression:</h2>
+    <h2 class="text-xl border-t-2 pt-3 font-medium dark:text-white" id="written">Direction of Written Expression:</h2>
     @if ($directions_written)
         @if ($directions_written->audio)
             <audio class="mt-2 mb-2" controls>

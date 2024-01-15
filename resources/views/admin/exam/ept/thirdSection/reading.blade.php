@@ -1,6 +1,6 @@
 {{-- Reading --}}
 <div class="mt-3">
-    <h2 class="text-xl font-medium dark:text-white">Direction of Reading Comprehension:</h2>
+    <h2 class="text-xl font-medium dark:text-white" id="reading"">Direction of Reading Comprehension:</h2>
     @if ($directions_reading)
         @if ($directions_reading->audio)
             <audio class="mt-2 mb-2" controls>

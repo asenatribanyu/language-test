@@ -1,6 +1,6 @@
 {{-- Part C --}}
 <div class="mt-5">
-    <h2 class="text-xl border-t-2 pt-3 font-medium dark:text-white">Listening Part C Directions:</h2>
+    <h2 class="text-xl border-t-2 pt-3 font-medium dark:text-white" id="partC">Listening Part C Directions:</h2>
     @if ($directions_c)
         @if ($directions_c->audio)
             <audio class="mt-2 mb-2" controls>
