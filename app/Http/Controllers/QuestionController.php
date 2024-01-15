@@ -35,12 +35,6 @@ class QuestionController extends Controller
         return response()->json($selects);
     }
 
-    public function getQuestion()
-    {
-        $questions = Question::where('exam_code', session('exam_code'))->get();
-        return response()->json($questions);
-    }
-
     /**
      * Store a newly created resource in storage.
      */
