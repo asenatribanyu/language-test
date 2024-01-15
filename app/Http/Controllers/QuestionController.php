@@ -304,6 +304,9 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
+        if($question->section == 'part a'|| 'part b' || 'part c'){
+            Storage::delete('public/' . $question->question);
+        };
         $question->delete();
         return redirect()->back();
     }

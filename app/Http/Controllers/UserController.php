@@ -65,7 +65,7 @@ class UserController extends Controller
             'npm' => 'string',
             'faculty' => 'string',
             'program_study' => 'string',
-            'picture' => 'image | mimes:png, jpg, jpeg',
+            'picture' => 'image | mimes: png,jpg,jpeg',
         ]);
 
         if($request->file('picture')){
