@@ -64,23 +64,32 @@ class ExamController extends Controller
         session()->put('exam_code', $exam->code);
         session()->put('id', $exam->id);
 
-        return view('admin/exam/ept/createExam', [
-            'profile' => User::where('id', auth()->user()->id)->first(),
-            'directions_a' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part a')->first(),
-            'directions_b' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part b')->first(),
-            'directions_c' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part c')->first(),
-            'directions_structure' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'structure')->first(),
-            'directions_written' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'written')->first(),
-            'directions_reading' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'reading')->first(),
-            'questions_a' => Question::where('exam_code', session('exam_code'))->where('section', 'part a')->get(),
-            'questions_b' => Question::where('exam_code', session('exam_code'))->where('section', 'part b')->get(),
-            'questions_c' => Question::where('exam_code', session('exam_code'))->where('section', 'part c')->get(),
-            'questions_structure' => Question::where('exam_code', session('exam_code'))->where('section', 'structure')->get(),
-            'questions_written' => Question::where('exam_code', session('exam_code'))->where('section', 'written')->get(),
-            'questions_reading' => Question::where('exam_code', session('exam_code'))->where('section', 'reading')->get(),
-            'exam' => $exam,
-            'question_count' => Question::query()->get()->count(),
-        ]);
+        if($exam->category == "ept"){
+            return view('admin/exam/ept/createExam', [
+                'profile' => User::where('id', auth()->user()->id)->first(),
+                'directions_a' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part a')->first(),
+                'directions_b' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part b')->first(),
+                'directions_c' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part c')->first(),
+                'directions_structure' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'structure')->first(),
+                'directions_written' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'written')->first(),
+                'directions_reading' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'reading')->first(),
+                'questions_a' => Question::where('exam_code', session('exam_code'))->where('section', 'part a')->get(),
+                'questions_b' => Question::where('exam_code', session('exam_code'))->where('section', 'part b')->get(),
+                'questions_c' => Question::where('exam_code', session('exam_code'))->where('section', 'part c')->get(),
+                'questions_structure' => Question::where('exam_code', session('exam_code'))->where('section', 'structure')->get(),
+                'questions_written' => Question::where('exam_code', session('exam_code'))->where('section', 'written')->get(),
+                'questions_reading' => Question::where('exam_code', session('exam_code'))->where('section', 'reading')->get(),
+                'exam' => $exam,
+                'question_count' => Question::query()->get()->count(),
+            ]);
+        }
+        else if($exam->category == "toeic"){
+            return view('admin/exam/toeic/createExam', [
+                'profile' => User::where('id', auth()->user()->id)->first(),
+                'exam' => $exam,
+                'question_count' => Question::query()->get()->count(),
+            ]);
+        }
     }
 
     /**

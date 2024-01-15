@@ -105,23 +105,24 @@ Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 
 
 Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
 
-
 // Manage Exams
 Route::get('admin/dashboard/exam/ept', function () {
-    return view('admin/manageExamEPT', [
+    return view('admin/exam/ept/manageExam', [
         'profile' => User::where('id', auth()->user()->id)->first(),
         'exams' => Exam::where('category', 'ept')->get(),
     ]);
 });
 
 Route::get('admin/dashboard/exam/toeic', function () {
-    return view('admin/manageExam', [
+    return view('admin/exam/toeic/manageExam', [
         'profile' => User::where('id', auth()->user()->id)->first(),
+        'exams' => Exam::where('category', 'toeic')->get(),
     ]);
 });
 
 Route::resource('admin/dashboard/exam', ExamController::class);
 
+// Manage Practice
 Route::get('admin/dashboard/practice/ept', function () {
     return view('admin/managePractice', [
         'profile' => User::where('id', auth()->user()->id)->first(),
@@ -148,7 +149,7 @@ Route::get('admin/dashboard/exam-control', function () {
     ]);
 });
 
-// Exam Route
+// Exam Starting
 Route::get('exam/starting-test', function () {
     return view('examEPT/testEPT', [
         'profile' => User::where('id', auth()->user()->id)->first(),

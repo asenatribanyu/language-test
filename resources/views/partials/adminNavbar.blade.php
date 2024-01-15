@@ -17,7 +17,8 @@
                         alt="logo">
                 @endif
             </button>
-            <!-- Dropdown menu -->
+
+            {{-- Dropdown Menu --}}
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                 id="user-dropdown">
                 <div class="px-4 py-3">
@@ -109,10 +110,10 @@
                     <a href="#"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Reporting</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#"
                         class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Certification</a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

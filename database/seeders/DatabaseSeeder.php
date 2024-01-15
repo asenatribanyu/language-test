@@ -48,95 +48,103 @@ class DatabaseSeeder extends Seeder
             'role' => 'guest',
         ]);
 
-        Exam::factory()->create([
-            'code' => 'EXM-LfosNc4yMp',
-            'category'=> 'ept',
-            'title' => 'ept',
-            'activated' => 'no',
-            'status' => 'progress'
+        // Exam::factory()->create([
+        //     'code' => 'EXM-LfosNc4yMp',
+        //     'category'=> 'ept',
+        //     'title' => 'ept',
+        //     'activated' => 'no',
+        //     'status' => 'progress'
 
-        ]);
-        Story::factory()->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'code' => 'EXM-Q3uIdDE1dR',
-            'story' => 'story/1705323899_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
-            'section'=> 'part b'
-        ]);
-        Story::factory()->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'code' => 'EXM-ABC',
-            'story' => 'story/1705323899_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
-            'section'=> 'part c'
-        ]);
-        Story::factory()->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'code' => 'EXM-DEF',
-            'story' => 'ABCDEFGHJK',
-            'section'=> 'reading'
-        ]);
+        // ]);
 
-        Question::factory(30)->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
-            'answer_a' => 'a', 
-            'answer_b' => 'a', 
-            'answer_c' => 'a', 
-            'answer_d' => 'a',
-            'correct_answer' => 'a',
-            'section' => 'part a' 
-        ]);
-        Question::factory(15)->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'story_code'=> 'EXM-LfosNc4yMp',
-            'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
-            'answer_a' => 'a', 
-            'answer_b' => 'a', 
-            'answer_c' => 'a', 
-            'answer_d' => 'a',
-            'correct_answer' => 'a',
-            'section' => 'part b' 
-        ]);
-        Question::factory(15)->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'story_code'=> 'EXM-ABC',
-            'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
-            'answer_a' => 'a', 
-            'answer_b' => 'a', 
-            'answer_c' => 'a', 
-            'answer_d' => 'a',
-            'correct_answer' => 'a',
-            'section' => 'part c' 
-        ]);
-        Question::factory(20)->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'story_code'=> 'EXM-DEF',
-            'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
-            'answer_a' => 'a', 
-            'answer_b' => 'a', 
-            'answer_c' => 'a', 
-            'answer_d' => 'a',
-            'correct_answer' => 'a',
-            'section' => 'reading' 
-        ]);
-        Question::factory(20)->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, praesentium?',
-            'answer_a' => 'a', 
-            'answer_b' => 'a', 
-            'answer_c' => 'a', 
-            'answer_d' => 'a',
-            'correct_answer' => 'a',
-            'section' => 'written' 
-        ]);
-        Question::factory(20)->create([
-            'exam_code' => 'EXM-LfosNc4yMp',
-            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, praesentium?',
-            'answer_a' => 'a', 
-            'answer_b' => 'a', 
-            'answer_c' => 'a', 
-            'answer_d' => 'a',
-            'correct_answer' => 'a',
-            'section' => 'structure' 
-        ]);
+        // Story::factory()->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'code' => 'EXM-Q3uIdDE1dR',
+        //     'story' => 'story/1705323899_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
+        //     'section'=> 'part b'
+        // ]);
+
+        // Story::factory()->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'code' => 'EXM-ABC',
+        //     'story' => 'story/1705323899_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
+        //     'section'=> 'part c'
+        // ]);
+
+        // Story::factory()->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'code' => 'EXM-DEF',
+        //     'story' => 'ABCDEFGHJK',
+        //     'section'=> 'reading'
+        // ]);
+
+        // Question::factory(30)->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
+        //     'answer_a' => 'a', 
+        //     'answer_b' => 'a', 
+        //     'answer_c' => 'a', 
+        //     'answer_d' => 'a',
+        //     'correct_answer' => 'a',
+        //     'section' => 'part a' 
+        // ]);
+
+        // Question::factory(15)->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'story_code'=> 'EXM-LfosNc4yMp',
+        //     'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
+        //     'answer_a' => 'a', 
+        //     'answer_b' => 'a', 
+        //     'answer_c' => 'a', 
+        //     'answer_d' => 'a',
+        //     'correct_answer' => 'a',
+        //     'section' => 'part b' 
+        // ]);
+
+        // Question::factory(15)->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'story_code'=> 'EXM-ABC',
+        //     'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
+        //     'answer_a' => 'a', 
+        //     'answer_b' => 'a', 
+        //     'answer_c' => 'a', 
+        //     'answer_d' => 'a',
+        //     'correct_answer' => 'a',
+        //     'section' => 'part c' 
+        // ]);
+
+        // Question::factory(20)->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'story_code'=> 'EXM-DEF',
+        //     'question' => 'question/1705323952_Y2meta.app - The Verkkars Ez4ence - CS-GO MVP MUSİC KIT (320 kbps).mp3',
+        //     'answer_a' => 'a', 
+        //     'answer_b' => 'a', 
+        //     'answer_c' => 'a', 
+        //     'answer_d' => 'a',
+        //     'correct_answer' => 'a',
+        //     'section' => 'reading' 
+        // ]);
+
+        // Question::factory(20)->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, praesentium?',
+        //     'answer_a' => 'a', 
+        //     'answer_b' => 'a', 
+        //     'answer_c' => 'a', 
+        //     'answer_d' => 'a',
+        //     'correct_answer' => 'a',
+        //     'section' => 'written' 
+        // ]);
+
+        // Question::factory(20)->create([
+        //     'exam_code' => 'EXM-LfosNc4yMp',
+        //     'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, praesentium?',
+        //     'answer_a' => 'a', 
+        //     'answer_b' => 'a', 
+        //     'answer_c' => 'a', 
+        //     'answer_d' => 'a',
+        //     'correct_answer' => 'a',
+        //     'section' => 'structure' 
+        // ]);
     }
 }
