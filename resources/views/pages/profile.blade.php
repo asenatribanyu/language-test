@@ -1,6 +1,6 @@
 @extends('layouts.userDashboard')
 @section('content')
-    <form action="/profile/{{ $profile->id }}" method="POST" enctype="multipart/form-data">
+    <form action="/profile/{{ $profile->profile->id }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div

@@ -29,7 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ]);
     });
 
-    Route::resource('profile', ProfileController::class);
+    Route::resource('/profile', ProfileController::class);
 
     Route::get('/dashboard/profile', function () {
         return view('pages/profile', [

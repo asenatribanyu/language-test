@@ -110,8 +110,8 @@ class ProfileController extends Controller
     {
         $user = User::where('id', $profile->user_id)->first();
 
-        $validateData = $request->validate([
-            'picture' => 'image | mimes:png, jpg, jpeg',
+        $request->validate([
+            'picture' => 'image | mimes: png,jpg,jpeg'
         ]);
 
         if($user->picture){
@@ -122,7 +122,6 @@ class ProfileController extends Controller
         $fileName = $request->file('picture')->getClientOriginalName();
         $fileName = $fileName . '_' . time() . '.' . $extension;
         $request->file('picture')->storeAs('public/profile_picture', $fileName);
-        $validateData['picture'] = 'profile_picture/' . $fileName;
         $user->picture = 'profile_picture/' . $fileName;
         $user->save();
 
