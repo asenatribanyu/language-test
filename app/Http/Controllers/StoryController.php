@@ -22,7 +22,7 @@ class StoryController extends Controller
      */
     public function create()
     {
-        return view('admin/exam/uploadStory', [
+        return view('admin/exam/ept/uploadStory', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     }
@@ -49,9 +49,8 @@ class StoryController extends Controller
         $story->exam_code = session('exam_code');
         $story->code = 'EXM-' . Str::random(10);
         if($request->file('story')){
-            $extension = $request->file('story')->getClientOriginalExtension();
             $fileName = $request->file('story')->getClientOriginalName();
-            $fileName = $fileName . $extension;
+            $fileName = time() . "_" . $fileName;
             $request->file('story')->storeAs('public/story', $fileName);
             $story->story = 'story/' . $fileName;
         }else{

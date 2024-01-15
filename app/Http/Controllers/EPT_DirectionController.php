@@ -22,7 +22,7 @@ class EPT_DirectionController extends Controller
      */
     public function create()
     {
-        return view('admin/exam/uploadDirection', [
+        return view('admin/exam/ept/uploadDirection', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     }
@@ -44,9 +44,8 @@ class EPT_DirectionController extends Controller
             if($validateData['audio']){
                 Storage::delete('public/' . $condition->audio);
             }
-            $extension = $request->file('audio')->getClientOriginalExtension();
             $fileName = $request->file('audio')->getClientOriginalName();
-            $fileName = $fileName . $extension;
+            $fileName = time() . "_" . $fileName;
             $request->file('audio')->storeAs('public/audio', $fileName);
             $condition->audio = 'audio/' . $fileName;
             $condition->direction = $validateData['direction'];
@@ -54,11 +53,12 @@ class EPT_DirectionController extends Controller
         }else{
             $direction = new EPT_Direction();   
             $direction->exam_code = session('exam_code');
-            $extension = $request->file('audio')->getClientOriginalExtension();
-            $fileName = $request->file('audio')->getClientOriginalName();
-            $fileName = $fileName . $extension;
-            $request->file('audio')->storeAs('public/audio', $fileName);
-            $direction->audio = 'audio/' . $fileName;
+            if($request->file('audio')){
+                $fileName = $request->file('audio')->getClientOriginalName();
+                $fileName = time() . "_" . $fileName;
+                $request->file('audio')->storeAs('public/audio', $fileName);
+                $direction->audio = 'audio/' . $fileName;
+            }
             $direction->direction = $validateData['direction'];
             $direction->section = $validateData['section'];
             $direction->save();

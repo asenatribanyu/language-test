@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ept_directions', function (Blueprint $table) {
             $table->id();
             $table->string('exam_code');
-            $table->string('audio');
+            $table->string('audio')->nullable();
             $table->string('direction');
             $table->enum('section', [
                 'part a',

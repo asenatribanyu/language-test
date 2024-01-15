@@ -63,7 +63,7 @@ class ExamController extends Controller
     {
         session()->put('exam_code', $exam->code);
 
-        return view('admin/exam/createExam', [
+        return view('admin/exam/ept/createExam', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'directions_a' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part a')->first(),
             'directions_b' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'part b')->first(),

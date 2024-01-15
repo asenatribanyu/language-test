@@ -142,6 +142,8 @@ Route::resource('admin/dashboard/exam/question', QuestionController::class);
 
 Route::get('/fetch/story', [QuestionController::class, 'getStory']);
 
+Route::get('fetch/question', [QuestionController::class, 'getQuestion']);
+
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [
         'profile' => User::where('id', auth()->user()->id)->first(),
