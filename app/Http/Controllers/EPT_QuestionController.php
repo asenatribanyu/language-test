@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Story;
-use App\Models\Question;
+use App\Models\EPT_Story;
+use App\Models\EPT_Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class QuestionController extends Controller
+class EPT_QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,13 +25,13 @@ class QuestionController extends Controller
     {
         return view('admin/exam/ept/uploadQuestion', [
             'profile' => User::where('id', auth()->user()->id)->first(),
-            'selects' => Story::where('exam_code', session('exam_code'))->get(),
+            'selects' => EPT_Story::where('exam_code', session('exam_code'))->get(),
         ]);
     }
 
     public function getStory()
     {
-        $selects = Story::where('exam_code', session('exam_code'))->get();
+        $selects = EPT_Story::where('exam_code', session('exam_code'))->get();
         return response()->json($selects);
     }
 
@@ -66,7 +66,7 @@ class QuestionController extends Controller
             ]);
         }
 
-        $question = new Question();
+        $question = new EPT_Question;
 
         switch ($request->questionCase) {
             case '1':
@@ -156,7 +156,7 @@ class QuestionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Question $question)
+    public function show(EPT_Question $question)
     {
         //
     }
@@ -164,11 +164,11 @@ class QuestionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Question $question)
+    public function edit(EPT_Question $question)
     {
         return view('admin/exam/ept/updateQuestion', [
             'profile' => User::where('id', auth()->user()->id)->first(),
-            'stories' => Story::where('exam_code', session('exam_code'))->get(),
+            'stories' => EPT_Story::where('exam_code', session('exam_code'))->get(),
             'questions' => $question,
         ]);
     }
@@ -176,7 +176,7 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Question $question)
+    public function update(Request $request, EPT_Question $question)
     {
         if($request->file('question')){
             $validateData = $request->validate([
@@ -302,7 +302,7 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Question $question)
+    public function destroy(EPT_Question $question)
     {
         if($question->section == 'part a'|| 'part b' || 'part c'){
             Storage::delete('public/' . $question->question);

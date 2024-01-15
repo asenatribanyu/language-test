@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Story;
+use App\Models\EPT_Story;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
-class StoryController extends Controller
+class EPT_StoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,7 +44,7 @@ class StoryController extends Controller
             ]);
         }
         
-        $story = new Story();
+        $story = new EPT_Story;
 
         $story->exam_code = session('exam_code');
         $story->code = 'EXM-' . Str::random(10);
@@ -66,7 +66,7 @@ class StoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Story $story)
+    public function show(EPT_Story $story)
     {
         //
     }
@@ -74,7 +74,7 @@ class StoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Story $story)
+    public function edit(EPT_Story $story)
     {
         //
     }
@@ -82,7 +82,7 @@ class StoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Story $story)
+    public function update(Request $request, EPT_Story $story)
     {
         //
     }
@@ -90,7 +90,7 @@ class StoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Story $story)
+    public function destroy(EPT_Story $story)
     {
         //
     }

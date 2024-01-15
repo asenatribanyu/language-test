@@ -60,5 +60,5 @@
     </form>
 @endsection
 @push('script')
-    <script src="{{ asset('js/uploadStory.js') }}"></script>
+    <script src="{{ asset('js/eptUploadStory.js') }}"></script>
 @endpush

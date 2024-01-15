@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\StoryController;
-use App\Models\Story;
+use App\Http\Controllers\EPT_QuestionController;
+use App\Http\Controllers\EPT_StoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,11 +136,11 @@ Route::get('admin/dashboard/practice/toeic', function () {
 
 Route::resource('admin/dashboard/exam/direction', EPT_DirectionController::class);
 
-Route::resource('admin/dashboard/exam/story', StoryController::class);
+Route::resource('admin/dashboard/exam/story', EPT_StoryController::class);
 
-Route::resource('admin/dashboard/exam/question', QuestionController::class);
+Route::resource('admin/dashboard/exam/question', EPT_QuestionController::class);
 
-Route::get('/fetch/story', [QuestionController::class, 'getStory']);
+Route::get('/fetch/story', [EPT_QuestionController::class, 'getStory']);
 
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [

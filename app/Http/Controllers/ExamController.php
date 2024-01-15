@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\EPT_Direction;
 use App\Models\Exam;
 use App\Models\User;
-use App\Models\Question;
+use App\Models\EPT_Question;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -73,21 +73,21 @@ class ExamController extends Controller
                 'directions_structure' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'structure')->first(),
                 'directions_written' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'written')->first(),
                 'directions_reading' => EPT_Direction::where('exam_code', session('exam_code'))->where('section', 'reading')->first(),
-                'questions_a' => Question::where('exam_code', session('exam_code'))->where('section', 'part a')->get(),
-                'questions_b' => Question::where('exam_code', session('exam_code'))->where('section', 'part b')->get(),
-                'questions_c' => Question::where('exam_code', session('exam_code'))->where('section', 'part c')->get(),
-                'questions_structure' => Question::where('exam_code', session('exam_code'))->where('section', 'structure')->get(),
-                'questions_written' => Question::where('exam_code', session('exam_code'))->where('section', 'written')->get(),
-                'questions_reading' => Question::where('exam_code', session('exam_code'))->where('section', 'reading')->get(),
+                'questions_a' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'part a')->get(),
+                'questions_b' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'part b')->get(),
+                'questions_c' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'part c')->get(),
+                'questions_structure' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'structure')->get(),
+                'questions_written' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'written')->get(),
+                'questions_reading' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'reading')->get(),
                 'exam' => $exam,
-                'question_count' => Question::query()->get()->count(),
+                'question_count' => EPT_Question::query()->get()->count(),
             ]);
         }
         else if($exam->category == "toeic"){
             return view('admin/exam/toeic/createExam', [
                 'profile' => User::where('id', auth()->user()->id)->first(),
                 'exam' => $exam,
-                'question_count' => Question::query()->get()->count(),
+                'question_count' => EPT_Question::query()->get()->count(),
             ]);
         }
     }
@@ -111,9 +111,15 @@ class ExamController extends Controller
             'conference_link' => 'string',
         ]);
         
-        $validateData['first_time'] = $validateData['hour_1'] . ':' . $validateData['minute_1'];
-        $validateData['second_time'] = $validateData['hour_2'] . ':' . $validateData['minute_2'];
-        $validateData['third_time'] = $validateData['hour_3'] . ':' . $validateData['minute_3'];
+        if($request->hour_1){
+            $validateData['first_time'] = $validateData['hour_1'] . ':' . $validateData['minute_1'];
+        }
+        if($request->hour_2){
+            $validateData['second_time'] = $validateData['hour_2'] . ':' . $validateData['minute_2'];
+        }
+        if($request->hour_3){
+            $validateData['third_time'] = $validateData['hour_3'] . ':' . $validateData['minute_3'];
+        }
 
         $exam->update($validateData);
 

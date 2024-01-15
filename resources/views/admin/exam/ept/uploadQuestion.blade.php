@@ -99,5 +99,5 @@
     </form>
 @endsection
 @push('script')
-    <script src="{{ asset('js/uploadQuestion.js') }}"></script>
+    <script src="{{ asset('js/eptUploadQuestion.js') }}"></script>
 @endpush
