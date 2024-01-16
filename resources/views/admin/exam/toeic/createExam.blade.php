@@ -89,6 +89,7 @@
                 <div class="border-b-2 border-gray-200">
                     <h1 class="pb-1 text-xl font-semibold dark:text-white">Listening Comperhension Section</h1>
                 </div>
+                @include('admin.exam.toeic.listening.partI')
             </div>
 
             {{-- Reading Comperhension Section --}}
