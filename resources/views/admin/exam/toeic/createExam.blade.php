@@ -90,6 +90,9 @@
                     <h1 class="pb-1 text-xl font-semibold dark:text-white">Listening Comperhension Section</h1>
                 </div>
                 @include('admin.exam.toeic.listening.partI')
+                @include('admin.exam.toeic.listening.partII')
+                @include('admin.exam.toeic.listening.partIII')
+                @include('admin.exam.toeic.listening.partIV')
             </div>
 
             {{-- Reading Comperhension Section --}}
@@ -97,6 +100,9 @@
                 <div class="border-b-2 border-gray-200">
                     <h1 class="pb-1 text-xl font-semibold dark:text-white">Reading Comperhension Section</h1>
                 </div>
+                @include('admin.exam.toeic.reading.partV')
+                @include('admin.exam.toeic.reading.partVI')
+                @include('admin.exam.toeic.reading.partVII')
             </div>
         </div>
     </div>
