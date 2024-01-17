@@ -78,26 +78,51 @@ class EPT_DirectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(EPT_Direction $ePT_Direction)
+    public function edit($id)
     {
+        $direction = EPT_Direction::where('id',$id)->first();
         return view('admin/exam/ept/updateDirection', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'direction' => $direction,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EPT_Direction $ePT_Direction)
+    public function update(Request $request, $id)
     {
-        //
+        $direction = EPT_Direction::where('id',$id)->first();
+        $validateData = $request->validate([
+            'audio' => 'file|mimes:mp3,ogg,wav,flac,aac',
+            'direction' => 'string',
+            'section' => 'string',
+        ]);
+        if($request->file('audio')){
+            Storage::delete('public/' . $direction->audio);
+            $fileName = $request->file('audio')->getClientOriginalName();
+            $fileName = time() . "_" . $fileName;
+            $request->file('audio')->storeAs('public/audio', $fileName);
+            $validateData['audio'] = 'audio/' . $fileName;
+        };
+        $direction->update($validateData);
+
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EPT_Direction $ePT_Direction)
+    public function destroy($id)
     {
-        //
+        $direction = EPT_Direction::where('id', $id)->first();
+
+        if($direction->audio){
+            Storage::delete('public/' . $direction->audio);
+        }
+
+        $direction->delete();
+        return redirect()->back();
+
     }
 }

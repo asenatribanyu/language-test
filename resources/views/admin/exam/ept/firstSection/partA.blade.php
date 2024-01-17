@@ -65,7 +65,7 @@
                                     </p>
                                 </div>
                                 <form class=" flex justify-center"
-                                    action="/admin/dashboard/exam/ept/question/{{ $directions_a->id }}" method="POST">
+                                    action="/admin/dashboard/exam/ept/direction/{{ $directions_a->id }}" method="POST">
                                     @method('delete')
                                     @csrf
                                     <button data-modal-hide="delete-direction-{{ $directions_a->id }}" type="submit"
