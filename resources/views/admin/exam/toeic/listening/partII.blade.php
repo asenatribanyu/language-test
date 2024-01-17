@@ -1,10 +1,13 @@
 {{-- Part I --}}
 <div class="mt-3">
     <h2 class="text-xl font-medium dark:text-white" id="partA">Direction of Listening Part II:</h2>
-    <audio class="mt-2 mb-2" controls>
-        <source src="">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="mt-2 p-2 border-2 rounded-lg">
+        <audio class="mt-2 mb-2" controls>
+            <source src="">
+            Your browser does not support the audio element.
+        </audio>
+        <p class="text-base text-gray-900 dark:text-white">Direction goes here</p>
+    </div>
     <div class="mt-2 p-2 border-2 rounded-lg">
         No direction of this part has been created.
     </div>

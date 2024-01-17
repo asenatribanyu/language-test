@@ -9,6 +9,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EPT_QuestionController;
 use App\Http\Controllers\EPT_StoryController;
+use App\Http\Controllers\TOEIC_DirectionController;
+use App\Http\Controllers\TOEIC_QuestionController;
+use App\Http\Controllers\TOEIC_StoryController;
+use App\Models\TOEIC_Direction;
+use App\Models\TOEIC_Question;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,13 +139,21 @@ Route::get('admin/dashboard/practice/toeic', function () {
     ]);
 });
 
-Route::resource('admin/dashboard/exam/direction', EPT_DirectionController::class);
+Route::resource('admin/dashboard/exam/ept/direction', EPT_DirectionController::class);
 
-Route::resource('admin/dashboard/exam/story', EPT_StoryController::class);
+Route::resource('admin/dashboard/exam/ept/story', EPT_StoryController::class);
 
-Route::resource('admin/dashboard/exam/question', EPT_QuestionController::class);
+Route::resource('admin/dashboard/exam/ept/question', EPT_QuestionController::class);
 
-Route::get('/fetch/story', [EPT_QuestionController::class, 'getStory']);
+Route::get('/fetch/ept/story', [EPT_QuestionController::class, 'getStory']);
+
+Route::resource('admin/dashboard/exam/toeic/direction', TOEIC_DirectionController::class);
+
+Route::resource('admin/dashboard/exam/toeic/story', TOEIC_StoryController::class);
+
+Route::resource('admin/dashboard/exam/toeic/question', TOEIC_QuestionController::class);
+
+Route::get('/fetch/toeic/story', [TOEIC_QuestionController::class, 'getStory']);
 
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [

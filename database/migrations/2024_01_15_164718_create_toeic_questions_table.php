@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('exam_code');
             $table->string('story_code');
-            $table->text('photograph');
-            $table->text('conversation');
+            $table->text('photograph')->nullable();
+            $table->text('audio')->nullable();
             $table->text('question');
             $table->text('answer_a');
             $table->text('answer_b');

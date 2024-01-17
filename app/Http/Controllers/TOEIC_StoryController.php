@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TOEIC_Direction;
+use App\Models\TOEIC_Story;
 use Illuminate\Http\Request;
 
-class TOEICDirectionController extends Controller
+class TOEIC_StoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TOEICDirectionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TOEIC_Direction $tOEIC_Direction)
+    public function show(TOEIC_Story $tOEIC_Story)
     {
         //
     }
@@ -42,7 +42,7 @@ class TOEICDirectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TOEIC_Direction $tOEIC_Direction)
+    public function edit(TOEIC_Story $tOEIC_Story)
     {
         //
     }
@@ -50,7 +50,7 @@ class TOEICDirectionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TOEIC_Direction $tOEIC_Direction)
+    public function update(Request $request, TOEIC_Story $tOEIC_Story)
     {
         //
     }
@@ -58,7 +58,7 @@ class TOEICDirectionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TOEIC_Direction $tOEIC_Direction)
+    public function destroy(TOEIC_Story $tOEIC_Story)
     {
         //
     }

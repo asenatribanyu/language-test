@@ -1,10 +1,13 @@
 {{-- Part I --}}
 <div class="mt-3">
     <h2 class="text-xl font-medium dark:text-white" id="partA">Direction of Listening Part IV:</h2>
-    <audio class="mt-2 mb-2" controls>
-        <source src="">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="mt-2 p-2 border-2 rounded-lg">
+        <audio class="mt-2 mb-2" controls>
+            <source src="">
+            Your browser does not support the audio element.
+        </audio>
+        <p class="text-base text-gray-900 dark:text-white">Direction goes here</p>
+    </div>
     <div class="mt-2 p-2 border-2 rounded-lg">
         No direction of this part has been created.
     </div>
@@ -35,8 +38,7 @@
             </button>
             <a href="/admin/dashboard/exam/question//edit" onclick="updateLocalStorage('part a')"
                 class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
-                    viewBox="0 0 24 24">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white" viewBox="0 0 24 24">
                     <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                     </path>
                     <path
@@ -52,8 +54,8 @@
                         <button type="button"
                             class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-hide="delete-exam-">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 14 14">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
@@ -74,8 +76,7 @@
                                     Question forever from the system.
                                 </p>
                             </div>
-                            <form class=" flex justify-center" action="/admin/dashboard/exam/question/"
-                                method="POST">
+                            <form class=" flex justify-center" action="/admin/dashboard/exam/question/" method="POST">
                                 @method('delete')
                                 @csrf
                                 <button data-modal-hide="delete-exam-" type="submit"
@@ -135,7 +136,8 @@
                 <button type="button" data-modal-target="delete-exam-" data-modal-toggle="delete-exam-"
                     data-bs-target="#delete-exam-"
                     class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white" viewBox="0 0 24 24">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white"
+                        viewBox="0 0 24 24">
                         <path
                             d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                         </path>
@@ -169,8 +171,9 @@
                                 <span class="sr-only">Close modal</span>
                             </button>
                             <div class="p-4 md:p-5 text-center">
-                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>

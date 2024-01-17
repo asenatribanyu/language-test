@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (questionType === "part b") {
         $.ajax({
-            url: "/fetch/story",
+            url: "/fetch/ept/story",
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (questionType === "part c") {
         var section = "part c";
         $.ajax({
-            url: "/fetch/story",
+            url: "/fetch/ept/story",
             method: "GET",
             dataType: "json",
             success: function (data) {
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (questionType === "reading") {
         var section = "reading";
         $.ajax({
-            url: "/fetch/story",
+            url: "/fetch/ept/story",
             method: "GET",
             dataType: "json",
             success: function (data) {

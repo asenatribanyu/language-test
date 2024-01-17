@@ -9,7 +9,7 @@
                         class="px-3 py-1 -mt-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change</button>
                 </div>
                 <div class="mt-3">
-                    <a href="/admin/dashboard/exam/direction/create" type="button"
+                    <a href="/admin/dashboard/exam/toeic/direction/create" type="button"
                         class="text-blue-700 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <div class="flex justify-center items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -109,8 +109,7 @@
     @include('admin.exam.partials.questionStored')
     @include('admin.exam.partials.scrollTop')
     @include('admin.exam.partials.subnameModal')
-    @include('admin.exam.partials.questionModal')
-    @include('admin.exam.partials.storyModal')
+    @include('admin.exam.partials.questionModalTOEIC')
     @include('admin.exam.partials.dateModal')
 @endsection
 @push('script')

@@ -1,9 +1,9 @@
 {{-- Part I --}}
 <div class="mt-3">
     <h2 class="text-xl font-medium dark:text-white" id="partA">Direction of Listening Part VI:</h2>
-    <p>
-        direction goes here
-    </p>
+    <div class="mt-2 p-2 border-2 rounded-lg">
+        <p> direction goes here </p>
+    </div>
     <div class="mt-2 p-2 border-2 rounded-lg">
         No direction of this part has been created.
     </div>

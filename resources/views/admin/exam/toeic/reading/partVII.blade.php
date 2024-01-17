@@ -1,9 +1,9 @@
 {{-- Part I --}}
 <div class="mt-3">
     <h2 class="text-xl font-medium dark:text-white" id="partA">Direction of Listening Part VII:</h2>
-    <p>
-        direction goes here
-    </p>
+    <div class="mt-2 p-2 border-2 rounded-lg">
+        <p> direction goes here </p>
+    </div>
     <div class="mt-2 p-2 border-2 rounded-lg">
         No direction of this part has been created.
     </div>
@@ -139,7 +139,8 @@
                 <button type="button" data-modal-target="delete-exam-" data-modal-toggle="delete-exam-"
                     data-bs-target="#delete-exam-"
                     class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white" viewBox="0 0 24 24">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white"
+                        viewBox="0 0 24 24">
                         <path
                             d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                         </path>
@@ -173,8 +174,9 @@
                                 <span class="sr-only">Close modal</span>
                             </button>
                             <div class="p-4 md:p-5 text-center">
-                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>

@@ -63,6 +63,7 @@ class ExamController extends Controller
     {
         session()->put('exam_code', $exam->code);
         session()->put('id', $exam->id);
+        session()->put('category', $exam->category);
 
         if($exam->category == "ept"){
             return view('admin/exam/ept/createExam', [

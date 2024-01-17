@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TOEIC_Question;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\TOEIC_Question;
+use App\Models\TOEIC_Story;
 
-class TOEICQuestionController extends Controller
+class TOEIC_QuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +22,15 @@ class TOEICQuestionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/exam/toeic/uploadQuestion', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
+    }
+
+    public function getStory()
+    {
+        $selects = TOEIC_Story::where('exam_code', session('exam_code'))->get();
+        return response()->json($selects);
     }
 
     /**

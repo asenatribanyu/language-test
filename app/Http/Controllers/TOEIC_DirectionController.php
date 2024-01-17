@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TOEIC_Story;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\TOEIC_Direction;
 
-class TOEICStoryController extends Controller
+class TOEIC_DirectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +21,9 @@ class TOEICStoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/exam/toeic/uploadDirection', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class TOEICStoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TOEIC_Story $tOEIC_Story)
+    public function show(TOEIC_Direction $tOEIC_Direction)
     {
         //
     }
@@ -42,7 +45,7 @@ class TOEICStoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TOEIC_Story $tOEIC_Story)
+    public function edit(TOEIC_Direction $tOEIC_Direction)
     {
         //
     }
@@ -50,7 +53,7 @@ class TOEICStoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TOEIC_Story $tOEIC_Story)
+    public function update(Request $request, TOEIC_Direction $tOEIC_Direction)
     {
         //
     }
@@ -58,7 +61,7 @@ class TOEICStoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TOEIC_Story $tOEIC_Story)
+    public function destroy(TOEIC_Direction $tOEIC_Direction)
     {
         //
     }

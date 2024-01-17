@@ -2,13 +2,15 @@
 <div class="mt-3">
     <h2 class="text-xl font-medium dark:text-white" id="partA">Listening Part A Directions:</h2>
     @if ($directions_a)
-        @if ($directions_a->audio)
-            <audio class="mt-2 mb-2" controls>
-                <source src="{{ asset('storage/' . $directions_a->audio) }}">
-                Your browser does not support the audio element.
-            </audio>
-        @endif
-        <p class="text-base text-gray-900 dark:text-white">{{ $directions_a->direction }}</p>
+        <div class="mt-2 p-2 border-2 rounded-lg">
+            @if ($directions_a->audio)
+                <audio class="mt-2 mb-2" controls>
+                    <source src="{{ asset('storage/' . $directions_a->audio) }}">
+                    Your browser does not support the audio element.
+                </audio>
+            @endif
+            <p class="text-base text-gray-900 dark:text-white">{{ $directions_a->direction }}</p>
+        </div>
     @else
         <div class="mt-2 p-2 border-2 rounded-lg">
             No direction of this part has been created.
@@ -88,7 +90,7 @@
                                 <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
                             </svg>
                         </button>
-                        <a href="/admin/dashboard/exam/question/{{ $question->id }}/edit"
+                        <a href="/admin/dashboard/exam/ept/question/{{ $question->id }}/edit"
                             onclick="updateLocalStorage('part a')"
                             class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
@@ -133,7 +135,8 @@
                                             </p>
                                         </div>
                                         <form class=" flex justify-center"
-                                            action="/admin/dashboard/exam/question/{{ $question->id }}" method="POST">
+                                            action="/admin/dashboard/exam/ept/question/{{ $question->id }}"
+                                            method="POST">
                                             @method('delete')
                                             @csrf
                                             <button data-modal-hide="delete-exam-{{ $question->id }}" type="submit"
