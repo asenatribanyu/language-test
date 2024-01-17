@@ -20,6 +20,18 @@
                             <div>Upload Direction</div>
                         </div>
                     </a>
+                    <button type="button" data-modal-target="story-modal" data-modal-toggle="story-modal"
+                        class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
+                        <div class="flex justify-center items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M6 22h15v-2H6.012C5.55 19.988 5 19.805 5 19s.55-.988 1.012-1H21V4c0-1.103-.897-2-2-2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3zM5 8V5c0-.805.55-.988 1-1h13v12H5V8z">
+                                </path>
+                                <path d="M8 6h9v2H8z"></path>
+                            </svg>
+                            <div>Upload Story</div>
+                        </div>
+                    </button>
                     <button type="button" data-modal-target="question-modal" data-modal-toggle="question-modal"
                         class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <div class="flex justify-center items-center gap-1">
@@ -60,25 +72,25 @@
                 </div>
             </div>
             <div class="flex flex-wrap justify-center items-center gap-x-5 gap-y-3 mt-5">
-                <a href="#part1"
+                <a href="#partI"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     Part I</a>
-                <a href="#part2"
+                <a href="#partII"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     Part II</a>
-                <a href="#part3"
+                <a href="#partIII"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     Part III</a>
-                <a href="#part4"
+                <a href="#partIV"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     IV</a>
-                <a href="#part5"
+                <a href="#partV"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     V</a>
-                <a href="#part6"
+                <a href="#partVI"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     VI</a>
-                <a href="#part7"
+                <a href="#partVII"
                     class="w-24 bg-blue-100 hover:bg-blue-200 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400 inline-flex items-center justify-center">Part
                     VII</a>
             </div>

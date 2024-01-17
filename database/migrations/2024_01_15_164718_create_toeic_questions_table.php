@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('toeic_questions', function (Blueprint $table) {
             $table->id();
             $table->string('exam_code');
-            $table->string('story_code');
+            $table->string('story_code')->nullable();
             $table->text('photograph')->nullable();
             $table->text('audio')->nullable();
-            $table->text('question');
+            $table->text('question')->nullable();
             $table->text('answer_a');
             $table->text('answer_b');
             $table->text('answer_c');
-            $table->text('answer_d');
+            $table->text('answer_d')->nullable();
             $table->enum('correct_answer', [
                 'a',
                 'b',

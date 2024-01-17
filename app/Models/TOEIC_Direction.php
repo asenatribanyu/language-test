@@ -12,4 +12,6 @@ class TOEIC_Direction extends Model
     protected $guarded=[
         'id'
     ];
+
+    protected  $table='toeic_directions';
 }

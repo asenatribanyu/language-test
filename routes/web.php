@@ -12,8 +12,6 @@ use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
-use App\Models\TOEIC_Direction;
-use App\Models\TOEIC_Question;
 
 /*
 |--------------------------------------------------------------------------

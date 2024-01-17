@@ -38,7 +38,114 @@ class TOEIC_QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData  = $request->validate([
+            'photograph' => 'image|mimes:jpg, jpeg, png',
+            'audio' => 'file|mimes:mp3,ogg,wav,flac,aac',
+            'story_code' => 'string',
+            'question' => 'string',
+            'answer_a' => 'string',
+            'answer_b' => 'string',
+            'answer_c' => 'string',
+            'answer_d' => 'string',
+            'correct_answer' => 'string',
+            'section' => 'string',
+        ]);
+
+        $question = new TOEIC_Question();
+
+        switch($request->questionCase){
+            case '1':
+                $question->exam_code = session('exam_code');
+                $filePhotograph = $request->file('photograph')->getClientOriginalName();
+                $filePhotograph = time() . "_" . $filePhotograph;
+                $request->file('photograph')->storeAs('public/photograph', $filePhotograph);
+                $question->question = 'photograph/' . $filePhotograph;
+                $fileAudio = $request->file('audio')->getClientOriginalName();
+                $fileAudio = time() . "_" . $fileAudio;
+                $request->file('audio')->storeAs('public/audio', $fileAudio);
+                $question->question = 'audio/' . $fileAudio;
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->answer_d = $validateData['answer_d'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'i';
+            break;
+
+            case '2':
+                $question->exam_code = session('exam_code');
+                $fileAudio = $request->file('audio')->getClientOriginalName();
+                $fileAudio = time() . "_" . $fileAudio;
+                $request->file('audio')->storeAs('public/audio', $fileAudio);
+                $question->question = 'audio/' . $fileAudio;
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'ii';
+            break;
+
+            case '3':
+                $question->exam_code = session('exam_code');
+                $fileAudio = $request->file('audio')->getClientOriginalName();
+                $fileAudio = time() . "_" . $fileAudio;
+                $request->file('audio')->storeAs('public/audio', $fileAudio);
+                $question->question = 'audio/' . $fileAudio;
+                $question->question = $validateData['question'];
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->answer_d = $validateData['answer_d'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'iii';
+            break;
+
+            case '4':
+                $question->exam_code = session('exam_code');
+                $question->story_code = $validateData['story_code'];
+                $question->question = $validateData['question'];
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->answer_d = $validateData['answer_d'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'iv';
+            break;
+
+            case '5':
+                $question->exam_code = session('exam_code');
+                $question->question = $validateData['question'];
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->answer_d = $validateData['answer_d'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'v';
+            break;
+
+            case '6':
+                $question->exam_code = session('exam_code');
+                $question->question = $validateData['question'];
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->answer_d = $validateData['answer_d'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'v';
+            break;
+
+            case '7':
+                $question->exam_code = session('exam_code');
+                $question->story_code = $validateData['story_code'];
+                $question->question = $validateData['question'];
+                $question->answer_a = $validateData['answer_a'];
+                $question->answer_b = $validateData['answer_b'];
+                $question->answer_c = $validateData['answer_c'];
+                $question->answer_d = $validateData['answer_d'];
+                $question->correct_answer = $validateData['correct_answer'];
+                $question->section = 'v';
+            break;
+        }
     }
 
     /**

@@ -12,4 +12,6 @@ class TOEIC_Question extends Model
     protected $guarded=[
         'id'
     ];
+
+    protected  $table='toeic_questions';
 }

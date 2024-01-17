@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\TOEIC_Direction;
+use Illuminate\Support\Facades\Storage;
 
 class TOEIC_DirectionController extends Controller
 {
@@ -31,7 +32,39 @@ class TOEIC_DirectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'audio' => 'nullable|file|mimes:mp3,ogg,wav,flac,aac',
+            'direction' => 'string',
+            'section' => 'string',
+        ]);
+
+        $condition = TOEIC_Direction::where('exam_code',session('exam_code'))->where('section', $validateData['section'])->first();
+
+        if($condition){
+            if($validateData['audio']){
+                Storage::delete('public/' . $condition->audio);
+            }
+            $fileName = $request->file('audio')->getClientOriginalName();
+            $fileName = time() . "_" . $fileName;
+            $request->file('audio')->storeAs('public/audio', $fileName);
+            $condition->audio = 'audio/' . $fileName;
+            $condition->direction = $validateData['direction'];
+            $condition->save();
+        }else{
+            $direction = new TOEIC_Direction();   
+            $direction->exam_code = session('exam_code');
+            if($request->file('audio')){
+                $fileName = $request->file('audio')->getClientOriginalName();
+                $fileName = time() . "_" . $fileName;
+                $request->file('audio')->storeAs('public/audio', $fileName);
+                $direction->audio = 'audio/' . $fileName;
+            }
+            $direction->direction = $validateData['direction'];
+            $direction->section = $validateData['section'];
+            $direction->save();
+        }
+
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**

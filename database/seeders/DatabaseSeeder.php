@@ -40,13 +40,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'test taker',
         ]);
 
-        \App\Models\User::factory(1)->create([
-            'name' => 'Akun Guest',
-            'email' => 'guest@gmail.com',
-            'email_verified_at' => '2023-12-07 06:33:55',
-            'password' => bcrypt('guest'),
-            'role' => 'guest',
-        ]);
+        // \App\Models\User::factory(1)->create([
+        //     'name' => 'Akun Guest',
+        //     'email' => 'guest@gmail.com',
+        //     'email_verified_at' => '2023-12-07 06:33:55',
+        //     'password' => bcrypt('guest'),
+        //     'role' => 'guest',
+        // ]);
 
         // Exam::factory()->create([
         //     'code' => 'EXM-LfosNc4yMp',

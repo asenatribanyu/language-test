@@ -80,7 +80,9 @@ class EPT_DirectionController extends Controller
      */
     public function edit(EPT_Direction $ePT_Direction)
     {
-        //
+        return view('admin/exam/ept/updateDirection', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
     }
 
     /**

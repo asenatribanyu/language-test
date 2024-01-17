@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var questionCase = document.getElementById("question-case");
     var answerD = document.getElementById("answer_d");
     var richText = document.getElementById("richtext");
+    var storyInput = document.getElementById("story");
     var header = document.getElementById("heading");
 
     if (questionType === "part i") {
@@ -39,11 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
             >`;
         } else if (questionType === "part iv") {
             header.innerHTML = "TOEIC Upload Question Part IV";
-            audioInput.innerHTML = `
-            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio Short Talk</label>
-            <input id="file_input" type="file" name="audio" accept="audio/*" required
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            >`;
         }
         questionInput.innerHTML = `
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="text-input">Question</label>
@@ -62,14 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
             </textarea>`;
     } else if (questionType === "part vii") {
-        // CkEditor5
-        ClassicEditor.create(document.querySelector("#editor")).catch(
-            (error) => {
-                console.error(error);
-            }
-        );
         header.innerHTML = "TOEIC Upload Question Part VII";
-        richText.innerHTML = `<label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="editor">Story</label>`;
         questionInput.innerHTML = `
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="text-input">Question</label>
             <input id="text-input" type="text" name="question" placeholder="Enter the question here" required

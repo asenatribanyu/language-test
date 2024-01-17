@@ -10,6 +10,7 @@
                 </div>
                 <div class="mt-5" id="photograph"></div>
                 <div class="mt-5" id="audio"></div>
+                <div class="mt-5" id="story"></div>
                 <div class="mt-5" id="richtext"></div>
                 <div id="editor"></div>
                 <div class="mt-5" id="question"></div>

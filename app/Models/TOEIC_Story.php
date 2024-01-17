@@ -12,4 +12,6 @@ class TOEIC_Story extends Model
     protected $guarded=[
         'id'
     ];
+
+    protected  $table='toeic_stories';
 }
