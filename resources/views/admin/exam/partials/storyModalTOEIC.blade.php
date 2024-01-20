@@ -26,7 +26,7 @@
                 </select>
             </div>
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <a href="/admin/dashboard/exam/ept/story/create" data-modal-hide="story-modal" type="button"
+                <a href="/admin/dashboard/exam/toeic/story/create" data-modal-hide="story-modal" type="button"
                     onclick="storyLocalStorage()"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Next</a>
                 <button data-modal-hide="story-modal" type="button"

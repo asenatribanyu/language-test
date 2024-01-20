@@ -16,13 +16,13 @@
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         id="file_input" type="file" name="audio" accept="audio/*">
-                        <div>
-                            @if ($direction->audio)
-                                <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
-                                    <div class="text-sm text-blue-800">{{ $direction->audio }}</div>
-                                </div>
-                            @endif
-                        </div>
+                    <div>
+                        @if ($direction->audio)
+                            <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
+                                <div class="text-sm text-blue-800">{{ $direction->audio }}</div>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="mt-5">
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Text
@@ -34,21 +34,28 @@
                 <div class="mt-5 pb-5 border-b-2 border-gray-200">
                     <label for="select-section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                         Section</label>
-                    <select id="select-section" name="section" required
+                    <select id="select-section" name="section" required disabled
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option disabled>Select section</option>
-                        <option value="part a" {{ $direction->section == 'part' ? 'selected' : ''  }}>Listening Comperhension Part A</option>
-                        <option value="part b" {{ $direction->section == 'part b' ? 'selected' : ''  }}>Listening Comperhension Part B</option>
-                        <option value="part c"{{ $direction->section == 'part c' ? 'selected' : ''  }}>Listening Comperhension Part C</option>
-                        <option value="structure"{{ $direction->section == 'structure' ? 'selected' : ''  }}>Structure Expression</option>
-                        <option value="written"{{ $direction->section == 'written' ? 'selected' : ''  }}>Written Expression</option>
-                        <option value="reading"{{ $direction->section == 'reading' ? 'selected' : ''  }}>Reading Comperhension</option>
+                        <option value="part a" {{ $direction->section == 'part a' ? 'selected' : '' }}>Listening
+                            Comperhension
+                            Part A</option>
+                        <option value="part b" {{ $direction->section == 'part b' ? 'selected' : '' }}>Listening
+                            Comperhension Part B</option>
+                        <option value="part c"{{ $direction->section == 'part c' ? 'selected' : '' }}>Listening
+                            Comperhension Part C</option>
+                        <option value="structure"{{ $direction->section == 'structure' ? 'selected' : '' }}>Structure
+                            Expression</option>
+                        <option value="written"{{ $direction->section == 'written' ? 'selected' : '' }}>Written Expression
+                        </option>
+                        <option value="reading"{{ $direction->section == 'reading' ? 'selected' : '' }}>Reading
+                            Comperhension</option>
                     </select>
                 </div>
                 <div class="flex mt-5 items-center rounded-b dark:border-gray-600">
                     <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-                    <a href="{{ url()->previous() }}"
+                    <a href="{{ url('/admin/dashboard/exam/' . session('id')) . '/edit' }}"
                         class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Back</a>
                 </div>
                 <div id="popup-modal" tabindex="-1"

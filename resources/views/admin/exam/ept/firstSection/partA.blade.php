@@ -57,11 +57,11 @@
                                 </svg>
                                 <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">
                                     Are you
-                                    sure want to delete this Question?</h3>
+                                    sure want to delete this Direction?</h3>
                                 <div class="mt-1 mb-5">
                                     <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                         This action is irreversible and will lead to the removal of
-                                        Question forever from the system.
+                                        Directioon forever from the system.
                                     </p>
                                 </div>
                                 <form class=" flex justify-center"

@@ -98,6 +98,7 @@ class EPT_DirectionController extends Controller
             'direction' => 'string',
             'section' => 'string',
         ]);
+
         if($request->file('audio')){
             Storage::delete('public/' . $direction->audio);
             $fileName = $request->file('audio')->getClientOriginalName();
@@ -105,6 +106,7 @@ class EPT_DirectionController extends Controller
             $request->file('audio')->storeAs('public/audio', $fileName);
             $validateData['audio'] = 'audio/' . $fileName;
         };
+        
         $direction->update($validateData);
 
         return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
@@ -122,7 +124,7 @@ class EPT_DirectionController extends Controller
         }
 
         $direction->delete();
-        return redirect()->back();
 
+        return redirect()->back();
     }
 }

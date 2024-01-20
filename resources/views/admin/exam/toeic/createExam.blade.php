@@ -122,6 +122,7 @@
     @include('admin.exam.partials.scrollTop')
     @include('admin.exam.partials.subnameModal')
     @include('admin.exam.partials.questionModalTOEIC')
+    @include('admin.exam.partials.storyModalTOEIC')
     @include('admin.exam.partials.dateModal')
 @endsection
 @push('script')

@@ -6,6 +6,7 @@ use App\Models\EPT_Direction;
 use App\Models\Exam;
 use App\Models\User;
 use App\Models\EPT_Question;
+use App\Models\TOEIC_Direction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -87,6 +88,13 @@ class ExamController extends Controller
         else if($exam->category == "toeic"){
             return view('admin/exam/toeic/createExam', [
                 'profile' => User::where('id', auth()->user()->id)->first(),
+                'directions_i' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'i')->first(),
+                'directions_ii' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'ii')->first(),
+                'directions_iii' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'iii')->first(),
+                'directions_iv' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'iv')->first(),
+                'directions_v' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'v')->first(),
+                'directions_vi' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'vi')->first(),
+                'directions_vii' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'vii')->first(),
                 'exam' => $exam,
                 'question_count' => EPT_Question::query()->get()->count(),
             ]);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\TOEIC_Story;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,9 @@ class TOEIC_StoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/exam/toeic/uploadStory', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
     }
 
     /**
