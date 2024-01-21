@@ -99,13 +99,14 @@
         </span>
     </div>
     @if ($questions_iv)
-        @foreach ($questions_iv as $question)
+    @foreach ($stories as $story)
+    @if($story->section == 'iv')
             <div class="mt-2 p-3 border-2 rounded-lg">
                 <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
                 {{-- Story --}}
                 <div class="mt-2 p-2 border-2 rounded-lg relative">
                     <audio class="mt-2 mb-2" controls>
-                        <source src="">
+                        <source src="{{ asset('storage/'.$story->story) }}">
                         Your browser does not support the audio element.
                     </audio>
                     <div class="absolute top-3 right-3">
@@ -182,6 +183,7 @@
                         </div>
                     </div>
                 </div>
+                @foreach ($story->question as $question)
                 <div class="mt-2 p-2 border-2 rounded-lg relative">
                     <div class="flex gap-5">
                         <div
@@ -307,9 +309,11 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
+            @endif
+            @endforeach
     @else
         <div class="mt-2 p-2 border-2 rounded-lg">
             No question of this part has been created.

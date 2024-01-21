@@ -105,6 +105,7 @@ class ExamController extends Controller
                 'questions_vi' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'vi')->get(),
                 'questions_vii' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'vii')->get(),
                 'exam' => $exam,
+                'stories' => TOEIC_Story::where('exam_code', session('exam_code'))->get(),
                 'question_count' => TOEIC_Question::query()->get()->count(),
             ]);
         }

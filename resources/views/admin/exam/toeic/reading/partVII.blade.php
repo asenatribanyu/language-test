@@ -1,6 +1,6 @@
 {{-- Part I --}}
 <div class="mt-3">
-    <h2 class="text-xl font-medium dark:text-white" id="partVII">Direction of Listening Part VII:</h2>
+    <h2 class="text-xl font-medium dark:text-white" id="partVII">Direction of Reading Part VII:</h2>
     @if ($directions_vii)
         <div class="mt-2 p-2 border-2 rounded-lg relative">
             @if ($directions_vii->audio)
@@ -99,12 +99,13 @@
         </span>
     </div>
     @if ($questions_vii)
-        @foreach ($questions_vii as $question)
+        @foreach ($stories as $story)
+        @if ($story->section == "vii")
             <div class="mt-2 p-3 border-2 rounded-lg">
                 <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
                 {{-- Story --}}
                 <div class="mt-2 p-2 border-2 rounded-lg relative">
-                    <p class="mt-2 mb-3">Story goes here</p>
+                    <p class="mt-2 mb-3">{!! $story->story !!}</p>
                     <div class="absolute top-3 right-3">
                         <button type="button" data-modal-target="delete-story-" data-modal-toggle="delete-story-"
                             data-bs-target="#delete-story-"
@@ -178,6 +179,7 @@
                         </div>
                     </div>
                 </div>
+                @foreach ($story->question as $question)
                 <div class="mt-2 p-2 border-2 rounded-lg relative">
                     <div class="flex gap-5">
                         <div
@@ -302,7 +304,9 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
+            @endif
         @endforeach
     @else
         <div class="mt-2 p-2 border-2 rounded-lg">

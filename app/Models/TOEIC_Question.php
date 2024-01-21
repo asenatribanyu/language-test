@@ -14,4 +14,8 @@ class TOEIC_Question extends Model
     ];
 
     protected  $table='toeic_questions';
+
+    public function story(){
+        return $this->belongsTo(TOEIC_Story::class, 'story_code', 'code');
+    }
 }

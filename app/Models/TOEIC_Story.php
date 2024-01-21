@@ -14,4 +14,8 @@ class TOEIC_Story extends Model
     ];
 
     protected  $table='toeic_stories';
+
+    public function question(){
+        return $this->hasMany(TOEIC_Question::class, 'story_code', 'code');
+    }
 }

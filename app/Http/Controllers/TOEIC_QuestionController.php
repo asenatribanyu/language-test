@@ -102,6 +102,7 @@ class TOEIC_QuestionController extends Controller
 
             case '4':
                 $question->exam_code = session('exam_code');
+                $question->story()->associate($validateData['story_code']);
                 $question->story_code = $validateData['story_code'];
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
@@ -136,7 +137,7 @@ class TOEIC_QuestionController extends Controller
 
             case '7':
                 $question->exam_code = session('exam_code');
-                $question->story_code = $validateData['story_code'];
+                $question->story()->associate($validateData['story_code']);
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
