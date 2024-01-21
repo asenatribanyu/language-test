@@ -1,6 +1,6 @@
 @extends('layouts.adminDashboard')
 @section('content')
-    <form action="/admin/dashboard/exam/ept/question" method="POST" enctype="multipart/form-data">
+    <form action="/admin/dashboard/exam/toeic/question" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="flex justify-center items-center">
             <div
@@ -8,6 +8,7 @@
                 <div class="border-b-2 border-gray-200">
                     <h1 class="pb-1 text-2xl font-semibold dark:text-white" id="heading"></h1>
                 </div>
+                <div class="mt-5" id="select-story"></div>
                 <div class="mt-5" id="photograph"></div>
                 <div class="mt-5" id="audio"></div>
                 <div class="mt-5" id="story"></div>

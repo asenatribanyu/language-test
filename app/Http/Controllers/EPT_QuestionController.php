@@ -29,9 +29,9 @@ class EPT_QuestionController extends Controller
         ]);
     }
 
-    public function getStory()
+    public function getStory($section)
     {
-        $selects = EPT_Story::where('exam_code', session('exam_code'))->get();
+        $selects = EPT_Story::where('exam_code', session('exam_code'))->where('section', $section)->get();
         return response()->json($selects);
     }
 

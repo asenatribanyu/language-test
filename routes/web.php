@@ -143,13 +143,15 @@ Route::resource('admin/dashboard/exam/ept/story', EPT_StoryController::class);
 
 Route::resource('admin/dashboard/exam/ept/question', EPT_QuestionController::class);
 
-Route::get('/fetch/ept/story', [EPT_QuestionController::class, 'getStory']);
+Route::get('/fetch/ept/story/{section}', [EPT_QuestionController::class, 'getStory']);
 
 Route::resource('admin/dashboard/exam/toeic/direction', TOEIC_DirectionController::class);
 
 Route::resource('admin/dashboard/exam/toeic/story', TOEIC_StoryController::class);
 
 Route::resource('admin/dashboard/exam/toeic/question', TOEIC_QuestionController::class);
+
+Route::get('/fetch/toeic/story/{section}', [TOEIC_QuestionController::class, 'getStory']);
 
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [

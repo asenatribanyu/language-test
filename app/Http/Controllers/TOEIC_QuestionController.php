@@ -27,9 +27,9 @@ class TOEIC_QuestionController extends Controller
         ]);
     }
 
-    public function getStory()
+    public function getStory($section)
     {
-        $selects = TOEIC_Story::where('exam_code', session('exam_code'))->get();
+        $selects = TOEIC_Story::where('exam_code', session('exam_code'))->where('section', $section)->get();
         return response()->json($selects);
     }
 
@@ -39,7 +39,7 @@ class TOEIC_QuestionController extends Controller
     public function store(Request $request)
     {
         $validateData  = $request->validate([
-            'photograph' => 'image|mimes:jpg, jpeg, png',
+            'photograph' => 'image|mimes:jpg,jpeg,png',
             'audio' => 'file|mimes:mp3,ogg,wav,flac,aac',
             'story_code' => 'string',
             'question' => 'string',
@@ -59,11 +59,11 @@ class TOEIC_QuestionController extends Controller
                 $filePhotograph = $request->file('photograph')->getClientOriginalName();
                 $filePhotograph = time() . "_" . $filePhotograph;
                 $request->file('photograph')->storeAs('public/photograph', $filePhotograph);
-                $question->question = 'photograph/' . $filePhotograph;
+                $question->photograph = 'photograph/' . $filePhotograph;
                 $fileAudio = $request->file('audio')->getClientOriginalName();
                 $fileAudio = time() . "_" . $fileAudio;
                 $request->file('audio')->storeAs('public/audio', $fileAudio);
-                $question->question = 'audio/' . $fileAudio;
+                $question->audio = 'audio/' . $fileAudio;
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
                 $question->answer_c = $validateData['answer_c'];
@@ -77,7 +77,7 @@ class TOEIC_QuestionController extends Controller
                 $fileAudio = $request->file('audio')->getClientOriginalName();
                 $fileAudio = time() . "_" . $fileAudio;
                 $request->file('audio')->storeAs('public/audio', $fileAudio);
-                $question->question = 'audio/' . $fileAudio;
+                $question->audio = 'audio/' . $fileAudio;
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
                 $question->answer_c = $validateData['answer_c'];
@@ -90,7 +90,7 @@ class TOEIC_QuestionController extends Controller
                 $fileAudio = $request->file('audio')->getClientOriginalName();
                 $fileAudio = time() . "_" . $fileAudio;
                 $request->file('audio')->storeAs('public/audio', $fileAudio);
-                $question->question = 'audio/' . $fileAudio;
+                $question->audio = 'audio/' . $fileAudio;
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
@@ -131,7 +131,7 @@ class TOEIC_QuestionController extends Controller
                 $question->answer_c = $validateData['answer_c'];
                 $question->answer_d = $validateData['answer_d'];
                 $question->correct_answer = $validateData['correct_answer'];
-                $question->section = 'v';
+                $question->section = 'vi';
             break;
 
             case '7':
@@ -143,9 +143,13 @@ class TOEIC_QuestionController extends Controller
                 $question->answer_c = $validateData['answer_c'];
                 $question->answer_d = $validateData['answer_d'];
                 $question->correct_answer = $validateData['correct_answer'];
-                $question->section = 'v';
+                $question->section = 'vii';
             break;
         }
+
+        $question->save();
+
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
