@@ -7,6 +7,8 @@ use App\Models\Exam;
 use App\Models\User;
 use App\Models\EPT_Question;
 use App\Models\TOEIC_Direction;
+use App\Models\TOEIC_Question;
+use App\Models\TOEIC_Story;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -95,8 +97,15 @@ class ExamController extends Controller
                 'directions_v' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'v')->first(),
                 'directions_vi' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'vi')->first(),
                 'directions_vii' => TOEIC_Direction::where('exam_code', session('exam_code'))->where('section', 'vii')->first(),
+                'questions_i' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'i')->get(),
+                'questions_ii' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'ii')->get(),
+                'questions_iii' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'iii')->get(),
+                'questions_iv' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'iv')->get(),
+                'questions_v' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'v')->get(),
+                'questions_vi' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'vi')->get(),
+                'questions_vii' => TOEIC_Question::where('exam_code', session('exam_code'))->where('section', 'vii')->get(),
                 'exam' => $exam,
-                'question_count' => EPT_Question::query()->get()->count(),
+                'question_count' => TOEIC_Question::query()->get()->count(),
             ]);
         }
     }
