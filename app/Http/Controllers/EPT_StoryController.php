@@ -47,7 +47,7 @@ class EPT_StoryController extends Controller
         $story = new EPT_Story;
 
         $story->exam_code = session('exam_code');
-        $story->code = 'EXM-' . Str::random(10);
+        $story->code = 'STR-' . Str::random(10);
         if($request->file('story')){
             $fileName = $request->file('story')->getClientOriginalName();
             $fileName = time() . "_" . $fileName;

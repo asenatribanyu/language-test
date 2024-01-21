@@ -151,8 +151,6 @@ Route::resource('admin/dashboard/exam/toeic/story', TOEIC_StoryController::class
 
 Route::resource('admin/dashboard/exam/toeic/question', TOEIC_QuestionController::class);
 
-Route::get('/fetch/toeic/story', [TOEIC_QuestionController::class, 'getStory']);
-
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [
         'profile' => User::where('id', auth()->user()->id)->first(),

@@ -9,6 +9,12 @@
                     <h1 class="pb-1 text-2xl font-semibold dark:text-white">TOEIC Upload Story</h1>
                 </div>
                 <div class="mt-5" id="story-area"></div>
+                <div class="mt-5 hidden" id="rich-text">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="editor">
+                        Story
+                    </label>
+                    <textarea id="editor" name="story"></textarea>
+                </div>
                 <div class="mt-5 pb-5 border-b-2 border-gray-200">
                     <label for="select-section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                         Section</label>

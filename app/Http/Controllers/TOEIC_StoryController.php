@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\TOEIC_Story;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class TOEIC_StoryController extends Controller
@@ -31,7 +32,35 @@ class TOEIC_StoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->file('story')){
+            $validateData = $request->validate([
+                'story' => 'file|mimes:mp3,ogg,wav,flac,aac',
+                'section' => 'string',
+            ]);
+        }else{
+            $validateData = $request->validate([
+                'story' => 'string',
+                'section' => 'string',
+            ]);
+        }
+        
+        $story = new TOEIC_Story();
+
+        $story->exam_code = session('exam_code');
+        $story->code = 'STR-' . Str::random(10);
+        if($request->file('story')){
+            $fileName = $request->file('story')->getClientOriginalName();
+            $fileName = time() . "_" . $fileName;
+            $request->file('story')->storeAs('public/story', $fileName);
+            $story->story = 'story/' . $fileName;
+        }else{
+            $story->story = $validateData['story'];
+        }
+        $story->section = $validateData['section'];
+
+        $story->save();
+
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
