@@ -10,6 +10,7 @@
                 </audio>
             @endif
             <p class="text-base text-gray-900 dark:text-white">{{ $directions_written->direction }}</p>
+            {{-- Actions --}}
             <div class="absolute top-3 right-3">
                 <button type="button" data-modal-target="delete-direction-{{ $directions_written->id }}"
                     data-modal-toggle="delete-direction-{{ $directions_written->id }}"

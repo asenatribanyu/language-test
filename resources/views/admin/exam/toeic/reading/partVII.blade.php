@@ -101,7 +101,7 @@
     @if ($questions_vii)
         @foreach ($questions_vii as $question)
             <div class="mt-2 p-3 border-2 rounded-lg">
-                <div>Number 1 - 5</div>
+                <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
                 {{-- Story --}}
                 <div class="mt-2 p-2 border-2 rounded-lg relative">
                     <p class="mt-2 mb-3">Story goes here</p>

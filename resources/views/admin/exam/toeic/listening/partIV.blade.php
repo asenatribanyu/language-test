@@ -101,7 +101,7 @@
     @if ($questions_iv)
         @foreach ($questions_iv as $question)
             <div class="mt-2 p-3 border-2 rounded-lg">
-                <div>Number 1 - 5</div>
+                <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
                 {{-- Story --}}
                 <div class="mt-2 p-2 border-2 rounded-lg relative">
                     <audio class="mt-2 mb-2" controls>
@@ -120,7 +120,7 @@
                                 <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
                             </svg>
                         </button>
-                        <a href="/admin/dashboard/exam/question//edit" onclick="updateLocalStorage('part v')"
+                        <a href="/admin/dashboard/exam/toeic/question//edit" onclick="updateLocalStorage('part iv')"
                             class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
                                 viewBox="0 0 24 24">
@@ -141,8 +141,9 @@
                                         data-modal-hide="delete-story-">
                                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                             fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                            <path stroke="currentColor" stroke-linecap="round"
+                                                stroke-linejoin="round" stroke-width="2"
+                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                         </svg>
                                         <span class="sr-only">Close modal</span>
                                     </button>
