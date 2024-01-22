@@ -21,8 +21,12 @@
                 <select id="storyType"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option disabled selected>Select Story Type</option>
-                    <option value="part iv">Listening Part IV</option>
-                    <option value="part vii">Reading Part VII</option>
+                    <optgroup label="Listening Comperhension Section">
+                        <option value="part iv">Listening Part IV</option>
+                    </optgroup>
+                    <optgroup label="Reading Comperhension Section">
+                        <option value="part vii">Reading Part VII</option>
+                    </optgroup>
                 </select>
             </div>
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">

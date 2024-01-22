@@ -1,6 +1,6 @@
-{{-- Part I --}}
-<div class="mt-3">
-    <h2 class="text-xl font-medium dark:text-white" id="partIII">Direction of Listening Part III:</h2>
+{{-- Part III --}}
+<div class="mt-5">
+    <h2 class="text-xl border-t-2 pt-3 font-medium dark:text-white" id="partIII">Direction of Listening Part III:</h2>
     @if ($directions_iii)
         <div class="mt-2 p-2 border-2 rounded-lg relative">
             @if ($directions_iii->audio)
