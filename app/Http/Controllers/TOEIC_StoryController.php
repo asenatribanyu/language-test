@@ -130,4 +130,16 @@ class TOEIC_StoryController extends Controller
 
         return redirect()->back();
     }
+
+    public function upload(Request $request){
+        if($request->hasFile('upload')){
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '' . time() . '.' . $extension;
+            $request->file('upload')->storeAs('public/ckeditor', $fileName);
+            $url = asset('storage/ckeditor/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
+        }
+    }
 }
