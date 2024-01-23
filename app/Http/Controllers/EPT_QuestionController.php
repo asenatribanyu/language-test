@@ -308,6 +308,7 @@ class EPT_QuestionController extends Controller
             Storage::delete('public/' . $question->question);
         };
         $question->delete();
+        
         return redirect()->back();
     }
 }

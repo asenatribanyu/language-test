@@ -52,21 +52,19 @@
                 </div>
 
                 {{-- Question Condition --}}
-                <div>
-                    @if ($questions->section === 'part a')
-                        <input type="hidden" value="1" name="questionCase">
-                    @elseif ($questions->section === 'part b')
-                        <input type="hidden" value="2" name="questionCase">
-                    @elseif ($questions->section === 'part c')
-                        <input type="hidden" value="3" name="questionCase">
-                    @elseif ($questions->section === 'structure')
-                        <input type="hidden" value="4" name="questionCase">
-                    @elseif ($questions->section === 'written')
-                        <input type="hidden" value="5" name="questionCase">
-                    @elseif ($questions->section === 'reading')
-                        <input type="hidden" value="6" name="questionCase">
-                    @endif
-                </div>
+                @if ($questions->section === 'part a')
+                    <input type="hidden" value="1" name="questionCase">
+                @elseif ($questions->section === 'part b')
+                    <input type="hidden" value="2" name="questionCase">
+                @elseif ($questions->section === 'part c')
+                    <input type="hidden" value="3" name="questionCase">
+                @elseif ($questions->section === 'structure')
+                    <input type="hidden" value="4" name="questionCase">
+                @elseif ($questions->section === 'written')
+                    <input type="hidden" value="5" name="questionCase">
+                @elseif ($questions->section === 'reading')
+                    <input type="hidden" value="6" name="questionCase">
+                @endif
 
                 {{-- Answer Choice --}}
                 <div>
@@ -108,8 +106,7 @@
                     </div>
                     <div class="mt-5">
                         <label for="base-input"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer
-                            D</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer D</label>
                         <div class="flex gap-3 items-center">
                             <input id="checkbox-1" type="checkbox" value="d" name="correct_answer"
                                 {{ $questions->correct_answer == 'd' ? 'checked' : '' }}

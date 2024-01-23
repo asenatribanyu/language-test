@@ -108,7 +108,7 @@
                     </div>
                     <div>
                         <div class="mt-1.5">
-                            <img class=" w-52 h-52 rounded-lg" src="{{ asset('storage/' . $question->photograph) }}"
+                            <img class="w-80 h-52 rounded-lg" src="{{ asset('storage/' . $question->photograph) }}"
                                 alt="question_picture">
                         </div>
                         <div class="mt-5">
@@ -202,15 +202,14 @@
                                                 d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                         </svg>
                                         <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">
-                                            Are you
-                                            sure want to delete this Question?</h3>
+                                            Are you sure want to delete this Question?</h3>
                                         <div class="mt-1 mb-5">
                                             <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                 This action is irreversible and will lead to the removal of
                                                 Question forever from the system.
                                             </p>
                                         </div>
-                                        <form class=" flex justify-center"
+                                        <form class="flex justify-center"
                                             action="/admin/dashboard/exam/toeic/question/{{ $question->id }}"
                                             method="POST">
                                             @method('delete')
