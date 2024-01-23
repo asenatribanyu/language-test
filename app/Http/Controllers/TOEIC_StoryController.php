@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\TOEIC_Story;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TOEIC_StoryController extends Controller
 {
@@ -74,24 +75,59 @@ class TOEIC_StoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TOEIC_Story $tOEIC_Story)
+    public function edit($id)
     {
-        //
+        $story = TOEIC_Story::where('id',$id)->first();
+
+        return view('admin/exam/toeic/updateStory', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'story' => $story,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TOEIC_Story $tOEIC_Story)
+    public function update(Request $request, $id)
     {
-        //
+        $story = TOEIC_Story::where('id',$id)->first();
+
+        if($request->file('story')){
+            $validateData = $request->validate([
+                'story' => 'file|mimes:mp3,ogg,wav,flac,aac',
+                'section' => 'string',
+            ]);
+            Storage::delete('public/' . $story->story);
+            $fileName = $request->file('story')->getClientOriginalName();
+            $fileName = time() . "_" . $fileName;
+            $request->file('story')->storeAs('public/story', $fileName);
+            $validateData['story'] = 'story/' . $fileName;
+        }else{
+            $validateData = $request->validate([
+                'story' => 'string',
+                'section' => 'string',
+            ]);
+        }
+
+        $story->update($validateData);
+
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TOEIC_Story $tOEIC_Story)
+    public function destroy($id)
     {
-        //
+        $story = TOEIC_Story::where('id', $id)->first();
+        $isAudio = pathinfo($story->story, PATHINFO_EXTENSION) === 'mp3';
+
+        if($isAudio){
+            Storage::delete('public/' . $story->story);
+        }
+
+        $story->delete();
+
+        return redirect()->back();
     }
 }

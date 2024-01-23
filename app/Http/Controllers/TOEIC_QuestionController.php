@@ -166,7 +166,9 @@ class TOEIC_QuestionController extends Controller
      */
     public function edit(TOEIC_Question $tOEIC_Question)
     {
-        //
+        return view('admin/exam/toeic/updateQuestion', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
     }
 
     /**

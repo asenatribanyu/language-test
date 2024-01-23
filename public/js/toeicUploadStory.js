@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(error);
             }
         );
-
         selectSection.innerHTML = `<option value="vii" selected>Reading Part VII</option>`;
     }
 });

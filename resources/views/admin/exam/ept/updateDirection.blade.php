@@ -11,8 +11,7 @@
                 </div>
                 <div class="mt-5">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio
-                        Direction
-                        (Optional)</label>
+                        Direction (Optional)</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         id="file_input" type="file" name="audio" accept="audio/*">
@@ -79,7 +78,7 @@
                                         stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want
-                                    to upload this Direction?</h3>
+                                    to Update this Direction?</h3>
                                 <button data-modal-hide="popup-modal" type="submit"
                                     class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                                     Yes, I'm sure

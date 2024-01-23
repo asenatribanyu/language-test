@@ -93,6 +93,7 @@ class EPT_DirectionController extends Controller
     public function update(Request $request, $id)
     {
         $direction = EPT_Direction::where('id',$id)->first();
+        
         $validateData = $request->validate([
             'audio' => 'file|mimes:mp3,ogg,wav,flac,aac',
             'direction' => 'string',

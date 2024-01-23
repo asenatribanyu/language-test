@@ -205,7 +205,7 @@
                                 </svg>
                                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you
                                     want
-                                    to change this Question?</h3>
+                                    to Update this Question?</h3>
                                 <button data-modal-hide="update-modal" type="submit"
                                     class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                                     Yes, I'm sure
