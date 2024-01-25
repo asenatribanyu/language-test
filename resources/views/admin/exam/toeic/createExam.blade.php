@@ -55,7 +55,7 @@
                             <div>Date Settings</div>
                         </div>
                     </button>
-                    <button type="button"
+                    {{-- <button type="button"
                         class="text-blue-700 mt-1 w-full hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800">
                         <div class="flex justify-center items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -66,9 +66,14 @@
                             </svg>
                             <div>Test Check</div>
                         </div>
-                    </button>
-                    <button type="button"
-                        class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Publish</button>
+                    </button> --}}
+                    @if ($exam->status == 'progress')
+                        <button type="button" data-modal-target="publish-modal" data-modal-toggle="publish-modal"
+                            class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Publish</button>
+                    @else
+                        <button type="button" data-modal-target="publish-modal" data-modal-toggle="publish-modal"
+                            class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg text-center dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Unpublish</button>
+                    @endif
                 </div>
             </div>
             <div class="flex flex-wrap justify-center items-center gap-x-5 gap-y-3 mt-5">
@@ -124,6 +129,7 @@
     @include('admin.exam.partials.questionModalTOEIC')
     @include('admin.exam.partials.storyModalTOEIC')
     @include('admin.exam.partials.dateModal')
+    @include('admin.exam.partials.publishModal')
 @endsection
 @push('script')
     <script src="{{ asset('js/adminGlobal.js') }}"></script>

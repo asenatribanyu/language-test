@@ -128,6 +128,7 @@ class ExamController extends Controller
             'minute_2' => 'string',
             'minute_3' => 'string',
             'conference_link' => 'string',
+            'status' => 'string',
         ]);
         
         if($request->hour_1){
@@ -138,6 +139,10 @@ class ExamController extends Controller
         }
         if($request->hour_3){
             $validateData['third_time'] = $validateData['hour_3'] . ':' . $validateData['minute_3'];
+        }
+
+        if($request->status){
+            $exam->status = $validateData['status'];
         }
 
         $exam->update($validateData);
