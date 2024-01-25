@@ -6,6 +6,7 @@ use App\Models\EPT_Direction;
 use App\Models\Exam;
 use App\Models\User;
 use App\Models\EPT_Question;
+use App\Models\EPT_Story;
 use App\Models\TOEIC_Direction;
 use App\Models\TOEIC_Question;
 use App\Models\TOEIC_Story;
@@ -84,6 +85,7 @@ class ExamController extends Controller
                 'questions_written' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'written')->get(),
                 'questions_reading' => EPT_Question::where('exam_code', session('exam_code'))->where('section', 'reading')->get(),
                 'exam' => $exam,
+                'stories' => EPT_Story::where('exam_code', session('exam_code'))->get(),
                 'question_count' => EPT_Question::query()->get()->count(),
             ]);
         }

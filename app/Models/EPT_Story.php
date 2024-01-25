@@ -14,4 +14,8 @@ class EPT_Story extends Model
     ];
 
     protected  $table='ept_stories';
+
+    public function question(){
+        return $this->hasMany(EPT_Question::class, 'story_code', 'code');
+    }
 }

@@ -233,6 +233,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                {{-- Actions --}}
                                 <div class="absolute top-3 right-3">
                                     <button type="button" data-modal-target="delete-question-{{ $question->id }}"
                                         data-modal-toggle="delete-question-{{ $question->id }}"

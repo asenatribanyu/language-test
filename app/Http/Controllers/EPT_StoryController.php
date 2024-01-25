@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\EPT_Story;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EPT_StoryController extends Controller
 {
@@ -74,24 +75,60 @@ class EPT_StoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(EPT_Story $story)
+    public function edit($id)
     {
-        //
+        $story = EPT_Story::where('id',$id)->first();
+
+        return view('admin/exam/ept/updateStory', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'story' => $story,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, EPT_Story $story)
+    public function update(Request $request, $id)
     {
-        //
+        $story = EPT_Story::where('id',$id)->first();
+
+        if($request->file('story')){
+            $validateData = $request->validate([
+                'story' => 'file|mimes:mp3,ogg,wav,flac,aac',
+                'section' => 'string',
+            ]);
+            Storage::delete('public/' . $story->story);
+            $fileName = $request->file('story')->getClientOriginalName();
+            $fileName = time() . "_" . $fileName;
+            $request->file('story')->storeAs('public/story', $fileName);
+            $validateData['story'] = 'story/' . $fileName;
+        }else{
+            $validateData = $request->validate([
+                'story' => 'string',
+                'section' => 'string',
+            ]);
+        }
+
+        $story->update($validateData);
+
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(EPT_Story $story)
+    public function destroy($id)
     {
-        //
+        $story = EPT_Story::where('id', $id)->first();
+        $allowedExtensions = ['mp3', 'ogg', 'wav', 'flac', 'aac'];
+        $isAudio = pathinfo($story->story, PATHINFO_EXTENSION) === $allowedExtensions;
+
+        if($isAudio){
+            Storage::delete('public/' . $story->story);
+        }
+
+        $story->delete();
+
+        return redirect()->back();
     }
 }

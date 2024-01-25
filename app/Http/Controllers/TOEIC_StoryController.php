@@ -120,7 +120,8 @@ class TOEIC_StoryController extends Controller
     public function destroy($id)
     {
         $story = TOEIC_Story::where('id', $id)->first();
-        $isAudio = pathinfo($story->story, PATHINFO_EXTENSION) === 'mp3';
+        $allowedExtensions = ['mp3', 'ogg', 'wav', 'flac', 'aac'];
+        $isAudio = pathinfo($story->story, PATHINFO_EXTENSION) === $allowedExtensions;
 
         if($isAudio){
             Storage::delete('public/' . $story->story);

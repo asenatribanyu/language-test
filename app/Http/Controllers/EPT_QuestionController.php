@@ -85,7 +85,7 @@ class EPT_QuestionController extends Controller
 
             case '2':
                 $question->exam_code = session('exam_code');
-                $question->story_code = $validateData['story_code'];
+                $question->story()->associate($validateData['story_code']);
                 $fileName = $request->file('question')->getClientOriginalName();
                 $fileName = time() . "_" . $fileName;
                 $request->file('question')->storeAs('public/question', $fileName);
@@ -100,7 +100,7 @@ class EPT_QuestionController extends Controller
 
             case '3':
                 $question->exam_code = session('exam_code');
-                $question->story_code = $validateData['story_code'];
+                $question->story()->associate($validateData['story_code']);
                 $fileName = $request->file('question')->getClientOriginalName();
                 $fileName = time() . "_" . $fileName;
                 $request->file('question')->storeAs('public/question', $fileName);
@@ -137,7 +137,7 @@ class EPT_QuestionController extends Controller
 
             case '6':
                 $question->exam_code = session('exam_code');
-                $question->story_code = $validateData['story_code'];
+                $question->story()->associate($validateData['story_code']);
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];

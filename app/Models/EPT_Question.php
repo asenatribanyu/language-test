@@ -14,4 +14,8 @@ class EPT_Question extends Model
     ];
 
     protected  $table='ept_questions';
+
+    public function story(){
+        return $this->belongsTo(EPT_Story::class, 'story_code', 'code');
+    }
 }
