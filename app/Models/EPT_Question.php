@@ -18,4 +18,8 @@ class EPT_Question extends Model
     public function story(){
         return $this->belongsTo(EPT_Story::class, 'story_code', 'code');
     }
+
+    public function exam(){
+        return $this->belongsTo(Exam::class, 'exam_code', 'code');
+    }
 }

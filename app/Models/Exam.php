@@ -14,6 +14,26 @@ class Exam extends Model
     ];
 
     public function direction(){
-        return $this->hasMany(EPT_Direction::class);
+        return $this->hasMany(EPT_Direction::class, 'exam_code', 'code');
+    }
+    
+    public function eptQuestion(){
+        return $this->hasMany(EPT_Question::class, 'exam_code', 'code');
+    }
+
+    public function eptStory(){
+        return $this->hasMany(EPT_Story::class, 'exam_code', 'code');
+    }
+
+    public function toeicDirection(){
+        return $this->hasMany(TOEIC_Direction::class, 'exam_code', 'code');
+    }
+
+    public function toeicQuestion(){
+        return $this->hasMany(TOEIC_Question::class, 'exam_code', 'code');
+    }
+
+    public function toeicStory(){
+        return $this->hasMany(TOEIC_Story::class, 'exam_code', 'code');
     }
 }

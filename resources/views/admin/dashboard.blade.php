@@ -2,11 +2,11 @@
 @section('content')
     <form action="">
         <div class="flex flex-wrap justify-center items-center gap-x-5">
-            @for ($i = 0; $i < 2; $i++)
+            @foreach ($exams as $exam)
                 <div
                     class="mt-5 p-5 w-5/12 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <h1 class="pb-1 text-2xl font-semibold border-b-2 border-gray-200 dark:text-white">STARTING
-                        {{ $i % 2 == 0 ? 'EPT' : 'TOEIC' }}
+                        {{ $exam->category == 'ept' ? 'EPT' : 'TOEIC' }}
                     </h1>
                     <div class="mt-5 flex justify-between">
                         <div class="flex gap-3 items-center">
@@ -18,9 +18,9 @@
                                         <path
                                             d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z" />
                                     </svg>
-                                    2 days ago
+                                    {{ $exam->updated_at->diffForHumans() }}
                                 </span>
-                                @if ($i % 2 == 0)
+                                @if ($exam->status == 'publish')
                                     <span
                                         class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-green-400 border border-green-400">Published</span>
                                 @else
@@ -43,48 +43,48 @@
                         <div class="mt-5">
                             <label for="base-input"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                            <input type="text" id="base-input" disabled value="EPT 2023 - BOOK TEST 4"
+                            <input type="text" id="base-input" disabled value="{{ $exam->title }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="mt-5">
                             <label for="base-input"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam
                                 Code</label>
-                            <input type="text" id="base-input" disabled value="EXM-000001"
+                            <input type="text" id="base-input" disabled value="{{ $exam->code }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="mt-5">
                             <label for="base-input"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number
-                                of
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of
                                 Question</label>
-                            <input type="text" id="base-input" disabled value="140"
+                            <input type="text" id="base-input" disabled
+                                value="{{ $exam->category == 'ept' ? $exam->eptQuestion->count() : $exam->toeicQuestion->count() }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="mt-5 pb-5 border-b-2 border-gray-200">
                             <label for="base-input"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Test
-                                Schedules</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Test Schedules</label>
                             <input type="text" id="base-input" disabled
-                                value="First Date: 20 November 2023 (10:00 WIB, 13:00 WIB, 15:00 WIB)"
+                                value="{{ 'First Date: ' . $exam->first_date . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <input type="text" id="base-input" disabled
-                                value="Second Date: 22 November 2023 (10:00 WIB, 13:00 WIB, 15:00 WIB)"
+                                value="{{ 'Second Date: ' . $exam->second_date . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
                                 class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <input type="text" id="base-input" disabled
-                                value="Third Date: 24 November 2023 (10:00 WIB, 13:00 WIB, 15:00 WIB)"
+                                value="{{ 'Third Date: ' . $exam->third_date . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
                                 class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="mt-5 flex justify-between gap-2">
                             <div class="flex gap-2">
-                                <a href="#" target="_blank"
+                                <a href="{{ $exam->conference_link }}" target="_blank"
                                     class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Conference</a>
                                 <button type="button" data-modal-target="start-date-modal"
                                     data-modal-toggle="start-date-modal"
                                     class="px-5 py-2.5 text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Start</button>
                             </div>
                             <div>
-                                <button type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                                <button type="button" data-modal-target="delete-exam-{{ $exam->id }}"
+                                    data-modal-toggle="delete-exam-{{ $exam->id }}"
                                     class="text-white bg-white px-3 py-2.5 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white"
                                         viewBox="0 0 24 24">
@@ -94,7 +94,57 @@
                                         <path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
                                     </svg>
                                 </button>
-                                <a href="#" target="_blank"
+                                {{-- Delete Modal --}}
+                                <div id="delete-exam-{{ $exam->id }}" tabindex="-1"
+                                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative p-4 w-full max-w-md max-h-full">
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <button type="button"
+                                                class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                data-modal-hide="delete-exam-{{ $exam->id }}">
+                                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                            <div class="p-4 md:p-5 text-center">
+                                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 20 20">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                </svg>
+                                                <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Are you
+                                                    sure want to delete this EPT/TOEIC?</h3>
+                                                <div class="mt-1 mb-5">
+                                                    <p
+                                                        class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                                        It will also delete all data inside, such as questions, stories,
+                                                        directions, etc.
+                                                    </p>
+                                                </div>
+                                                <form action="/admin/dashboard/exam/{{ $exam->id }}" method="POST">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button data-modal-hide="delete-exam-{{ $exam->id }}"
+                                                        type="submit"
+                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                                        Yes, I'm sure
+                                                    </button>
+                                                    <button data-modal-hide="delete-exam-{{ $exam->id }}"
+                                                        type="button"
+                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
+                                                        cancel</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/admin/dashboard/exam/{{ $exam->id }}/edit"
                                     class="text-white bg-white px-3 py-2.5 text-sm hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
                                         viewBox="0 0 24 24">
@@ -108,7 +158,7 @@
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
 
             {{-- Push Notifications --}}
             <div class="fixed z-10 bottom-0 right-0 w-full max-w-xs">
@@ -261,47 +311,6 @@
                             </button>
                             <button data-modal-hide="start-time-modal" type="button"
                                 class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Delete Modal --}}
-            <div id="delete-modal" tabindex="-1"
-                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <button type="button"
-                            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="delete-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                        <div class="p-4 md:p-5 text-center">
-                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                            <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Are you
-                                sure want to delete this EPT/TOEIC?</h3>
-                            <div class="mt-1 mb-5">
-                                <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
-                                    It will also delete all data inside, such as questions, stories,
-                                    directions, etc.
-                                </p>
-                            </div>
-                            <button data-modal-hide="delete-modal" type="button"
-                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                Yes, I'm sure
-                            </button>
-                            <button data-modal-hide="delete-modal" type="button"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No,
-                                cancel</button>
                         </div>
                     </div>
                 </div>

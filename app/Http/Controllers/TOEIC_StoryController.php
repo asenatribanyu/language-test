@@ -47,7 +47,7 @@ class TOEIC_StoryController extends Controller
         
         $story = new TOEIC_Story();
 
-        $story->exam_code = session('exam_code');
+        $story->exam()->associate(session('exam_code'));
         $story->code = 'STR-' . Str::random(10);
         if($request->file('story')){
             $fileName = $request->file('story')->getClientOriginalName();

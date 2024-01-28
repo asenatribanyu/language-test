@@ -157,7 +157,18 @@ class ExamController extends Controller
      */
     public function destroy(Exam $exam)
     {
+        if($exam->category == 'ept'){
+            $exam->direction()->delete();
+            $exam->eptQuestion()->delete();
+            $exam->eptStory()->delete();
+        }
+        else{
+            $exam->toeicDirection()->delete();
+            $exam->toeicQuestion()->delete();
+            $exam->toeicStory()->delete();
+        }
         $exam->delete();
+
         return redirect()->back();
     }
 }

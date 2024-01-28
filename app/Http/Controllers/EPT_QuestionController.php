@@ -70,7 +70,7 @@ class EPT_QuestionController extends Controller
 
         switch ($request->questionCase) {
             case '1':
-                $question->exam_code = session('exam_code');
+                $question->exam()->associate(session('exam_code'));
                 $fileName = $request->file('question')->getClientOriginalName();
                 $fileName = time() . "_" . $fileName;
                 $request->file('question')->storeAs('public/question', $fileName);
@@ -84,7 +84,7 @@ class EPT_QuestionController extends Controller
             break;
 
             case '2':
-                $question->exam_code = session('exam_code');
+                $question->exam()->associate(session('exam_code'));
                 $question->story()->associate($validateData['story_code']);
                 $fileName = $request->file('question')->getClientOriginalName();
                 $fileName = time() . "_" . $fileName;
@@ -99,7 +99,7 @@ class EPT_QuestionController extends Controller
             break;
 
             case '3':
-                $question->exam_code = session('exam_code');
+                $question->exam()->associate(session('exam_code'));
                 $question->story()->associate($validateData['story_code']);
                 $fileName = $request->file('question')->getClientOriginalName();
                 $fileName = time() . "_" . $fileName;
@@ -114,7 +114,7 @@ class EPT_QuestionController extends Controller
             break;
 
             case '4':
-                $question->exam_code = session('exam_code');
+                $question->exam()->associate(session('exam_code'));
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
@@ -125,7 +125,7 @@ class EPT_QuestionController extends Controller
             break;
 
             case '5':
-                $question->exam_code = session('exam_code');
+                $question->exam()->associate(session('exam_code'));
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
@@ -136,7 +136,7 @@ class EPT_QuestionController extends Controller
             break;
 
             case '6':
-                $question->exam_code = session('exam_code');
+                $question->exam()->associate(session('exam_code'));
                 $question->story()->associate($validateData['story_code']);
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];

@@ -14,4 +14,8 @@ class TOEIC_Direction extends Model
     ];
 
     protected  $table='toeic_directions';
+
+    public function exam(){
+        return $this->belongsTo(Exam::class);
+    }
 }

@@ -128,7 +128,7 @@
                                                         system.
                                                     </p>
                                                 </div>
-                                                <form class=" flex justify-center"
+                                                <form class="flex justify-center"
                                                     action="/admin/dashboard/exam/{{ $exam->id }}" method="POST">
                                                     @method('delete')
                                                     @csrf
