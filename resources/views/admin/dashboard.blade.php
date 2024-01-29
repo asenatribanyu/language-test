@@ -30,11 +30,11 @@
                             </div>
                         </div>
                         <div class="flex gap-2 items-center">
-                            <input type="hidden" id="exam-id" value="{{ $exam->id }}">
+                            <input type="hidden" class="exam-id" value="{{ $exam->id }}">
                             <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Activate</span>
                             <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" value="" class="sr-only peer"
-                                    id="toggleSwitch-{{ $exam->id }}" {{ $exam->activated == 'yes' ? 'checked' : '' }}>
+                                <input type="checkbox" value="" class="sr-only peer toggle-switch" 
+                                    id="toggleSwitch" {{ $exam->activated == 'yes' ? 'checked' : '' }}>
                                 <div
                                     class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
                                 </div>
@@ -326,31 +326,33 @@
 @endsection
 @push('script')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const examCode = document.getElementById("exam-id").value;
-            const toggleSwitch = document.getElementById('toggleSwitch');
+     document.addEventListener('DOMContentLoaded', function() {
+    const toggleSwitches = document.querySelectorAll('.toggle-switch');
 
-            toggleSwitch.addEventListener('change', function() {
-                const isChecked = this.checked ? 1 : 0;
-                fetch('/post/exam/update-activated/' + examCode, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
-                                .getAttribute('content')
-                        },
-                        body: JSON.stringify({
-                            activated: isChecked
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data)
-                    })
-                    .catch(error => {
-                        console.log(error)
-                    });
+    toggleSwitches.forEach(function(toggleSwitch) {
+        toggleSwitch.addEventListener('change', function() {
+            const isChecked = this.checked ? 1 : 0;
+            const examId = this.closest('.flex').querySelector(".exam-id").value;
+
+            fetch('/post/exam/update-activated/' + examId, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({
+                    activated: isChecked
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
             });
         });
+    });
+});
     </script>
 @endpush
