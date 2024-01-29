@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\EPT_DirectionController;
 use App\Models\Exam;
 use App\Models\User;
@@ -9,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EPT_QuestionController;
 use App\Http\Controllers\EPT_StoryController;
+use App\Http\Controllers\Exam_OpenController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
@@ -69,15 +71,33 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ]);
     });
 
-    Route::get('/dashboard/waiting-area-jadwal', function () {
-        return view('pages/waitingAreaJadwal', [
+    Route::get('/dashboard/ept/waiting-area/jadwal', function () {
+        return view('pages/waitingArea/examJadwal', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'exams' => Exam::where('category', 'ept')->where('activated', 'yes')->first(),
+            'warningCard' => true,
+        ]);
+    });
+
+    Route::get('/dashboard/toeic/waiting-area/jadwal', function () {
+        return view('pages/waitingArea/examJadwal', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'exams' => Exam::where('category', 'toeic')->where('activated', 'yes')->first(),
+            'warningCard' => true,
+        ]);
+    });
+
+    Route::resource('/dashboard/waiting-area/jadwal', EnrollController::class);
+
+    Route::get('/dashboard/ept/waiting-area/enroll', function () {
+        return view('pages/waitingArea/enroll/enrollEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'warningCard' => true,
         ]);
     });
 
-    Route::get('/dashboard/waiting-area-enroll', function () {
-        return view('pages/waitingAreaEnroll', [
+    Route::get('/dashboard/toeic/waiting-area/enroll', function () {
+        return view('pages/waitingArea/enroll/enrollTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'warningCard' => true,
         ]);
@@ -158,11 +178,8 @@ Route::post('/post/toeic/story',[TOEIC_StoryController::class,'upload'])->name('
 
 Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
 
-Route::get('admin/dashboard/exam-control', function () {
-    return view('admin/examControl', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
+// Exam Control
+Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 
 // Exam Starting
 Route::get('exam/starting-test', function () {

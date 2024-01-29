@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex gap-3">
         <div
-            class="mt-5 p-5 w-2/6 h-[595px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="mt-5 p-5 w-2/6 max-h-[580px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="border-b-2 border-gray-200">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Examination Control</h1>
             </div>
@@ -27,8 +27,7 @@
             </div>
             <div class="mt-5 pb-5 border-b-2 border-gray-200">
                 <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number
-                    of
-                    Question</label>
+                    of Question</label>
                 <input type="text" id="base-input" disabled value="140"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>

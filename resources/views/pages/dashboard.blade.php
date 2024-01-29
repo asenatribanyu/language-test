@@ -36,14 +36,13 @@
                                 antara 217 – 677.</li>
                         </section>
                         <p class="mt-2 text-gray-500 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
-                            mengakses
-                            pengetesan EPT secara daring.</p>
+                            mengakses pengetesan EPT secara daring.</p>
                         <div class="mt-2">
                             <a href="/dashboard/test-guide"
                                 class="mr-2 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Guide</a>
-                            <button type="button"
+                            <a href="/dashboard/ept/waiting-area/jadwal"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Start
-                                EPT</button>
+                                EPT</a>
                             <button type="button"
                                 class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy
                                 EPT</button>
@@ -90,9 +89,9 @@
                         <div class="mt-2">
                             <a href="/dashboard/test-guide"
                                 class="mr-2 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Guide</a>
-                            <button type="button"
+                            <a href="/dashboard/toeic/waiting-area/jadwal"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Start
-                                TOEIC</button>
+                                TOEIC</a>
                             <button type="button"
                                 class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy
                                 TOEIC</button>
