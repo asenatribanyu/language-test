@@ -67,13 +67,13 @@
                             <label for="base-input"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Test Schedules</label>
                             <input type="text" id="base-input" disabled
-                                value="{{ 'First Date: ' . $exam->first_date . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
+                                value="{{ 'First Date: ' . \Carbon\Carbon::parse($exam->first_date)->translatedFormat('j F Y') . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <input type="text" id="base-input" disabled
-                                value="{{ 'Second Date: ' . $exam->second_date . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
+                                value="{{ 'Second Date: ' . \Carbon\Carbon::parse($exam->second_date)->translatedFormat('j F Y') . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
                                 class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <input type="text" id="base-input" disabled
-                                value="{{ 'Third Date: ' . $exam->third_date . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
+                                value="{{ 'Third Date: ' . \Carbon\Carbon::parse($exam->third_date)->translatedFormat('j F Y') . ' (' . $exam->first_time . ', ' . $exam->second_time . ', ' . $exam->third_time . ')' }}"
                                 class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                         <div class="mt-5 flex justify-between gap-2">
@@ -160,6 +160,111 @@
                         </div>
                     </div>
                 </div>
+                {{-- Start Modal Select the Test Date --}}
+                <div id="start-date-modal" tabindex="-1"
+                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button"
+                                class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-hide="start-date-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Select the
+                                    Test Date</h3>
+                                <div class="mb-5">
+                                    <div class="mt-1">
+                                        <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                            Please select one of the test dates first.
+                                        </p>
+                                    </div>
+                                    <div class="mt-2">
+                                        <select id="test-date" required name="open-date"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option disabled selected>Select the Date</option>
+                                            <option>
+                                                {{ \Carbon\Carbon::parse($exam->first_date)->translatedFormat('j F Y') }}
+                                            </option>
+                                            <option>
+                                                {{ \Carbon\Carbon::parse($exam->second_date)->translatedFormat('j F Y') }}
+                                            </option>
+                                            <option>
+                                                {{ \Carbon\Carbon::parse($exam->third_date)->translatedFormat('j F Y') }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button data-modal-hide="start-date-modal" type="button"
+                                    data-modal-target="start-time-modal" data-modal-toggle="start-time-modal"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                    Next
+                                </button>
+                                <button data-modal-hide="start-date-modal" type="button"
+                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- Start Modal Select the Test Time --}}
+                <div id="start-time-modal" tabindex="-1"
+                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <button type="button"
+                                class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                data-modal-hide="start-time-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Select the
+                                    Test Time</h3>
+                                <div class="mb-5">
+                                    <div class="mt-1">
+                                        <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                            Please select one of the test times first.
+                                        </p>
+                                    </div>
+                                    <div class="mt-2">
+                                        <select id="test-time" required name="open-time"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option disabled selected>Select the Time</option>
+                                            <option>{{ $exam->first_time }} WIB</option>
+                                            <option>{{ $exam->second_time }} WIB</option>
+                                            <option>{{ $exam->third_time }} WIB</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button data-modal-hide="start-time-modal" type="button"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                    Start
+                                </button>
+                                <button data-modal-hide="start-time-modal" type="button"
+                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
 
             {{-- Push Notifications --}}
@@ -214,107 +319,6 @@
                                 d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                         </svg>
                     </button>
-                </div>
-            </div>
-
-            {{-- Start Modal Select the Test Date --}}
-            <div id="start-date-modal" tabindex="-1"
-                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <button type="button"
-                            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="start-date-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                        <div class="p-4 md:p-5 text-center">
-                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                            <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Select the
-                                Test Date</h3>
-                            <div class="mb-5">
-                                <div class="mt-1">
-                                    <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
-                                        Please select one of the test dates first.
-                                    </p>
-                                </div>
-                                <div class="mt-2">
-                                    <select id="test-date" required
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option disabled selected>Select the Date</option>
-                                        <option>20 November 2023</option>
-                                        <option>22 November 2023</option>
-                                        <option>24 November 2023</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button data-modal-hide="start-date-modal" type="button"
-                                data-modal-target="start-time-modal" data-modal-toggle="start-time-modal"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                Next
-                            </button>
-                            <button data-modal-hide="start-date-modal" type="button"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Start Modal Select the Test Time --}}
-            <div id="start-time-modal" tabindex="-1"
-                class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <button type="button"
-                            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-hide="start-time-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                        <div class="p-4 md:p-5 text-center">
-                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                            <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Select the
-                                Test Time</h3>
-                            <div class="mb-5">
-                                <div class="mt-1">
-                                    <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
-                                        Please select one of the test times first.
-                                    </p>
-                                </div>
-                                <div class="mt-2">
-                                    <select id="test-time" required
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option disabled selected>Select the Time</option>
-                                        <option>10:00 WIB</option>
-                                        <option>13:00 WIB</option>
-                                        <option>15:00 WIB</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <button data-modal-hide="start-time-modal" type="button"
-                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                Start
-                            </button>
-                            <button data-modal-hide="start-time-modal" type="button"
-                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancel</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
