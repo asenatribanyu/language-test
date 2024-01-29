@@ -156,6 +156,8 @@ Route::get('/fetch/toeic/story/{section}', [TOEIC_QuestionController::class, 'ge
 
 Route::post('/post/toeic/story',[TOEIC_StoryController::class,'upload'])->name('ckeditor.upload');
 
+Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
+
 Route::get('admin/dashboard/exam-control', function () {
     return view('admin/examControl', [
         'profile' => User::where('id', auth()->user()->id)->first(),

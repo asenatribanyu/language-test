@@ -52,6 +52,15 @@ class ExamController extends Controller
         return redirect()->route('exam.edit', ['exam' => $examId]);
     }
 
+    public function updateActivated(Request $request, Exam $exam)
+    {
+        $activatedValue = $request->input('activated') ? 'yes' : 'no';
+
+        $exam->update(['activated' => $activatedValue]);
+
+        return response()->json(['message' => 'Activated column updated successfully']);
+    }
+
     /**
      * Display the specified resource.
      */
