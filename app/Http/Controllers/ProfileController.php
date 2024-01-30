@@ -13,30 +13,11 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct()
-    {
-        $this->middleware(['auth', 'verified']);
-    }
-
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
-    {
-        $user = User::where('id', auth()->user()->id)->first();
-        if($user->picture){
-            return redirect('/dashboard');
-        }
-        else{
-            return view('pages/updateProfile', [
-                'profile' => User::where('id', auth()->user()->id)->first(),
-            ]);
-        }
-    }
-
     public function index()
     {
-        //
+        return view('pages/updateProfile', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+        ]);
     }
 
     /**

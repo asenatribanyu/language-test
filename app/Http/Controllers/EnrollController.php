@@ -36,8 +36,8 @@ class EnrollController extends Controller
         ]);
 
         $enroll = new Enroll();
-        
-        $validateData['user_id'] = auth()->user()->id;
+
+        $enroll->user()->associate(auth()->user()->id);
         $validateData['expired'] = 'no';
         $enroll->fill($validateData);
         $enroll->save();

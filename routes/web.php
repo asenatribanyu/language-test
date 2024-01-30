@@ -27,6 +27,8 @@ use App\Http\Controllers\TOEIC_StoryController;
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('/dashboard/update-profile', ProfileController::class)->middleware('block.update.profile');
+
     Route::get('/dashboard', function () {
         return view('pages.dashboard', [
             'profile' => User::where('id', auth()->user()->id)->first(),
@@ -77,15 +79,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'exams' => Exam::where('category', 'ept')->where('activated', 'yes')->first(),
             'warningCard' => true,
         ]);
-    });
-
+    })->middleware('set.schedule:ept');
+    
     Route::get('/dashboard/toeic/waiting-area/jadwal', function () {
         return view('pages/waitingArea/examJadwal', [
-            'profile' => User::where('id', auth()->user()->id)->first(),
+           'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'toeic')->where('activated', 'yes')->first(),
             'warningCard' => true,
         ]);
-    });
+    })->middleware('set.schedule:toeic');
 
     Route::resource('/dashboard/waiting-area/jadwal', EnrollController::class);
 
@@ -103,8 +105,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ]);
     });
 });
-
-Route::get('/dashboard/update-profile', [ProfileController::class, '__invoke']);
 
 // Admin Dashboard
 Route::get('admin/dashboard', function () {

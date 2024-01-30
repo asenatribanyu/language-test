@@ -24,13 +24,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\User::factory(1)->create([
-            'name' => 'Akun Admin',
-            'email' => 'admin@gmail.com',
-            'email_verified_at' => '2023-12-07 06:33:55',
-            'password' => bcrypt('admin'),
-            'role' => 'admin',
-        ]);
+        // \App\Models\User::factory(1)->create([
+        //     'name' => 'Akun Admin',
+        //     'email' => 'admin@gmail.com',
+        //     'email_verified_at' => '2023-12-07 06:33:55',
+        //     'password' => bcrypt('admin'),
+        //     'role' => 'admin',
+        // ]);
 
         \App\Models\User::factory(1)->create([
             'name' => 'Akun User',
