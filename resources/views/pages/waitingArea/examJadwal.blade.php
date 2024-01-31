@@ -10,6 +10,7 @@
                     <h1 class="pb-2 text-2xl font-semibold dark:text-white">Select Schedule of the Test</h1>
                 </div>
                 <input type="hidden" value="{{ $exams->category }}" name="for">
+                <input type="hidden" value="{{ $exams->code }}" name="exam_code">
                 <div class="mt-5">
                     <select id="date" name="date"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

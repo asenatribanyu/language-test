@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('toeic_opens', function (Blueprint $table) {
             $table->id();
-            $table->string('start');
-            $table->string('end');
+            $table->string('exam_code');
+            $table->string('start')->nullable();
+            $table->string('end')->nullable();
             $table->enum('date', [
                 '0', '1', '2'
             ]);
@@ -23,7 +24,7 @@ return new class extends Migration
             ]);
             $table->enum('status', [
                 'run', 'end'
-            ]);
+            ])->nullable();
             $table->timestamps();
         });
     }

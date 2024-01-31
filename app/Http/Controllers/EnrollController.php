@@ -29,6 +29,7 @@ class EnrollController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
+            'exam_code' => 'string',
             'for' => 'string',
             'date' => 'string',
             'time' => 'string',
@@ -38,6 +39,7 @@ class EnrollController extends Controller
         $enroll = new Enroll();
 
         $enroll->user()->associate(auth()->user()->id);
+        $enroll->exam()->associate($validateData['exam_code']);
         $validateData['expired'] = 'no';
         $enroll->fill($validateData);
         $enroll->save();
@@ -64,9 +66,18 @@ class EnrollController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Enroll $enroll)
+    public function update(Request $request, $id)
     {
-        //
+        $enroll = Enroll::where('id', $id)->first();
+        
+        $validateData = $request->validate([
+            'status' => 'string',
+            'expired' => 'string'
+        ]);
+
+        $enroll->update($validateData);
+
+        return redirect()->back();
     }
 
     /**

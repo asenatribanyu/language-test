@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('enrolls', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
+            $table->string('exam_code');
             $table->enum('for', [
                 'ept', 'toeic'
             ]);

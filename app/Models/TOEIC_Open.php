@@ -9,5 +9,13 @@ class TOEIC_Open extends Model
 {
     use HasFactory;
 
+    protected $guarded=[
+        'id'
+    ];
+
     protected  $table='toeic_opens';
+
+    public function exam(){
+        return $this->belongsTo(Exam::class, 'exam_code', 'code');
+    }
 }

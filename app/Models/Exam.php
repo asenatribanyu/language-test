@@ -36,4 +36,16 @@ class Exam extends Model
     public function toeicStory(){
         return $this->hasMany(TOEIC_Story::class, 'exam_code', 'code');
     }
+
+    public function eptOpens(){
+        return $this->hasMany(EPT_Open::class, 'exam_code', 'code');
+    }
+
+    public function toeicOpens(){
+        return $this->hasMany(TOEIC_Open::class, 'exam_code', 'code');
+    }
+
+    public function enroll(){
+        return $this->hasMany(Enroll::class, 'exam_code', 'code');
+    }
 }
