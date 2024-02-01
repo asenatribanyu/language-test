@@ -18,4 +18,8 @@ class TOEIC_Story extends Model
     public function question(){
         return $this->hasMany(TOEIC_Question::class, 'story_code', 'code');
     }
+
+    public function exam(){
+        return $this->belongsTo(Exam::class, 'exam_code', 'code');
+    }
 }

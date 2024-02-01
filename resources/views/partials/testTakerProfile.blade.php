@@ -19,13 +19,13 @@
                         class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $profile->profile->program_study }}</span>
                 </div>
                 <div class="w-ful">
-                    <div class="flex gap-2 font-semibold">
+                    <div class="flex gap-2 text-gray-900 dark:text-white font-semibold">
                         Name:
                         <div class="font-normal border-b border-gray-200">
                             {{ $profile->name }}
                         </div>
                     </div>
-                    <div class="flex gap-2 font-semibold">
+                    <div class="flex gap-2 text-gray-900 dark:text-white font-semibold">
                         NPM:
                         <div class="font-normal border-b border-gray-200">
                             {{ $profile->profile->npm }}

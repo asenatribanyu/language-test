@@ -1,6 +1,6 @@
 {{-- Structure --}}
 <div class="mt-3">
-    <h2 class="text-xl font-medium dark:text-white" id="structure">Structure Expression Direction:</h2>
+    <h2 class="text-xl font-medium text-gray-900 dark:text-white" id="structure">Structure Expression Direction:</h2>
     @if ($directions_structure)
         <div class="mt-2 p-2 border-2 rounded-lg relative">
             @if ($directions_structure->audio)
@@ -15,8 +15,9 @@
                 <button type="button" data-modal-target="delete-direction-{{ $directions_structure->id }}"
                     data-modal-toggle="delete-direction-{{ $directions_structure->id }}"
                     data-bs-target="#delete-direction-{{ $directions_structure->id }}"
-                    class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white" viewBox="0 0 24 24">
+                    class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 dark:fill-white text-white"
+                        viewBox="0 0 24 24">
                         <path
                             d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                         </path>
@@ -25,8 +26,8 @@
                 </button>
                 <a href="/admin/dashboard/exam/ept/direction/{{ $directions_structure->id }}/edit"
                     onclick="updateLocalStorage('structure')"
-                    class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
+                    class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:border-gray-700 dark:focus:ring-gray-700 dark:text-white dark:hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white"
                         viewBox="0 0 24 24">
                         <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                         </path>
@@ -87,14 +88,14 @@
             </div>
         </div>
     @else
-        <div class="mt-2 p-2 border-2 rounded-lg">
+        <div class="text-gray-900 dark:text-white mt-2 p-2 border-2 rounded-lg">
             No direction of this structure expression has been created.
         </div>
     @endif
 </div>
 <div class="mt-3">
     <div class="flex items-center">
-        <h2 class="text-xl font-medium dark:text-white">Question of Structure Expression:</h2>
+        <h2 class="text-xl font-medium text-gray-900 dark:text-white">Question of Structure Expression:</h2>
         <span
             class="inline-flex items-center justify-center w-6 h-6 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
             {{ $questions_structure->count() }}
@@ -105,7 +106,7 @@
             <div class="mt-2 p-2 border-2 rounded-lg relative">
                 <div class="flex gap-5">
                     <div
-                        class="w-10 h-10 flex items-center justify-center border-2 border-gray-400 rounded-full font-medium text-base">
+                        class="text-gray-900 dark:text-white w-10 h-10 flex items-center justify-center border-2 border-gray-400 rounded-full font-medium text-base">
                         <div>{{ $loop->iteration }}.</div>
                     </div>
                     <div>
@@ -156,9 +157,9 @@
                         <button type="button" data-modal-target="delete-question-{{ $question->id }}"
                             data-modal-toggle="delete-question-{{ $question->id }}"
                             data-bs-target="#delete-question-{{ $question->id }}"
-                            class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white"
-                                viewBox="0 0 24 24">
+                            class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 fill-red-700 dark:fill-white text-white" viewBox="0 0 24 24">
                                 <path
                                     d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                                 </path>
@@ -167,9 +168,9 @@
                         </button>
                         <a href="/admin/dashboard/exam/ept/question/{{ $question->id }}/edit"
                             onclick="updateLocalStorage('structure')"
-                            class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
-                                viewBox="0 0 24 24">
+                            class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:border-gray-700 dark:focus:ring-gray-700 dark:text-white dark:hover:bg-gray-200">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white" viewBox="0 0 24 24">
                                 <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                                 </path>
                                 <path
@@ -234,7 +235,7 @@
             </div>
         @endforeach
     @else
-        <div class="mt-2 p-2 border-2 rounded-lg">
+        <div class="text-gray-900 dark:text-white mt-2 p-2 border-2 rounded-lg">
             No question of structure expression has been created.
         </div>
     @endif

@@ -2,7 +2,7 @@
 @section('content')
     <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-between items-center border-b-2 border-gray-200">
-            <h1 class="pb-1 text-2xl font-semibold dark:text-white">Manage TOEIC Exam Question</h1>
+            <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">Manage TOEIC Exam Question</h1>
             <button type="button" data-modal-target="add-modal" data-modal-toggle="add-modal"
                 class="px-3 py-1 -mt-1 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
         </div>
@@ -73,9 +73,9 @@
                                     <button type="button" data-modal-target="delete-exam-{{ $exam->id }}"
                                         data-modal-toggle="delete-exam-{{ $exam->id }}"
                                         data-bs-target="#delete-exam-{{ $exam->id }}"
-                                        class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white"
-                                            viewBox="0 0 24 24">
+                                        class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-5 h-5 fill-red-700 dark:fill-white text-white" viewBox="0 0 24 24">
                                             <path
                                                 d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                                             </path>
@@ -83,9 +83,9 @@
                                         </svg>
                                     </button>
                                     <a href="/admin/dashboard/exam/{{ $exam->id }}/edit"
-                                        class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
-                                            viewBox="0 0 24 24">
+                                        class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:border-gray-700 dark:text-white dark:hover:bg-gray-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white" viewBox="0 0 24 24">
                                             <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                                             </path>
                                             <path

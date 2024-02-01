@@ -4,7 +4,7 @@
         <div class="w-1/3">
             <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="flex justify-between items-center border-b-2 border-gray-200">
-                    <h1 class="pb-1 text-xl font-medium dark:text-white">{{ $exam->title }}</h1>
+                    <h1 class="pb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $exam->title }}</h1>
                     <button type="button" data-modal-target="subname-modal" data-modal-toggle="subname-modal"
                         class="px-3 py-1 -mt-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change</button>
                 </div>
@@ -72,7 +72,7 @@
                             class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Publish</button>
                     @else
                         <button type="button" data-modal-target="publish-modal" data-modal-toggle="publish-modal"
-                            class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg text-center dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Unpublish</button>
+                            class="px-5 py-2.5 mt-1 w-full text-sm font-medium text-white border bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-lg text-center dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-600 dark:border-gray-600">Unpublish</button>
                     @endif
                 </div>
             </div>
@@ -98,7 +98,8 @@
             {{-- First Section --}}
             <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="border-b-2 border-gray-200">
-                    <h1 class="pb-1 text-xl font-semibold dark:text-white">First Section - Listening Comperhension</h1>
+                    <h1 class="pb-1 text-xl font-semibold text-gray-900 dark:text-white">First Section - Listening
+                        Comperhension</h1>
                 </div>
                 @include('admin.exam.ept.firstSection.partA')
                 @include('admin.exam.ept.firstSection.partB')
@@ -108,7 +109,8 @@
             {{-- Second Section --}}
             <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="border-b-2 border-gray-200">
-                    <h1 class="pb-1 text-xl font-semibold dark:text-white">Second Section - Structure and Written
+                    <h1 class="pb-1 text-xl font-semibold text-gray-900 dark:text-white">Second Section - Structure and
+                        Written
                         Expression</h1>
                 </div>
                 @include('admin.exam.ept.secondSection.structure')
@@ -118,7 +120,8 @@
             {{-- Third Section --}}
             <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="border-b-2 border-gray-200">
-                    <h1 class="pb-1 text-xl font-semibold dark:text-white">Third Section - Reading Comprehension</h1>
+                    <h1 class="pb-1 text-xl font-semibold text-gray-900 dark:text-white">Third Section - Reading
+                        Comprehension</h1>
                 </div>
                 @include('admin.exam.ept.thirdSection.reading')
             </div>

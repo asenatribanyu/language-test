@@ -4,7 +4,7 @@
         @foreach ($exams as $exam)
             <div
                 class="mt-5 p-5 w-5/12 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h1 class="pb-1 text-2xl font-semibold border-b-2 border-gray-200 dark:text-white">STARTING
+                <h1 class="pb-1 text-2xl font-semibold border-b-2 border-gray-200 text-gray-900 dark:text-white">STARTING
                     {{ $exam->category == 'ept' ? 'EPT' : 'TOEIC' }}
                 </h1>
                 <div class="mt-5 flex justify-between">
@@ -87,9 +87,9 @@
                         <div>
                             <button type="button" data-modal-target="delete-exam-{{ $exam->id }}"
                                 data-modal-toggle="delete-exam-{{ $exam->id }}"
-                                class="text-white bg-white px-3 py-2.5 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 text-white"
-                                    viewBox="0 0 24 24">
+                                class="text-white bg-white px-3 py-2.5 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-5 h-5 fill-red-700 dark:fill-white text-white" viewBox="0 0 24 24">
                                     <path
                                         d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                                     </path>
@@ -143,9 +143,9 @@
                                 </div>
                             </div>
                             <a href="/admin/dashboard/exam/{{ $exam->id }}/edit"
-                                class="text-white bg-white px-3 py-2.5 text-sm hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 text-white"
-                                    viewBox="0 0 24 24">
+                                class="text-white bg-white px-3 py-2.5 text-sm hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:focus:ring-gray-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-200">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white" viewBox="0 0 24 24">
                                     <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path>
                                     <path
                                         d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z">
@@ -235,7 +235,7 @@
                 class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
                 role="alert">
                 <div
-                    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-600 dark:text-green-200">
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 20 20">
                         <path
