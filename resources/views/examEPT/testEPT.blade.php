@@ -1,6 +1,6 @@
 @extends('layouts.exam')
 @section('content')
-    <div class="w-full flex gap-5 max-md:block">
+    <div class="flex w-full gap-5 max-md:block">
         @include('partials.testTakerProfile')
         <div class="w-3/5">
             @include('examEPT.partials.sectionOne.listeningCompPartA')

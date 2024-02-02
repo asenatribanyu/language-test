@@ -1,6 +1,6 @@
 @extends('layouts.userDashboard')
 @section('content')
-    <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="border-b-2 border-gray-200">
             <h1 class="pb-2 text-2xl font-semibold dark:text-white">Test List</h1>
         </div>
@@ -28,7 +28,7 @@
                             memiliki dua jenis tes, yaitu PBT (paper-based test) dan iBT (internet-based test). Untuk
                             rincian sesi test adalah sebagai berikut:
                         </p>
-                        <section class="pl-9 mt-2 text-gray-500 dark:text-gray-400">
+                        <section class="mt-2 text-gray-500 pl-9 dark:text-gray-400">
                             <li>Listening section : 50 pertanyaan</li>
                             <li>Writing section : 40 pertanyaan</li>
                             <li>Reading section : 50 pertanyaan</li>
@@ -74,7 +74,7 @@
                             dua sesi. Sesi pertama, listening (mendengarkan) terdiri dari 100 soal pilihan ganda. Sesi
                             kedua, reading (membaca) terdiri dari 100 soal pilihan ganda. Untuk rincian sesi test adalah
                             sebagai berikut:</p>
-                        <section class="pl-9 mt-2 text-gray-500 dark:text-gray-400 ">
+                        <section class="mt-2 text-gray-500 pl-9 dark:text-gray-400 ">
                             <li>Photograph:20 pertanyaan</li>
                             <li>Question Responce: 30 pertanyaan</li>
                             <li>Conversation: 30 pertanyaan</li>
@@ -84,7 +84,7 @@
                             <li>Reading: 40 pertanyaan</li>
                             <li>Skor atau nilai untuk ujian TOEIC online berkisar antara 10 – 995.</li>
                         </section>
-                        <p class="mt-2 text-gray-500 pl-6 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
+                        <p class="pl-6 mt-2 text-gray-500 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
                             mengakses pengetesan EPT secara daring.</p>
                         <div class="mt-2">
                             <a href="/dashboard/test-guide"

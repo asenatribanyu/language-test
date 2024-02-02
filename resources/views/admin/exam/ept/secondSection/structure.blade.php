@@ -2,7 +2,7 @@
 <div class="mt-3">
     <h2 class="text-xl font-medium text-gray-900 dark:text-white" id="structure">Structure Expression Direction:</h2>
     @if ($directions_structure)
-        <div class="mt-2 p-2 border-2 rounded-lg relative">
+        <div class="relative p-2 mt-2 border-2 rounded-lg">
             @if ($directions_structure->audio)
                 <audio class="mt-2 mb-2" controls>
                     <source src="{{ asset('storage/' . $directions_structure->audio) }}">
@@ -15,8 +15,8 @@
                 <button type="button" data-modal-target="delete-direction-{{ $directions_structure->id }}"
                     data-modal-toggle="delete-direction-{{ $directions_structure->id }}"
                     data-bs-target="#delete-direction-{{ $directions_structure->id }}"
-                    class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-red-700 dark:fill-white text-white"
+                    class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white bg-white border border-red-200 rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white fill-red-700 dark:fill-white"
                         viewBox="0 0 24 24">
                         <path
                             d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
@@ -26,8 +26,8 @@
                 </button>
                 <a href="/admin/dashboard/exam/ept/direction/{{ $directions_structure->id }}/edit"
                     onclick="updateLocalStorage('structure')"
-                    class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:border-gray-700 dark:focus:ring-gray-700 dark:text-white dark:hover:bg-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white"
+                    class="inline-flex items-center px-2 py-2 text-xs font-medium text-center text-white bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-white dark:border-gray-700 dark:focus:ring-gray-700 dark:text-white dark:hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white fill-blue-700 dark:fill-blue-600"
                         viewBox="0 0 24 24">
                         <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                         </path>
@@ -39,7 +39,7 @@
                 {{-- Delete Modal --}}
                 <div id="delete-direction-{{ $directions_structure->id }}" tabindex="-1"
                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                    <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative w-full max-w-md max-h-full p-4">
                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             <button type="button"
                                 class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -51,8 +51,8 @@
                                 </svg>
                                 <span class="sr-only">Close modal</span>
                             </button>
-                            <div class="p-4 md:p-5 text-center">
-                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                            <div class="p-4 text-center md:p-5">
+                                <svg class="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -61,12 +61,12 @@
                                     Are you
                                     sure want to delete this Direction?</h3>
                                 <div class="mt-1 mb-5">
-                                    <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                    <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
                                         This action is irreversible and will lead to the removal of
                                         Direction forever from the system.
                                     </p>
                                 </div>
-                                <form class=" flex justify-center"
+                                <form class="flex justify-center "
                                     action="/admin/dashboard/exam/ept/question/{{ $directions_structure->id }}"
                                     method="POST">
                                     @method('delete')
@@ -88,7 +88,7 @@
             </div>
         </div>
     @else
-        <div class="text-gray-900 dark:text-white mt-2 p-2 border-2 rounded-lg">
+        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
             No direction of this structure expression has been created.
         </div>
     @endif
@@ -97,16 +97,16 @@
     <div class="flex items-center">
         <h2 class="text-xl font-medium text-gray-900 dark:text-white">Question of Structure Expression:</h2>
         <span
-            class="inline-flex items-center justify-center w-6 h-6 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+            class="inline-flex items-center justify-center w-6 h-6 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full ms-2">
             {{ $questions_structure->count() }}
         </span>
     </div>
     @if ($questions_structure)
         @foreach ($questions_structure as $question)
-            <div class="mt-2 p-2 border-2 rounded-lg relative">
+            <div class="relative p-2 mt-2 border-2 rounded-lg">
                 <div class="flex gap-5">
                     <div
-                        class="text-gray-900 dark:text-white w-10 h-10 flex items-center justify-center border-2 border-gray-400 rounded-full font-medium text-base">
+                        class="flex items-center justify-center w-10 h-10 text-base font-medium text-gray-900 border-2 border-gray-400 rounded-full dark:text-white">
                         <div>{{ $loop->iteration }}.</div>
                     </div>
                     <div>
@@ -128,28 +128,28 @@
                                     {{ $question->correct_answer == 'a' ? 'checked' : '' }}
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="radio-a"
-                                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $question->answer_a }}</label>
+                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_a }}</label>
                             </div>
                             <div class="flex items-center mb-4">
                                 <input id="radio-b" type="radio" disabled
                                     {{ $question->correct_answer == 'b' ? 'checked' : '' }}
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="radio-b"
-                                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $question->answer_b }}</label>
+                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_b }}</label>
                             </div>
                             <div class="flex items-center mb-4">
                                 <input id="radio-c" type="radio" disabled
                                     {{ $question->correct_answer == 'c' ? 'checked' : '' }}
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="radio-c"
-                                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $question->answer_c }}</label>
+                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_c }}</label>
                             </div>
                             <div class="flex items-center">
                                 <input id="radio-d" type="radio" disabled
                                     {{ $question->correct_answer == 'd' ? 'checked' : '' }}
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="radio-d"
-                                    class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $question->answer_d }}</label>
+                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_d }}</label>
                             </div>
                         </div>
                     </div>
@@ -157,9 +157,9 @@
                         <button type="button" data-modal-target="delete-question-{{ $question->id }}"
                             data-modal-toggle="delete-question-{{ $question->id }}"
                             data-bs-target="#delete-question-{{ $question->id }}"
-                            class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                            class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white bg-white border border-red-200 rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-5 h-5 fill-red-700 dark:fill-white text-white" viewBox="0 0 24 24">
+                                class="w-5 h-5 text-white fill-red-700 dark:fill-white" viewBox="0 0 24 24">
                                 <path
                                     d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                                 </path>
@@ -168,9 +168,9 @@
                         </button>
                         <a href="/admin/dashboard/exam/ept/question/{{ $question->id }}/edit"
                             onclick="updateLocalStorage('structure')"
-                            class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:border-gray-700 dark:focus:ring-gray-700 dark:text-white dark:hover:bg-gray-200">
+                            class="inline-flex items-center px-2 py-2 text-xs font-medium text-center text-white bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-white dark:border-gray-700 dark:focus:ring-gray-700 dark:text-white dark:hover:bg-gray-200">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white" viewBox="0 0 24 24">
+                                class="w-5 h-5 text-white fill-blue-700 dark:fill-blue-600" viewBox="0 0 24 24">
                                 <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                                 </path>
                                 <path
@@ -181,7 +181,7 @@
                         {{-- Delete Modal --}}
                         <div id="delete-question-{{ $question->id }}" tabindex="-1"
                             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                            <div class="relative p-4 w-full max-w-md max-h-full">
+                            <div class="relative w-full max-w-md max-h-full p-4">
                                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                     <button type="button"
                                         class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -194,8 +194,8 @@
                                         </svg>
                                         <span class="sr-only">Close modal</span>
                                     </button>
-                                    <div class="p-4 md:p-5 text-center">
-                                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                    <div class="p-4 text-center md:p-5">
+                                        <svg class="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200"
                                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                             viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round"
@@ -206,12 +206,12 @@
                                             Are you
                                             sure want to delete this Question?</h3>
                                         <div class="mt-1 mb-5">
-                                            <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                            <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
                                                 This action is irreversible and will lead to the removal of
                                                 Question forever from the system.
                                             </p>
                                         </div>
-                                        <form class=" flex justify-center"
+                                        <form class="flex justify-center "
                                             action="admin/dashboard/exam/ept/question/{{ $question->id }}"
                                             method="POST">
                                             @method('delete')
@@ -235,7 +235,7 @@
             </div>
         @endforeach
     @else
-        <div class="text-gray-900 dark:text-white mt-2 p-2 border-2 rounded-lg">
+        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
             No question of structure expression has been created.
         </div>
     @endif

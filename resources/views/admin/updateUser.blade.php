@@ -4,13 +4,13 @@
         @method('put')
         @csrf
         <div
-            class="mt-5 p-5 max-w-screen-sm mx-auto bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="max-w-screen-sm p-5 mx-auto mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="border-b-2 border-gray-200">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Update User</h1>
             </div>
             <div class="mt-5">
-                <div class="mb-5 flex justify-center">
-                    <img class="w-52 h-52 object-cover rounded-full bg-gray-50" src="{{ asset('storage/' . $user->picture) }}"
+                <div class="flex justify-center mb-5">
+                    <img class="object-cover rounded-full w-52 h-52 bg-gray-50" src="{{ asset('storage/' . $user->picture) }}"
                         alt="profile-picture">
                 </div>
                 <div class="flex justify-center">
@@ -80,7 +80,7 @@
                                 class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
                             <div id="save-changes" tabindex="-1"
                                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                <div class="relative w-full max-w-md max-h-full p-4">
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                         <button type="button"
                                             class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -92,8 +92,8 @@
                                             </svg>
                                             <span class="sr-only">Close modal</span>
                                         </button>
-                                        <div class="p-4 md:p-5 text-center">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                        <div class="p-4 text-center md:p-5">
+                                            <svg class="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 20 20">
                                                 <path stroke="currentColor" stroke-linecap="round"

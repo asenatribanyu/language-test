@@ -1,7 +1,7 @@
 @extends('layouts.adminDashboard')
 @section('content')
-    <div class="mt-5 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex justify-between items-center border-b-2 border-gray-200">
+    <div class="p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex items-center justify-between border-b-2 border-gray-200">
             <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">Manage TOEIC Exam Question</h1>
             <button type="button" data-modal-target="add-modal" data-modal-toggle="add-modal"
                 class="px-3 py-1 -mt-1 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
@@ -9,7 +9,7 @@
 
         {{-- Table --}}
         <section class="mt-5">
-            <table id="myTable" class="display w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table id="myTable" class="w-full text-sm text-left text-gray-500 display dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -73,9 +73,9 @@
                                     <button type="button" data-modal-target="delete-exam-{{ $exam->id }}"
                                         data-modal-toggle="delete-exam-{{ $exam->id }}"
                                         data-bs-target="#delete-exam-{{ $exam->id }}"
-                                        class="text-white bg-white px-2 py-2 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
+                                        class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white bg-white border border-red-200 rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5 fill-red-700 dark:fill-white text-white" viewBox="0 0 24 24">
+                                            class="w-5 h-5 text-white fill-red-700 dark:fill-white" viewBox="0 0 24 24">
                                             <path
                                                 d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                                             </path>
@@ -83,9 +83,9 @@
                                         </svg>
                                     </button>
                                     <a href="/admin/dashboard/exam/{{ $exam->id }}/edit"
-                                        class="text-white bg-white px-2 py-2 text-xs hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:border-gray-700 dark:text-white dark:hover:bg-gray-200">
+                                        class="inline-flex items-center px-2 py-2 text-xs font-medium text-center text-white bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-white dark:border-gray-700 dark:text-white dark:hover:bg-gray-200">
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white" viewBox="0 0 24 24">
+                                            class="w-5 h-5 text-white fill-blue-700 dark:fill-blue-600" viewBox="0 0 24 24">
                                             <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z">
                                             </path>
                                             <path
@@ -97,7 +97,7 @@
                                 {{-- Delete Modal --}}
                                 <div id="delete-exam-{{ $exam->id }}" tabindex="-1"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                    <div class="relative p-4 w-full max-w-md max-h-full">
+                                    <div class="relative w-full max-w-md max-h-full p-4">
                                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                             <button type="button"
                                                 class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -110,8 +110,8 @@
                                                 </svg>
                                                 <span class="sr-only">Close modal</span>
                                             </button>
-                                            <div class="p-4 md:p-5 text-center">
-                                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                            <div class="p-4 text-center md:p-5">
+                                                <svg class="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200"
                                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 20 20">
                                                     <path stroke="currentColor" stroke-linecap="round"
@@ -122,13 +122,13 @@
                                                     sure want to delete this Exam?</h3>
                                                 <div class="mt-1 mb-5">
                                                     <p
-                                                        class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                                        class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
                                                         This action is irreversible and will lead to the removal of Exam
                                                         forever from the
                                                         system.
                                                     </p>
                                                 </div>
-                                                <form class=" flex justify-center"
+                                                <form class="flex justify-center "
                                                     action="/admin/dashboard/exam/{{ $exam->id }}" method="POST">
                                                     @method('delete')
                                                     @csrf
@@ -156,14 +156,14 @@
         {{-- Add New Modal --}}
         <div id="add-modal" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <div class="relative w-full max-w-2xl max-h-full p-4">
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <div class="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                             Add New TOEIC Question
                         </h3>
                         <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto dark:hover:bg-gray-600 dark:hover:text-white"
                             data-modal-hide="add-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 14 14">
@@ -175,7 +175,7 @@
                     </div>
                     <form action="/admin/dashboard/exam/" method="POST">
                         @csrf
-                        <div class="p-4 md:p-5 space-y-4">
+                        <div class="p-4 space-y-4 md:p-5">
                             <div>
                                 <label for="subname"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subname</label>
@@ -184,7 +184,7 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                         </div>
-                        <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <div class="flex items-center p-4 border-t border-gray-200 rounded-b md:p-5 dark:border-gray-600">
                             <button type="submit" data-modal-hide="add-modal"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
                             <button data-modal-hide="add-modal" type="button"

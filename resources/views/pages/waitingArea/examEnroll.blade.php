@@ -1,13 +1,13 @@
 @extends('layouts.userDashboard')
 @section('content')
-    <div class="w-full flex gap-5 max-md:block">
+    <div class="flex w-full gap-5 max-md:block">
         @include('partials.testTakerProfile')
         <div
-            class="mt-5 p-5 w-3/5 h-1/2 max-md:w-full max-md:h-full bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 border border-gray-200">
+            class="w-3/5 p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow h-1/2 max-md:w-full max-md:h-full dark:bg-gray-800 dark:border-gray-700">
             <div class="border-b-2 border-gray-200">
                 <h1 class="pb-2 text-2xl font-semibold dark:text-white">EPT/TOEIC Waiting Area</h1>
             </div>
-            <div class="mb-5 mt-5">
+            <div class="mt-5 mb-5">
                 <label for="testDate" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Test
                     Date</label>
                 <input type="text" id="testDate"
@@ -32,10 +32,10 @@
             <div id="accordion-open" data-accordion="open">
                 <h2 id="accordion-open-heading-1">
                     <button type="button"
-                        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                        class="flex items-center justify-between w-full gap-3 p-5 font-medium text-gray-500 border border-gray-200 rtl:text-right rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                         data-accordion-target="#accordion-open-body-1" aria-expanded="false"
                         aria-controls="accordion-open-body-1">
-                        <span class="flex text-red-600 dark:text-red-500 items-center"><svg class="w-5 h-5 me-2 shrink-0"
+                        <span class="flex items-center text-red-600 dark:text-red-500"><svg class="w-5 h-5 me-2 shrink-0"
                                 fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
                                     d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex mt-5 items-center border-gray-200 rounded-b dark:border-gray-600">
+            <div class="flex items-center mt-5 border-gray-200 rounded-b dark:border-gray-600">
                 <a href="/dashboard" type="button"
                     class=" text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Back</a>
                 <a href="{{ $exams->conference_link }}" target="_blank"

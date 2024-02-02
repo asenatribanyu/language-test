@@ -22,7 +22,7 @@
 
 <body class="bg-gray-50 dark:bg-gray-900">
     @include('partials.userNavbar')
-    <div class="max-w-7xl mx-auto max-md:px-2">
+    <div class="mx-auto max-w-7xl max-md:px-2">
         @yield('content')
     </div>
     @include('partials.footer')

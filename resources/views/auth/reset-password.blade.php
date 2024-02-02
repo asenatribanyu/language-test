@@ -17,7 +17,7 @@
                 <img class="w-40" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
             </a>
             <div
-                class="w-full relative bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                class="relative w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <button type="button"
                     class="toggle-button absolute top-3 right-0 text-white dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
                     id="darkModeToggle">
@@ -36,10 +36,10 @@
                     <div class="flex flex-col items-center justify-center">
                         <div class="flex flex-col justify-center">
                             <h1
-                                class="text-xl text-center font-semibold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                                class="text-xl font-semibold leading-tight tracking-tight text-center text-gray-900 md:text-2xl dark:text-white">
                                 Reset Password
                             </h1>
-                            <small class="text-gray-900 dark:text-white text-center text-sm mt-1">Please fill in the
+                            <small class="mt-1 text-sm text-center text-gray-900 dark:text-white">Please fill in the
                                 password with a new one to change the old passwords.</small>
                         </div>
                     </div>

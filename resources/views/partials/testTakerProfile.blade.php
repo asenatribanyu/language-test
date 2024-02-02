@@ -1,12 +1,12 @@
 <div class="w-2/5 max-md:w-full">
     <div
-        class="mt-5 p-5 w-full max-md:w-full bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 border border-gray-200">
+        class="w-full p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow max-md:w-full dark:bg-gray-800 dark:border-gray-700">
         <div class="border-b-2 border-gray-200">
             <h1 class="pb-2 text-2xl font-semibold dark:text-white">Test Taker Profile</h1>
         </div>
-        <div class="flex justify-center gap-2 mt-5 w-full">
-            <div class="flex justify-center items-center w-1/3">
-                <img class="w-24 h-24 max-md:w-20 max-md:h-20 object-cover rounded-full"
+        <div class="flex justify-center w-full gap-2 mt-5">
+            <div class="flex items-center justify-center w-1/3">
+                <img class="object-cover w-24 h-24 rounded-full max-md:w-20 max-md:h-20"
                     src="{{ asset('storage/' . $profile->picture) }}" alt="profile-picture">
             </div>
             <div class="flex flex-wrap items-center w-full">
@@ -19,13 +19,13 @@
                         class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">{{ $profile->profile->program_study }}</span>
                 </div>
                 <div class="w-ful">
-                    <div class="flex gap-2 text-gray-900 dark:text-white font-semibold">
+                    <div class="flex gap-2 font-semibold text-gray-900 dark:text-white">
                         Name:
                         <div class="font-normal border-b border-gray-200">
                             {{ $profile->name }}
                         </div>
                     </div>
-                    <div class="flex gap-2 text-gray-900 dark:text-white font-semibold">
+                    <div class="flex gap-2 font-semibold text-gray-900 dark:text-white">
                         NPM:
                         <div class="font-normal border-b border-gray-200">
                             {{ $profile->profile->npm }}

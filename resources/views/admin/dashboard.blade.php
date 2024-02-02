@@ -1,14 +1,14 @@
 @extends('layouts.adminDashboard')
 @section('content')
-    <div class="flex flex-wrap justify-center items-center gap-x-5">
+    <div class="flex flex-wrap items-center justify-center gap-x-5">
         @foreach ($exams as $exam)
             <div
-                class="mt-5 p-5 w-5/12 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h1 class="pb-1 text-2xl font-semibold border-b-2 border-gray-200 text-gray-900 dark:text-white">STARTING
+                class="w-5/12 p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <h1 class="pb-1 text-2xl font-semibold text-gray-900 border-b-2 border-gray-200 dark:text-white">STARTING
                     {{ $exam->category == 'ept' ? 'EPT' : 'TOEIC' }}
                 </h1>
-                <div class="mt-5 flex justify-between">
-                    <div class="flex gap-3 items-center">
+                <div class="flex justify-between mt-5">
+                    <div class="flex items-center gap-3">
                         <div class="flex items-center">
                             <span
                                 class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-full me-2 dark:bg-gray-700 dark:text-gray-400 border border-gray-500 ">
@@ -28,9 +28,9 @@
                             @endif
                         </div>
                     </div>
-                    <div class="flex gap-2 items-center">
+                    <div class="flex items-center gap-2">
                         <input type="hidden" class="exam-id" value="{{ $exam->id }}">
-                        <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Activate</span>
+                        <span class="text-sm font-medium text-gray-900 ms-3 dark:text-gray-300">Activate</span>
                         <label
                             class="relative inline-flex items-center {{ $exam->status == 'progress' ? 'cursor-not-allowed' : 'cursor-pointer' }}">
                             <input type="checkbox" value="" class="sr-only peer toggle-switch" id="toggleSwitch"
@@ -63,7 +63,7 @@
                             value="{{ $exam->category == 'ept' ? $exam->eptQuestion->count() : $exam->toeicQuestion->count() }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mt-5 pb-5 border-b-2 border-gray-200">
+                    <div class="pb-5 mt-5 border-b-2 border-gray-200">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Test
                             Schedules</label>
                         <input type="text" id="base-input" disabled
@@ -76,7 +76,7 @@
                             value="{{ 'Third Date: ' . \Carbon\Carbon::parse($exam->third_date)->translatedFormat('j F Y') . ' (' . $exam->first_time . ' WIB, ' . $exam->second_time . ' WIB, ' . $exam->third_time . ' WIB)' }}"
                             class="mt-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mt-5 flex justify-between gap-2">
+                    <div class="flex justify-between gap-2 mt-5">
                         <div class="flex gap-2">
                             <a href="{{ $exam->conference_link }}" target="_blank"
                                 class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Conference</a>
@@ -89,7 +89,7 @@
                                 data-modal-toggle="delete-exam-{{ $exam->id }}"
                                 class="text-white bg-white px-3 py-2.5 text-sm hover:bg-red-100 border border-red-200 focus:ring-4 focus:outline-none focus:ring-red-100 font-medium rounded-lg text-center inline-flex items-center dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-500">
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 fill-red-700 dark:fill-white text-white" viewBox="0 0 24 24">
+                                    class="w-5 h-5 text-white fill-red-700 dark:fill-white" viewBox="0 0 24 24">
                                     <path
                                         d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                                     </path>
@@ -99,7 +99,7 @@
                             {{-- Delete Modal --}}
                             <div id="delete-exam-{{ $exam->id }}" tabindex="-1"
                                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                <div class="relative p-4 w-full max-w-md max-h-full">
+                                <div class="relative w-full max-w-md max-h-full p-4">
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                         <button type="button"
                                             class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -111,8 +111,8 @@
                                             </svg>
                                             <span class="sr-only">Close modal</span>
                                         </button>
-                                        <div class="p-4 md:p-5 text-center">
-                                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                        <div class="p-4 text-center md:p-5">
+                                            <svg class="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200"
                                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                 viewBox="0 0 20 20">
                                                 <path stroke="currentColor" stroke-linecap="round"
@@ -122,7 +122,7 @@
                                             <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Are you
                                                 sure want to delete this EPT/TOEIC?</h3>
                                             <div class="mt-1 mb-5">
-                                                <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                                <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
                                                     It will also delete all data inside, such as questions, stories,
                                                     directions, etc.
                                                 </p>
@@ -145,7 +145,7 @@
                             <a href="/admin/dashboard/exam/{{ $exam->id }}/edit"
                                 class="text-white bg-white px-3 py-2.5 text-sm hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-center inline-flex items-center dark:bg-white dark:focus:ring-gray-700 dark:border-gray-700 dark:text-white dark:hover:bg-gray-200">
                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="w-5 h-5 fill-blue-700 dark:fill-blue-600 text-white" viewBox="0 0 24 24">
+                                    class="w-5 h-5 text-white fill-blue-700 dark:fill-blue-600" viewBox="0 0 24 24">
                                     <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path>
                                     <path
                                         d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z">
@@ -160,7 +160,7 @@
             {{-- Start Modal Select the Test Date --}}
             <div id="start-date-modal-{{ $exam->id }}" tabindex="-1"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative w-full max-w-md max-h-full p-4">
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <button type="button"
                             class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -174,8 +174,8 @@
                         </button>
                         <form action="/admin/dashboard/exam/control" method="POST">
                             @csrf
-                            <div class="p-4 md:p-5 text-center">
-                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                            <div class="p-4 text-center md:p-5">
+                                <svg class="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200" aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -184,7 +184,7 @@
                                     Test Date</h3>
                                 <div class="mb-5">
                                     <div class="mt-1">
-                                        <p class=" font-normal leading-relaxed text-gray-500 dark:text-gray-400">
+                                        <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
                                             Please select one of the test dates and time first.
                                         </p>
                                     </div>
@@ -229,7 +229,7 @@
         @endforeach
 
         {{-- Push Notifications --}}
-        <div class="fixed z-10 bottom-0 right-0 w-full max-w-xs">
+        <div class="fixed bottom-0 right-0 z-10 w-full max-w-xs">
             {{-- Push Notifications Activate --}}
             <div id="toast-success"
                 class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
@@ -243,7 +243,7 @@
                     </svg>
                     <span class="sr-only">Check icon</span>
                 </div>
-                <div class="ms-3 text-sm font-normal">EPT activated successfully.</div>
+                <div class="text-sm font-normal ms-3">EPT activated successfully.</div>
                 <button type="button"
                     class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                     data-dismiss-target="#toast-success" aria-label="Close">
@@ -269,7 +269,7 @@
                     </svg>
                     <span class="sr-only">Error icon</span>
                 </div>
-                <div class="ms-3 text-sm font-normal">TOEIC has been deleted.</div>
+                <div class="text-sm font-normal ms-3">TOEIC has been deleted.</div>
                 <button type="button"
                     class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                     data-dismiss-target="#toast-danger" aria-label="Close">

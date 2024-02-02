@@ -17,7 +17,7 @@
                 <img class="w-40" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
             </a>
             <div
-                class="w-full relative bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                class="relative w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <button type="button"
                     class="toggle-button absolute top-3 right-0 text-white dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
                     id="darkModeToggle">
@@ -32,13 +32,13 @@
                             d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z" />
                     </svg>
                 </button>
-                <div class=" p-6 space-y-4 md:space-y-6 sm:p-8">
+                <div class="p-6 space-y-4  md:space-y-6 sm:p-8">
                     <div class="flex flex-col justify-center">
                         <h1
-                            class="text-xl font-semibold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                            class="text-xl font-semibold leading-tight tracking-tight text-center text-gray-900 md:text-2xl dark:text-white">
                             Registration Page
                         </h1>
-                        <small class="text-gray-900 dark:text-white text-sm text-center mt-1">Please input your data in
+                        <small class="mt-1 text-sm text-center text-gray-900 dark:text-white">Please input your data in
                             the form below
                             and don't forget to verify your account email.
                         </small>
@@ -94,8 +94,7 @@
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="flex
-                                items-start">
+                        <div class="flex items-start">
                             <div class="flex items-center h-5">
                                 <input id="terms" aria-describedby="terms" type="checkbox"
                                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
