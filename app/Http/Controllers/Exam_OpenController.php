@@ -23,10 +23,18 @@ class Exam_OpenController extends Controller
      */
     public function create()
     {
+        $eptOpen = EPT_Open::where('status', 'run')->orWhereNull('status')->first();
+        
+        if($eptOpen){
+            $open = $eptOpen;
+        }
+        else{
+            $open = TOEIC_Open::where('status', 'run')->orWhereNull('status')->first();
+        }
+
         return view('admin/examControl', [
             'profile' => User::where('id', auth()->user()->id)->first(),
-            'ept_opens' => EPT_Open::where('status', 'run')->orWhereNull('status')->first(),
-            'toeic_opens' => TOEIC_Open::where('status', 'run')->orWhereNull('status')->first(),
+            'examOpen' => $open,
         ]);
     }
 
@@ -77,9 +85,31 @@ class Exam_OpenController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Exam $exam)
+    public function update(Request $request, $id)
     {
-        //
+        if($request->category == 'ept'){
+            $exam = EPT_Open::where('id', $id)->first();
+        }
+        else{
+            $exam = TOEIC_Open::where('id', $id)->first();
+        }
+
+        $validateData = $request->validate([
+            'status' => 'string'
+        ]);
+
+        $exam->update($validateData);
+
+        foreach($exam->exam->enroll as $enroll){
+            $enroll->update(['expired' => 'yes']);
+        }
+
+        if($validateData['status'] == 'run'){
+            return redirect()->back();
+        }
+        else{
+            return redirect('/admin/dashboard');
+        }
     }
 
     /**

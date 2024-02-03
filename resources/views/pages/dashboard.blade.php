@@ -25,14 +25,14 @@
                             dengan TOEFL merupakan tes yang terstandarisasi untuk mengukur kemampuan Bahasa Inggris dari
                             seseorang yang bahasa ibunya bukanlah Bahasa Inggris dan orang tersebut bertujuan untuk bekerja
                             atau kuliah di negara yang menggunakan Bahasa Inggris sebagai bahasa resmi yang digunakan. TOEFL
-                            memiliki dua jenis tes, yaitu PBT (paper-based test) dan iBT (internet-based test). Untuk
+                            memiliki dua jenis tes, yaitu PBT (paper-based test) dan IBT (internet-based test). Untuk
                             rincian sesi test adalah sebagai berikut:
                         </p>
                         <section class="mt-2 text-gray-500 pl-9 dark:text-gray-400">
                             <li>Listening section : 50 pertanyaan</li>
                             <li>Writing section : 40 pertanyaan</li>
                             <li>Reading section : 50 pertanyaan</li>
-                            <li>Skor atau nilai untuk ujian PBT berkisar antara 310 – 677 sedangkan untuk yang iBT berkisar
+                            <li>Skor atau nilai untuk ujian PBT berkisar antara 310 – 677 sedangkan untuk yang IBT berkisar
                                 antara 217 – 677.</li>
                         </section>
                         <p class="mt-2 text-gray-500 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
@@ -105,11 +105,11 @@
             DIKELUARKAN SECARA OTOMATIS, NILAI AKAN TERAKUMULASI SESUAI YANG SUDAH PESERTA KERJAKAN.</p>
         <div class="flex gap-5 max-md:block">
             <video class="mt-5 rounded-lg" width="450" controls>
-                <source class="" src="/docs/videos/flowbite.mp4" type="video/mp4">
+                <source class="" src="" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <video class="mt-5 rounded-lg" width="450" controls>
-                <source class="" src="/docs/videos/flowbite.mp4" type="video/mp4">
+                <source class="" src="" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>

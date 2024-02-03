@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enroll;
+use App\Models\EPT_Open;
+use App\Models\TOEIC_Open;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EnrollController extends Controller
@@ -36,15 +39,54 @@ class EnrollController extends Controller
             'status' => 'string',
         ]);
 
-        $enroll = new Enroll();
+        $preventKicked = Enroll::where('user_id', auth()->user()->id)->where('exam_code', $validateData['exam_code'])->latest()->first();
+        
+        if($validateData['for'] == 'ept'){
+            $examEnd = EPT_Open::where('exam_code', $validateData['exam_code'])->where('date', $validateData['date'])->where('time', $validateData['time'])->latest()->first();
+        }
+        else{
+            $examEnd = TOEIC_Open::where('exam_code', $validateData['exam_code'])->where('date', $validateData['date'])->where('time', $validateData['time'])->latest()->first();
+        }
 
-        $enroll->user()->associate(auth()->user()->id);
-        $enroll->exam()->associate($validateData['exam_code']);
-        $validateData['expired'] = 'no';
-        $enroll->fill($validateData);
-        $enroll->save();
+        if($examEnd){
+            if($examEnd->status == 'end' || $examEnd->status == 'run'){
+                return redirect()->back();
+            }
+            else{
+                if($preventKicked){
+                    if($preventKicked->status == 'kick'){
+                        return redirect()->back();
+                    }
+                }
+    
+                $enroll = new Enroll();
+    
+                $enroll->user()->associate(auth()->user()->id);
+                $enroll->exam()->associate($validateData['exam_code']);
+                $validateData['expired'] = 'no';
+                $enroll->fill($validateData);
+    
+                $enroll->save();
+    
+                return redirect('/dashboard/' . $validateData['for'] . '/waiting-area/enroll');
+            }
+        }
 
-        return redirect('/dashboard/' . $validateData['for'] . '/waiting-area/enroll');
+        return redirect()->back();
+    }
+
+    public function getButton()
+    {
+        $eptOpen = EPT_Open::where('status', 'run')->orWhereNull('status')->first();
+        
+        if($eptOpen){
+            $open = $eptOpen;
+        }
+        else{
+            $open = TOEIC_Open::where('status', 'run')->orWhereNull('status')->first();
+        }
+
+        return response()->json($open);
     }
 
     /**

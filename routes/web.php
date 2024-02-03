@@ -92,6 +92,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('/dashboard/waiting-area/jadwal', EnrollController::class);
 
+    Route::get('/fetch/enroll/start', [EnrollController::class, 'getButton']);
+
     Route::get('/dashboard/ept/waiting-area/enroll', function () {
         return view('pages/waitingArea/examEnroll', [
             'profile' => User::where('id', auth()->user()->id)->first(),
@@ -179,16 +181,23 @@ Route::resource('admin/dashboard/exam/toeic/question', TOEIC_QuestionController:
 
 Route::get('/fetch/toeic/story/{section}', [TOEIC_QuestionController::class, 'getStory']);
 
-Route::post('/post/toeic/story',[TOEIC_StoryController::class,'upload'])->name('ckeditor.upload');
+Route::post('/post/toeic/story',[TOEIC_StoryController::class, 'upload'])->name('ckeditor.upload');
 
 Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
 
 // Exam Control
 Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 
-// Exam Starting
-Route::get('exam/starting-test', function () {
+// User Exam Starting
+Route::get('exam/ept/start', function () {
     return view('examEPT/testEPT', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'warningCard' => false,
+    ]);
+});
+
+Route::get('exam/toeic/start', function () {
+    return view('examTOEIC/testEPT', [
         'profile' => User::where('id', auth()->user()->id)->first(),
         'warningCard' => false,
     ]);
