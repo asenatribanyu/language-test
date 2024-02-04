@@ -57,8 +57,7 @@
                     </div>
                     <div class="mt-5">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number
-                            of
-                            Question</label>
+                            of Question</label>
                         <input type="text" id="base-input" disabled
                             value="{{ $exam->category == 'ept' ? $exam->eptQuestion->count() : $exam->toeicQuestion->count() }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -80,9 +79,9 @@
                         <div class="flex gap-2">
                             <a href="{{ $exam->conference_link }}" target="_blank"
                                 class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Conference</a>
-                            <button type="button" data-modal-target="start-date-modal-{{ $exam->id }}"
+                            <button type="button" id="goButton" data-modal-target="start-date-modal-{{ $exam->id }}"
                                 data-modal-toggle="start-date-modal-{{ $exam->id }}"
-                                class="px-5 py-2.5 text-sm font-medium text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Go</button>
+                                class="px-5 py-2.5 text-sm font-medium text-white disabled:bg-gray-400 disabled:cursor-not-allowed bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Go</button>
                         </div>
                         <div>
                             <button type="button" data-modal-target="delete-exam-{{ $exam->id }}"
@@ -122,7 +121,7 @@
                                             <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Are you
                                                 sure want to delete this EPT/TOEIC?</h3>
                                             <div class="mt-1 mb-5">
-                                                <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                                <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                     It will also delete all data inside, such as questions, stories,
                                                     directions, etc.
                                                 </p>
@@ -184,7 +183,7 @@
                                     Test Date</h3>
                                 <div class="mb-5">
                                     <div class="mt-1">
-                                        <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                        <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                             Please select one of the test dates and time first.
                                         </p>
                                     </div>
@@ -286,6 +285,7 @@
 @endsection
 @push('script')
     <script>
+        // Post Exam Activated Status
         document.addEventListener('DOMContentLoaded', function() {
             const toggleSwitches = document.querySelectorAll('.toggle-switch');
 

@@ -58,7 +58,7 @@ class ExamController extends Controller
 
         $exam->update(['activated' => $activatedValue]);
 
-        return response()->json(['message' => 'Activated column updated successfully']);
+        return response()->json(['message' => 'Activated column updated successfully', 'activated' => $activatedValue]);
     }
 
     /**

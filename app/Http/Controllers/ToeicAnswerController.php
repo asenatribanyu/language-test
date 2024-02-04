@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Enroll;
 use App\Models\toeic_answer;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,9 @@ class ToeicAnswerController extends Controller
      */
     public function index()
     {
-        return view('examTOEIC/testEPT', [
+        return view('examTOEIC/testTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
             'warningCard' => false,
         ]);
     }

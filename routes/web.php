@@ -187,6 +187,8 @@ Route::post('/post/toeic/story',[TOEIC_StoryController::class, 'upload'])->name(
 
 Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
 
+Route::get('/fetch/exam/activated', [ExamController::class, 'fetchActivated']);
+
 // Exam Control
 Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 

@@ -15,7 +15,7 @@
 </head>
 
 <body class="text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-white">
-    @include('examEPT.partials.examNavbar')
+    @include('partials.examNavbar')
     <div class="pt-20 mx-auto max-w-7xl max-md:px-2">
         @yield('content')
     </div>
