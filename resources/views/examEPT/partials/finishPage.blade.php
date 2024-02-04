@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="mt-5">
-        <h2 class="text-xl font-normal">SECTION ONE - Listening Comperhension Part c</h2>
+        <h2 class="text-xl font-normal">SECTION ONE - Listening Comperhension Part C</h2>
         <div class="flex flex-wrap gap-1 mt-2">
             @for ($a = 1; $a < 21; $a++)
                 <button type="button"

@@ -18,6 +18,7 @@ class ToeicAnswerController extends Controller
             'profile' => User::where('id', auth()->user()->id)->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
             'warningCard' => false,
+            'category' => 'toeic',
         ]);
     }
 

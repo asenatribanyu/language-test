@@ -79,7 +79,8 @@
                         <div class="flex gap-2">
                             <a href="{{ $exam->conference_link }}" target="_blank"
                                 class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Conference</a>
-                            <button type="button" id="goButton-{{ $exam->id }}" data-modal-target="start-date-modal-{{ $exam->id }}"
+                            <button type="button" id="goButton-{{ $exam->id }}"
+                                data-modal-target="start-date-modal-{{ $exam->id }}"
                                 data-modal-toggle="start-date-modal-{{ $exam->id }}"
                                 class="px-5 py-2.5 text-sm font-medium text-white disabled:bg-gray-400 disabled:cursor-not-allowed bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Go</button>
                         </div>
@@ -286,59 +287,59 @@
 @push('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const toggleSwitches = document.querySelectorAll('.toggle-switch');
+            const toggleSwitches = document.querySelectorAll('.toggle-switch');
 
-    toggleSwitches.forEach(function(toggleSwitch) {
-        toggleSwitch.addEventListener('change', function() {
-            const isChecked = this.checked ? 1 : 0;
-            const examId = this.closest('.flex').querySelector(".exam-id").value;
-            const goButton = document.getElementById(`goButton-${examId}`);
+            toggleSwitches.forEach(function(toggleSwitch) {
+                toggleSwitch.addEventListener('change', function() {
+                    const isChecked = this.checked ? 1 : 0;
+                    const examId = this.closest('.flex').querySelector(".exam-id").value;
+                    const goButton = document.getElementById(`goButton-${examId}`);
 
-            fetch(`/post/exam/update-activated/${examId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: JSON.stringify({
-                        activated: isChecked
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    goButton.disabled = data.activated === 'no';
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error(error);
+                    fetch(`/post/exam/update-activated/${examId}`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': document.querySelector(
+                                    'meta[name="csrf-token"]').getAttribute('content')
+                            },
+                            body: JSON.stringify({
+                                activated: isChecked
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            goButton.disabled = data.activated === 'no';
+                            console.log(data);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
                 });
+            });
         });
-    });
-});
-
     </script>
     <script>
         function fetchData() {
-    $.ajax({
-        url: "/fetch/exam/activated",
-        method: "GET",
-        dataType: "json",
-        success: function (data) {
-            console.log(data);
-            data.exams.forEach(function (exam) {
-                const goButton = document.getElementById(`goButton-${exam.id}`);
+            $.ajax({
+                url: "/fetch/exam/activated",
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    console.log(data);
+                    data.exams.forEach(function(exam) {
+                        const goButton = document.getElementById(`goButton-${exam.id}`);
 
-                if (goButton && exam.activated === 'no') {
-                    goButton.disabled = true;
-                }
+                        if (goButton && exam.activated === 'no') {
+                            goButton.disabled = true;
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching data:", error);
+                },
             });
-        },
-        error: function (error) {
-            console.error("Error fetching data:", error);
-        },
-    });
-}
+        }
 
-fetchData();
+        fetchData();
     </script>
 @endpush

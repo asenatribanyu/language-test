@@ -100,10 +100,12 @@ class Exam_OpenController extends Controller
 
         $exam->update($validateData);
 
-        foreach($exam->exam->enroll as $enroll){
-            $enroll->update(['expired' => 'yes']);
+        if($validateData['status'] == 'end'){
+            foreach($exam->exam->enroll as $enroll){
+                $enroll->update(['expired' => 'yes']);
+            }
         }
-
+        
         if($validateData['status'] == 'run'){
             return redirect()->back();
         }

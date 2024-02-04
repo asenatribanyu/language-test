@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Enroll;
 use App\Models\User;
 use App\Models\ept_answer;
-use App\Models\EPT_Question;
 use Illuminate\Http\Request;
 
 class EptAnswerController extends Controller
@@ -19,6 +18,7 @@ class EptAnswerController extends Controller
             'profile' => User::where('id', auth()->user()->id)->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
             'warningCard' => false,
+            'category' => 'ept',
         ]);
     }
 
