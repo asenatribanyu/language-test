@@ -61,6 +61,12 @@ class ExamController extends Controller
         return response()->json(['message' => 'Activated column updated successfully', 'activated' => $activatedValue]);
     }
 
+    public function fetchActivated()
+    {
+        $exam = Exam::all();
+
+        return response()->json(['message' => 'Data Successfully Taken', 'exams' =>$exam]);
+    }
     /**
      * Display the specified resource.
      */
