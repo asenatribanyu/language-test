@@ -9,63 +9,70 @@
     <div class="mt-5">
         <h2 class="pb-2 text-xl font-medium dark:text-white">Direction of Structure Expression:</h2>
         <div class="p-3 border-2 rounded-lg">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin convallis nibh mi,
-                et tincidunt purus elementum sed. Vivamus ultricies velit a nulla varius, nec tempor urna
-                efficitur. Vestibulum et libero non mauris commodo tincidunt. Vestibulum eu ligula nec erat
-                dapibus ornare. Suspendisse potenti. In sit amet lobortis felis, eu ultrices nunc. Cras iaculis
-                aliquam arcu at iaculis. Nam finibus nisi id tellus posuere tempor. Etiam a rutrum nisi, vitae
-                sagittis mauris. Duis ac arcu ut turpis egestas dignissim eu in quam. Curabitur convallis felis
-                quis tempus condimentum. Nam et ligula ex. Cras dignissim massa vitae mauris luctus convallis.
-            </p>
+            <audio controls>
+                @foreach ($enrolls->exam->eptDirection as $direction)
+                    @if ($direction->section == 'structure')
+                        <source src="{{ asset('storage/' . $direction->audio) }}">
+                        Your browser does not support the audio element.
+                    @endif
+                @endforeach
+            </audio>
+            @foreach ($enrolls->exam->eptDirection as $direction)
+                @if ($direction->section == 'structure')
+                    <p class="mt-2">{{ $direction->direction }}</p>
+                @endif
+            @endforeach
         </div>
     </div>
 
     {{-- Question List of Structure Expression --}}
     <div class="mt-5">
         <h2 class="pb-2 text-xl font-medium dark:text-white">Question List of Structure Expression:</h2>
-        @for ($i = 0; $i < 2; $i++)
-            <div class="p-3 mb-3 border-2 rounded-lg">
-                <div class="flex gap-5">
-                    <div
-                        class="flex items-center justify-center w-10 h-10 text-base font-medium border-2 border-gray-400 rounded-full">
-                        <div>{{ $i + 1 }}.</div>
-                    </div>
-                    <div>
-                        <p class="mt-2">Question _____ goes here.</p>
-                        <div class="mt-5">
-                            <div class="flex items-center mb-4">
-                                <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="default-radio-1"
-                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">Answer
-                                    A</label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="default-radio-1"
-                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">Answer
-                                    B</label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="default-radio-1"
-                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">Answer
-                                    C</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="default-radio-1" type="radio" value="" name="default-radio"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="default-radio-1"
-                                    class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">Answer
-                                    D</label>
+        @foreach ($enrolls->exam->eptQuestion as $question)
+            @if ($question->section == 'structure')
+                <div class="p-3 mb-3 border-2 rounded-lg">
+                    <div class="flex gap-5">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 text-base font-medium border-2 border-gray-400 rounded-full">
+                            <div>{{ $loop->iteration }}.</div>
+                        </div>
+                        <div>
+                            <p class="mt-2">{{ $question->question }}</p>
+                            <div class="mt-5">
+                                <div class="flex items-center mb-4">
+                                    <input id="default-radio-1" type="radio" value="{{ $question->answer_a }}"
+                                        name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-radio-1"
+                                        class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_a }}</label>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <input id="default-radio-1" type="radio" value="{{ $question->answer_b }}"
+                                        name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-radio-1"
+                                        class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_b }}</label>
+                                </div>
+                                <div class="flex items-center mb-4">
+                                    <input id="default-radio-1" type="radio" value="{{ $question->answer_c }}"
+                                        name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-radio-1"
+                                        class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_c }}</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="default-radio-1" type="radio" value="{{ $question->answer_d }}"
+                                        name="default-radio"
+                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <label for="default-radio-1"
+                                        class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_d }}</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endfor
+            @endif
+        @endforeach
     </div>
 
     {{-- Footer Navigation --}}

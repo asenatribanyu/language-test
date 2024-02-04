@@ -14,9 +14,9 @@
     <title>Test Page</title>
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900">
+<body class="text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-white">
     @include('examEPT.partials.examNavbar')
-    <div class="mx-auto max-w-7xl max-md:px-2">
+    <div class="pt-20 mx-auto max-w-7xl max-md:px-2">
         @yield('content')
     </div>
     @include('partials.footer')

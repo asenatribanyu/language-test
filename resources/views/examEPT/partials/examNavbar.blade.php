@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="fixed z-10 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-b dark:border-gray-950">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         <div class="flex items-center">
             <img class="w-20 h-auto" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
@@ -6,93 +6,19 @@
         <div class="text-3xl font-semibold text-center dark:text-white">
             2h 1m 30s
         </div>
-        <button type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
-            aria-controls="drawer-navigation"
-            class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-            <span class="sr-only">Open main menu</span>
-            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 17 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M1 1h15M1 7h15M1 13h15" />
+        <button type="button"
+            class="toggle-button text-white dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
+            id="examDarkMode">
+            <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white toggle-icon toggle-icon-light"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                <path
+                    d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z" />
+            </svg>
+            <svg class="w-[18px] h-[18px] text-gray-800 dark:text-white hidden toggle-icon toggle-icon-dark"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                    d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z" />
             </svg>
         </button>
-        <div id="drawer-navigation"
-            class="fixed top-0 left-0 z-40 w-[400px] h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
-            tabindex="-1" aria-labelledby="drawer-navigation-label">
-            <h5 id="drawer-navigation-label" class="text-lg font-semibold uppercase dark:text-gray-400">
-                Question Navigation</h5>
-            <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"></path>
-                </svg>
-                <span class="sr-only">Close menu</span>
-            </button>
-            <div>
-                <div class="mt-5">
-                    <h2 class="text-base font-normal">SECTION ONE - Listening Comperhension Part A</h2>
-                    <div class="flex flex-wrap gap-1 mt-2">
-                        @for ($a = 1; $a < 21; $a++)
-                            <button type="button"
-                                class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $a }}</button>
-                        @endfor
-                    </div>
-                </div>
-                <div class="mt-5">
-                    <h2 class="text-base font-normal">SECTION ONE - Listening Comperhension Part B</h2>
-                    <div class="flex flex-wrap gap-1 mt-2">
-                        @for ($a = 1; $a < 21; $a++)
-                            <button type="button"
-                                class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $a }}</button>
-                        @endfor
-                    </div>
-                </div>
-                <div class="mt-5">
-                    <h2 class="text-base font-normal">SECTION ONE - Listening Comperhension Part c</h2>
-                    <div class="flex flex-wrap gap-1 mt-2">
-                        @for ($a = 1; $a < 21; $a++)
-                            <button type="button"
-                                class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $a }}</button>
-                        @endfor
-                    </div>
-                </div>
-                <div class="mt-5">
-                    <h2 class="text-base font-normal">SECTION TWO - Structure Expression</h2>
-                    <div class="flex flex-wrap gap-1 mt-2">
-                        @for ($a = 1; $a < 21; $a++)
-                            <button type="button"
-                                class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $a }}</button>
-                        @endfor
-                    </div>
-                </div>
-                <div class="mt-5">
-                    <h2 class="text-base font-normal">SECTION TWO - Written Expression</h2>
-                    <div class="flex flex-wrap gap-1 mt-2">
-                        @for ($a = 1; $a < 21; $a++)
-                            <button type="button"
-                                class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $a }}</button>
-                        @endfor
-                    </div>
-                </div>
-                <div class="mt-5">
-                    <h2 class="text-base font-normal">SECTION THREE - Reading Comperhension</h2>
-                    <div class="flex flex-wrap gap-1 mt-2">
-                        @for ($a = 1; $a < 21; $a++)
-                            <button type="button"
-                                class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $a }}</button>
-                        @endfor
-                    </div>
-                </div>
-            </div>
-
-            {{-- Footer Navigation --}}
-            <div class="flex items-center justify-end pt-3 mt-5 border-t-2 dark:border-gray-600">
-                <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish</button>
-            </div>
-        </div>
     </div>
 </nav>

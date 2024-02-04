@@ -10,10 +10,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EPT_QuestionController;
 use App\Http\Controllers\EPT_StoryController;
+use App\Http\Controllers\EptAnswerController;
 use App\Http\Controllers\Exam_OpenController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
+use App\Http\Controllers\ToeicAnswerController;
 use App\Models\Enroll;
 
 /*
@@ -189,16 +191,6 @@ Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updat
 Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 
 // User Exam Starting
-Route::get('exam/ept/start', function () {
-    return view('examEPT/testEPT', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'warningCard' => false,
-    ]);
-});
+Route::resource('exam/ept/start', EptAnswerController::class);
 
-Route::get('exam/toeic/start', function () {
-    return view('examTOEIC/testEPT', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'warningCard' => false,
-    ]);
-});
+Route::resource('exam/toeic/start', ToeicAnswerController::class);

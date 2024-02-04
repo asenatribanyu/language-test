@@ -13,7 +13,7 @@ class Exam extends Model
         'id'
     ];
 
-    public function direction(){
+    public function eptDirection(){
         return $this->hasMany(EPT_Direction::class, 'exam_code', 'code');
     }
     
