@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Enroll;
 use App\Models\EPT_Open;
 use App\Models\TOEIC_Open;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class EnrollController extends Controller

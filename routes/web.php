@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\EPT_DirectionController;
 use App\Models\Exam;
 use App\Models\User;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -12,6 +12,7 @@ use App\Http\Controllers\EPT_QuestionController;
 use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\EptAnswerController;
 use App\Http\Controllers\Exam_OpenController;
+use App\Http\Controllers\ExamFinishController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
@@ -33,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/dashboard/update-profile', ProfileController::class)->middleware('block.update.profile');
 
     Route::get('/dashboard', function () {
-        return view('pages.dashboard', [
+        return view('user.dashboard', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
@@ -41,43 +42,43 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/profile', ProfileController::class);
 
     Route::get('/dashboard/profile', function () {
-        return view('pages/profile', [
+        return view('user/profile', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/contact-us', function () {
-        return view('pages/contactUs', [
+        return view('user/contactUs', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/purchase', function () {
-        return view('pages/purchase', [
+        return view('user/purchase', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-history-ept', function () {
-        return view('pages/testHistoryEPT', [
+        return view('user/testHistoryEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-history-toeic', function () {
-        return view('pages/testHistoryTOEIC', [
+        return view('user/testHistoryTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/test-guide', function () {
-        return view('pages/testGuide', [
+        return view('user/testGuide', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     });
 
     Route::get('/dashboard/ept/waiting-area/jadwal', function () {
-        return view('pages/waitingArea/examJadwal', [
+        return view('user/exam/examJadwal', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'ept')->where('activated', 'yes')->first(),
             'warningCard' => true,
@@ -85,7 +86,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->middleware('set.schedule:ept');
     
     Route::get('/dashboard/toeic/waiting-area/jadwal', function () {
-        return view('pages/waitingArea/examJadwal', [
+        return view('user/exam/examJadwal', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'toeic')->where('activated', 'yes')->first(),
             'warningCard' => true,
@@ -97,7 +98,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/fetch/enroll/start', [EnrollController::class, 'getButton']);
 
     Route::get('/dashboard/ept/waiting-area/enroll', function () {
-        return view('pages/waitingArea/examEnroll', [
+        return view('user/exam/examEnroll', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('activated', 'yes')->where('category', 'ept')->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('for', 'ept')->latest()->first(),
@@ -106,7 +107,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::get('/dashboard/toeic/waiting-area/enroll', function () {
-        return view('pages/waitingArea/examEnroll', [
+        return view('user/exam/examEnroll', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('activated', 'yes')->where('category', 'toeic')->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('for', 'toeic')->latest()->first(),
@@ -196,3 +197,22 @@ Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 Route::resource('exam/ept/start', EptAnswerController::class);
 
 Route::resource('exam/toeic/start', ToeicAnswerController::class);
+
+// Exam Finish Result
+Route::get('exam/ept/result', function () {
+    return view('user/exam/examFinish', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'warningCard' => false,
+        'result' => true,
+        'category' => 'ept',
+    ]);
+});
+
+Route::get('exam/toeic/result', function () {
+    return view('user/exam/examFinish', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+        'warningCard' => false,
+        'result' => true,
+        'category' => 'toeic',
+    ]);
+});

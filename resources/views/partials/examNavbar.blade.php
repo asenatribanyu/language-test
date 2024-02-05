@@ -3,9 +3,11 @@
         <div class="flex items-center">
             <img class="w-20 h-auto" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
         </div>
-        <div class="text-3xl font-semibold text-center dark:text-white">
-            2h 1m 30s
-        </div>
+        @if ($result == false)
+            <div class="text-3xl font-semibold text-center dark:text-white">
+                2h 1m 30s
+            </div>
+        @endif
         <button type="button"
             class="toggle-button text-white dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
             id="examDarkMode">

@@ -35,9 +35,9 @@
             </div>
         </div>
     </div>
-    @if ($warningCard == false && $category == 'ept')
+    @if ($warningCard == false && $category == 'ept' && $result == false)
         @include('examEPT.partials.questionNav')
-    @elseif ($warningCard == false && $category == 'toeic')
+    @elseif ($warningCard == false && $category == 'toeic' && $result == false)
         @include('examTOEIC.partials.questionNav')
     @endif
     @if ($warningCard != false)

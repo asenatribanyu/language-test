@@ -15,7 +15,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('pages/updateProfile', [
+        return view('user/updateProfile', [
             'profile' => User::where('id', auth()->user()->id)->first(),
         ]);
     }
