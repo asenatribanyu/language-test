@@ -56,7 +56,7 @@
                                 </svg>
                             </button>
                             <audio id="audioQuestionSource-{{ $question->id }}"
-                                src="{{ asset('storage/' . $direction->audio) }}"></audio>
+                                src="{{ asset('storage/' . $question->question) }}"></audio>
                         </div>
                         <form>
                             <div class="flex items-center mb-4">

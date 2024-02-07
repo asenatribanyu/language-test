@@ -16,4 +16,5 @@
 @endsection
 @push('script')
     <script src="{{ asset('js/examGlobal.js') }}"></script>
+    <script src="{{ asset('js/examTOEIC.js') }}"></script>
 @endpush
