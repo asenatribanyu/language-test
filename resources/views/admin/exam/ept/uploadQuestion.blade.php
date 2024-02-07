@@ -5,7 +5,7 @@
         <div class="flex items-center justify-center">
             <div
                 class="w-full max-w-screen-lg p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <div class="border-b-2 border-gray-200">
+                <div class="border-b-2 border-gray-200 dark:border-gray-700">
                     <h1 class="pb-1 text-2xl font-semibold dark:text-white">EPT Upload Question for Listening Part A
                     </h1>
                 </div>
@@ -51,7 +51,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                 </div>
-                <div class="pb-5 border-b-2 border-gray-200" id="select-story"></div>
+                <div class="pb-5 border-b-2 border-gray-200 dark:border-gray-700" id="select-story"></div>
 
                 <div class="flex items-center mt-5 rounded-b dark:border-gray-600">
                     <button type="button" data-modal-target="create-modal" data-modal-toggle="create-modal"

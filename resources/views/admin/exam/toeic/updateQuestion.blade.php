@@ -6,7 +6,7 @@
         <div class="flex items-center justify-center">
             <div
                 class="w-full max-w-screen-lg p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <div class="border-b-2 border-gray-200">
+                <div class="border-b-2 border-gray-200 dark:border-gray-700">
                     <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">Update Question</h1>
                 </div>
                 @if ($questions->section == 'i')
@@ -181,7 +181,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         </div>
                     </div>
-                    <div class="mt-5">
+                    <div class="pb-5 mt-5 border-b-2 border-gray-200 dark:border-gray-700">
                         <label for="base-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer D</label>
                         <div class="flex items-center gap-3">

@@ -2,7 +2,7 @@
 <div class="mt-3">
     <h2 class="text-xl font-medium text-gray-900 dark:text-white" id="partI">Direction of Listening Part I:</h2>
     @if ($directions_i)
-        <div class="relative p-2 mt-2 border-2 rounded-lg">
+        <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
             @if ($directions_i->audio)
                 <audio class="mt-2 mb-2" controls>
                     <source src="{{ asset('storage/' . $directions_i->audio) }}">
@@ -61,7 +61,7 @@
                                     Are you
                                     sure want to delete this Direction?</h3>
                                 <div class="mt-1 mb-5">
-                                    <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                    <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                         This action is irreversible and will lead to the removal of
                                         Direction forever from the system.
                                     </p>
@@ -101,7 +101,7 @@
     </div>
     @if ($questions_i)
         @foreach ($questions_i as $question)
-            <div class="relative p-2 mt-2 border-2 rounded-lg">
+            <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 <div class="flex gap-5">
                     <div
                         class="flex items-center justify-center w-10 h-10 text-base font-medium text-gray-900 border-2 border-gray-400 rounded-full dark:text-white">
@@ -206,7 +206,7 @@
                                         <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">
                                             Are you sure want to delete this Question?</h3>
                                         <div class="mt-1 mb-5">
-                                            <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                            <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                 This action is irreversible and will lead to the removal of
                                                 Question forever from the system.
                                             </p>

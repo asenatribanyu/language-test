@@ -6,7 +6,7 @@
         <div class="flex items-center justify-center">
             <div
                 class="w-full max-w-screen-lg p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <div class="border-b-2 border-gray-200">
+                <div class="border-b-2 border-gray-200 dark:border-gray-700">
                     <h1 class="pb-1 text-2xl font-semibold dark:text-white">TOEIC Update Story</h1>
                 </div>
                 @if ($story->section == 'iv')
@@ -27,7 +27,7 @@
                         <textarea id="editor" name="story">{{ $story->story }}</textarea>
                     </div>
                 @endif
-                <div class="pb-5 mt-5 border-b-2 border-gray-200">
+                <div class="pb-5 mt-5 border-b-2 border-gray-200 dark:border-gray-700">
                     <label for="select-section" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                         Section</label>
                     <select id="select-section" name="section" required disabled

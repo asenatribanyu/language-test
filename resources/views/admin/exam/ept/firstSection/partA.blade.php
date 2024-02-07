@@ -2,7 +2,7 @@
 <div class="mt-3">
     <h2 class="text-xl font-medium text-gray-900 dark:text-white" id="partA">Listening Part A Directions:</h2>
     @if ($directions_a)
-        <div class="relative p-2 mt-2 border-2 rounded-lg">
+        <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
             @if ($directions_a->audio)
                 <audio class="mt-2 mb-2" controls>
                     <source src="{{ asset('storage/' . $directions_a->audio) }}">
@@ -61,7 +61,7 @@
                                     Are you
                                     sure want to delete this Direction?</h3>
                                 <div class="mt-1 mb-5">
-                                    <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                    <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                         This action is irreversible and will lead to the removal of
                                         Directioon forever from the system.
                                     </p>
@@ -85,7 +85,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:border-gray-700 dark:text-white">
             No direction of this part has been created.
         </div>
     @endif
@@ -100,7 +100,7 @@
     </div>
     @if ($questions_a)
         @foreach ($questions_a as $question)
-            <div class="relative p-2 mt-2 border-2 rounded-lg">
+            <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 <div class="flex gap-5">
                     <div
                         class="flex items-center justify-center w-10 h-10 text-base font-medium text-gray-900 border-2 border-gray-400 rounded-full dark:text-white">
@@ -204,7 +204,7 @@
                                             Are you
                                             sure want to delete this Question?</h3>
                                         <div class="mt-1 mb-5">
-                                            <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                            <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                 This action is irreversible and will lead to the removal of
                                                 Question forever from the system.
                                             </p>

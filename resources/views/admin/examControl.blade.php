@@ -3,7 +3,7 @@
     <div class="flex gap-3">
         <div
             class="mt-5 p-5 w-2/6 max-h-[580px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div class="border-b-2 border-gray-200">
+            <div class="border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Examination Control</h1>
             </div>
             <div class="mt-5 text-4xl font-semibold text-center dark:text-white">
@@ -45,7 +45,7 @@
                 <input type="text" id="base-input" disabled value="{{ $examOpen->exam_code }}"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
-            <div class="pb-5 mt-5 border-b-2 border-gray-200">
+            <div class="pb-5 mt-5 border-b-2 border-gray-200 dark:border-gray-700">
                 <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number
                     of Question</label>
                 <input type="text" id="base-input" disabled value="{{ $examOpen->exam->eptQuestion->count() }}"
@@ -149,7 +149,7 @@
         </div>
         <div
             class="w-4/6 p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div class="border-b-2 border-gray-200">
+            <div class="border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Test Taker List</h1>
             </div>
             <div>
@@ -215,7 +215,8 @@
                                                 data-modal-toggle="kick-modal-{{ $enroll->id }}"
                                                 class="inline-flex items-center px-2 py-2 text-sm font-medium text-center text-white bg-white border border-red-200 rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-600 dark:bg-red-800 dark:border-red-700 dark:text-white dark:hover:bg-red-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg"
-                                                    class="w-5 h-5 text-white fill-red-700" viewBox="0 0 24 24">
+                                                    class="w-5 h-5 text-white fill-red-700 dark:fill-white"
+                                                    viewBox="0 0 24 24">
                                                     <path
                                                         d="M9.172 16.242 12 13.414l2.828 2.828 1.414-1.414L13.414 12l2.828-2.828-1.414-1.414L12 10.586 9.172 7.758 7.758 9.172 10.586 12l-2.828 2.828z">
                                                     </path>

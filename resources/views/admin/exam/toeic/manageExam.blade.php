@@ -1,7 +1,7 @@
 @extends('layouts.adminDashboard')
 @section('content')
     <div class="p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex items-center justify-between border-b-2 border-gray-200">
+        <div class="flex items-center justify-between border-b-2 border-gray-200 dark:border-gray-700">
             <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">Manage TOEIC Exam Question</h1>
             <button type="button" data-modal-target="add-modal" data-modal-toggle="add-modal"
                 class="px-3 py-1 -mt-1 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">+</button>
@@ -121,8 +121,7 @@
                                                 <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400">Are you
                                                     sure want to delete this Exam?</h3>
                                                 <div class="mt-1 mb-5">
-                                                    <p
-                                                        class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                                    <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                         This action is irreversible and will lead to the removal of Exam
                                                         forever from the
                                                         system.

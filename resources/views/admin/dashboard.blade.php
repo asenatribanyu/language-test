@@ -4,7 +4,9 @@
         @foreach ($exams as $exam)
             <div
                 class="w-5/12 p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <h1 class="pb-1 text-2xl font-semibold text-gray-900 border-b-2 border-gray-200 dark:text-white">STARTING
+                <h1
+                    class="pb-1 text-2xl font-semibold text-gray-900 border-b-2 border-gray-200 dark:border-gray-700 dark:text-white">
+                    STARTING
                     {{ $exam->category == 'ept' ? 'EPT' : 'TOEIC' }}
                 </h1>
                 <div class="flex justify-between mt-5">
@@ -62,7 +64,7 @@
                             value="{{ $exam->category == 'ept' ? $exam->eptQuestion->count() : $exam->toeicQuestion->count() }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="pb-5 mt-5 border-b-2 border-gray-200">
+                    <div class="pb-5 mt-5 border-b-2 border-gray-200 dark:border-gray-700">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Test
                             Schedules</label>
                         <input type="text" id="base-input" disabled

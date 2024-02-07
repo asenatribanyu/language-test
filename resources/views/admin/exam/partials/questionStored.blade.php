@@ -9,6 +9,6 @@
         </svg>
     </div>
     <div class="flex gap-1 text-sm font-normal text-gray-900 ps-4 dark:text-white">
-        <div class="text-blue-700">{{ $question_count }}</div> Questions has been stored
+        <div class="font-semibold text-blue-500">{{ $question_count }}</div> Questions has been stored
     </div>
 </div>

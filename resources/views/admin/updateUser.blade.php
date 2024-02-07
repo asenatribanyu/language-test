@@ -5,7 +5,7 @@
         @csrf
         <div
             class="max-w-screen-sm p-5 mx-auto mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div class="border-b-2 border-gray-200">
+            <div class="border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Update User</h1>
             </div>
             <div class="mt-5">
@@ -66,7 +66,7 @@
                                 class="bg-gray-50 cursor-not-allowed border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="{{ $user->email_verified_at->format('Y-m-d') }}" disabled>
                         </div>
-                        <div class="mb-5 border-b-2 border-gray-200">
+                        <div class="mb-5 border-b-2 border-gray-200 dark:border-gray-700">
                             <div class="pb-5">
                                 <label for="registrant" id="disabled-input" aria-label="disabled input"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Registrant</label>

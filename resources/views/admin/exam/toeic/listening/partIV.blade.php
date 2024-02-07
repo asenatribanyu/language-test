@@ -1,9 +1,10 @@
 {{-- Part IV --}}
 <div class="mt-5">
-    <h2 class="pt-3 text-xl font-medium text-gray-900 border-t-2 dark:text-white" id="partIV">Direction of Listening
+    <h2 class="pt-3 text-xl font-medium text-gray-900 border-t-2 border-gray-200 dark:border-gray-700 dark:text-white"
+        id="partIV">Direction of Listening
         Part IV:</h2>
     @if ($directions_iv)
-        <div class="relative p-2 mt-2 border-2 rounded-lg">
+        <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
             @if ($directions_iv->audio)
                 <audio class="mt-2 mb-2" controls>
                     <source src="{{ asset('storage/' . $directions_iv->audio) }}">
@@ -62,7 +63,7 @@
                                     Are you
                                     sure want to delete this Direction?</h3>
                                 <div class="mt-1 mb-5">
-                                    <p class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                    <p class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                         This action is irreversible and will lead to the removal of
                                         Direction forever from the system.
                                     </p>
@@ -103,10 +104,10 @@
     @if ($questions_iv)
         @foreach ($stories as $story)
             @if ($story->section == 'iv')
-                <div class="p-3 mt-2 border-2 rounded-lg">
+                <div class="p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                     <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
                     {{-- Story --}}
-                    <div class="relative p-2 mt-2 border-2 rounded-lg">
+                    <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                         <audio class="mt-2 mb-2" controls>
                             <source src="{{ asset('storage/' . $story->story) }}">
                             Your browser does not support the audio element.
@@ -165,7 +166,7 @@
                                                 Are you sure want to Delete this Story?</h3>
                                             <div class="mt-1 mb-5">
                                                 <p
-                                                    class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                                    class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                     This action is irreversible and will lead to the removal of Story
                                                     forever from the system. </p>
                                             </div>
@@ -191,7 +192,7 @@
                         </div>
                     </div>
                     @foreach ($story->question as $question)
-                        <div class="relative p-2 mt-2 border-2 rounded-lg">
+                        <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div
                                     class="flex items-center justify-center w-10 h-10 text-base font-medium text-gray-900 border-2 border-gray-400 rounded-full dark:text-white">
@@ -293,7 +294,7 @@
                                                         sure want to delete this Question?</h3>
                                                     <div class="mt-1 mb-5">
                                                         <p
-                                                            class="font-normal leading-relaxed text-gray-500  dark:text-gray-400">
+                                                            class="font-normal leading-relaxed text-gray-500 dark:text-gray-400">
                                                             This action is irreversible and will lead to the removal of
                                                             Question forever from the system.
                                                         </p>
