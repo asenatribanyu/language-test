@@ -1,7 +1,7 @@
 <div class="w-2/5 max-md:w-full">
     <div
         class="w-full p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow max-md:w-full dark:bg-gray-800 dark:border-gray-700">
-        <div class="border-b-2 border-gray-200">
+        <div class="border-b-2 border-gray-200 dark:border-gray-700">
             <h1 class="pb-2 text-2xl font-semibold dark:text-white">Test Taker Profile</h1>
         </div>
         <div class="flex justify-center w-full gap-2 mt-5">
@@ -21,13 +21,13 @@
                 <div class="w-ful">
                     <div class="flex gap-2 font-semibold text-gray-900 dark:text-white">
                         Name:
-                        <div class="font-normal border-b border-gray-200">
+                        <div class="font-normal border-b-2 border-gray-200 dark:border-gray-700">
                             {{ $profile->name }}
                         </div>
                     </div>
                     <div class="flex gap-2 font-semibold text-gray-900 dark:text-white">
                         NPM:
-                        <div class="font-normal border-b border-gray-200">
+                        <div class="font-normal border-b-2 border-gray-200 dark:border-gray-700">
                             {{ $profile->profile->npm }}
                         </div>
                     </div>

@@ -22,4 +22,8 @@ class TOEIC_Question extends Model
     public function exam(){
         return $this->belongsTo(Exam::class, 'exam_code', 'code');
     }
+
+    public function toeic_answer(){
+        return $this->hasMany(toeic_answer::class);
+    }
 }

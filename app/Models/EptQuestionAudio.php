@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ept_answer extends Model
+class EptQuestionAudio extends Model
 {
     use HasFactory;
 
@@ -15,9 +15,5 @@ class ept_answer extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
-    }
-
-    public function ept_question(){
-        return $this->belongsTo(EPT_Question::class, 'question_id', 'id');
     }
 }

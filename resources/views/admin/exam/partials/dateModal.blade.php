@@ -36,7 +36,7 @@
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide type="text" id="first-date"
-                                        name="first_date" datepicker-format="dd/mm/yyyy"
+                                        name="first_date"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         value="{{ $exam->first_date }}">
                                 </div>
@@ -54,7 +54,7 @@
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide type="text" id="second-date"
-                                        name="second_date" datepicker-format="dd/mm/yyyy"
+                                        name="second_date"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         value="{{ $exam->second_date }}">
                                 </div>
@@ -72,7 +72,7 @@
                                         </svg>
                                     </div>
                                     <input datepicker datepicker-autohide type="text" id="third-date"
-                                        name="third_date" datepicker-format="dd/mm/yyyy"
+                                        name="third_date"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         value="{{ $exam->third_date }}">
                                 </div>

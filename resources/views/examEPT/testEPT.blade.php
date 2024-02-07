@@ -15,4 +15,5 @@
 @endsection
 @push('script')
     <script src="{{ asset('js/examGlobal.js') }}"></script>
+    <script src="{{ asset('js/examEPT.js') }}"></script>
 @endpush

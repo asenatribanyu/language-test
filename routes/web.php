@@ -12,7 +12,6 @@ use App\Http\Controllers\EPT_QuestionController;
 use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\EptAnswerController;
 use App\Http\Controllers\Exam_OpenController;
-use App\Http\Controllers\ExamFinishController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
@@ -196,7 +195,23 @@ Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 // User Exam Starting
 Route::resource('exam/ept/start', EptAnswerController::class);
 
+Route::get('/fetch/exam/ept/answer', [EptAnswerController::class, 'fetchAnswer']);
+
+Route::post('/post/exam/ept/answer', [EptAnswerController::class, 'postAnswer']);
+
+Route::get('/fetch/exam/ept/question/audio', [EptAnswerController::class, 'fetchQuestionPlayButton']);
+
+Route::post('/post/exam/ept/question/audio', [EptAnswerController::class, 'postQuestionPlayButton']);
+
+Route::get('/fetch/exam/ept/story/audio', [EptAnswerController::class, 'fetchStoryPlayButton']);
+
+Route::post('/post/exam/ept/story/audio', [EptAnswerController::class, 'postStoryPlayButton']);
+
 Route::resource('exam/toeic/start', ToeicAnswerController::class);
+
+Route::get('/fetch/exam/toeic/answer', [ToeicAnswerController::class, 'fetchAnswer']);
+
+Route::post('/post/exam/toeic/answer', [ToeicAnswerController::class, 'postAnswer']);
 
 // Exam Finish Result
 Route::get('exam/ept/result', function () {

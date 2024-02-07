@@ -50,4 +50,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function enroll(){
         return $this->hasMany(Enroll::class);
     }
+
+    public function ept_answer(){
+        return $this->hasMany(ept_answer::class);
+    }
+
+    public function toeic_answer(){
+        return $this->hasMany(toeic_answer::class);
+    }
+
+    public function EptQuestionAudio(){
+        return $this->hasMany(EptQuestionAudio::class);
+    }
+
+    public function EptStoryAudio(){
+        return $this->hasMany(EptStoryAudio::class);
+    }
 }

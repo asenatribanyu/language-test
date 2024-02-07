@@ -22,4 +22,8 @@ class EPT_Question extends Model
     public function exam(){
         return $this->belongsTo(Exam::class, 'exam_code', 'code');
     }
+
+    public function ept_answer(){
+        return $this->hasMany(ept_answer::class);
+    }
 }
