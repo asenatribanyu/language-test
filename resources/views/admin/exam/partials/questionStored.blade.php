@@ -8,7 +8,7 @@
             </path>
         </svg>
     </div>
-    <div class="flex gap-1 text-sm font-normal text-gray-900 ps-4 dark:text-white">
-        <div class="font-semibold text-blue-500">{{ $question_count }}</div> Questions has been stored
+    <div class="flex items-center gap-1 text-sm font-normal text-gray-900 ps-4 dark:text-gray-400">
+        <div class="font-semibold text-blue-500 dark:text-white">{{ $question_count }}</div> Questions has been stored
     </div>
 </div>

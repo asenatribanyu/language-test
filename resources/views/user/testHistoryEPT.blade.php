@@ -38,42 +38,36 @@
                                 Date of Test
                             </div>
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            <div class="flex items-center">
-                                Action
-                            </div>
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
-                        </th>
-                        <td class="px-6 py-4">
-                            150
-                        </td>
-                        <td class="px-6 py-4">
-                            150
-                        </td>
-                        <td class="px-6 py-4">
-                            300
-                        </td>
-                        <td class="px-6 py-4">
-                            600
-                        </td>
-                        <td class="px-6 py-4">
-                            28/09/2023
-                        </td>
-                        <td class="px-6 py-4">
-                            Print
-                        </td>
-                    </tr>
+                    @if ($eptHistories->isNotEmpty())
+                        @foreach ($eptHistories as $eptHistory)
+                            <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    {{ $loop->iteration }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $eptHistory->score_first_section }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $eptHistory->score_second_section }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $eptHistory->score_third_section }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $eptHistory->score_total }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $eptHistory->created_at->format('Y-m-d') }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
-            <button type="button"
-                class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
-                Back My Old Certificate</button>
         </section>
     </div>
 @endsection

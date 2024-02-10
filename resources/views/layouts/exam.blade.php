@@ -22,6 +22,7 @@
         @yield('content')
     </div>
     @include('partials.footer')
+    <script src="{{ asset('js/examGlobal.js') }}"></script>
     @stack('script')
 </body>
 

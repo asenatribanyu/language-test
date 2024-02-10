@@ -88,7 +88,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No direction of this part has been created.
         </div>
     @endif
@@ -101,7 +101,7 @@
             {{ $questions_iii->count() }}
         </span>
     </div>
-    @if ($questions_iii)
+    @if ($questions_iii->isNotEmpty())
         @foreach ($questions_iii as $question)
             <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 <div class="flex gap-5">
@@ -115,7 +115,7 @@
                                 <source src="{{ asset('storage/' . $question->audio) }}">
                                 Your browser does not support the audio element.
                             </audio>
-                            <p class="text-base text-gray-900 dark:text-white">
+                            <p class="mt-3 text-base text-gray-900 dark:text-white">
                                 {{ $question->question }}
                             </p>
                         </div>
@@ -234,7 +234,7 @@
             </div>
         @endforeach
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No question of this part has been created.
         </div>
     @endif

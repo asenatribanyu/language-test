@@ -88,7 +88,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No direction of this part has been created.
         </div>
     @endif
@@ -101,7 +101,7 @@
             {{ $questions_vi->count() }}
         </span>
     </div>
-    @if ($questions_vi)
+    @if ($questions_vi->isNotEmpty())
         @foreach ($questions_vi as $question)
             <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 <div class="flex gap-5">
@@ -228,7 +228,7 @@
             </div>
         @endforeach
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No question of this part has been created.
         </div>
     @endif

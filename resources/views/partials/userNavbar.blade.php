@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-b dark:border-gray-950">
+<nav class="fixed z-50 w-full bg-white border-gray-200 dark:bg-gray-900 dark:border-b dark:border-gray-950">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         <a href="/" class="flex items-center">
             <img class="w-20 h-auto" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">

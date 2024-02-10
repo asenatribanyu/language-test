@@ -88,7 +88,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No direction of this structure expression has been created.
         </div>
     @endif
@@ -101,7 +101,7 @@
             {{ $questions_structure->count() }}
         </span>
     </div>
-    @if ($questions_structure)
+    @if ($questions_structure->isNotEmpty())
         @foreach ($questions_structure as $question)
             <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 <div class="flex gap-5">
@@ -236,7 +236,7 @@
             </div>
         @endforeach
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No question of structure expression has been created.
         </div>
     @endif

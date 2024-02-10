@@ -1,6 +1,6 @@
 @extends('layouts.adminDashboard')
 @section('content')
-    <div class="p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="flex items-center justify-between border-b-2 border-gray-200 dark:border-gray-700">
             <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">Manage EPT Exam Question</h1>
             <button type="button" data-modal-target="add-modal" data-modal-toggle="add-modal"

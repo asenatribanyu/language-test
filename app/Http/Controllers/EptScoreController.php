@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enroll;
+use App\Models\User;
 use App\Models\ept_score;
+use App\Models\ept_answer;
+use App\Models\ept_converted;
+use App\Models\EPT_Question;
+use App\Models\Exam;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class EptScoreController extends Controller
@@ -12,7 +19,16 @@ class EptScoreController extends Controller
      */
     public function index()
     {
-        //
+        return view('user/exam/examFinish', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'scores' => ept_score::where('user_id', auth()->user()->id)->latest()->first(),
+            'countFirstSection' => EPT_Question::whereIn('section', ['part a', 'part b', 'part c'])->count(),
+            'countSecondSection' => EPT_Question::whereIn('section', ['structure', 'written'])->count(),
+            'countThirdSection' => EPT_Question::whereIn('section', ['reading'])->count(),
+            'warningCard' => false,
+            'result' => true,
+            'category' => 'ept',
+        ]);
     }
 
     /**
@@ -28,7 +44,65 @@ class EptScoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userAnswers = ept_answer::where('user_id', auth()->user()->id)->get();
+        $enrollBehaviour = Enroll::where('user_id', auth()->user()->id)->latest()->first();
+
+        $eptScore = new ept_score();
+        $eptScore->user()->associate(auth()->user()->id);
+        $eptScore->order_id = 1;
+        $eptScore->score_code = 'SCR-' . Str::random(10);
+        
+        $updateBehaviour['status'] = 'good';
+        $updateBehaviour['expired'] = 'yes';
+        $enrollBehaviour->update($updateBehaviour);
+
+        $correctCounts = [
+            'first' => 0,
+            'second' => 0,
+            'third' => 0,
+        ];
+
+        foreach ($userAnswers as $userAnswer) {
+            if ($userAnswer->answer == $userAnswer->ept_question->correct_answer) {
+                $section = $userAnswer->ept_question->section;
+                switch ($section) {
+                    case 'part a':
+                    case 'part b':
+                    case 'part c':
+                        $correctCounts['first']++;
+                        break;
+                    case 'structure':
+                    case 'written':
+                        $correctCounts['second']++;
+                        break;
+                    default:
+                        $correctCounts['third']++;
+                        break;
+                }
+            }
+        }
+
+        $eptScore->correct_first_section = $correctCounts['first'];
+        $eptScore->correct_second_section = $correctCounts['second'];
+        $eptScore->correct_third_section = $correctCounts['third'];
+
+        $scoreConvertFirstSection = ept_converted::where('correct_amount', $correctCounts['first'])->first();
+        $scoreConvertSecondSection = ept_converted::where('correct_amount', $correctCounts['second'])->first();
+        $scoreConvertThirdSection = ept_converted::where('correct_amount', $correctCounts['third'])->first();
+
+        $eptScore->score_first_section = $scoreConvertFirstSection->first_section;
+        $eptScore->score_second_section = $scoreConvertSecondSection->second_section;
+        $eptScore->score_third_section = $scoreConvertThirdSection->third_section;
+
+        $eptScore->score_total = $scoreConvertFirstSection->first_section + $scoreConvertSecondSection->second_section + $scoreConvertThirdSection->third_section;
+
+        $eptScore->behaviour = $enrollBehaviour->status;
+
+        $eptScore->status = 'keep';
+
+        $eptScore->save();
+
+        return redirect('exam/ept/result');
     }
 
     /**

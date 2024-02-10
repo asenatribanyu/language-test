@@ -5,9 +5,10 @@
         @csrf
         <div class="flex items-center justify-center">
             <div
-                class="w-full max-w-screen-lg p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                class="w-full max-w-screen-lg p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="border-b-2 border-gray-200 dark:border-gray-700">
-                    <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">Update Question</h1>
+                    <h1 class="pb-1 text-2xl font-semibold text-gray-900 dark:text-white">TOEIC Update Question Part
+                        {{ strtoupper($questions->section) }}</h1>
                 </div>
                 @if ($questions->section == 'i')
                     <div class="mt-5">
@@ -25,6 +26,9 @@
                         <input id="file_input" type="file" name="audio" accept="audio/*" required
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     </div>
+                    <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
+                        <div class="text-sm text-blue-800">{{ $questions->audio }}</div>
+                    </div>
                 @elseif($questions->section == 'ii')
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio
@@ -32,12 +36,18 @@
                         <input id="file_input" type="file" name="audio" accept="audio/*" required
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     </div>
+                    <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
+                        <div class="text-sm text-blue-800">{{ $questions->audio }}</div>
+                    </div>
                 @elseif($questions->section == 'iii')
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio
                             Conversation</label>
                         <input id="file_input" type="file" name="audio" accept="audio/*" required
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+                    </div>
+                    <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
+                        <div class="text-sm text-blue-800">{{ $questions->audio }}</div>
                     </div>
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -99,21 +109,14 @@
                     </div>
                 @endif
 
-                {{-- Stored Audio --}}
-                @if ($questions->section == 'i' || $questions->section == 'ii' || $questions->section == 'iii')
-                    <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
-                        <div class="text-sm text-blue-800">{{ $questions->audio }}</div>
-                    </div>
-                @endif
-
                 @if ($questions->section == 'ii')
                     <div class="mt-5">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer
                             A</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="a" name="correct_answer"
+                            <input id="radio-1" type="radio" value="a" name="correct_answer"
                                 {{ $questions->correct_answer == 'a' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_a" placeholder="Enter answer A here"
                                 value="{{ $questions->answer_a }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -124,9 +127,9 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer
                             B</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="b" name="correct_answer"
+                            <input id="radio-1" type="radio" value="b" name="correct_answer"
                                 {{ $questions->correct_answer == 'b' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_b" placeholder="Enter answer B here"
                                 value="{{ $questions->answer_b }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -136,9 +139,9 @@
                         <label for="base-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer C</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="c" name="correct_answer"
+                            <input id="radio-1" type="radio" value="c" name="correct_answer"
                                 {{ $questions->correct_answer == 'c' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_c" placeholder="Enter answer C here"
                                 value="{{ $questions->answer_c }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -149,9 +152,9 @@
                         <label for="base-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer A</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="a" name="correct_answer"
+                            <input id="radio-1" type="radio" value="a" name="correct_answer"
                                 {{ $questions->correct_answer == 'a' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_a" placeholder="Enter answer A here"
                                 value="{{ $questions->answer_a }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -161,9 +164,9 @@
                         <label for="base-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer B</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="b" name="correct_answer"
+                            <input id="radio-1" type="radio" value="b" name="correct_answer"
                                 {{ $questions->correct_answer == 'b' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_b" placeholder="Enter answer B here"
                                 value="{{ $questions->answer_b }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -173,9 +176,9 @@
                         <label for="base-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer C</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="c" name="correct_answer"
+                            <input id="radio-1" type="radio" value="c" name="correct_answer"
                                 {{ $questions->correct_answer == 'c' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_c" placeholder="Enter answer C here"
                                 value="{{ $questions->answer_c }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -185,9 +188,9 @@
                         <label for="base-input"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Answer D</label>
                         <div class="flex items-center gap-3">
-                            <input id="checkbox-1" type="checkbox" value="d" name="correct_answer"
+                            <input id="radio-1" type="radio" value="d" name="correct_answer"
                                 {{ $questions->correct_answer == 'd' ? 'checked' : '' }}
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-full focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <input type="text" id="base-input" name="answer_d" placeholder="Enter answer D here"
                                 value="{{ $questions->answer_d }}" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

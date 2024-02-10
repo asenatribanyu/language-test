@@ -2,8 +2,7 @@
 @section('content')
     <div class="flex flex-wrap items-center justify-center gap-x-5">
         @foreach ($exams as $exam)
-            <div
-                class="w-5/12 p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="w-5/12 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <h1
                     class="pb-1 text-2xl font-semibold text-gray-900 border-b-2 border-gray-200 dark:border-gray-700 dark:text-white">
                     STARTING
@@ -191,7 +190,7 @@
                                         </p>
                                     </div>
                                     <div class="mt-2">
-                                        <select id="test-date" required name="date"
+                                        <select id="test-date-{{ $exam->id }}" required name="date"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                             <option disabled selected>Select the Date</option>
                                             <option value="0">
@@ -206,7 +205,7 @@
                                         </select>
                                     </div>
                                     <div class="mt-2">
-                                        <select id="test-time" required name="time"
+                                        <select id="test-time-{{ $exam->id }}" required name="time"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                             <option disabled selected>Select the Time</option>
                                             <option value="0">{{ $exam->first_time }} WIB</option>
@@ -218,7 +217,8 @@
                                     <input type="hidden" name="exam_code" value="{{ $exam->code }}">
                                 </div>
                                 <button data-modal-hide="start-date-modal-{{ $exam->id }}" type="submit"
-                                    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                    id="go-button-{{ $exam->id }}" disabled
+                                    class="text-white disabled:cursor-not-allowed disabled:bg-gray-600 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                                     Go
                                 </button>
                                 <button data-modal-hide="start-date-modal-{{ $exam->id }}" type="button"
@@ -319,15 +319,41 @@
                 });
             });
         });
-    </script>
-    <script>
+
+        $.ajax({
+            url: "/fetch/exam/activated",
+            method: "GET",
+            dataType: "json",
+            success: function(data) {
+                data.exams.forEach(function(exam) {
+                    const dateSelect = document.getElementById('test-date-' + exam.id);
+                    const timeSelect = document.getElementById('test-time-' + exam.id);
+                    const goButton = document.getElementById('go-button-' + exam.id);
+
+                    dateSelect.addEventListener('change', checkValidity);
+                    timeSelect.addEventListener('change', checkValidity);
+
+                    function checkValidity() {
+                        if (dateSelect.value !== 'Select the Date' && timeSelect.value !==
+                            'Select the Time') {
+                            goButton.removeAttribute('disabled');
+                        } else {
+                            goButton.setAttribute('disabled', 'disabled');
+                        }
+                    }
+                });
+            },
+            error: function(error) {
+                console.error("Error fetching data:", error);
+            },
+        });
+
         function fetchData() {
             $.ajax({
                 url: "/fetch/exam/activated",
                 method: "GET",
                 dataType: "json",
                 success: function(data) {
-                    console.log(data);
                     data.exams.forEach(function(exam) {
                         const goButton = document.getElementById(`goButton-${exam.id}`);
 
@@ -341,7 +367,6 @@
                 },
             });
         }
-
         fetchData();
     </script>
 @endpush

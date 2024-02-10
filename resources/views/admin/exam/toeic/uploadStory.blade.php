@@ -3,11 +3,9 @@
         @csrf
         <div class="flex items-center justify-center">
             <div
-                class="w-full max-w-screen-lg p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                class="w-full max-w-screen-lg p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div class="border-b-2 border-gray-200 dark:border-gray-700">
-                    <h1 class="pb-1 text-2xl font-semibold dark:text-white">
-                        TOEIC Upload Story
-                    </h1>
+                    <h1 class="pb-1 text-2xl font-semibold dark:text-white" id="uploadStoryHeader"></h1>
                 </div>
                 <div class="mt-5" id="story-area"></div>
                 <div class="hidden mt-5" id="rich-text">
@@ -77,17 +75,19 @@
             var selectSection = document.getElementById("select-section");
             var storyArea = document.getElementById("story-area");
             var richText = document.getElementById("rich-text");
+            var uploadStoryHeader = document.getElementById("uploadStoryHeader");
 
             if (storyType === "part iv") {
                 storyArea.innerHTML =
                     `
-        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio Short Talk</label>
-        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="story" accept="audio/*" required>`;
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio Short Talk</label>
+                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" name="story" accept="audio/*" required>`;
                 selectSection.innerHTML = `
-        <option value="iv" selected>Listening Part IV</option>`;
+                    <option value="iv" selected>Listening Part IV</option>`;
+                uploadStoryHeader.innerHTML = 'TOEIC Upload Story Part IV'
             } else if (storyType === "part vii") {
+                uploadStoryHeader.innerHTML = 'TOEIC Upload Story Part VII'
                 richText.classList.remove("hidden");
-                // CkEditor5
                 ClassicEditor.create(document.querySelector('#editor'), {
                     ckfinder: {
                         uploadUrl: '{{ route('ckeditor.upload') . '?_token=' . csrf_token() }}',

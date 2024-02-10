@@ -127,19 +127,23 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center mt-5 border-gray-200 rounded-b dark:border-gray-600">
-                <a href="/dashboard" type="button"
-                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Back</a>
-                <a href="{{ $exams->conference_link }}" target="_blank"
-                    class="ms-3 text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Conference
-                    Link</a>
-                <div id="enabledStart" class="hidden">
-                    <a href="/exam/{{ $enrolls->for }}/start"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Start</a>
+            <div class="flex items-center justify-between mt-5 border-gray-200 rounded-b dark:border-gray-600">
+                <div>
+                    <a href="/dashboard" type="button"
+                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Back</a>
+                    <a href="{{ $exams->conference_link }}" target="_blank"
+                        class="px-5 py-3 text-sm font-medium text-white bg-purple-700 rounded-lg ms-1 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Conference
+                        Link</a>
                 </div>
-                <div id="disabledStart" class="hidden">
-                    <button type="submit" disabled
-                        class="text-white cursor-not-allowed bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-2 dark:bg-gray-800 dark:border dark:border-gray-700">Start</button>
+                <div>
+                    <div id="enabledStart" class="hidden">
+                        <a href="/exam/{{ $enrolls->for }}/start"
+                            class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Start</a>
+                    </div>
+                    <div id="disabledStart" class="hidden">
+                        <button type="submit" disabled
+                            class="text-white cursor-not-allowed bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-2 dark:bg-gray-800 dark:border dark:border-gray-700">Start</button>
+                    </div>
                 </div>
             </div>
         </div>

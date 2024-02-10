@@ -11,12 +11,16 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EPT_QuestionController;
 use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\EptAnswerController;
+use App\Http\Controllers\EptScoreController;
 use App\Http\Controllers\Exam_OpenController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
 use App\Http\Controllers\ToeicAnswerController;
+use App\Http\Controllers\ToeicScoreController;
 use App\Models\Enroll;
+use App\Models\ept_score;
+use App\Models\toeic_score;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,12 +65,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/test-history-ept', function () {
         return view('user/testHistoryEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'eptHistories' => ept_score::where('user_id', auth()->user()->id)->get(),
         ]);
     });
 
     Route::get('/dashboard/test-history-toeic', function () {
         return view('user/testHistoryTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'toeicHistories' => toeic_score::where('user_id', auth()->user()->id)->get(),
         ]);
     });
 
@@ -152,21 +158,6 @@ Route::get('admin/dashboard/exam/toeic', function () {
     ]);
 });
 
-Route::resource('admin/dashboard/exam', ExamController::class);
-
-// Manage Practice
-Route::get('admin/dashboard/practice/ept', function () {
-    return view('admin/managePractice', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
-Route::get('admin/dashboard/practice/toeic', function () {
-    return view('admin/managePractice', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-    ]);
-});
-
 Route::resource('admin/dashboard/exam/ept/direction', EPT_DirectionController::class);
 
 Route::resource('admin/dashboard/exam/ept/story', EPT_StoryController::class);
@@ -188,6 +179,21 @@ Route::post('/post/toeic/story',[TOEIC_StoryController::class, 'upload'])->name(
 Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
 
 Route::get('/fetch/exam/activated', [ExamController::class, 'fetchActivated']);
+
+Route::resource('admin/dashboard/exam', ExamController::class);
+
+// Manage Practice
+Route::get('admin/dashboard/practice/ept', function () {
+    return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
+
+Route::get('admin/dashboard/practice/toeic', function () {
+    return view('admin/managePractice', [
+        'profile' => User::where('id', auth()->user()->id)->first(),
+    ]);
+});
 
 // Exam Control
 Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
@@ -223,20 +229,6 @@ Route::get('/fetch/exam/toeic/story/audio', [ToeicAnswerController::class, 'fetc
 Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
 
 // Exam Finish Result
-Route::get('exam/ept/result', function () {
-    return view('user/exam/examFinish', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'warningCard' => false,
-        'result' => true,
-        'category' => 'ept',
-    ]);
-});
+Route::resource('exam/ept/result', EptScoreController::class);
 
-Route::get('exam/toeic/result', function () {
-    return view('user/exam/examFinish', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'warningCard' => false,
-        'result' => true,
-        'category' => 'toeic',
-    ]);
-});
+Route::resource('exam/toeic/result', ToeicScoreController::class);

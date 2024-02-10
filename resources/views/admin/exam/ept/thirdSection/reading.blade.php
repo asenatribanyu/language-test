@@ -1,6 +1,6 @@
 {{-- Reading --}}
 <div class="mt-3">
-    <h2 class="text-xl font-medium text-gray-900 dark:text-white" id="reading"">Direction of Reading Comprehension:</h2>
+    <h2 class="text-xl font-medium text-gray-900 dark:text-white" id="reading"">Reading Comprehension Direction:</h2>
     @if ($directions_reading)
         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
             @if ($directions_reading->audio)
@@ -88,7 +88,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No direction of this reading comprehension has been created
         </div>
     @endif
@@ -101,7 +101,7 @@
             {{ $questions_reading->count() }}
         </span>
     </div>
-    @if ($questions_reading)
+    @if ($questions_reading->isNotEmpty())
         @foreach ($stories as $story)
             @if ($story->section == 'reading')
                 <div class="p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
@@ -189,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                    @foreach ($questions_reading as $question)
+                    @foreach ($story->question as $question)
                         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div
@@ -330,7 +330,7 @@
             @endif
         @endforeach
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No question of this reading comprehension has been created.
         </div>
     @endif

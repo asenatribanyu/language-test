@@ -1,8 +1,7 @@
 {{-- Written --}}
 <div class="mt-5">
     <h2 class="pt-3 text-xl font-medium text-gray-900 border-t-2 border-gray-200 dark:border-gray-700 dark:text-white"
-        id="written">Direction of Written
-        Expression:</h2>
+        id="written">Written Expression Direction:</h2>
     @if ($directions_written)
         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
             @if ($directions_written->audio)
@@ -90,7 +89,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No direction of this structure expression has been created.
         </div>
     @endif
@@ -103,7 +102,7 @@
             {{ $questions_written->count() }}
         </span>
     </div>
-    @if ($questions_written)
+    @if ($questions_written->isNotEmpty())
         @foreach ($questions_written as $question)
             <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                 <div class="flex gap-5">
@@ -155,6 +154,7 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Actions --}}
                     <div class="absolute top-3 right-3">
                         <button type="button" data-modal-target="delete-question-{{ $question->id }}"
                             data-modal-toggle="delete-question-{{ $question->id }}"
@@ -237,7 +237,7 @@
             </div>
         @endforeach
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No question of structure expression has been created.
         </div>
     @endif

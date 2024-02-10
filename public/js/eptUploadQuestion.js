@@ -4,6 +4,36 @@ document.addEventListener("DOMContentLoaded", function () {
     var selectStory = document.getElementById("select-story");
     var questionInput = document.getElementById("question");
     var questionCase = document.getElementById("question-case");
+    var questionHeader = document.getElementById("questionHeader");
+
+    switch (questionType) {
+        case "part a":
+            questionHeader.innerHTML =
+                "EPT Upload Question for Listening Part A";
+            break;
+        case "part b":
+            questionHeader.innerHTML =
+                "EPT Upload Question for Listening Part B";
+            break;
+        case "part c":
+            questionHeader.innerHTML =
+                "EPT Upload Question for Listening Part C";
+            break;
+        case "structure":
+            questionHeader.innerHTML =
+                "EPT Upload Question for Structure Expression";
+            break;
+        case "written":
+            questionHeader.innerHTML =
+                "EPT Upload Question for Written Expression";
+            break;
+        case "reading":
+            questionHeader.innerHTML =
+                "EPT Upload Question for Reading Comprehension";
+            break;
+        default:
+            break;
+    }
 
     if (["part a", "part b", "part c"].includes(questionType)) {
         questionInput.innerHTML = `

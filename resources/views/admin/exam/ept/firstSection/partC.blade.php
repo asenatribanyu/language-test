@@ -87,7 +87,7 @@
             </div>
         </div>
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No direction of this part has been created.
         </div>
     @endif
@@ -100,7 +100,7 @@
             {{ $questions_c->count() }}
         </span>
     </div>
-    @if ($questions_c)
+    @if ($questions_c->isNotEmpty())
         @foreach ($stories as $story)
             @if ($story->section == 'part c')
                 <div class="p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
@@ -191,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                    @foreach ($questions_c as $question)
+                    @foreach ($story->question as $question)
                         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div
@@ -332,7 +332,7 @@
             @endif
         @endforeach
     @else
-        <div class="p-2 mt-2 text-gray-900 border-2 rounded-lg dark:text-white">
+        <div class="p-2 mt-2 text-gray-900 border-2 border-gray-200 rounded-lg dark:text-white dark:border-gray-700">
             No question of this part has been created.
         </div>
     @endif

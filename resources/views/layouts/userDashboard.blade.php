@@ -12,7 +12,7 @@
 
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('css/dataTables.css') }}" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 
     @stack('style')
@@ -22,7 +22,7 @@
 
 <body class="bg-gray-50 dark:bg-gray-900">
     @include('partials.userNavbar')
-    <div class="mx-auto max-w-7xl max-md:px-2">
+    <div class="mx-auto  pt-28 max-w-7xl max-md:px-2">
         @yield('content')
     </div>
     @include('partials.footer')

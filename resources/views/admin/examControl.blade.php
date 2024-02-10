@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex gap-3">
         <div
-            class="mt-5 p-5 w-2/6 max-h-[580px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            class="p-5 w-2/6 max-h-[580px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div class="border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Examination Control</h1>
             </div>
