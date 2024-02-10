@@ -33,6 +33,7 @@ use App\Models\toeic_score;
 |
 */
 
+// User Area
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('/dashboard/update-profile', ProfileController::class)->middleware('block.update.profile');
 
@@ -130,122 +131,126 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'title' => 'TOEIC Enrollment',
         ]);
     });
+
+    // User EPT Exam Starting
+    Route::resource('exam/ept/start', EptAnswerController::class);
+
+    Route::get('/fetch/exam/ept/answer', [EptAnswerController::class, 'fetchAnswer']);
+
+    Route::post('/post/exam/ept/answer', [EptAnswerController::class, 'postAnswer']);
+
+    Route::get('/fetch/exam/ept/question/audio', [EptAnswerController::class, 'fetchQuestionPlayButton']);
+
+    Route::post('/post/exam/ept/question/audio', [EptAnswerController::class, 'postQuestionPlayButton']);
+
+    Route::get('/fetch/exam/ept/story/audio', [EptAnswerController::class, 'fetchStoryPlayButton']);
+
+    Route::post('/post/exam/ept/story/audio', [EptAnswerController::class, 'postStoryPlayButton']);
+
+    // User TOEIC Exam Starting
+    Route::resource('exam/toeic/start', ToeicAnswerController::class);
+
+    Route::get('/fetch/exam/toeic/answer', [ToeicAnswerController::class, 'fetchAnswer']);
+
+    Route::post('/post/exam/toeic/answer', [ToeicAnswerController::class, 'postAnswer']);
+
+    Route::get('/fetch/exam/toeic/question/audio', [ToeicAnswerController::class, 'fetchQuestionPlayButton']);
+
+    Route::post('/post/exam/toeic/question/audio', [ToeicAnswerController::class, 'postQuestionPlayButton']);
+
+    Route::get('/fetch/exam/toeic/story/audio', [ToeicAnswerController::class, 'fetchStoryPlayButton']);
+
+    Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
+
+    // User Exam Result
+    Route::resource('exam/ept/result', EptScoreController::class);
+
+    Route::resource('exam/toeic/result', ToeicScoreController::class);
 });
 
-// Admin Dashboard
-Route::get('admin/dashboard', function () {
-    return view('admin/dashboard', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'exams' => Exam::get(),
-        'title' => 'Admin Dashboard',
-    ]);
+// Admin Area
+Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
+    // Admin Dashboard
+    Route::get('admin/dashboard', function () {
+        return view('admin/dashboard', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'exams' => Exam::get(),
+            'title' => 'Admin Dashboard',
+        ]);
+    });
+
+    // Manage Users
+    Route::get('admin/dashboard/manage-users', function () {
+        return view('admin/manageUser', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'getUsers' => User::whereIn('role', ['test taker', 'guest'])->get(),
+            'title' => 'Manage User',
+        ]);
+    });
+
+    Route::get('admin/dashboard/manage-users/edit/{id}', [UserController::class, 'edit']);
+
+    Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 'update']);
+
+    Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
+
+    // Manage Exams
+    Route::get('admin/dashboard/exam/ept', function () {
+        return view('admin/exam/ept/manageExam', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'exams' => Exam::where('category', 'ept')->get(),
+            'title' => 'Manage EPT',
+        ]);
+    });
+
+    Route::get('admin/dashboard/exam/toeic', function () {
+        return view('admin/exam/toeic/manageExam', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'exams' => Exam::where('category', 'toeic')->get(),
+            'title' => 'Manage TOEIC',
+        ]);
+    });
+
+    // Manage EPT/TOEIC Question, Story, Direction
+    Route::resource('admin/dashboard/exam/ept/direction', EPT_DirectionController::class);
+
+    Route::resource('admin/dashboard/exam/ept/story', EPT_StoryController::class);
+
+    Route::resource('admin/dashboard/exam/ept/question', EPT_QuestionController::class);
+
+    Route::get('/fetch/ept/story/{section}', [EPT_QuestionController::class, 'getStory']);
+
+    Route::resource('admin/dashboard/exam/toeic/direction', TOEIC_DirectionController::class);
+
+    Route::resource('admin/dashboard/exam/toeic/story', TOEIC_StoryController::class);
+
+    Route::resource('admin/dashboard/exam/toeic/question', TOEIC_QuestionController::class);
+
+    Route::get('/fetch/toeic/story/{section}', [TOEIC_QuestionController::class, 'getStory']);
+
+    Route::post('/post/toeic/story',[TOEIC_StoryController::class, 'upload'])->name('ckeditor.upload');
+
+    Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
+
+    Route::get('/fetch/exam/activated', [ExamController::class, 'fetchActivated']);
+
+    Route::resource('admin/dashboard/exam', ExamController::class);
+
+    // Manage Practice
+    Route::get('admin/dashboard/ept/practice', function () {
+        return view('admin/managePractice', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'EPT Practice',
+        ]);
+    });
+
+    Route::get('admin/dashboard/toeic/practice', function () {
+        return view('admin/managePractice', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'TOEIC Practice',
+        ]);
+    });
+
+    // Exam Control
+    Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 });
-
-// Manage Users
-Route::get('admin/dashboard/manage-users', function () {
-    return view('admin/manageUser', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'getUsers' => User::whereIn('role', ['test taker', 'guest'])->get(),
-        'title' => 'Manage User',
-    ]);
-});
-
-Route::get('admin/dashboard/manage-users/edit/{id}', [UserController::class, 'edit']);
-
-Route::put('admin/dashboard/manage-users/update/{id}',  [UserController::class, 'update']);
-
-Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
-
-// Manage Exams
-Route::get('admin/dashboard/exam/ept', function () {
-    return view('admin/exam/ept/manageExam', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'exams' => Exam::where('category', 'ept')->get(),
-        'title' => 'Manage EPT',
-    ]);
-});
-
-Route::get('admin/dashboard/exam/toeic', function () {
-    return view('admin/exam/toeic/manageExam', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'exams' => Exam::where('category', 'toeic')->get(),
-        'title' => 'Manage TOEIC',
-    ]);
-});
-
-Route::resource('admin/dashboard/exam/ept/direction', EPT_DirectionController::class);
-
-Route::resource('admin/dashboard/exam/ept/story', EPT_StoryController::class);
-
-Route::resource('admin/dashboard/exam/ept/question', EPT_QuestionController::class);
-
-Route::get('/fetch/ept/story/{section}', [EPT_QuestionController::class, 'getStory']);
-
-Route::resource('admin/dashboard/exam/toeic/direction', TOEIC_DirectionController::class);
-
-Route::resource('admin/dashboard/exam/toeic/story', TOEIC_StoryController::class);
-
-Route::resource('admin/dashboard/exam/toeic/question', TOEIC_QuestionController::class);
-
-Route::get('/fetch/toeic/story/{section}', [TOEIC_QuestionController::class, 'getStory']);
-
-Route::post('/post/toeic/story',[TOEIC_StoryController::class, 'upload'])->name('ckeditor.upload');
-
-Route::post('/post/exam/update-activated/{exam}', [ExamController::class, 'updateActivated']);
-
-Route::get('/fetch/exam/activated', [ExamController::class, 'fetchActivated']);
-
-Route::resource('admin/dashboard/exam', ExamController::class);
-
-// Manage Practice
-Route::get('admin/dashboard/ept/practice', function () {
-    return view('admin/managePractice', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'title' => 'EPT Practice',
-    ]);
-});
-
-Route::get('admin/dashboard/toeic/practice', function () {
-    return view('admin/managePractice', [
-        'profile' => User::where('id', auth()->user()->id)->first(),
-        'title' => 'TOEIC Practice',
-    ]);
-});
-
-// Exam Control
-Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
-
-// User EPT Exam Starting
-Route::resource('exam/ept/start', EptAnswerController::class);
-
-Route::get('/fetch/exam/ept/answer', [EptAnswerController::class, 'fetchAnswer']);
-
-Route::post('/post/exam/ept/answer', [EptAnswerController::class, 'postAnswer']);
-
-Route::get('/fetch/exam/ept/question/audio', [EptAnswerController::class, 'fetchQuestionPlayButton']);
-
-Route::post('/post/exam/ept/question/audio', [EptAnswerController::class, 'postQuestionPlayButton']);
-
-Route::get('/fetch/exam/ept/story/audio', [EptAnswerController::class, 'fetchStoryPlayButton']);
-
-Route::post('/post/exam/ept/story/audio', [EptAnswerController::class, 'postStoryPlayButton']);
-
-// User TOEIC Exam Starting
-Route::resource('exam/toeic/start', ToeicAnswerController::class);
-
-Route::get('/fetch/exam/toeic/answer', [ToeicAnswerController::class, 'fetchAnswer']);
-
-Route::post('/post/exam/toeic/answer', [ToeicAnswerController::class, 'postAnswer']);
-
-Route::get('/fetch/exam/toeic/question/audio', [ToeicAnswerController::class, 'fetchQuestionPlayButton']);
-
-Route::post('/post/exam/toeic/question/audio', [ToeicAnswerController::class, 'postQuestionPlayButton']);
-
-Route::get('/fetch/exam/toeic/story/audio', [ToeicAnswerController::class, 'fetchStoryPlayButton']);
-
-Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
-
-// Exam Finish Result
-Route::resource('exam/ept/result', EptScoreController::class);
-
-Route::resource('exam/toeic/result', ToeicScoreController::class);

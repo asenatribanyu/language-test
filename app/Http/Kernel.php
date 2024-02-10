@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'block.update.profile' => \App\Http\Middleware\BlockUpdateProfile::class,
         'set.schedule' => \App\Http\Middleware\SetSchedule::class,
+        'admin.role' => \App\Http\Middleware\CheckUserRole::class,
     ];
 }
