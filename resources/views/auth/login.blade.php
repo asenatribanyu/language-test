@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ 'css/global.css' }}">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Login | Language Institute - Widyatama University</title>
 </head>
@@ -41,7 +41,7 @@
                         <small class="mt-1 text-sm text-gray-900 dark:text-white">Please Sign in to your account to
                             start the test.</small>
                     </div>
-                    <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('login') }}">
+                    <form class="space-y-4 md:space-y-5" method="POST" action="{{ route('login') }}">
                         @csrf
                         <div>
                             <label for="email"
@@ -50,7 +50,8 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required="">
                             @error('email')
-                                <small class="text-red-500">{{ $message }}</small>
+                                <small
+                                    class="text-red-500">{{ $message == 'These credentials do not match our records.' ? 'Your email or password is incorrect. Please try again.' : '' }}</small>
                             @enderror
                         </div>
                         <div>
@@ -59,9 +60,6 @@
                             <input type="password" name="password" id="password"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required="">
-                            @error('password')
-                                <small class="text-red-500">{{ $message }}</small>
-                            @enderror
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">

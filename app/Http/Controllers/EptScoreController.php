@@ -28,6 +28,7 @@ class EptScoreController extends Controller
             'warningCard' => false,
             'result' => true,
             'category' => 'ept',
+            'title' => 'EPT Result'
         ]);
     }
 

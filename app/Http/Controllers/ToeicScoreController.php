@@ -44,6 +44,7 @@ class ToeicScoreController extends Controller
             'warningCard' => false,
             'result' => true,
             'category' => 'toeic',
+            'title' => 'TOEIC Result',
         ]);
     }
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ 'css/global.css' }}">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Register | Language Institute - Widyatama University</title>
 </head>
@@ -43,7 +43,7 @@
                             and don't forget to verify your account email.
                         </small>
                     </div>
-                    <form class="space-y-4 md:space-y-6" method="POST" action="{{ route('register') }}">
+                    <form class="space-y-4 md:space-y-5" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div>
                             <label for="name"
@@ -75,6 +75,8 @@
                             @error('password')
                                 <small class="text-red-500">{{ $message }}</small>
                             @enderror
+                            <small class="text-gray-500 dark:text-gray-400">*Password at least 8 characters with
+                                numbers.</small>
                         </div>
                         <div>
                             <label for="password_confirmation"

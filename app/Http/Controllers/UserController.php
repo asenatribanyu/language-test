@@ -49,6 +49,7 @@ class UserController extends Controller
         return view('admin/updateUser',[
             'user' => User::where('id', $id)->first(),
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Update User',
         ]);
     }
 

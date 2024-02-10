@@ -25,6 +25,7 @@ class TOEIC_StoryController extends Controller
     {
         return view('admin/exam/toeic/uploadStory', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Upload TOEIC Story',
         ]);
     }
 
@@ -82,6 +83,7 @@ class TOEIC_StoryController extends Controller
         return view('admin/exam/toeic/updateStory', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'story' => $story,
+            'title' => 'Update TOEIC Story',
         ]);
     }
 

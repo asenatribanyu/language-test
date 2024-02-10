@@ -24,6 +24,7 @@ class EptAnswerController extends Controller
             'warningCard' => false,
             'result' => false,
             'category' => 'ept',
+            'title' => 'EPT Exam',
         ]);
     }
 

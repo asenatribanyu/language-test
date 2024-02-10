@@ -26,6 +26,7 @@ class EPT_QuestionController extends Controller
         return view('admin/exam/ept/uploadQuestion', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'selects' => EPT_Story::where('exam_code', session('exam_code'))->get(),
+            'title' => 'Upload EPT Question',
         ]);
     }
 
@@ -171,6 +172,7 @@ class EPT_QuestionController extends Controller
             'profile' => User::where('id', auth()->user()->id)->first(),
             'stories' => EPT_Story::where('exam_code', session('exam_code'))->get(),
             'questions' => $question,
+            'title' => 'Update EPT Question',
         ]);
     }
 

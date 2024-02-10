@@ -24,6 +24,7 @@ class EPT_DirectionController extends Controller
     {
         return view('admin/exam/ept/uploadDirection', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Upload EPT Direction',
         ]);
     }
 
@@ -84,6 +85,7 @@ class EPT_DirectionController extends Controller
         return view('admin/exam/ept/updateDirection', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'direction' => $direction,
+            'title' => 'Update EPT Direction',
         ]);
     }
 

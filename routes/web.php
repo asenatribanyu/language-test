@@ -39,6 +39,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('user.dashboard', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Dashboard',
         ]);
     });
 
@@ -47,18 +48,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/profile', function () {
         return view('user/profile', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Profile',
         ]);
     });
 
     Route::get('/dashboard/contact-us', function () {
         return view('user/contactUs', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Contact Us',
         ]);
     });
 
     Route::get('/dashboard/purchase', function () {
         return view('user/purchase', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Purchase',
         ]);
     });
 
@@ -66,6 +70,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('user/testHistoryEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'eptHistories' => ept_score::where('user_id', auth()->user()->id)->get(),
+            'title' => 'EPT History',
         ]);
     });
 
@@ -73,12 +78,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('user/testHistoryTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'toeicHistories' => toeic_score::where('user_id', auth()->user()->id)->get(),
+            'title' => 'TOEIC History',
         ]);
     });
 
     Route::get('/dashboard/test-guide', function () {
         return view('user/testGuide', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Guide',
         ]);
     });
 
@@ -87,6 +94,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'ept')->where('activated', 'yes')->first(),
             'warningCard' => true,
+            'title' => 'EPT Schedule',
         ]);
     })->middleware('set.schedule:ept');
     
@@ -95,6 +103,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'toeic')->where('activated', 'yes')->first(),
             'warningCard' => true,
+            'title' => 'TOEIC Schedule',
         ]);
     })->middleware('set.schedule:toeic');
 
@@ -108,6 +117,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'exams' => Exam::where('activated', 'yes')->where('category', 'ept')->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('for', 'ept')->latest()->first(),
             'warningCard' => true,
+            'title' => 'EPT Enrollment',
         ]);
     });
 
@@ -117,6 +127,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'exams' => Exam::where('activated', 'yes')->where('category', 'toeic')->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('for', 'toeic')->latest()->first(),
             'warningCard' => true,
+            'title' => 'TOEIC Enrollment',
         ]);
     });
 });
@@ -126,6 +137,7 @@ Route::get('admin/dashboard', function () {
     return view('admin/dashboard', [
         'profile' => User::where('id', auth()->user()->id)->first(),
         'exams' => Exam::get(),
+        'title' => 'Admin Dashboard',
     ]);
 });
 
@@ -134,6 +146,7 @@ Route::get('admin/dashboard/manage-users', function () {
     return view('admin/manageUser', [
         'profile' => User::where('id', auth()->user()->id)->first(),
         'getUsers' => User::whereIn('role', ['test taker', 'guest'])->get(),
+        'title' => 'Manage User',
     ]);
 });
 
@@ -148,6 +161,7 @@ Route::get('admin/dashboard/exam/ept', function () {
     return view('admin/exam/ept/manageExam', [
         'profile' => User::where('id', auth()->user()->id)->first(),
         'exams' => Exam::where('category', 'ept')->get(),
+        'title' => 'Manage EPT',
     ]);
 });
 
@@ -155,6 +169,7 @@ Route::get('admin/dashboard/exam/toeic', function () {
     return view('admin/exam/toeic/manageExam', [
         'profile' => User::where('id', auth()->user()->id)->first(),
         'exams' => Exam::where('category', 'toeic')->get(),
+        'title' => 'Manage TOEIC',
     ]);
 });
 
@@ -183,15 +198,17 @@ Route::get('/fetch/exam/activated', [ExamController::class, 'fetchActivated']);
 Route::resource('admin/dashboard/exam', ExamController::class);
 
 // Manage Practice
-Route::get('admin/dashboard/practice/ept', function () {
+Route::get('admin/dashboard/ept/practice', function () {
     return view('admin/managePractice', [
         'profile' => User::where('id', auth()->user()->id)->first(),
+        'title' => 'EPT Practice',
     ]);
 });
 
-Route::get('admin/dashboard/practice/toeic', function () {
+Route::get('admin/dashboard/toeic/practice', function () {
     return view('admin/managePractice', [
         'profile' => User::where('id', auth()->user()->id)->first(),
+        'title' => 'TOEIC Practice',
     ]);
 });
 

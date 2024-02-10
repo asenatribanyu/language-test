@@ -17,12 +17,12 @@
 
     @stack('style')
 
-    <title>User Page</title>
+    <title>{{ $title }} | Widyamata Language Institute</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
     @include('partials.userNavbar')
-    <div class="mx-auto  pt-28 max-w-7xl max-md:px-2">
+    <div class="mx-auto pt-28 max-w-7xl max-md:px-2">
         @yield('content')
     </div>
     @include('partials.footer')

@@ -25,6 +25,7 @@ class TOEIC_QuestionController extends Controller
     {
         return view('admin/exam/toeic/uploadQuestion', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Upload TOEIC Question',
         ]);
     }
 
@@ -173,6 +174,7 @@ class TOEIC_QuestionController extends Controller
             'profile' => User::where('id', auth()->user()->id)->first(),
             'stories' => TOEIC_Story::where('exam_code', session('exam_code'))->get(),
             'questions' => $question,
+            'title' => 'Update TOEIC Question',
         ]);
     }
 

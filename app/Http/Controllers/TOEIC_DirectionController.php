@@ -24,6 +24,7 @@ class TOEIC_DirectionController extends Controller
     {
         return view('admin/exam/toeic/uploadDirection', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Upload TOEIC Direction',
         ]);
     }
 
@@ -81,9 +82,11 @@ class TOEIC_DirectionController extends Controller
     public function edit($id)
     {
         $direction = TOEIC_Direction::where('id',$id)->first();
+
         return view('admin/exam/toeic/updateDirection', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'direction' => $direction,
+            'title' => 'Update TOEIC Direction',
         ]);
     }
 

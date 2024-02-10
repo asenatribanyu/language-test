@@ -102,6 +102,7 @@ class ExamController extends Controller
                 'exam' => $exam,
                 'stories' => EPT_Story::where('exam_code', session('exam_code'))->get(),
                 'question_count' => EPT_Question::query()->get()->count(),
+                'title' => 'Create EPT',
             ]);
         }
         else if($exam->category == "toeic"){
@@ -124,6 +125,7 @@ class ExamController extends Controller
                 'exam' => $exam,
                 'stories' => TOEIC_Story::where('exam_code', session('exam_code'))->get(),
                 'question_count' => TOEIC_Question::query()->get()->count(),
+                'title' => 'Create TOEIC',
             ]);
         }
     }

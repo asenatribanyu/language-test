@@ -25,6 +25,7 @@ class EPT_StoryController extends Controller
     {
         return view('admin/exam/ept/uploadStory', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Upload EPT Story',
         ]);
     }
 
@@ -82,6 +83,7 @@ class EPT_StoryController extends Controller
         return view('admin/exam/ept/updateStory', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'story' => $story,
+            'title' => 'Update EPT Story',
         ]);
     }
 

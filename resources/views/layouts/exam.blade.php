@@ -13,7 +13,7 @@
 
     @stack('style')
 
-    <title>Test Page</title>
+    <title>{{ strtoupper($enrolls->for) }} Exam</title>
 </head>
 
 <body class="text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-white">

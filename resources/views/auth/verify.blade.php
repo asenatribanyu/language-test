@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ 'css/global.css' }}">
+    <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Verify | Language Institute - Widyatama University</title>
 </head>
 
-<body>
+<body class="bg-gray-50 dark:bg-gray-900">
     <section class="flex flex-col items-center justify-center min-h-screen">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
-            <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="w-40" src="{{ asset('img/lembaga-bahasa.png') }}" alt="logo">
             </a>
             <div

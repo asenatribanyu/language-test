@@ -16,7 +16,7 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     @stack('style')
 
-    <title>Admin Page</title>
+    <title>{{ $title }} | Widyatama Language Institute</title>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">

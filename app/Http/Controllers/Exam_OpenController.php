@@ -35,6 +35,7 @@ class Exam_OpenController extends Controller
         return view('admin/examControl', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'examOpen' => $open,
+            'title' => 'Exam Control',
         ]);
     }
 

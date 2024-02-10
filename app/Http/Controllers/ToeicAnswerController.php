@@ -24,6 +24,7 @@ class ToeicAnswerController extends Controller
             'warningCard' => false,
             'result' => false,
             'category' => 'toeic',
+            'title' => 'TOEIC Exam',
         ]);
     }
 

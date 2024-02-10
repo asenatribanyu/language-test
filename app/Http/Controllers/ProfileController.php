@@ -17,6 +17,7 @@ class ProfileController extends Controller
     {
         return view('user/updateProfile', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Update Profile',
         ]);
     }
 
