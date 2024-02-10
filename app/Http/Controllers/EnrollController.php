@@ -67,7 +67,7 @@ class EnrollController extends Controller
     
                 $enroll->save();
     
-                return redirect('/dashboard/' . $validateData['for'] . '/waiting-area/enroll');
+                return redirect('/dashboard/' . $validateData['for'] . '/waiting-area/enroll')->with('success', 'Exam have been enrolled succesfully.');
             }
         }
 

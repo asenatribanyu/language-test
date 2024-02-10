@@ -90,7 +90,7 @@ class UserController extends Controller
         $user->save();
         $profile->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'User updated succesfully.');
     }
 
     /**
@@ -108,6 +108,6 @@ class UserController extends Controller
         $user->delete();
         $profile->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'User deleted succesfully.');
     }
 }

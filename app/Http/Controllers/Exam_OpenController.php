@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EPT_Open;
 use App\Models\Exam;
-use App\Models\TOEIC_Open;
 use App\Models\User;
+use App\Models\EPT_Open;
+use App\Models\TOEIC_Open;
 use Illuminate\Http\Request;
 
 class Exam_OpenController extends Controller

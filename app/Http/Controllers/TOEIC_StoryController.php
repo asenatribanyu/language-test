@@ -62,7 +62,7 @@ class TOEIC_StoryController extends Controller
 
         $story->save();
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Story created succesfully.');
     }
 
     /**
@@ -113,7 +113,7 @@ class TOEIC_StoryController extends Controller
 
         $story->update($validateData);
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Story updated succesfully.');
     }
 
     /**
@@ -131,7 +131,7 @@ class TOEIC_StoryController extends Controller
 
         $story->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Story deleted succesfully.');
     }
 
     public function upload(Request $request){
@@ -142,6 +142,7 @@ class TOEIC_StoryController extends Controller
             $fileName = $fileName . '' . time() . '.' . $extension;
             $request->file('upload')->storeAs('public/ckeditor', $fileName);
             $url = asset('storage/ckeditor/' . $fileName);
+            
             return response()->json(['fileName' => $fileName, 'uploaded' => 1, 'url' => $url]);
         }
     }

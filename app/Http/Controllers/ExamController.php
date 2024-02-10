@@ -49,7 +49,7 @@ class ExamController extends Controller
 
         $examId = $exam->id;
 
-        return redirect()->route('exam.edit', ['exam' => $examId]);
+        return redirect()->route('exam.edit', ['exam' => $examId])->with('success', 'Exam created successfully.');
     }
 
     public function updateActivated(Request $request, Exam $exam)
@@ -58,14 +58,14 @@ class ExamController extends Controller
 
         $exam->update(['activated' => $activatedValue]);
 
-        return response()->json(['message' => 'Activated column updated successfully', 'activated' => $activatedValue]);
+        return response()->json(['message' => 'Activated Succesfully.', 'activated' => $activatedValue]);
     }
 
     public function fetchActivated()
     {
         $exam = Exam::all();
 
-        return response()->json(['message' => 'Data Successfully Taken', 'exams' =>$exam]);
+        return response()->json(['message' => 'Fetch Successfull', 'exams' =>$exam]);
     }
     /**
      * Display the specified resource.
@@ -166,7 +166,7 @@ class ExamController extends Controller
 
         $exam->update($validateData);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Exam updated succesfully.');
     }
 
     /**
@@ -175,7 +175,7 @@ class ExamController extends Controller
     public function destroy(Exam $exam)
     {
         if($exam->category == 'ept'){
-            $exam->direction()->delete();
+            $exam->eptDirection()->delete();
             $exam->eptQuestion()->delete();
             $exam->eptStory()->delete();
         }
@@ -186,6 +186,6 @@ class ExamController extends Controller
         }
         $exam->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Exam deleted succesfully.');
     }
 }

@@ -65,7 +65,7 @@ class EPT_DirectionController extends Controller
             $direction->save();
         }
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Direction created succesfully.');
     }
 
     /**
@@ -112,7 +112,7 @@ class EPT_DirectionController extends Controller
         
         $direction->update($validateData);
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Direction updated succesfully.');
     }
 
     /**
@@ -128,6 +128,6 @@ class EPT_DirectionController extends Controller
 
         $direction->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Direction deleted succesfully.');
     }
 }

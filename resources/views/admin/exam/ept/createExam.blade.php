@@ -127,6 +127,17 @@
             </div>
         </div>
     </div>
+
+    @if (session()->has('success'))
+        <div class="fixed z-10 w-full max-w-xs bottom-16 left-5">
+            @include('notifications.success')
+        </div>
+    @elseif(session()->has('failed'))
+        <div class="fixed z-10 w-full max-w-xs bottom-16 left-5">
+            @include('notifications.failed')
+        </div>
+    @endif
+
     @include('admin.exam.partials.questionStored')
     @include('admin.exam.partials.scrollTop')
     @include('admin.exam.partials.subnameModal')

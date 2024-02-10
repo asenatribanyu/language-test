@@ -66,7 +66,7 @@ class ProfileController extends Controller
         }
         $user->update();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Account created succesfully.');
     }
 
     /**
@@ -107,7 +107,7 @@ class ProfileController extends Controller
         $user->picture = 'profile_picture/' . $fileName;
         $user->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Profile updated succesfully.');
     }
 
     /**

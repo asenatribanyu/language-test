@@ -62,7 +62,7 @@ class EPT_StoryController extends Controller
 
         $story->save();
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Story created succesfully.');
     }
 
     /**
@@ -113,7 +113,7 @@ class EPT_StoryController extends Controller
 
         $story->update($validateData);
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Story updated succesfully.');
     }
 
     /**
@@ -131,6 +131,6 @@ class EPT_StoryController extends Controller
 
         $story->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Story deleted succesfully.');
     }
 }

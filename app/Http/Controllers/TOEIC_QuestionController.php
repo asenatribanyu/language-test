@@ -152,7 +152,7 @@ class TOEIC_QuestionController extends Controller
 
         $question->save();
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Question created succesfully.');
     }
 
     /**
@@ -303,7 +303,7 @@ class TOEIC_QuestionController extends Controller
 
         $question->update();
 
-        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit');
+        return redirect('/admin/dashboard/exam/' . session('id')  . '/edit')->with('success', 'Question updated succesfully.');
     }
 
     /**
@@ -322,6 +322,6 @@ class TOEIC_QuestionController extends Controller
 
         $question->delete();
         
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Question deleted succesfully.');
     }
 }

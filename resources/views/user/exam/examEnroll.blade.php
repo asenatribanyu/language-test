@@ -148,6 +148,15 @@
             </div>
         </div>
     </div>
+    @if (session()->has('success'))
+        <div class="fixed bottom-0 z-10 w-full max-w-xs left-5">
+            @include('notifications.success')
+        </div>
+    @elseif(session()->has('failed'))
+        <div class="fixed bottom-0 z-10 w-full max-w-xs left-5">
+            @include('notifications.failed')
+        </div>
+    @endif
 @endsection
 @push('script')
     <script src="{{ asset('js/waitingArea.js') }}"></script>
