@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Exam;
+use App\Models\payment;
 use App\Models\Profile;
 use App\Models\Question;
 use App\Models\Story;
@@ -31,6 +32,15 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => '2023-12-07 06:33:55',
             'password' => bcrypt('user'),
             'role' => 'test taker',
+        ]);
+
+        payment::create([
+            'user_id' => '2',
+            'order_id' => '1',
+            'for' => 'ept',
+            'status_pay' => 'capture',
+            'used' => 'no',
+            'deleted'=>'no'
         ]);
 
         // \App\Models\User::create([

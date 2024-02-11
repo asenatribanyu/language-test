@@ -27,14 +27,17 @@ class Exam_OpenController extends Controller
         
         if($eptOpen){
             $open = $eptOpen;
+            $category = "ept";
         }
         else{
             $open = TOEIC_Open::where('status', 'run')->orWhereNull('status')->first();
+            $category = "toeic";
         }
 
         return view('admin/examControl', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'examOpen' => $open,
+            'category' => $category,
             'title' => 'Exam Control',
         ]);
     }
@@ -121,5 +124,40 @@ class Exam_OpenController extends Controller
     public function destroy(Exam $exam)
     {
         //
+    }
+
+    public function startExam(Request $request){
+        if($request->category == 'ept'){
+            $exam = EPT_Open::findOrFail($request->exam_id);
+        } else {
+            $exam = TOEIC_Open::findOrFail($request->exam_id);
+        }
+    
+        // Decrement the duration by 1 second
+        $exam->start = now();
+        $exam->save();
+    
+        // Prepare the response
+        $response = [
+            'duration' => $exam->duration, // Updated duration
+            'id' => $exam->id,
+            'category' => $request->category,
+            'message' => 'berjalan' // Optional message
+        ];
+    
+        // Return JSON response
+        return response()->json($response);
+    }
+    
+    public function timer(Request $request){
+        if($request->category == 'ept'){
+            $exam = EPT_Open::where('id',$request->id)->first();
+        } else {
+            $exam = TOEIC_Open::where('id',$request->id)->first();
+        }
+        return response()->json([
+            'start_time' => $exam->start,
+            'duration' => '7290'
+        ]);
     }
 }

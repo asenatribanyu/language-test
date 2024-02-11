@@ -464,3 +464,53 @@ function backToReading() {
         topElement.scrollIntoView({ behavior: "smooth" });
     }
 }
+function startTimer() {
+    // Fetch exam details from the server
+    var examId = $("#Exam-Id").val();
+    var examCategory = $("#Category").val();
+
+    $.ajax({
+        url: "/fetch/timer",
+        type: "GET",
+        data: {
+            id: examId,
+            category: examCategory,
+        },
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+        dataType: "json",
+        success: function (response) {
+            var startTime = new Date(response.start_time).getTime();
+            var duration = response.duration * 1000;
+            console.log(response);
+
+            var timer = setInterval(function () {
+                var now = new Date().getTime();
+                var distance = startTime + duration - now;
+
+                if (distance <= 0) {
+                    clearInterval(timer);
+                    console.log("Exam has ended");
+                } else {
+                    var hours = Math.floor(
+                        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+                    );
+                    var minutes = Math.floor(
+                        (distance % (1000 * 60 * 60)) / (1000 * 60)
+                    );
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    $("#timerDisplay").text(
+                        hours + ":" + minutes + ":" + seconds
+                    );
+                }
+            }, 1000);
+        },
+        error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+        },
+    });
+}
+
+startTimer();

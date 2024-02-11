@@ -5,7 +5,7 @@
         </div>
         @if ($result == false)
             <div class="text-3xl font-semibold text-center dark:text-white">
-                2h 1m 30s
+                <div id="timerDisplay"></div>
             </div>
         @endif
         <button type="button"
