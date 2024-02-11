@@ -3,6 +3,8 @@
     <div class="flex w-full gap-5 max-md:block">
         @include('partials.testTakerProfile')
         <div class="w-3/5">
+            <input type="hidden" value="{{ $category }}" id="Category">
+            <input type="hidden" value="{{ $toeicOpen->id }}" id="Exam-Id">
             @include('examTOEIC.partials.listening.partI')
             @include('examTOEIC.partials.listening.partII')
             @include('examTOEIC.partials.listening.partIII')
@@ -10,7 +12,7 @@
             @include('examTOEIC.partials.reading.partV')
             @include('examTOEIC.partials.reading.partVI')
             @include('examTOEIC.partials.reading.partVII')
-            @include('examTOEIC.partials.finishPage')
+            @include('examTOEIC.partials.finishPage')w
         </div>
     </div>
 @endsection

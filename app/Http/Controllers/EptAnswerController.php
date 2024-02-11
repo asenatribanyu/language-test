@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Enroll;
 use App\Models\User;
 use App\Models\ept_answer;
+use App\Models\EPT_Open;
 use App\Models\EPT_Question;
 use App\Models\EPT_Story;
 use App\Models\EptQuestionAudio;
@@ -21,6 +22,7 @@ class EptAnswerController extends Controller
         return view('examEPT/testEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
+            'eptOpen' => EPT_Open::Where('status', 'run')->first(),
             'warningCard' => false,
             'result' => false,
             'category' => 'ept',

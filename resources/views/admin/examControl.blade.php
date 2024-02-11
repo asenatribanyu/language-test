@@ -6,8 +6,7 @@
             <div class="border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Examination Control</h1>
             </div>
-            <div class="mt-5 text-4xl font-semibold text-center dark:text-white">
-                2h 1m 30s
+            <div class="mt-5 text-4xl font-semibold text-center dark:text-white" id="timerDisplay">
             </div>
             <div class="mt-5">
                 <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -88,9 +87,11 @@
                                     <form action="/admin/dashboard/exam/control/{{ $examOpen->id }}" method="POST">
                                         @method('put')
                                         @csrf
+                                        <input type="hidden" value="{{ $category }}" id="Category">
+                                        <input type="hidden" value="{{ $examOpen->id }}" id="Exam-Id">
                                         <input type="hidden" value="run" name="status">
                                         <input type="hidden" value="{{ $examOpen->exam->category }}" name="category">
-                                        <button data-modal-hide="start-modal" type="submit"
+                                        <button data-modal-hide="start-modal" type="submit" onclick="postTimer('{{ $examOpen->id }}','{{ $category }}')"
                                             class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                                             Yes, I'm sure
                                         </button>
@@ -288,4 +289,66 @@
 @endsection
 @push('script')
     <script src="{{ asset('js/adminGlobal.js') }}"></script>
+    <script> 
+        function startExam(id, category) {
+            $.ajax({
+                url: "/post/timer",
+                type: "POST",
+                data: {
+                    exam_id: id,
+                    category: category,
+                },
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+                success: function (response) {
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                },
+            });
+        }
+        function startTimer() {
+            // Fetch exam details from the server
+            var examId = $('#Exam-Id').val();
+            var examCategory = $('#Category').val();
+
+            $.ajax({
+                url: "/fetch/timer",
+                type: "GET",
+                data: {
+                    id: examId,
+                    category: examCategory
+                },
+                success: function (response) {
+                    var startTime = new Date(response.start_time).getTime();
+                    var duration = response.duration * 1000;
+                    var timer = setInterval(function () {
+                        var now = new Date().getTime();
+                        var distance = startTime + duration - now;
+
+                        if (distance <= 0) {
+                            clearInterval(timer);
+                            console.log("Exam has ended");
+                        } else {
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            $('#timerDisplay').text(hours + ":" + minutes + ":" + seconds);
+                        }
+                    }, 1000);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                },
+            });
+        }
+
+        startTimer();
+
+        function postTimer(id, category) {
+            startExam(id, category);
+        }
+    </script>
 @endpush

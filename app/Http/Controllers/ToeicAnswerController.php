@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Enroll;
 use App\Models\toeic_answer;
+use App\Models\TOEIC_Open;
 use App\Models\TOEIC_Question;
 use App\Models\TOEIC_Story;
 use App\Models\ToeicQuestionAudio;
@@ -21,6 +22,7 @@ class ToeicAnswerController extends Controller
         return view('examTOEIC/testTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
+            'toeicOpen' => TOEIC_Open::Where('status', 'run')->first(),
             'warningCard' => false,
             'result' => false,
             'category' => 'toeic',

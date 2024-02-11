@@ -172,6 +172,11 @@ Route::middleware(['auth', 'verified', 'check.payment:toeic', 'check.set.schedul
     Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
 });
 
+
+//fetchtime
+Route::get('/fetch/timer',[Exam_OpenController::class,'timer']);
+
+
 // Admin Area
 Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
     // Admin Dashboard
@@ -215,6 +220,9 @@ Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
 
     Route::delete('admin/dashboard/manage-users/delete/{id}', [UserController::class, 'destroy']);
 
+    //startTimer
+    Route::post('/post/timer',[Exam_OpenController::class,'startExam']);
+    
     // Manage Exams
     Route::get('admin/dashboard/exam/ept', function () {
         return view('admin/exam/ept/manageExam', [
