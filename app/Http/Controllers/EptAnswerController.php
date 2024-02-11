@@ -37,7 +37,7 @@ class EptAnswerController extends Controller
 
     public function fetchStoryPlayButton(){
         $storyPlayButton = EptStoryAudio::where('user_id', auth()->user()->id)->get();
-        $storyAudio = EPT_Story::whereIn('section', ['part a', 'part b'])->get();
+        $storyAudio = EPT_Story::whereIn('section', ['part b', 'part c'])->get();
 
         return response()->json(['disabledButton' => $storyPlayButton, 'storyList' => $storyAudio]);
     }
@@ -104,9 +104,8 @@ class EptAnswerController extends Controller
             $answer->answer = $validateData['answer'];
             $answer->ept_question()->associate($validateData['question_id']);
             $answer->user()->associate(auth()->user()->id);
+            $answer->save();
         }
-        
-        $answer->save();
 
         return response()->json(['message' => 'Sukses menambah jawaban']);
     }

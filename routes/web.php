@@ -90,25 +90,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ]);
     });
 
-    Route::get('/dashboard/ept/waiting-area/jadwal', function () {
-        return view('user/exam/examJadwal', [
+    Route::get('/dashboard/ept/waiting-area/schedule', function () {
+        return view('user/exam/examSchedule', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'ept')->where('activated', 'yes')->first(),
             'warningCard' => true,
             'title' => 'EPT Schedule',
         ]);
-    })->middleware('set.schedule:ept');
+    })->middleware('check.payment:ept', 'set.schedule:ept');
     
-    Route::get('/dashboard/toeic/waiting-area/jadwal', function () {
-        return view('user/exam/examJadwal', [
+    Route::get('/dashboard/toeic/waiting-area/schedule', function () {
+        return view('user/exam/examSchedule', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'exams' => Exam::where('category', 'toeic')->where('activated', 'yes')->first(),
             'warningCard' => true,
             'title' => 'TOEIC Schedule',
         ]);
-    })->middleware('set.schedule:toeic');
+    })->middleware('check.payment:toeic', 'set.schedule:toeic');
 
-    Route::resource('/dashboard/waiting-area/jadwal', EnrollController::class);
+    Route::resource('/dashboard/waiting-area/schedule', EnrollController::class);
 
     Route::get('/fetch/enroll/start', [EnrollController::class, 'getButton']);
 
@@ -120,7 +120,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'warningCard' => true,
             'title' => 'EPT Enrollment',
         ]);
-    });
+    })->middleware('check.payment:ept', 'check.set.schedule:ept');
 
     Route::get('/dashboard/toeic/waiting-area/enroll', function () {
         return view('user/exam/examEnroll', [
@@ -130,9 +130,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'warningCard' => true,
             'title' => 'TOEIC Enrollment',
         ]);
-    });
+    })->middleware('check.payment:toeic', 'check.set.schedule:toeic',);
 
-    // User EPT Exam Starting
+    // User Exam Result
+    Route::resource('exam/ept/result', EptScoreController::class);
+
+    Route::resource('exam/toeic/result', ToeicScoreController::class);
+});
+
+// User EPT Exam Starting
+Route::middleware(['auth', 'verified', 'check.payment:ept', 'check.set.schedule:ept', 'check.exam.starting:ept'])->group(function () {
     Route::resource('exam/ept/start', EptAnswerController::class);
 
     Route::get('/fetch/exam/ept/answer', [EptAnswerController::class, 'fetchAnswer']);
@@ -146,8 +153,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/fetch/exam/ept/story/audio', [EptAnswerController::class, 'fetchStoryPlayButton']);
 
     Route::post('/post/exam/ept/story/audio', [EptAnswerController::class, 'postStoryPlayButton']);
+});
 
-    // User TOEIC Exam Starting
+// User TOEIC Exam Starting
+Route::middleware(['auth', 'verified', 'check.payment:toeic', 'check.set.schedule:toeic', 'check.exam.starting:toeic'])->group(function () {
     Route::resource('exam/toeic/start', ToeicAnswerController::class);
 
     Route::get('/fetch/exam/toeic/answer', [ToeicAnswerController::class, 'fetchAnswer']);
@@ -161,11 +170,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/fetch/exam/toeic/story/audio', [ToeicAnswerController::class, 'fetchStoryPlayButton']);
 
     Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
-
-    // User Exam Result
-    Route::resource('exam/ept/result', EptScoreController::class);
-
-    Route::resource('exam/toeic/result', ToeicScoreController::class);
 });
 
 // Admin Area

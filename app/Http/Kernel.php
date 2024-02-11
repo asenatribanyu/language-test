@@ -67,5 +67,8 @@ class Kernel extends HttpKernel
         'block.update.profile' => \App\Http\Middleware\BlockUpdateProfile::class,
         'set.schedule' => \App\Http\Middleware\SetSchedule::class,
         'admin.role' => \App\Http\Middleware\CheckUserRole::class,
+        'check.payment' => \App\Http\Middleware\CheckPayment::class,
+        'check.set.schedule' => \App\Http\Middleware\CheckSetSchedule::class,
+        'check.exam.starting' => \App\Http\Middleware\CheckExamStarting::class,
     ];
 }

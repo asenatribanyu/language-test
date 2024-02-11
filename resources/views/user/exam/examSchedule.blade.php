@@ -1,13 +1,14 @@
 @extends('layouts.userDashboard')
 @section('content')
-    <form action="/dashboard/waiting-area/jadwal" method="POST">
+    <form action="/dashboard/waiting-area/schedule" method="POST">
         @csrf
         <div class="flex w-full gap-5 max-md:block">
             @include('partials.testTakerProfile')
             <div
                 class="w-3/5 p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow h-1/2 max-md:w-full max-md:h-full dark:bg-gray-800 dark:border-gray-700">
                 <div class="border-b-2 border-gray-200 dark:border-gray-700">
-                    <h1 class="pb-2 text-2xl font-semibold dark:text-white">Select Schedule of the Test</h1>
+                    <h1 class="pb-2 text-2xl font-semibold dark:text-white">Select Schedule of the
+                        {{ strtoupper($exams->category) }} Test</h1>
                 </div>
                 <input type="hidden" value="{{ $exams->category }}" name="for">
                 <input type="hidden" value="{{ $exams->code }}" name="exam_code">
@@ -33,7 +34,7 @@
                     </select>
                 </div>
                 <div class="flex items-center mt-5 border-gray-200 rounded-b dark:border-gray-600">
-                    <a href="{{ URL::previous() }}" type="button"
+                    <a href="/dashboard" type="button"
                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Back</a>
                     <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
                         class="ms-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
@@ -75,4 +76,14 @@
             </div>
         </div>
     </form>
+
+    @if (session()->has('success'))
+        <div class="fixed bottom-0 z-10 w-full max-w-xs right-5">
+            @include('notifications.success')
+        </div>
+    @elseif(session()->has('failed'))
+        <div class="fixed bottom-0 z-10 w-full max-w-xs right-5">
+            @include('notifications.failed')
+        </div>
+    @endif
 @endsection

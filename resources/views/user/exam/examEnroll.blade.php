@@ -148,6 +148,7 @@
             </div>
         </div>
     </div>
+
     @if (session()->has('success'))
         <div class="fixed bottom-0 z-10 w-full max-w-xs left-5">
             @include('notifications.success')

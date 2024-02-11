@@ -8,6 +8,7 @@ use App\Models\ept_score;
 use App\Models\ept_answer;
 use App\Models\ept_converted;
 use App\Models\EPT_Question;
+use App\Models\payment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -46,6 +47,7 @@ class EptScoreController extends Controller
     {
         $userAnswers = ept_answer::where('user_id', auth()->user()->id)->get();
         $enrollBehaviour = Enroll::where('user_id', auth()->user()->id)->latest()->first();
+        $paymentUsed = payment::where('user_id', auth()->user()->id)->latest()->first();
 
         $eptScore = new ept_score();
         $eptScore->user()->associate(auth()->user()->id);
@@ -55,6 +57,9 @@ class EptScoreController extends Controller
         $updateBehaviour['status'] = 'good';
         $updateBehaviour['expired'] = 'yes';
         $enrollBehaviour->update($updateBehaviour);
+
+        $updatePayment['used'] = 'yes';
+        $paymentUsed->update($updatePayment);
 
         $correctCounts = [
             'first' => 0,

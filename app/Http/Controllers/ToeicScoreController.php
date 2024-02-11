@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Enroll;
-use App\Models\EPT_Question;
+use App\Models\payment;
 use App\Models\toeic_score;
 use Illuminate\Support\Str;
+use App\Models\EPT_Question;
 use App\Models\toeic_answer;
-use App\Models\toeic_converted;
-use App\Models\TOEIC_Question;
 use Illuminate\Http\Request;
+use App\Models\TOEIC_Question;
+use App\Models\toeic_converted;
 
 class ToeicScoreController extends Controller
 {
@@ -63,6 +64,7 @@ class ToeicScoreController extends Controller
     {
         $userAnswers = toeic_answer::where('user_id', auth()->user()->id)->get();
         $enrollBehaviour = Enroll::where('user_id', auth()->user()->id)->latest()->first();
+        $paymentUsed = payment::where('user_id', auth()->user()->id)->latest()->first();
 
         $toeicScore = new toeic_score();
         $toeicScore->user()->associate(auth()->user()->id);
@@ -72,6 +74,9 @@ class ToeicScoreController extends Controller
         $updateBehaviour['status'] = 'good';
         $updateBehaviour['expired'] = 'yes';
         $enrollBehaviour->update($updateBehaviour);
+
+        $updatePayment['used'] = 'yes';
+        $paymentUsed->update($updatePayment);
 
         $correctCounts = [
             'i' => 0,
