@@ -52,22 +52,22 @@
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $getUser->name }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $getUser->profile->npm }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $getUser->profile->faculty }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $getUser->profile->program_study }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $getUser->email_verified_at->format('Y-m-d') }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 <div>
                                     <button type="button" data-modal-target="delete-user-{{ $getUser->id }}"
                                         data-modal-toggle="delete-user-{{ $getUser->id }}"

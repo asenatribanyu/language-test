@@ -179,6 +179,23 @@ Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
         ]);
     });
 
+    // Reporting
+    Route::get('admin/dashboard/ept/reporting', function () {
+        return view('admin/reporting/eptReporting', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'eptScores' => ept_score::get(),
+            'title' => 'EPT Reporting',
+        ]);
+    });
+
+    Route::get('admin/dashboard/toeic/reporting', function () {
+        return view('admin/reporting/toeicReporting', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'toeicScores' => toeic_score::get(),
+            'title' => 'TOEIC Reporting',
+        ]);
+    });
+
     // Manage Users
     Route::get('admin/dashboard/manage-users', function () {
         return view('admin/manageUser', [

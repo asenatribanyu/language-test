@@ -50,13 +50,13 @@
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $loop->iteration }}
                             </th>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $exam->title }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ strtoupper($exam->category) }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 @if ($exam->status == 'publish')
                                     <span
                                         class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-green-400 border border-green-400">Published</span>
@@ -65,10 +65,10 @@
                                         class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300 border border-gray-500">Draft</span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 {{ $exam->updated_at->diffForHumans() }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td scope="row" class="px-6 py-4">
                                 <div>
                                     <button type="button" data-modal-target="delete-exam-{{ $exam->id }}"
                                         data-modal-toggle="delete-exam-{{ $exam->id }}"
