@@ -304,3 +304,189 @@ function submitAndUpdate(questionId, answer) {
     submitAnswer(questionId, answer);
     updateQuestionNav();
 }
+
+function backToPartI() {
+    var partI = document.getElementById("toeicPartI");
+    var partII = document.getElementById("toeicPartII");
+
+    partI.classList.remove("hidden");
+    partII.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToPartII() {
+    var partI = document.getElementById("toeicPartI");
+    var partII = document.getElementById("toeicPartII");
+    var topElement = document.getElementById("top");
+
+    partI.classList.add("hidden");
+    partII.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToPartIII() {
+    var partII = document.getElementById("toeicPartII");
+    var partIII = document.getElementById("toeicPartIII");
+    var topElement = document.getElementById("top");
+
+    partII.classList.add("hidden");
+    partIII.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToPartII() {
+    var partII = document.getElementById("toeicPartII");
+    var partIII = document.getElementById("toeicPartIII");
+
+    partII.classList.remove("hidden");
+    partIII.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToPartIV() {
+    var partIV = document.getElementById("toeicPartIV");
+    var partIII = document.getElementById("toeicPartIII");
+    var topElement = document.getElementById("top");
+
+    partIII.classList.add("hidden");
+    partIV.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToPartIII() {
+    var partIV = document.getElementById("toeicPartIV");
+    var partIII = document.getElementById("toeicPartIII");
+
+    partIII.classList.remove("hidden");
+    partIV.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToPartV() {
+    var partIV = document.getElementById("toeicPartIV");
+    var partV = document.getElementById("toeicPartV");
+    var topElement = document.getElementById("top");
+
+    partIV.classList.add("hidden");
+    partV.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToPartIV() {
+    var partIV = document.getElementById("toeicPartIV");
+    var partV = document.getElementById("toeicPartV");
+
+    partIV.classList.remove("hidden");
+    partV.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToPartVI() {
+    var partVI = document.getElementById("toeicPartVI");
+    var partV = document.getElementById("toeicPartV");
+    var topElement = document.getElementById("top");
+
+    partV.classList.add("hidden");
+    partVI.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToPartV() {
+    var partVI = document.getElementById("toeicPartVI");
+    var partV = document.getElementById("toeicPartV");
+
+    partV.classList.remove("hidden");
+    partVI.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToPartVII() {
+    var partVII = document.getElementById("toeicPartVII");
+    var partVI = document.getElementById("toeicPartVI");
+    var topElement = document.getElementById("top");
+
+    partVI.classList.add("hidden");
+    partVII.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToPartVI() {
+    var partVII = document.getElementById("toeicPartVII");
+    var partVI = document.getElementById("toeicPartVI");
+
+    partVI.classList.remove("hidden");
+    partVII.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToFinish() {
+    var finish = document.getElementById("toeicFinish");
+    var partVII = document.getElementById("toeicPartVII");
+    var toeicNav = document.getElementById("toeicNav");
+    var topElement = document.getElementById("top");
+
+    partVII.classList.add("hidden");
+    toeicNav.classList.add("hidden");
+    finish.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToPartVII() {
+    var finish = document.getElementById("toeicFinish");
+    var partVII = document.getElementById("toeicPartVII");
+    var toeicNav = document.getElementById("toeicNav");
+    var topElement = document.getElementById("top");
+
+    finish.classList.add("hidden");
+    partVII.classList.remove("hidden");
+    toeicNav.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}

@@ -8,7 +8,6 @@ use App\Models\ept_score;
 use App\Models\ept_answer;
 use App\Models\ept_converted;
 use App\Models\EPT_Question;
-use App\Models\Exam;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 

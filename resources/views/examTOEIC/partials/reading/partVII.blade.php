@@ -1,6 +1,6 @@
 {{-- Part VII - TOEIC Listening --}}
-<div
-    class="p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow max-md:w-full max-md:h-full dark:bg-gray-800 dark:border-gray-700">
+<div id="toeicPartVII"
+    class="hidden p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow max-md:w-full max-md:h-full dark:bg-gray-800 dark:border-gray-700">
     <div class="border-b-2 border-gray-200 dark:border-gray-700">
         <h1 class="pb-2 text-2xl font-semibold dark:text-white">PART VII - Listening</h1>
     </div>
@@ -89,5 +89,14 @@
                 </div>
             @endif
         @endforeach
+    </div>
+
+    {{-- Footer Navigation --}}
+    <div class="flex items-center justify-between pt-3 mt-5 border-t-2 border-gray-200 dark:border-gray-700">
+        <button type="button" onclick="backToPartVI()"
+            class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Prev</button>
+        <button type="button" onclick="nextToFinish()""
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Finish
+            Page</button>
     </div>
 </div>

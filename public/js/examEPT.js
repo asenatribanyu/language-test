@@ -304,3 +304,163 @@ function submitAndUpdate(questionId, answer) {
     submitAnswer(questionId, answer);
     updateQuestionNav();
 }
+
+function backToListeningPartA() {
+    var partA = document.getElementById("eptListeningPartA");
+    var partB = document.getElementById("eptListeningPartB");
+
+    partA.classList.remove("hidden");
+    partB.classList.add("hidden");
+
+    var topElement = document.getElementById("top");
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToListeningPartB() {
+    var partA = document.getElementById("eptListeningPartA");
+    var partB = document.getElementById("eptListeningPartB");
+    var topElement = document.getElementById("top");
+
+    partA.classList.add("hidden");
+    partB.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToListeningPartC() {
+    var partB = document.getElementById("eptListeningPartB");
+    var partC = document.getElementById("eptListeningPartC");
+    var topElement = document.getElementById("top");
+
+    partB.classList.add("hidden");
+    partC.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToListeningPartB() {
+    var partB = document.getElementById("eptListeningPartB");
+    var partC = document.getElementById("eptListeningPartC");
+    var topElement = document.getElementById("top");
+
+    partB.classList.remove("hidden");
+    partC.classList.add("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToStructure() {
+    var partC = document.getElementById("eptListeningPartC");
+    var structure = document.getElementById("eptStructure");
+    var topElement = document.getElementById("top");
+
+    partC.classList.add("hidden");
+    structure.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToListeningPartC() {
+    var structure = document.getElementById("eptStructure");
+    var partC = document.getElementById("eptListeningPartC");
+    var topElement = document.getElementById("top");
+
+    structure.classList.add("hidden");
+    partC.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToWritten() {
+    var written = document.getElementById("eptWritten");
+    var structure = document.getElementById("eptStructure");
+    var topElement = document.getElementById("top");
+
+    structure.classList.add("hidden");
+    written.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToStructure() {
+    var written = document.getElementById("eptWritten");
+    var structure = document.getElementById("eptStructure");
+    var topElement = document.getElementById("top");
+
+    written.classList.add("hidden");
+    structure.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToReading() {
+    var written = document.getElementById("eptWritten");
+    var reading = document.getElementById("eptReading");
+    var topElement = document.getElementById("top");
+
+    written.classList.add("hidden");
+    reading.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToWritten() {
+    var written = document.getElementById("eptWritten");
+    var reading = document.getElementById("eptReading");
+    var topElement = document.getElementById("top");
+
+    reading.classList.add("hidden");
+    written.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function nextToFinish() {
+    var finish = document.getElementById("eptFinish");
+    var reading = document.getElementById("eptReading");
+    var eptNav = document.getElementById("eptNav");
+    var topElement = document.getElementById("top");
+
+    reading.classList.add("hidden");
+    eptNav.classList.add("hidden");
+    finish.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
+function backToReading() {
+    var finish = document.getElementById("eptFinish");
+    var reading = document.getElementById("eptReading");
+    var eptNav = document.getElementById("eptNav");
+    var topElement = document.getElementById("top");
+
+    finish.classList.add("hidden");
+    reading.classList.remove("hidden");
+    eptNav.classList.remove("hidden");
+
+    if (topElement) {
+        topElement.scrollIntoView({ behavior: "smooth" });
+    }
+}

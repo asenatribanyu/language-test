@@ -55,7 +55,7 @@
                 <div class="border-b-2 border-gray-200 dark:border-gray-700">
                     <h1 class="pb-2 text-2xl font-semibold dark:text-white">TOEIC Result</h1>
                 </div>
-                <div class="absolute top-5 right-5">Total EPT Score: <span
+                <div class="absolute top-5 right-5">Total TOEIC Score: <span
                         class="px-2 py-1 text-lg font-semibold text-blue-800 bg-blue-100 rounded me-2 dark:bg-blue-900 dark:text-blue-300">{{ $scores->score_total }}</span>
                 </div>
                 <div class="p-3 mt-5 border-2 border-gray-200 rounded-lg dark:border-gray-700">

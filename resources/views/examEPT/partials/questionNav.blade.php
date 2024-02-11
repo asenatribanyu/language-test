@@ -1,4 +1,4 @@
-<div
+<div id="eptNav"
     class="w-full p-5 mt-5 bg-white border border-gray-200 rounded-lg shadow max-md:w-full dark:bg-gray-800 dark:border-gray-700">
     <div>
         <h2 class="text-base font-normal">SECTION ONE - Listening Comperhension Part A</h2>
@@ -11,7 +11,7 @@
             @endforeach
         </div>
     </div>
-    <div class="mt-5">
+    <div class="mt-3">
         <h2 class="text-base font-normal">SECTION ONE - Listening Comperhension Part B</h2>
         <div class="flex flex-wrap gap-1 mt-2">
             @foreach ($enrolls->exam->eptQuestion as $question)
@@ -22,7 +22,7 @@
             @endforeach
         </div>
     </div>
-    <div class="mt-5">
+    <div class="mt-3">
         <h2 class="text-base font-normal">SECTION ONE - Listening Comperhension Part C</h2>
         <div class="flex flex-wrap gap-1 mt-2">
             @foreach ($enrolls->exam->eptQuestion as $question)
@@ -33,7 +33,7 @@
             @endforeach
         </div>
     </div>
-    <div class="pt-5 mt-5 border-t border-gray-200 dark:border-gray-700">
+    <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700">
         <h2 class="text-base font-normal">SECTION TWO - Structure Expression</h2>
         <div class="flex flex-wrap gap-1 mt-2">
             @foreach ($enrolls->exam->eptQuestion as $question)
@@ -44,7 +44,7 @@
             @endforeach
         </div>
     </div>
-    <div class="mt-5">
+    <div class="mt-3">
         <h2 class="text-base font-normal">SECTION TWO - Written Expression</h2>
         <div class="flex flex-wrap gap-1 mt-2">
             @foreach ($enrolls->exam->eptQuestion as $question)
@@ -55,7 +55,7 @@
             @endforeach
         </div>
     </div>
-    <div class="pt-5 mt-5 border-t border-gray-200 dark:border-gray-700">
+    <div class="pt-3 mt-3 border-t border-gray-200 dark:border-gray-700">
         <h2 class="text-base font-normal">SECTION THREE - Reading Comperhension</h2>
         <div class="flex flex-wrap gap-1 mt-2">
             @foreach ($enrolls->exam->eptQuestion as $question)

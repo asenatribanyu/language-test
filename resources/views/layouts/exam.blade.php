@@ -13,14 +13,15 @@
 
     @stack('style')
 
-    <title>{{ strtoupper($enrolls->for) }} Exam</title>
+    <title>{{ $title }} | Widyatama Language Test</title>
 </head>
 
-<body class="text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-white">
+<body id="top" class="relative text-gray-900 bg-gray-50 dark:bg-gray-900 dark:text-white">
     @include('partials.examNavbar')
     <div class="pt-20 mx-auto max-w-7xl max-md:px-2">
         @yield('content')
     </div>
+    @include('partials.scrollToTop')
     @include('partials.footer')
     <script src="{{ asset('js/examGlobal.js') }}"></script>
     @stack('script')
