@@ -47,11 +47,11 @@ class EptScoreController extends Controller
     {
         $userAnswers = ept_answer::where('user_id', auth()->user()->id)->get();
         $enrollBehaviour = Enroll::where('user_id', auth()->user()->id)->latest()->first();
-        $paymentUsed = payment::where('user_id', auth()->user()->id)->latest()->first();
+        $payment = payment::where('user_id', auth()->user()->id)->latest()->first();
 
         $eptScore = new ept_score();
         $eptScore->user()->associate(auth()->user()->id);
-        $eptScore->order_id = 1;
+        $eptScore->order_id = $payment->order_id;
         $eptScore->score_code = 'SCR-' . Str::random(10);
         
         $updateBehaviour['status'] = 'good';
@@ -59,7 +59,7 @@ class EptScoreController extends Controller
         $enrollBehaviour->update($updateBehaviour);
 
         $updatePayment['used'] = 'yes';
-        $paymentUsed->update($updatePayment);
+        $payment->update($updatePayment);
 
         $correctCounts = [
             'first' => 0,

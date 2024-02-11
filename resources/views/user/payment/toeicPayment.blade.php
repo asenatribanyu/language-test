@@ -92,9 +92,9 @@
                             <a href="/dashboard/toeic/waiting-area/schedule"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Start
                                 TOEIC</a>
-                            <a href="/dashboard/payment/exam/toeic"
+                            <button type="button" id="pay-toeic-button"
                                 class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buy
-                                TOEIC</a>
+                                TOEIC</button>
                         </div>
                     </div>
                 </div>
@@ -115,6 +115,11 @@
         </div>
     </div>
 
+    <form action="" method="POST" id="submit_form">
+        @csrf
+        <input type="hidden" name="json" id="json_callback">
+    </form>
+
     @if (session()->has('success'))
         <div class="fixed bottom-0 z-10 w-full max-w-xs right-5">
             @include('notifications.success')
@@ -125,3 +130,38 @@
         </div>
     @endif
 @endsection
+@push('script')
+    <script type="text/javascript">
+        var payButton = document.getElementById('pay-toeic-button');
+
+        payButton.addEventListener('click', function() {
+            window.snap.pay('{{ $snap_token }}', {
+                onSuccess: function(result) {
+                    postEptPayment(result)
+                },
+                onPending: function(result) {
+                    postEptPayment(result)
+                },
+                onError: function(result) {
+                    postEptPayment(result)
+                },
+                onClose: function() {
+                    console.log('you closed the popup without finishing the payment.');
+                }
+            })
+        });
+
+        function postEptPayment(result) {
+            document.getElementById('json_callback').value = JSON.stringify(result);
+            $('#submit_form').submit();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var payToeicButton = document.getElementById("pay-toeic-button");
+
+            if (payToeicButton) {
+                payToeicButton.click();
+            }
+        });
+    </script>
+@endpush

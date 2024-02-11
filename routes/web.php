@@ -13,6 +13,7 @@ use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\EptAnswerController;
 use App\Http\Controllers\EptScoreController;
 use App\Http\Controllers\Exam_OpenController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TOEIC_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_StoryController;
@@ -43,6 +44,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'title' => 'Dashboard',
         ]);
     });
+
+    Route::get('/dashboard/payment/exam/ept', [PaymentController::class, 'eptPayment']);
+
+    Route::post('/dashboard/payment/exam/ept', [PaymentController::class, 'postEptPayment']);
+
+    Route::get('/dashboard/payment/exam/toeic', [PaymentController::class, 'toeicPayment']);
+
+    Route::post('/dashboard/payment/exam/toeic', [PaymentController::class, 'postToeicPayment']);
 
     Route::resource('/profile', ProfileController::class);
 

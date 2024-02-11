@@ -84,4 +84,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function toeic_score(){
         return $this->hasMany(toeic_score::class);
     }
+
+    public function payment(){
+        return $this->hasMany(payment::class);
+    }
 }

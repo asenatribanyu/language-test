@@ -64,11 +64,11 @@ class ToeicScoreController extends Controller
     {
         $userAnswers = toeic_answer::where('user_id', auth()->user()->id)->get();
         $enrollBehaviour = Enroll::where('user_id', auth()->user()->id)->latest()->first();
-        $paymentUsed = payment::where('user_id', auth()->user()->id)->latest()->first();
+        $payment = payment::where('user_id', auth()->user()->id)->latest()->first();
 
         $toeicScore = new toeic_score();
         $toeicScore->user()->associate(auth()->user()->id);
-        $toeicScore->order_id = 1;
+        $toeicScore->order_id = $payment->order_id;
         $toeicScore->score_code = 'SCR-' . Str::random(10);
 
         $updateBehaviour['status'] = 'good';
@@ -76,7 +76,7 @@ class ToeicScoreController extends Controller
         $enrollBehaviour->update($updateBehaviour);
 
         $updatePayment['used'] = 'yes';
-        $paymentUsed->update($updatePayment);
+        $payment->update($updatePayment);
 
         $correctCounts = [
             'i' => 0,

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('css/global.css') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="SB-Mid-client-t2c5vI8F9NY5mdlg"></script>
 
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('css/dataTables.css') }}" />
