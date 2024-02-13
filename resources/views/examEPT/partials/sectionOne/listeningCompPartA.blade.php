@@ -32,8 +32,8 @@
                 <div class="p-3 mb-3 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                     <div class="flex gap-5">
                         <div
-                            class="flex items-center justify-center w-10 h-10 text-base font-medium border-2 border-gray-400 rounded-full ">
-                            <div>{{ $loop->iteration }}.</div>
+                            class="flex items-center justify-center w-10 h-10 text-base font-medium border-2 border-gray-400 rounded-full">
+                            <div>{{ $countPartA++ }}.</div>
                         </div>
                         <div>
                             <button type="button" id="playQuestionAudio-{{ $question->id }}"

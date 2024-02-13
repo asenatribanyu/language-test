@@ -62,7 +62,10 @@
                             <div class="flex gap-5">
                                 <div
                                     class="flex items-center justify-center w-10 h-10 text-base font-medium border-2 border-gray-400 rounded-full">
-                                    <div>{{ $loop->iteration }}.</div>
+                                    @php
+                                        $countPartC++;
+                                    @endphp
+                                    <div>{{ $countPartC }}.</div>
                                 </div>
                                 <div>
                                     <button type="button" id="playQuestionAudio-{{ $question->id }}"

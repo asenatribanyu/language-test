@@ -19,10 +19,19 @@ class ToeicAnswerController extends Controller
      */
     public function index()
     {
+        $enroll = Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first();
+
         return view('examTOEIC/testTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
-            'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
+            'enrolls' => $enroll,
             'toeicOpen' => TOEIC_Open::Where('status', 'run')->first(),
+            'countPartI' => 1,
+            'countPartII' => TOEIC_Question::where('exam_code', $enroll->exam_code)->where('section', 'i')->count(),
+            'countPartIII' => TOEIC_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['i', 'ii'])->count(),
+            'countPartIV' => TOEIC_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['i', 'ii', 'iii'])->count(),
+            'countPartV' => TOEIC_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['i', 'ii', 'iii', 'iv'])->count(),
+            'countPartVI' => TOEIC_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['i', 'ii', 'iii', 'iv', 'v'])->count(),
+            'countPartVII' => TOEIC_Question::where('exam_code', $enroll->exam_code)->where('section', '!=', 'vii')->count(),
             'warningCard' => false,
             'result' => false,
             'category' => 'toeic',

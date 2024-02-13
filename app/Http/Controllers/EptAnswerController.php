@@ -19,10 +19,18 @@ class EptAnswerController extends Controller
      */
     public function index()
     {
+        $enroll = Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first();
+
         return view('examEPT/testEPT', [
             'profile' => User::where('id', auth()->user()->id)->first(),
-            'enrolls' => Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first(),
+            'enrolls' => $enroll,
             'eptOpen' => EPT_Open::Where('status', 'run')->first(),
+            'countPartA' => 1,
+            'countPartB' => EPT_Question::where('exam_code', $enroll->exam_code)->where('section', 'part a')->count(),
+            'countPartC' => EPT_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['part a', 'part b'])->count(),
+            'countStructure' => EPT_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['part a', 'part b', 'part c'])->count(),
+            'countWritten' => EPT_Question::where('exam_code', $enroll->exam_code)->whereIn('section', ['part a', 'part b', 'part c', 'structure'])->count(),
+            'countReading' => EPT_Question::where('exam_code', $enroll->exam_code)->where('section', '!=', 'reading')->count(),
             'warningCard' => false,
             'result' => false,
             'category' => 'ept',

@@ -91,7 +91,8 @@
                                         <input type="hidden" value="{{ $examOpen->id }}" id="Exam-Id">
                                         <input type="hidden" value="run" name="status">
                                         <input type="hidden" value="{{ $examOpen->exam->category }}" name="category">
-                                        <button data-modal-hide="start-modal" type="submit" onclick="postTimer('{{ $examOpen->id }}','{{ $category }}')"
+                                        <button data-modal-hide="start-modal" type="submit"
+                                            onclick="postTimer('{{ $examOpen->id }}','{{ $category }}')"
                                             class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                                             Yes, I'm sure
                                         </button>
@@ -149,8 +150,16 @@
             </div>
         </div>
         <div class="w-4/6 p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <div class="border-b-2 border-gray-200 dark:border-gray-700">
+            <div class="flex items-center justify-between border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Test Taker List</h1>
+                <button type="button" onclick="refreshUser()"
+                    class="px-1.5 py-1.5 -mt-1 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg
+                        class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.7 7.7A7.1 7.1 0 0 0 5 10.8M18 4v4h-4m-7.7 8.3A7.1 7.1 0 0 0 19 13.2M6 20v-4h4" />
+                    </svg>
+                </button>
             </div>
             <div>
                 <section class="mt-5">
@@ -192,10 +201,10 @@
                         <tbody>
                             @foreach ($examOpen->exam->enroll as $enroll)
                                 @if ($enroll->expired == 'no')
-                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700" id="tableRow">
                                         <th scope="row"
                                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $loop->iteration }}
+                                            {{ $number++ }}
                                         </th>
                                         <td class="px-6 py-4">
                                             <img class="object-cover w-10 h-10 rounded-full"
@@ -289,66 +298,5 @@
 @endsection
 @push('script')
     <script src="{{ asset('js/adminGlobal.js') }}"></script>
-    <script> 
-        function startExam(id, category) {
-            $.ajax({
-                url: "/post/timer",
-                type: "POST",
-                data: {
-                    exam_id: id,
-                    category: category,
-                },
-                headers: {
-                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-                },
-                success: function (response) {
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                },
-            });
-        }
-        function startTimer() {
-            // Fetch exam details from the server
-            var examId = $('#Exam-Id').val();
-            var examCategory = $('#Category').val();
-
-            $.ajax({
-                url: "/fetch/timer",
-                type: "GET",
-                data: {
-                    id: examId,
-                    category: examCategory
-                },
-                success: function (response) {
-                    var startTime = new Date(response.start_time).getTime();
-                    var duration = response.duration * 1000;
-                    var timer = setInterval(function () {
-                        var now = new Date().getTime();
-                        var distance = startTime + duration - now;
-
-                        if (distance <= 0) {
-                            clearInterval(timer);
-                            console.log("Exam has ended");
-                        } else {
-                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                            $('#timerDisplay').text(hours + ":" + minutes + ":" + seconds);
-                        }
-                    }, 1000);
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                },
-            });
-        }
-
-        startTimer();
-
-        function postTimer(id, category) {
-            startExam(id, category);
-        }
-    </script>
+    <script src="{{ asset('js/examControl.js') }}"></script>
 @endpush

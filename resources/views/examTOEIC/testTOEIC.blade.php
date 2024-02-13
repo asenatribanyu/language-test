@@ -12,7 +12,7 @@
             @include('examTOEIC.partials.reading.partV')
             @include('examTOEIC.partials.reading.partVI')
             @include('examTOEIC.partials.reading.partVII')
-            @include('examTOEIC.partials.finishPage')w
+            @include('examTOEIC.partials.finishPage')
         </div>
     </div>
 @endsection

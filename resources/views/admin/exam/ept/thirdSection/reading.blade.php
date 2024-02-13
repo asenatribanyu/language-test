@@ -194,7 +194,10 @@
                             <div class="flex gap-5">
                                 <div
                                     class="flex items-center justify-center w-10 h-10 text-base font-medium text-gray-900 border-2 border-gray-400 rounded-full dark:text-white">
-                                    <div>{{ $loop->iteration }}.</div>
+                                    @php
+                                        $countReading++;
+                                    @endphp
+                                    <div>{{ $countReading }}.</div>
                                 </div>
                                 <div>
                                     <div class="mt-1.5">

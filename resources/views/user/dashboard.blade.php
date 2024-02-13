@@ -37,7 +37,7 @@
                         </section>
                         <p class="mt-2 text-gray-500 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
                             mengakses pengetesan EPT secara daring.</p>
-                        <div class="mt-5">
+                        <div class="mt-5 mb-2">
                             <a href="/dashboard/test-guide"
                                 class="mr-2 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Guide</a>
                             <a href="/dashboard/ept/waiting-area/schedule"
@@ -84,9 +84,9 @@
                             <li>Reading: 40 pertanyaan</li>
                             <li>Skor atau nilai untuk ujian TOEIC online berkisar antara 10 – 995.</li>
                         </section>
-                        <p class="pl-6 mt-2 text-gray-500 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
+                        <p class="mt-2 text-gray-500 dark:text-gray-400">Silakan klik tombol di bawah ini untuk dapat
                             mengakses pengetesan EPT secara daring.</p>
-                        <div class="mt-5">
+                        <div class="mt-5 mb-2">
                             <a href="/dashboard/test-guide"
                                 class="mr-2 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Guide</a>
                             <a href="/dashboard/toeic/waiting-area/schedule"

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enroll;
 use App\Models\Exam;
 use App\Models\User;
 use App\Models\EPT_Open;
@@ -38,6 +39,7 @@ class Exam_OpenController extends Controller
             'profile' => User::where('id', auth()->user()->id)->first(),
             'examOpen' => $open,
             'category' => $category,
+            'number' => 1,
             'title' => 'Exam Control',
         ]);
     }
@@ -92,21 +94,24 @@ class Exam_OpenController extends Controller
     public function update(Request $request, $id)
     {
         if($request->category == 'ept'){
-            $exam = EPT_Open::where('id', $id)->first();
+            $examOpen = EPT_Open::where('id', $id)->first();
         }
         else{
-            $exam = TOEIC_Open::where('id', $id)->first();
+            $examOpen = TOEIC_Open::where('id', $id)->first();
         }
 
         $validateData = $request->validate([
             'status' => 'string'
         ]);
 
-        $exam->update($validateData);
+        $examOpen->update($validateData);
 
         if($validateData['status'] == 'end'){
-            foreach($exam->exam->enroll as $enroll){
+            foreach($examOpen->exam->enroll as $enroll){
                 $enroll->update(['expired' => 'yes']);
+                foreach($enroll->user->payment as $payment){
+                    $payment->update(['used' => 'yes']);
+                }
             }
         }
         
