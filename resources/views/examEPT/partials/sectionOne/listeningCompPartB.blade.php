@@ -28,11 +28,25 @@
     {{-- Question List of Listening Comperhension Part B --}}
     <div class="mt-5">
         <h2 class="pb-2 text-xl font-medium dark:text-white">Question List of Listening Comperhension Part B:</h2>
+        @php
+            $questionNumber = $countPartB + 1;
+        @endphp
         @foreach ($enrolls->exam->eptStory as $story)
             @if ($story->section == 'part b')
+                @php
+                    $storyQuestions = $story->question->count();
+                    $lastQuestionNumber = $questionNumber + $storyQuestions - 1;
+                @endphp
                 <div class="p-3 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                     <h3 class="flex items-center justify-end gap-5 mb-3">
-                        <p class="text-lg font-medium">Audio Story 1 - 10</p>
+                        @if ($storyQuestions == 1)
+                            <div class="text-base text-gray-900 dark:text-white">Audio Story for Number
+                                {{ $questionNumber }}</div>
+                        @else
+                            <div class="text-base text-gray-900 dark:text-white">Audio Story for Number
+                                {{ $questionNumber }} -
+                                {{ $lastQuestionNumber }}</div>
+                        @endif
                         <div>
                             <button type="button" id="playStoryAudio-{{ $story->id }}"
                                 onclick="submitStoryAudio('{{ $story->id }}', 'yes')"
@@ -58,6 +72,9 @@
                         </div>
                     </h3>
                     @foreach ($story->question as $question)
+                        @php
+                            $questionNumber++;
+                        @endphp
                         <div class="p-3 mb-3 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div

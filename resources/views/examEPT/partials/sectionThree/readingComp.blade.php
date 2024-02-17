@@ -28,13 +28,30 @@
     {{-- Question List of Reading Comperhension --}}
     <div class="mt-5">
         <h2 class="pb-2 text-xl font-medium dark:text-white">Question List of Reading Comperhension:</h2>
+        @php
+            $questionNumber = $countReading + 1;
+        @endphp
         @foreach ($enrolls->exam->eptStory as $story)
             @if ($story->section == 'reading')
+                @php
+                    $storyQuestions = $story->question->count();
+                    $lastQuestionNumber = $questionNumber + $storyQuestions - 1;
+                @endphp
                 <div class="p-3 mb-5 border-2 border-gray-200 rounded-lg dark:border-gray-700">
-                    <h3 class="mb-2 text-lg font-medium">Story 1 - 10</h3>
+                    @if ($storyQuestions == 1)
+                        <div class="text-base text-gray-900 dark:text-white">Reading Story for Number
+                            {{ $questionNumber }}</div>
+                    @else
+                        <div class="text-base text-gray-900 dark:text-white">Reading Story for Number
+                            {{ $questionNumber }} -
+                            {{ $lastQuestionNumber }}</div>
+                    @endif
                     <p>{{ $story->story }}</p>
                 </div>
                 @foreach ($story->question as $question)
+                    @php
+                        $questionNumber++;
+                    @endphp
                     <div class="p-3 mb-3 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                         <div class="flex gap-5">
                             <div

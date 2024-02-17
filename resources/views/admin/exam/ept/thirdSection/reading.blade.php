@@ -101,11 +101,25 @@
             {{ $questions_reading->count() }}
         </span>
     </div>
+    @php
+        $questionNumber = $countReading + 1;
+    @endphp
     @if ($questions_reading->isNotEmpty())
         @foreach ($stories as $story)
             @if ($story->section == 'reading')
+                @php
+                    $storyQuestions = $story->question->count();
+                    $lastQuestionNumber = $questionNumber + $storyQuestions - 1;
+                @endphp
                 <div class="p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
-                    <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
+                    @if ($storyQuestions == 1)
+                        <div class="text-base text-gray-900 dark:text-white">Reading Story for Number
+                            {{ $questionNumber }}</div>
+                    @else
+                        <div class="text-base text-gray-900 dark:text-white">Reading Story for Number
+                            {{ $questionNumber }} -
+                            {{ $lastQuestionNumber }}</div>
+                    @endif
                     {{-- Story --}}
                     <div class="relative p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                         <p class="mb-3 text-gray-900 dark:text-white dark:text-whitemt-2">{{ $story->story }}</p>
@@ -190,6 +204,9 @@
                         </div>
                     </div>
                     @foreach ($story->question as $question)
+                        @php
+                            $questionNumber++;
+                        @endphp
                         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div

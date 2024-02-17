@@ -101,11 +101,25 @@
             {{ $questions_iv->count() }}
         </span>
     </div>
+    @php
+        $questionNumber = $countPartIV + 1;
+    @endphp
     @if ($questions_iv->isNotEmpty())
         @foreach ($stories as $story)
             @if ($story->section == 'iv')
+                @php
+                    $storyQuestions = $story->question->count();
+                    $lastQuestionNumber = $questionNumber + $storyQuestions - 1;
+                @endphp
                 <div class="p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
-                    <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
+                    @if ($storyQuestions == 1)
+                        <div class="text-base text-gray-900 dark:text-white">Audio Story for Number
+                            {{ $questionNumber }}</div>
+                    @else
+                        <div class="text-base text-gray-900 dark:text-white">Audio Story for Number
+                            {{ $questionNumber }} -
+                            {{ $lastQuestionNumber }}</div>
+                    @endif
                     {{-- Story --}}
                     <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                         <audio class="mt-2 mb-2" controls>
@@ -192,6 +206,9 @@
                         </div>
                     </div>
                     @foreach ($story->question as $question)
+                        @php
+                            $questionNumber++;
+                        @endphp
                         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div

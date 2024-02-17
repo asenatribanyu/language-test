@@ -27,15 +27,32 @@
     {{-- Question of Part VII - Listening --}}
     <div class="mt-5">
         <h2 class="text-xl font-medium text-gray-900 dark:text-white">Question of Listening Part VII:</h2>
+        @php
+            $questionNumber = $countPartVII + 1;
+        @endphp
         @foreach ($enrolls->exam->toeicStory as $story)
             @if ($story->section == 'vii')
+                @php
+                    $storyQuestions = $story->question->count();
+                    $lastQuestionNumber = $questionNumber + $storyQuestions - 1;
+                @endphp
                 <div class="p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
-                    <div class="text-base text-gray-900 dark:text-white">Number 1 - 5</div>
+                    @if ($storyQuestions == 1)
+                        <div class="text-base text-gray-900 dark:text-white">Reading Story for Number
+                            {{ $questionNumber }}</div>
+                    @else
+                        <div class="text-base text-gray-900 dark:text-white">Reading Story for Number
+                            {{ $questionNumber }} -
+                            {{ $lastQuestionNumber }}</div>
+                    @endif
                     {{-- Story --}}
                     <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                         <div class="m-2 text-gray-900 dark:text-white">{!! $story->story !!}</div>
                     </div>
                     @foreach ($story->question as $question)
+                        @php
+                            $questionNumber++;
+                        @endphp
                         <div class="relative p-2 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
                             <div class="flex gap-5">
                                 <div
@@ -61,8 +78,8 @@
                                                 class="text-sm font-medium text-gray-900 ms-2 dark:text-gray-300">{{ $question->answer_a }}</label>
                                         </div>
                                         <div class="flex items-center mb-4">
-                                            <input id="toeic-answer-{{ $question->id }}-b" type="radio" value="b"
-                                                name="answer"
+                                            <input id="toeic-answer-{{ $question->id }}-b" type="radio"
+                                                value="b" name="answer"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                 onClick="submitAndUpdate('{{ $question->id }}', 'b')">
                                             <label for="toeic-answer-{{ $question->id }}-b"
