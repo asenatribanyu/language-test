@@ -46,7 +46,8 @@
                             {{ $questionNumber }} -
                             {{ $lastQuestionNumber }}</div>
                     @endif
-                    <p>{{ $story->story }}</p>
+                    <p class="p-2.5 mt-1.5 border-2 border-gray-200 rounded-lg dark:border-gray-700">{{ $story->story }}
+                    </p>
                 </div>
                 @foreach ($story->question as $question)
                     @php

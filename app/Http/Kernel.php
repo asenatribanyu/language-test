@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'check.payment' => \App\Http\Middleware\CheckPayment::class,
         'check.set.schedule' => \App\Http\Middleware\CheckSetSchedule::class,
         'check.exam.starting' => \App\Http\Middleware\CheckExamStarting::class,
+        'check.busy' => \App\Http\Middleware\CheckBusy::class,
     ];
 }

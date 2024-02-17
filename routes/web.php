@@ -35,7 +35,7 @@ use App\Models\toeic_score;
 */
 
 // User Area
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'check.busy'])->group(function () {
     Route::resource('/dashboard/update-profile', ProfileController::class)->middleware('block.update.profile');
 
     Route::get('/dashboard', function () {
@@ -140,8 +140,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             'title' => 'TOEIC Enrollment',
         ]);
     })->middleware('check.payment:toeic', 'check.set.schedule:toeic',);
+});
 
-    // User Exam Result
+// User Exam Result
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('exam/ept/result', EptScoreController::class);
 
     Route::resource('exam/toeic/result', ToeicScoreController::class);

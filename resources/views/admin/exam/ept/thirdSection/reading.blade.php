@@ -122,7 +122,7 @@
                     @endif
                     {{-- Story --}}
                     <div class="relative p-3 mt-2 border-2 border-gray-200 rounded-lg dark:border-gray-700">
-                        <p class="mb-3 text-gray-900 dark:text-white dark:text-whitemt-2">{{ $story->story }}</p>
+                        <p class="mt-2 mb-3 text-gray-900 dark:text-white">{{ $story->story }}</p>
                         {{-- Actions --}}
                         <div class="absolute top-3 right-3">
                             <button type="button" data-modal-target="delete-story-{{ $story->id }}"

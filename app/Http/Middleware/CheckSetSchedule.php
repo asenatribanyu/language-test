@@ -16,7 +16,7 @@ class CheckSetSchedule
      */
     public function handle(Request $request, Closure $next, $category): Response
     {
-        $enroll = Enroll::where('user_id', auth()->user()->id)->where('for', $category)->where('status', 'enrolled')->latest()->first();
+        $enroll = Enroll::where('user_id', auth()->user()->id)->where('for', $category)->whereIn('status', ['enrolled', 'working'])->latest()->first();
 
         if(empty($enroll)){
             return redirect('/dashboard/' . $category . '/waiting-area/schedule')->with('failed', "Please select your exam schedule first.");
