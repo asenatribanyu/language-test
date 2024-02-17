@@ -107,6 +107,10 @@ class EptScoreController extends Controller
 
         $eptScore->save();
 
+        foreach ($userAnswers as $userAnswer) {
+            $userAnswer->delete();
+        }
+
         return redirect('exam/ept/result');
     }
 

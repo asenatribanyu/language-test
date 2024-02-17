@@ -48,7 +48,7 @@
                         <li>Incorrect: <b
                                 class="text-red-600 dark:text-red-500">{{ $countThirdSection - $scores->correct_third_section }}</b>
                         </li>
-                        <li>Section Score: <b class="text-blue-500">{{ $scores->score_second_section }}</b></li>
+                        <li>Section Score: <b class="text-blue-500">{{ $scores->score_third_section }}</b></li>
                     </div>
                 </div>
             @else

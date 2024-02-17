@@ -22,7 +22,7 @@
                     @php
                         $countPartB++;
                     @endphp
-                    <button type="button" id="questionNav-{{ $question->id }}"
+                    <button type="button" id="finishQuestionNav-{{ $question->id }}"
                         class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $countPartB }}</button>
                 @endif
             @endforeach
@@ -36,7 +36,7 @@
                     @php
                         $countPartC++;
                     @endphp
-                    <button type="button" id="questionNav-{{ $question->id }}"
+                    <button type="button" id="finishQuestionNav-{{ $question->id }}"
                         class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $countPartC }}</button>
                 @endif
             @endforeach
@@ -50,7 +50,7 @@
                     @php
                         $countStructure++;
                     @endphp
-                    <button type="button" id="questionNav-{{ $question->id }}"
+                    <button type="button" id="finishQuestionNav-{{ $question->id }}"
                         class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $countStructure }}</button>
                 @endif
             @endforeach
@@ -64,7 +64,7 @@
                     @php
                         $countWritten++;
                     @endphp
-                    <button type="button" id="questionNav-{{ $question->id }}"
+                    <button type="button" id="finishQuestionNav-{{ $question->id }}"
                         class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $countWritten }}</button>
                 @endif
             @endforeach
@@ -78,7 +78,7 @@
                     @php
                         $countReading++;
                     @endphp
-                    <button type="button" id="questionNav-{{ $question->id }}"
+                    <button type="button" id="finishQuestionNav-{{ $question->id }}"
                         class="w-10 h-10 text-sm text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-sm hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{{ $countReading }}</button>
                 @endif
             @endforeach

@@ -6,8 +6,7 @@
             <div class="border-b-2 border-gray-200 dark:border-gray-700">
                 <h1 class="pb-1 text-2xl font-semibold dark:text-white">Examination Control</h1>
             </div>
-            <div class="mt-5 text-4xl font-semibold text-center dark:text-white" id="timerDisplay">
-            </div>
+            <div class="mt-5 text-4xl font-semibold text-center dark:text-white" id="timerDisplay"></div>
             <div class="mt-5">
                 <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                 <input type="text" id="base-input" disabled value="{{ $examOpen->exam->title }}"

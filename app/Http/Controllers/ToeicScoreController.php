@@ -7,7 +7,6 @@ use App\Models\Enroll;
 use App\Models\payment;
 use App\Models\toeic_score;
 use Illuminate\Support\Str;
-use App\Models\EPT_Question;
 use App\Models\toeic_answer;
 use Illuminate\Http\Request;
 use App\Models\TOEIC_Question;
@@ -123,6 +122,10 @@ class ToeicScoreController extends Controller
         $toeicScore->status = 'keep';
 
         $toeicScore->save();
+
+        foreach ($userAnswers as $userAnswer) {
+            $userAnswer->delete();
+        }
 
         return redirect('exam/toeic/result');
     }
