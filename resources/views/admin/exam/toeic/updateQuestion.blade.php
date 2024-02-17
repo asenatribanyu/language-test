@@ -14,7 +14,7 @@
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             for="file_input">Photograph</label>
-                        <input id="file_input" type="file" name="photograph" accept="image/*" required
+                        <input id="file_input" type="file" name="photograph" accept="image/*"
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                         <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Photograph:
                             <div class="text-sm text-blue-800">{{ $questions->photograph }}</div>
@@ -23,7 +23,7 @@
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio
                             Question</label>
-                        <input id="file_input" type="file" name="audio" accept="audio/*" required
+                        <input id="file_input" type="file" name="audio" accept="audio/*"
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     </div>
                     <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
@@ -33,7 +33,7 @@
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio
                             Question</label>
-                        <input id="file_input" type="file" name="audio" accept="audio/*" required
+                        <input id="file_input" type="file" name="audio" accept="audio/*"
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     </div>
                     <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:
@@ -43,7 +43,7 @@
                     <div class="mt-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Audio
                             Conversation</label>
-                        <input id="file_input" type="file" name="audio" accept="audio/*" required
+                        <input id="file_input" type="file" name="audio" accept="audio/*"
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
                     </div>
                     <div class="flex gap-1 mt-2 text-sm text-gray-900 dark:text-white">Stored Audio:

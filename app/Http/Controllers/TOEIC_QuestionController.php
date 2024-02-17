@@ -209,14 +209,18 @@ class TOEIC_QuestionController extends Controller
         switch($request->questionCase){
             case '1':
                 $question->exam()->associate(session('exam_code'));
-                $filePhotograph = $request->file('photograph')->getClientOriginalName();
-                $filePhotograph = time() . "_" . $filePhotograph;
-                $request->file('photograph')->storeAs('public/photograph', $filePhotograph);
-                $question->photograph = 'photograph/' . $filePhotograph;
-                $fileAudio = $request->file('audio')->getClientOriginalName();
-                $fileAudio = time() . "_" . $fileAudio;
-                $request->file('audio')->storeAs('public/audio', $fileAudio);
-                $question->audio = 'audio/' . $fileAudio;
+                if($request->file('photograph')){
+                    $filePhotograph = $request->file('photograph')->getClientOriginalName();
+                    $filePhotograph = time() . "_" . $filePhotograph;
+                    $request->file('photograph')->storeAs('public/photograph', $filePhotograph);
+                    $question->photograph = 'photograph/' . $filePhotograph;
+                }
+                if($request->file('audio')){
+                    $fileAudio = $request->file('audio')->getClientOriginalName();
+                    $fileAudio = time() . "_" . $fileAudio;
+                    $request->file('audio')->storeAs('public/audio', $fileAudio);
+                    $question->audio = 'audio/' . $fileAudio;
+                }
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
                 $question->answer_c = $validateData['answer_c'];
@@ -227,10 +231,12 @@ class TOEIC_QuestionController extends Controller
 
             case '2':
                 $question->exam()->associate(session('exam_code'));
-                $fileAudio = $request->file('audio')->getClientOriginalName();
-                $fileAudio = time() . "_" . $fileAudio;
-                $request->file('audio')->storeAs('public/audio', $fileAudio);
-                $question->audio = 'audio/' . $fileAudio;
+                if($request->file('audio')){
+                    $fileAudio = $request->file('audio')->getClientOriginalName();
+                    $fileAudio = time() . "_" . $fileAudio;
+                    $request->file('audio')->storeAs('public/audio', $fileAudio);
+                    $question->audio = 'audio/' . $fileAudio;
+                }
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
                 $question->answer_c = $validateData['answer_c'];
@@ -240,10 +246,12 @@ class TOEIC_QuestionController extends Controller
 
             case '3':
                 $question->exam()->associate(session('exam_code'));
-                $fileAudio = $request->file('audio')->getClientOriginalName();
-                $fileAudio = time() . "_" . $fileAudio;
-                $request->file('audio')->storeAs('public/audio', $fileAudio);
-                $question->audio = 'audio/' . $fileAudio;
+                if($request->file('audio')){
+                    $fileAudio = $request->file('audio')->getClientOriginalName();
+                    $fileAudio = time() . "_" . $fileAudio;
+                    $request->file('audio')->storeAs('public/audio', $fileAudio);
+                    $question->audio = 'audio/' . $fileAudio;
+                }
                 $question->question = $validateData['question'];
                 $question->answer_a = $validateData['answer_a'];
                 $question->answer_b = $validateData['answer_b'];
