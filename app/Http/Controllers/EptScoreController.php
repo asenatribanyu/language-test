@@ -46,7 +46,7 @@ class EptScoreController extends Controller
     public function store(Request $request)
     {
         $userAnswers = ept_answer::where('user_id', auth()->user()->id)->get();
-        $enrollBehaviour = Enroll::where('user_id', auth()->user()->id)->latest()->first();
+        $enrollStatus = Enroll::where('user_id', auth()->user()->id)->latest()->first();
         $payment = payment::where('user_id', auth()->user()->id)->latest()->first();
 
         $eptScore = new ept_score();
@@ -54,9 +54,9 @@ class EptScoreController extends Controller
         $eptScore->order_id = $payment->order_id;
         $eptScore->score_code = 'SCR-' . Str::random(10);
         
-        $updateBehaviour['status'] = 'good';
+        $updateBehaviour['status'] = 'finish';
         $updateBehaviour['expired'] = 'yes';
-        $enrollBehaviour->update($updateBehaviour);
+        $enrollStatus->update($updateBehaviour);
 
         $updatePayment['used'] = 'yes';
         $payment->update($updatePayment);
@@ -100,8 +100,6 @@ class EptScoreController extends Controller
         $eptScore->score_third_section = $scoreConvertThirdSection->third_section;
 
         $eptScore->score_total = $scoreConvertFirstSection->first_section + $scoreConvertSecondSection->second_section + $scoreConvertThirdSection->third_section;
-
-        $eptScore->behaviour = $enrollBehaviour->status;
 
         $eptScore->status = 'keep';
 

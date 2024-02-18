@@ -108,7 +108,39 @@ class Exam_OpenController extends Controller
 
         if($validateData['status'] == 'end'){
             foreach($examOpen->exam->enroll as $enroll){
+                $enrollBehaviour = $enroll->user->ept_score()->latest()->first();
+                switch ($enroll->status) {
+                    case 'enrolled':
+                        $enrollBehaviour->update(['behaviour' => 'closed']);
+                    break;
+
+                    case 'working':
+                        $enrollBehaviour->update(['behaviour' => 'times']);
+                    break;
+
+                    case 'finish':
+                        $enrollBehaviour->update(['behaviour' => 'good']);
+                    break;
+                    
+                    case 'kick':
+                        $enrollBehaviour->update(['behaviour' => 'kick']);
+                    break;
+                    
+                    case 'out':
+                        $enrollBehaviour->update(['behaviour' => 'out']);
+                    break;
+
+                    case 'closed':
+                        $enrollBehaviour->update(['behaviour' => 'closed']);
+                    break;
+
+                    default:
+                        $enrollBehaviour->update(['behaviour' => 'good']);
+                    break;
+                }
+
                 $enroll->update(['expired' => 'yes']);
+
                 foreach($enroll->user->payment as $payment){
                     $payment->update(['used' => 'yes']);
                 }

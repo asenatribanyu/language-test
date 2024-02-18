@@ -70,7 +70,7 @@ class ToeicScoreController extends Controller
         $toeicScore->order_id = $payment->order_id;
         $toeicScore->score_code = 'SCR-' . Str::random(10);
 
-        $updateBehaviour['status'] = 'good';
+        $updateBehaviour['status'] = 'finish';
         $updateBehaviour['expired'] = 'yes';
         $enrollBehaviour->update($updateBehaviour);
 
@@ -116,8 +116,6 @@ class ToeicScoreController extends Controller
         $toeicScore->score_reading = $scoreConvertReading->reading;
 
         $toeicScore->score_total = $scoreConvertListening->listening + $scoreConvertReading->reading;
-
-        $toeicScore->behaviour = $enrollBehaviour->status;
 
         $toeicScore->status = 'keep';
 

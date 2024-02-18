@@ -32,7 +32,7 @@ return new class extends Migration
                 'kick',
                 'out',
                 'closed'
-            ]);
+            ])->nullable();
             $table->enum('status', [
                 'keep',
                 'deleted',

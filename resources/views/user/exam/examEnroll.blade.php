@@ -141,7 +141,7 @@
                             class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Start</a>
                     </div>
                     <div id="disabledStart" class="hidden">
-                        <button type="submit" disabled
+                        <button type="button" disabled
                             class="text-white cursor-not-allowed bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 ms-2 dark:bg-gray-800 dark:border dark:border-gray-700">Start</button>
                     </div>
                 </div>

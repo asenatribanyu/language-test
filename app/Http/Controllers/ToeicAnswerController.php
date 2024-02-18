@@ -21,6 +21,9 @@ class ToeicAnswerController extends Controller
     {
         $enroll = Enroll::where('user_id', auth()->user()->id)->where('expired', 'no')->first();
 
+        $updateStatus['status'] = 'working';
+        $enroll->update($updateStatus);
+
         return view('examTOEIC/testTOEIC', [
             'profile' => User::where('id', auth()->user()->id)->first(),
             'enrolls' => $enroll,

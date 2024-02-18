@@ -1,27 +1,30 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EnrollController;
-use App\Http\Controllers\EPT_DirectionController;
 use App\Models\Exam;
 use App\Models\User;
-use App\Http\Controllers\ExamController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\EPT_QuestionController;
-use App\Http\Controllers\EPT_StoryController;
-use App\Http\Controllers\EptAnswerController;
-use App\Http\Controllers\EptScoreController;
-use App\Http\Controllers\Exam_OpenController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\TOEIC_DirectionController;
-use App\Http\Controllers\TOEIC_QuestionController;
-use App\Http\Controllers\TOEIC_StoryController;
-use App\Http\Controllers\ToeicAnswerController;
-use App\Http\Controllers\ToeicScoreController;
 use App\Models\Enroll;
+use App\Models\payment;
 use App\Models\ept_score;
 use App\Models\toeic_score;
+use App\Http\Controllers\eptFilter;
+use App\Http\Controllers\toeicFilter;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EnrollController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EptScoreController;
+use App\Http\Controllers\EPT_StoryController;
+use App\Http\Controllers\EptAnswerController;
+use App\Http\Controllers\Exam_OpenController;
+use App\Http\Controllers\ToeicScoreController;
+use App\Http\Controllers\TOEIC_StoryController;
+use App\Http\Controllers\ToeicAnswerController;
+use App\Http\Controllers\EPT_QuestionController;
+use App\Http\Controllers\EPT_DirectionController;
+use App\Http\Controllers\TOEIC_QuestionController;
+use App\Http\Controllers\TOEIC_DirectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +75,7 @@ Route::middleware(['auth', 'verified', 'check.busy'])->group(function () {
     Route::get('/dashboard/purchase', function () {
         return view('user/purchase', [
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'payments' => payment::where('user_id', auth()->user()->id)->get(),
             'title' => 'Purchase',
         ]);
     });
@@ -213,6 +217,10 @@ Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
             'title' => 'TOEIC Reporting',
         ]);
     });
+
+    Route::post('admin/dashboard/ept/reporting/filter', [eptFilter::class, 'index']);
+
+    Route::post('admin/dashboard/toeic/reporting/filter', [toeicFilter::class, 'index']);
 
     // Manage Users
     Route::get('admin/dashboard/manage-users', function () {

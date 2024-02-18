@@ -118,7 +118,7 @@
                         Finish the exam?</h3>
                     <form action="/exam/ept/result" method="POST">
                         @csrf
-                        <button data-modal-hide="finish-ept-modal" type="submit"
+                        <button data-modal-hide="finish-ept-modal" type="submit" id="finish-exam-button"
                             class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                             Yes, I'm sure
                         </button>

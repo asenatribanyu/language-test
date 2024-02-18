@@ -36,23 +36,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
-                        </th>
-                        <td class="px-6 py-4">
-                            TRX-123456789
-                        </td>
-                        <td class="px-6 py-4">
-                            EPT
-                        </td>
-                        <td class="px-6 py-4">
-                            Allowed
-                        </td>
-                        <td class="px-6 py-4">
-                            Capture
-                        </td>
-                    </tr>
+                    @foreach ($payments as $payment)
+                        <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $loop->iteration }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $payment->order_id }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ strtoupper($payment->for) }}
+                            </td>
+                            <td class="px-6 py-4">
+                                @if ($payment->used == 'no')
+                                    Allowed
+                                @else
+                                    Not allowed
+                                @endif
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ ucfirst($payment->status_pay) }}
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </section>
