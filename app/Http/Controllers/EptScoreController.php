@@ -55,11 +55,7 @@ class EptScoreController extends Controller
         $eptScore->score_code = 'SCR-' . Str::random(10);
         
         $updateBehaviour['status'] = 'finish';
-        $updateBehaviour['expired'] = 'yes';
         $enrollStatus->update($updateBehaviour);
-
-        $updatePayment['used'] = 'yes';
-        $payment->update($updatePayment);
 
         $correctCounts = [
             'first' => 0,

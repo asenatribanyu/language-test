@@ -71,11 +71,7 @@ class ToeicScoreController extends Controller
         $toeicScore->score_code = 'SCR-' . Str::random(10);
 
         $updateBehaviour['status'] = 'finish';
-        $updateBehaviour['expired'] = 'yes';
         $enrollBehaviour->update($updateBehaviour);
-
-        $updatePayment['used'] = 'yes';
-        $payment->update($updatePayment);
 
         $correctCounts = [
             'i' => 0,

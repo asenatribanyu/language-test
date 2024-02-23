@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificationController;
 use App\Models\Exam;
 use App\Models\User;
 use App\Models\Enroll;
@@ -299,4 +300,7 @@ Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
 
     // Exam Control
     Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
+
+    //Certification
+    Route::resource('admin/dashboard/certification', CertificationController::class);
 });

@@ -1,10 +1,14 @@
 // DataTables
-new DataTable("#myTable", {
+new DataTable("#reporting", {
     layout: {
         top1Start: {
             buttons: ["excel", "pdf", "print"],
         },
     },
+});
+
+$(document).ready(function () {
+    $("#myTable").DataTable();
 });
 
 // Create Story Local Storage

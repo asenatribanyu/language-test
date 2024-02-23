@@ -38,6 +38,7 @@ function startTimer() {
 
                 if (distance <= 0) {
                     clearInterval(timer);
+                    $("#endButton").submit();
                     console.log("Exam has ended");
                 } else {
                     var hours = Math.floor(

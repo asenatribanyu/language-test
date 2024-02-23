@@ -109,6 +109,8 @@ class Exam_OpenController extends Controller
         if($validateData['status'] == 'end'){
             foreach($examOpen->exam->enroll as $enroll){
                 $enrollBehaviour = $enroll->user->ept_score()->latest()->first();
+                $enroll->expired = 'yes';
+                $enroll->user->payment->used = 'yes';
                 switch ($enroll->status) {
                     case 'enrolled':
                         $enrollBehaviour->update(['behaviour' => 'closed']);
