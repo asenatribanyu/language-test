@@ -32,14 +32,54 @@ class CertificationController extends Controller
      */
     public function store(Request $request)
     {
-        $extension = $request->file('certificate_template')->getClientOriginalExtension();
+        $extension = null;
+        $extension2 = null;
 
-        if(asset('public/certificate_template/certificate_template.png')){
-            Storage::delete('public/certificate_template/certificate_template.png');
+        if ($request->hasFile('certificate_template')) {
+            $extension = $request->file('certificate_template')->getClientOriginalExtension();
         }
         
-        $fileName = 'certificate_template.' . $extension;
-        $request->file('certificate_template')->storeAs('public/certificate_template', $fileName);
+        if ($request->hasFile('font')) {
+            $extension2 = $request->file('font')->getClientOriginalExtension();
+        }
+
+        if ($request->template_category == 'ept') {
+            if (!is_null($extension)) {
+                if (Storage::exists('public/ept_certificate_template/certificate_template.png')) {
+                    Storage::delete('public/ept_certificate_template/certificate_template.png');
+                }
+
+                $certificateTemplateName = 'ept_certificate_template.' . $extension;
+                $request->file('certificate_template')->storeAs('public/ept_certificate_template', $certificateTemplateName);
+            }
+
+            if (!is_null($extension2)) {
+                if (Storage::exists('public/ept_certificate_font/ept_certificate_font.ttf')) {
+                    Storage::delete('public/ept_certificate_font/ept_certificate_font.ttf');
+                }
+
+                $certificateFontName = 'ept_certificate_font.' . $extension2;
+                $request->file('font')->storeAs('public/ept_certificate_font', $certificateFontName);
+            }
+        } else {
+            if (!is_null($extension)) {
+                if (Storage::exists('public/toeic_certificate_template/certificate_template.png')) {
+                    Storage::delete('public/toeic_certificate_template/certificate_template.png');
+                }
+
+                $certificateTemplateName = 'toeic_certificate_template.' . $extension;
+                $request->file('certificate_template')->storeAs('public/toeic_certificate_template', $certificateTemplateName);
+            }
+
+            if (!is_null($extension2)) {
+                if (Storage::exists('public/toeic_certificate_font/toeic_certificate_font.ttf')) {
+                    Storage::delete('public/toeic_certificate_font/toeic_certificate_font.ttf');
+                }
+
+                $certificateFontName = 'toeic_certificate_font.' . $extension2;
+                $request->file('font')->storeAs('public/toeic_certificate_font', $certificateFontName);
+            }
+        }
 
         return redirect()->back();
     }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CertificationController;
 use App\Models\Exam;
 use App\Models\User;
 use App\Models\Enroll;
@@ -15,14 +14,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Controllers\EptScoreController;
 use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\EptAnswerController;
 use App\Http\Controllers\Exam_OpenController;
+use App\Http\Controllers\GenerateCertificate;
 use App\Http\Controllers\ToeicScoreController;
 use App\Http\Controllers\TOEIC_StoryController;
 use App\Http\Controllers\ToeicAnswerController;
 use App\Http\Controllers\EPT_QuestionController;
+use App\Http\Controllers\CertificationController;
 use App\Http\Controllers\EPT_DirectionController;
 use App\Http\Controllers\TOEIC_QuestionController;
 use App\Http\Controllers\TOEIC_DirectionController;
@@ -145,6 +147,9 @@ Route::middleware(['auth', 'verified', 'check.busy'])->group(function () {
             'title' => 'TOEIC Enrollment',
         ]);
     })->middleware('check.payment:toeic', 'check.set.schedule:toeic',);
+
+    // Generate Certificate
+    route::post('/dashboard/generate/certificate', [GenerateCertificate::class, 'generate']);
 });
 
 // User Exam Result
@@ -301,6 +306,6 @@ Route::middleware(['auth', 'verified', 'admin.role'])->group(function () {
     // Exam Control
     Route::resource('admin/dashboard/exam/control', Exam_OpenController::class);
 
-    //Certification
+    // Certification
     Route::resource('admin/dashboard/certification', CertificationController::class);
 });
