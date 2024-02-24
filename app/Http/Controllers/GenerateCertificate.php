@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ept_score;
 use Illuminate\Http\Request;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Facades\Storage;
 
 class GenerateCertificate extends Controller
 {
@@ -19,5 +22,16 @@ class GenerateCertificate extends Controller
             $templatePath = public_path('storage/toeic_certificate_template/toeic_certificate_template.png');
             $fontPath = public_path('storage/toeic_certificate_font/toeic_certificate_font.ttf');
         }
+        $data = url('/');
+        $qrCode = new QrCode($data);
+        $writer = new PngWriter();
+        $pngResult = $writer->write($qrCode);
+        $pngString = $pngResult->getString();
+        $directoryPath = 'public/qrcode/';
+        $filename = 'qrcode.png';
+        Storage::put($directoryPath . $filename, $pngString);
+    
+        // Optionally, you can return a response or redirect to indicate success
+        return redirect()->back();
     }
 }
