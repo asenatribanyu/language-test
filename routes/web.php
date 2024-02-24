@@ -21,6 +21,7 @@ use App\Http\Controllers\EptAnswerController;
 use App\Http\Controllers\Exam_OpenController;
 use App\Http\Controllers\GenerateCertificate;
 use App\Http\Controllers\ToeicScoreController;
+use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\TOEIC_StoryController;
 use App\Http\Controllers\ToeicAnswerController;
 use App\Http\Controllers\EPT_QuestionController;
@@ -151,6 +152,11 @@ Route::middleware(['auth', 'verified', 'check.busy'])->group(function () {
     // Generate Certificate
     route::post('/dashboard/generate/certificate', [GenerateCertificate::class, 'generate']);
 });
+
+// View Certificate
+Route::get('/certificate/ept/{score_code}', [CertificateController::class, 'eptShow']);
+
+Route::get('/certificate/toeic/{score_code}', [CertificateController::class, 'toeicShow']);
 
 // User Exam Result
 Route::middleware(['auth', 'verified'])->group(function () {

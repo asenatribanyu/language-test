@@ -15,22 +15,22 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                First Section
+                                First Section Score
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Second Section
+                                Second Section Score
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Third Section
+                                Third Section Score
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Score
+                                Score Total
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">

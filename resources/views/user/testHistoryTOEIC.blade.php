@@ -15,17 +15,17 @@
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Listening Section
+                                Listening Section Score
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Reading Section
+                                Reading Section Score
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <div class="flex items-center">
-                                Score
+                                Score Total
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
