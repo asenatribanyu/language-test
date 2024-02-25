@@ -14,7 +14,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Controllers\EptScoreController;
 use App\Http\Controllers\EPT_StoryController;
 use App\Http\Controllers\EptAnswerController;
@@ -180,6 +179,8 @@ Route::middleware(['auth', 'verified', 'check.payment:ept', 'check.set.schedule:
     Route::get('/fetch/exam/ept/story/audio', [EptAnswerController::class, 'fetchStoryPlayButton']);
 
     Route::post('/post/exam/ept/story/audio', [EptAnswerController::class, 'postStoryPlayButton']);
+
+    Route::get('/fetch/exam/ept/status', [EptAnswerController::class, 'fetchStatus']);
 });
 
 // User TOEIC Exam Starting
@@ -197,6 +198,8 @@ Route::middleware(['auth', 'verified', 'check.payment:toeic', 'check.set.schedul
     Route::get('/fetch/exam/toeic/story/audio', [ToeicAnswerController::class, 'fetchStoryPlayButton']);
 
     Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
+
+    Route::get('/fetch/exam/ept/status', [EptAnswerController::class, 'fetchStatus']);
 });
 
 // Fetch Timer

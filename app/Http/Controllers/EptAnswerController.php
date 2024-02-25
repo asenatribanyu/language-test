@@ -123,6 +123,13 @@ class EptAnswerController extends Controller
         return response()->json(['message' => 'Sukses menambah jawaban']);
     }
 
+    public function fetchStatus()
+    {
+        $status = Enroll::where('user_id', auth()->user()->id)->where('for', 'ept')->latest()->first();
+
+        return response()->json(['status' => $status]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

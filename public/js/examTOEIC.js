@@ -491,8 +491,8 @@ function backToPartVII() {
     }
 }
 
+// Exam Timer
 function startTimer() {
-    // Fetch exam details from the server
     var examId = $("#Exam-Id").val();
     var examCategory = $("#Category").val();
 
@@ -540,3 +540,22 @@ function startTimer() {
 }
 
 startTimer();
+
+// Check Kick Status
+function fetchStatusa() {
+    $.ajax({
+        url: "/fetch/exam/toeic/status",
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (error) {
+            console.error("Error fetching data:", error);
+        },
+    });
+}
+
+fetchStatus();
+
+setInterval(fetchStatus, 10000);

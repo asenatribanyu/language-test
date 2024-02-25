@@ -125,6 +125,13 @@ class ToeicAnswerController extends Controller
         return response()->json(['message' => 'Sukses menambah jawaban']);
     }
 
+    public function fetchStatus()
+    {
+        $status = Enroll::where('user_id', auth()->user()->id)->where('for', 'toeic')->latest()->first();
+
+        return response()->json(['status' => $status]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

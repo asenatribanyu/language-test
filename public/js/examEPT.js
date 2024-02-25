@@ -468,8 +468,9 @@ function backToReading() {
         topElement.scrollIntoView({ behavior: "smooth" });
     }
 }
+
+// Exam Timer
 function startTimer() {
-    // Fetch exam details from the server
     var examId = $("#Exam-Id").val();
     var examCategory = $("#Category").val();
 
@@ -523,3 +524,22 @@ function startTimer() {
 }
 
 startTimer();
+
+// Check Kick Status
+function fetchStatus() {
+    $.ajax({
+        url: "/fetch/exam/ept/status",
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        },
+    });
+}
+
+fetchStatus();
+
+setInterval(fetchStatus, 10000);

@@ -18,7 +18,6 @@ function startExam(id, category) {
 }
 
 function startTimer() {
-    // Fetch exam details from the server
     var examId = $("#Exam-Id").val();
     var examCategory = $("#Category").val();
 

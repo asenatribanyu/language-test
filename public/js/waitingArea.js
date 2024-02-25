@@ -25,4 +25,4 @@ function fetchData() {
 
 fetchData();
 
-setInterval(fetchData, 2000);
+setInterval(fetchData, 3000);
