@@ -13,30 +13,12 @@ class ProfileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct()
-    {
-        $this->middleware(['auth', 'verified']);
-    }
-
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
-    {
-        $user = User::where('id', auth()->user()->id)->first();
-        if($user->picture){
-            return redirect('/dashboard');
-        }
-        else{
-            return view('pages/updateProfile', [
-                'profile' => User::where('id', auth()->user()->id)->first(),
-            ]);
-        }
-    }
-
     public function index()
     {
-        //
+        return view('user/updateProfile', [
+            'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Update Profile',
+        ]);
     }
 
     /**
@@ -84,7 +66,7 @@ class ProfileController extends Controller
         }
         $user->update();
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Account created succesfully.');
     }
 
     /**
@@ -110,8 +92,8 @@ class ProfileController extends Controller
     {
         $user = User::where('id', $profile->user_id)->first();
 
-        $validateData = $request->validate([
-            'picture' => 'image | mimes:png, jpg, jpeg',
+        $request->validate([
+            'picture' => 'image | mimes: png,jpg,jpeg'
         ]);
 
         if($user->picture){
@@ -122,11 +104,10 @@ class ProfileController extends Controller
         $fileName = $request->file('picture')->getClientOriginalName();
         $fileName = $fileName . '_' . time() . '.' . $extension;
         $request->file('picture')->storeAs('public/profile_picture', $fileName);
-        $validateData['picture'] = 'profile_picture/' . $fileName;
         $user->picture = 'profile_picture/' . $fileName;
         $user->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Profile updated succesfully.');
     }
 
     /**

@@ -49,6 +49,7 @@ class UserController extends Controller
         return view('admin/updateUser',[
             'user' => User::where('id', $id)->first(),
             'profile' => User::where('id', auth()->user()->id)->first(),
+            'title' => 'Update User',
         ]);
     }
 
@@ -65,7 +66,7 @@ class UserController extends Controller
             'npm' => 'string',
             'faculty' => 'string',
             'program_study' => 'string',
-            'picture' => 'image | mimes:png, jpg, jpeg',
+            'picture' => 'image | mimes: png,jpg,jpeg',
         ]);
 
         if($request->file('picture')){
@@ -89,7 +90,7 @@ class UserController extends Controller
         $user->save();
         $profile->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'User updated succesfully.');
     }
 
     /**
@@ -107,6 +108,6 @@ class UserController extends Controller
         $user->delete();
         $profile->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'User deleted succesfully.');
     }
 }

@@ -1,5 +1,5 @@
 <div id="toast-simple"
-    class="fixed bottom-5 left-5 flex items-center w-full max-w-xs p-4 space-x-4 rtl:space-x-reverse text-gray-500 bg-white divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
+    class="fixed flex items-center w-full max-w-xs p-4 space-x-4 text-gray-500 bg-white divide-x divide-gray-200 rounded-lg shadow bottom-5 left-5 rtl:space-x-reverse rtl:divide-x-reverse dark:text-gray-400 dark:divide-gray-700 space-x dark:bg-gray-800"
     role="alert">
     <div>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 fill-blue-700" viewBox="0 0 24 24">
@@ -8,7 +8,7 @@
             </path>
         </svg>
     </div>
-    <div class="ps-4 flex gap-1 text-sm font-normal">
-        <div class="text-blue-700">2</div> Questions has been stored
+    <div class="flex items-center gap-1 text-sm font-normal text-gray-900 ps-4 dark:text-gray-400">
+        <div class="font-semibold text-blue-500 dark:text-white">{{ $question_count }}</div> Questions has been stored
     </div>
 </div>
