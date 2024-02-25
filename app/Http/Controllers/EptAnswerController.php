@@ -125,9 +125,9 @@ class EptAnswerController extends Controller
 
     public function fetchStatus()
     {
-        $status = Enroll::where('user_id', auth()->user()->id)->where('for', 'ept')->latest()->first();
+        $enroll = Enroll::where('user_id', auth()->user()->id)->where('for', 'ept')->latest()->first();
 
-        return response()->json(['status' => $status]);
+        return response()->json($enroll);
     }
 
     /**

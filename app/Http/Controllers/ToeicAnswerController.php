@@ -129,7 +129,7 @@ class ToeicAnswerController extends Controller
     {
         $status = Enroll::where('user_id', auth()->user()->id)->where('for', 'toeic')->latest()->first();
 
-        return response()->json(['status' => $status]);
+        return response()->json($status);
     }
 
     /**

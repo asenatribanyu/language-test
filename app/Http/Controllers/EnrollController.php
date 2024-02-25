@@ -52,12 +52,6 @@ class EnrollController extends Controller
                 return redirect()->back();
             }
             else{
-                if($preventKicked){
-                    if($preventKicked->status == 'kick'){
-                        return redirect()->back();
-                    }
-                }
-    
                 $enroll = new Enroll();
     
                 $enroll->user()->associate(auth()->user()->id);

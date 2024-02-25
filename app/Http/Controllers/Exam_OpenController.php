@@ -172,16 +172,14 @@ class Exam_OpenController extends Controller
             $exam = TOEIC_Open::findOrFail($request->exam_id);
         }
     
-        // Decrement the duration by 1 second
         $exam->start = now();
         $exam->save();
     
-        // Prepare the response
         $response = [
-            'duration' => $exam->duration, // Updated duration
+            'duration' => $exam->duration,
             'id' => $exam->id,
             'category' => $request->category,
-            'message' => 'berjalan' // Optional message
+            'message' => 'berjalan',
         ];
     
         // Return JSON response

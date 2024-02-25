@@ -532,7 +532,12 @@ function fetchStatus() {
         method: "GET",
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            console.log(data.status);
+            if (data.status == "kick") {
+                $("#finish-ept-modal").show(function () {
+                    $(this).find("form").submit();
+                });
+            }
         },
         error: function (xhr, status, error) {
             console.error(error);
@@ -542,4 +547,4 @@ function fetchStatus() {
 
 fetchStatus();
 
-setInterval(fetchStatus, 10000);
+setInterval(fetchStatus, 25000);

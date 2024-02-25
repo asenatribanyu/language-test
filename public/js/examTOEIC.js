@@ -542,20 +542,25 @@ function startTimer() {
 startTimer();
 
 // Check Kick Status
-function fetchStatusa() {
+function fetchStatus() {
     $.ajax({
         url: "/fetch/exam/toeic/status",
         method: "GET",
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            console.log(data.status);
+            if (data.status == "kick") {
+                $("#finish-ept-modal").show(function () {
+                    $(this).find("form").submit();
+                });
+            }
         },
-        error: function (error) {
-            console.error("Error fetching data:", error);
+        error: function (xhr, status, error) {
+            console.error(error);
         },
     });
 }
 
 fetchStatus();
 
-setInterval(fetchStatus, 10000);
+setInterval(fetchStatus, 25000);

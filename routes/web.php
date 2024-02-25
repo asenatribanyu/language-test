@@ -179,9 +179,10 @@ Route::middleware(['auth', 'verified', 'check.payment:ept', 'check.set.schedule:
     Route::get('/fetch/exam/ept/story/audio', [EptAnswerController::class, 'fetchStoryPlayButton']);
 
     Route::post('/post/exam/ept/story/audio', [EptAnswerController::class, 'postStoryPlayButton']);
-
-    Route::get('/fetch/exam/ept/status', [EptAnswerController::class, 'fetchStatus']);
 });
+
+// EPT Exam Check Status
+Route::get('/fetch/exam/ept/status', [EptAnswerController::class, 'fetchStatus']);
 
 // User TOEIC Exam Starting
 Route::middleware(['auth', 'verified', 'check.payment:toeic', 'check.set.schedule:toeic', 'check.exam.starting:toeic'])->group(function () {
@@ -198,9 +199,10 @@ Route::middleware(['auth', 'verified', 'check.payment:toeic', 'check.set.schedul
     Route::get('/fetch/exam/toeic/story/audio', [ToeicAnswerController::class, 'fetchStoryPlayButton']);
 
     Route::post('/post/exam/toeic/story/audio', [ToeicAnswerController::class, 'postStoryPlayButton']);
-
-    Route::get('/fetch/exam/ept/status', [EptAnswerController::class, 'fetchStatus']);
 });
+
+// TOEIC Exam Check Status
+Route::get('/fetch/exam/toeic/status', [ToeicAnswerController::class, 'fetchStatus']);
 
 // Fetch Timer
 Route::get('/fetch/timer',[Exam_OpenController::class, 'timer']);
